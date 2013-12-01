@@ -1,5 +1,5 @@
 //
-//  RVFViewController.h
+//  RVFMapViewController.h
 //  RivneFish
 //
 //  Created by Yurii Zadoianchuk on 12/1/13.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RVFViewController : UIViewController
+@import MapKit.MKMapView;
+
+@interface RVFMapViewController : UIViewController
 
 @end

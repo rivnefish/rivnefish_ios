@@ -15,13 +15,14 @@
 		D0E31A0C184B4ACC00504C37 /* RVFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E31A0B184B4ACC00504C37 /* RVFAppDelegate.m */; };
 		D0E31A0F184B4ACC00504C37 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E31A0D184B4ACC00504C37 /* Main_iPhone.storyboard */; };
 		D0E31A12184B4ACC00504C37 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E31A10184B4ACC00504C37 /* Main_iPad.storyboard */; };
-		D0E31A15184B4ACC00504C37 /* RVFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E31A14184B4ACC00504C37 /* RVFViewController.m */; };
 		D0E31A17184B4ACC00504C37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E31A16184B4ACC00504C37 /* Images.xcassets */; };
 		D0E31A1E184B4ACC00504C37 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E31A1D184B4ACC00504C37 /* XCTest.framework */; };
 		D0E31A1F184B4ACC00504C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E319FB184B4ACC00504C37 /* Foundation.framework */; };
 		D0E31A20184B4ACC00504C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E319FF184B4ACC00504C37 /* UIKit.framework */; };
 		D0E31A28184B4ACC00504C37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0E31A26184B4ACC00504C37 /* InfoPlist.strings */; };
 		D0E31A2A184B4ACC00504C37 /* RivneFishTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E31A29184B4ACC00504C37 /* RivneFishTests.m */; };
+		D0E31A35184B51E200504C37 /* RVFMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E31A34184B51E200504C37 /* RVFMapViewController.m */; };
+		D0E31A37184B57FB00504C37 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E31A36184B57FB00504C37 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +48,15 @@
 		D0E31A0B184B4ACC00504C37 /* RVFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVFAppDelegate.m; sourceTree = "<group>"; };
 		D0E31A0E184B4ACC00504C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D0E31A11184B4ACC00504C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		D0E31A13184B4ACC00504C37 /* RVFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RVFViewController.h; sourceTree = "<group>"; };
-		D0E31A14184B4ACC00504C37 /* RVFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RVFViewController.m; sourceTree = "<group>"; };
 		D0E31A16184B4ACC00504C37 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D0E31A1C184B4ACC00504C37 /* RivneFishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RivneFishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E31A1D184B4ACC00504C37 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D0E31A25184B4ACC00504C37 /* RivneFishTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RivneFishTests-Info.plist"; sourceTree = "<group>"; };
 		D0E31A27184B4ACC00504C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D0E31A29184B4ACC00504C37 /* RivneFishTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RivneFishTests.m; sourceTree = "<group>"; };
+		D0E31A33184B51E200504C37 /* RVFMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RVFMapViewController.h; sourceTree = "<group>"; };
+		D0E31A34184B51E200504C37 /* RVFMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RVFMapViewController.m; sourceTree = "<group>"; };
+		D0E31A36184B57FB00504C37 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E31A37184B57FB00504C37 /* MapKit.framework in Frameworks */,
 				D0E319FE184B4ACC00504C37 /* CoreGraphics.framework in Frameworks */,
 				D0E31A00184B4ACC00504C37 /* UIKit.framework in Frameworks */,
 				D0E319FC184B4ACC00504C37 /* Foundation.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		D0E319FA184B4ACC00504C37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0E31A36184B57FB00504C37 /* MapKit.framework */,
 				D0E319FB184B4ACC00504C37 /* Foundation.framework */,
 				D0E319FD184B4ACC00504C37 /* CoreGraphics.framework */,
 				D0E319FF184B4ACC00504C37 /* UIKit.framework */,
@@ -118,8 +122,8 @@
 				D0E31A0B184B4ACC00504C37 /* RVFAppDelegate.m */,
 				D0E31A0D184B4ACC00504C37 /* Main_iPhone.storyboard */,
 				D0E31A10184B4ACC00504C37 /* Main_iPad.storyboard */,
-				D0E31A13184B4ACC00504C37 /* RVFViewController.h */,
-				D0E31A14184B4ACC00504C37 /* RVFViewController.m */,
+				D0E31A33184B51E200504C37 /* RVFMapViewController.h */,
+				D0E31A34184B51E200504C37 /* RVFMapViewController.m */,
 				D0E31A16184B4ACC00504C37 /* Images.xcassets */,
 				D0E31A02184B4ACC00504C37 /* Supporting Files */,
 			);
@@ -254,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E31A15184B4ACC00504C37 /* RVFViewController.m in Sources */,
+				D0E31A35184B51E200504C37 /* RVFMapViewController.m in Sources */,
 				D0E31A08184B4ACC00504C37 /* main.m in Sources */,
 				D0E31A0C184B4ACC00504C37 /* RVFAppDelegate.m in Sources */,
 			);
