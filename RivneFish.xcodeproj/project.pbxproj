@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A79BDD1861C8D90091E5BA /* RVFServerComminicationsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A79BDC1861C8D90091E5BA /* RVFServerComminicationsWrapper.m */; };
+		22A79BE41861CD220091E5BA /* RVFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A79BE31861CD220091E5BA /* RVFUtils.m */; };
 		D0E319FC184B4ACC00504C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E319FB184B4ACC00504C37 /* Foundation.framework */; };
 		D0E319FE184B4ACC00504C37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E319FD184B4ACC00504C37 /* CoreGraphics.framework */; };
 		D0E31A00184B4ACC00504C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E319FF184B4ACC00504C37 /* UIKit.framework */; };
@@ -36,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22A79BDB1861C8D90091E5BA /* RVFServerComminicationsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVFServerComminicationsWrapper.h; path = ServiceClasses/RVFServerComminicationsWrapper.h; sourceTree = "<group>"; };
+		22A79BDC1861C8D90091E5BA /* RVFServerComminicationsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVFServerComminicationsWrapper.m; path = ServiceClasses/RVFServerComminicationsWrapper.m; sourceTree = "<group>"; };
+		22A79BE11861CD050091E5BA /* Typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Typedefs.h; path = ServiceClasses/Typedefs.h; sourceTree = "<group>"; };
+		22A79BE21861CD220091E5BA /* RVFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVFUtils.h; path = ServiceClasses/RVFUtils.h; sourceTree = "<group>"; };
+		22A79BE31861CD220091E5BA /* RVFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVFUtils.m; path = ServiceClasses/RVFUtils.m; sourceTree = "<group>"; };
 		D0E319F8184B4ACC00504C37 /* RivneFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivneFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E319FB184B4ACC00504C37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E319FD184B4ACC00504C37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +91,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22A79BDA1861C8920091E5BA /* ServiceClasses */ = {
+			isa = PBXGroup;
+			children = (
+				22A79BE21861CD220091E5BA /* RVFUtils.h */,
+				22A79BE31861CD220091E5BA /* RVFUtils.m */,
+				22A79BDB1861C8D90091E5BA /* RVFServerComminicationsWrapper.h */,
+				22A79BDC1861C8D90091E5BA /* RVFServerComminicationsWrapper.m */,
+				22A79BE11861CD050091E5BA /* Typedefs.h */,
+			);
+			name = ServiceClasses;
+			sourceTree = "<group>";
+		};
 		D0E319EF184B4ACC00504C37 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +137,7 @@
 		D0E31A01184B4ACC00504C37 /* RivneFish */ = {
 			isa = PBXGroup;
 			children = (
+				22A79BDA1861C8920091E5BA /* ServiceClasses */,
 				D0E31A0A184B4ACC00504C37 /* RVFAppDelegate.h */,
 				D0E31A0B184B4ACC00504C37 /* RVFAppDelegate.m */,
 				D0E31A0D184B4ACC00504C37 /* Main_iPhone.storyboard */,
@@ -258,6 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A79BDD1861C8D90091E5BA /* RVFServerComminicationsWrapper.m in Sources */,
+				22A79BE41861CD220091E5BA /* RVFUtils.m in Sources */,
 				D0E31A35184B51E200504C37 /* RVFMapViewController.m in Sources */,
 				D0E31A08184B4ACC00504C37 /* main.m in Sources */,
 				D0E31A0C184B4ACC00504C37 /* RVFAppDelegate.m in Sources */,
@@ -479,6 +501,7 @@
 				D0E31A2F184B4ACC00504C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0E31A30184B4ACC00504C37 /* Build configuration list for PBXNativeTarget "RivneFishTests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +510,7 @@
 				D0E31A32184B4ACC00504C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
