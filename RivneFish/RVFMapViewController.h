@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@import MapKit.MKMapView;
-
 @interface RVFMapViewController : UIViewController
 
 @end

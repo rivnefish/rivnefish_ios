@@ -19,7 +19,7 @@
         self.markerId = dictionary[@"marker_id"];
         self.markerName = dictionary[@"name"];
         self.markerAddress = dictionary[@"address"];
-        _coordinate = CLLocationCoordinate2DMake([dictionary[@"lat"] doubleValue], [dictionary[@"lon"] doubleValue]);
+        _coordinate = CLLocationCoordinate2DMake([dictionary[@"lat"] doubleValue], [dictionary[@"lng"] doubleValue]);
     }
     
     return self;

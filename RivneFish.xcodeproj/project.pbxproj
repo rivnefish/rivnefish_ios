@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		22287A7F1863161D00ABCFF9 /* RVFMarkerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22287A7E1863161D00ABCFF9 /* RVFMarkerModel.m */; };
+		22287A83186318B200ABCFF9 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 22287A82186318B200ABCFF9 /* XMLDictionary.m */; };
+		2260DEA51864970C00EB17CD /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 2260DEA31864970C00EB17CD /* marker.png */; };
+		2260DEA61864970C00EB17CD /* marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2260DEA41864970C00EB17CD /* marker@2x.png */; };
 		22A79BDD1861C8D90091E5BA /* RVFServerComminicationsWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A79BDC1861C8D90091E5BA /* RVFServerComminicationsWrapper.m */; };
 		22A79BE41861CD220091E5BA /* RVFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A79BE31861CD220091E5BA /* RVFUtils.m */; };
 		D0E319FC184B4ACC00504C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E319FB184B4ACC00504C37 /* Foundation.framework */; };
@@ -41,6 +44,10 @@
 /* Begin PBXFileReference section */
 		22287A7D1863161D00ABCFF9 /* RVFMarkerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVFMarkerModel.h; path = Models/RVFMarkerModel.h; sourceTree = "<group>"; };
 		22287A7E1863161D00ABCFF9 /* RVFMarkerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVFMarkerModel.m; path = Models/RVFMarkerModel.m; sourceTree = "<group>"; };
+		22287A81186318B200ABCFF9 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDictionary.h; path = 3rdPartyComponents/XMLDictionary.h; sourceTree = "<group>"; };
+		22287A82186318B200ABCFF9 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDictionary.m; path = 3rdPartyComponents/XMLDictionary.m; sourceTree = "<group>"; };
+		2260DEA31864970C00EB17CD /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = marker.png; path = Resources/marker.png; sourceTree = "<group>"; };
+		2260DEA41864970C00EB17CD /* marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker@2x.png"; path = "Resources/marker@2x.png"; sourceTree = "<group>"; };
 		22A79BDB1861C8D90091E5BA /* RVFServerComminicationsWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVFServerComminicationsWrapper.h; path = ServiceClasses/RVFServerComminicationsWrapper.h; sourceTree = "<group>"; };
 		22A79BDC1861C8D90091E5BA /* RVFServerComminicationsWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVFServerComminicationsWrapper.m; path = ServiceClasses/RVFServerComminicationsWrapper.m; sourceTree = "<group>"; };
 		22A79BE11861CD050091E5BA /* Typedefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Typedefs.h; path = ServiceClasses/Typedefs.h; sourceTree = "<group>"; };
@@ -103,6 +110,24 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		22287A801863188400ABCFF9 /* 3rdPartyComponents */ = {
+			isa = PBXGroup;
+			children = (
+				22287A81186318B200ABCFF9 /* XMLDictionary.h */,
+				22287A82186318B200ABCFF9 /* XMLDictionary.m */,
+			);
+			name = 3rdPartyComponents;
+			sourceTree = "<group>";
+		};
+		2260DEA2186496A100EB17CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2260DEA31864970C00EB17CD /* marker.png */,
+				2260DEA41864970C00EB17CD /* marker@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		22A79BDA1861C8920091E5BA /* ServiceClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +174,7 @@
 		D0E31A01184B4ACC00504C37 /* RivneFish */ = {
 			isa = PBXGroup;
 			children = (
+				22287A801863188400ABCFF9 /* 3rdPartyComponents */,
 				22287A7C186315C400ABCFF9 /* Models */,
 				22A79BDA1861C8920091E5BA /* ServiceClasses */,
 				D0E31A0A184B4ACC00504C37 /* RVFAppDelegate.h */,
@@ -159,6 +185,7 @@
 				D0E31A34184B51E200504C37 /* RVFMapViewController.m */,
 				D0E31A16184B4ACC00504C37 /* Images.xcassets */,
 				D0E31A02184B4ACC00504C37 /* Supporting Files */,
+				2260DEA2186496A100EB17CD /* Resources */,
 			);
 			path = RivneFish;
 			sourceTree = "<group>";
@@ -270,8 +297,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E31A12184B4ACC00504C37 /* Main_iPad.storyboard in Resources */,
+				2260DEA51864970C00EB17CD /* marker.png in Resources */,
 				D0E31A17184B4ACC00504C37 /* Images.xcassets in Resources */,
 				D0E31A0F184B4ACC00504C37 /* Main_iPhone.storyboard in Resources */,
+				2260DEA61864970C00EB17CD /* marker@2x.png in Resources */,
 				D0E31A06184B4ACC00504C37 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +323,7 @@
 				22A79BDD1861C8D90091E5BA /* RVFServerComminicationsWrapper.m in Sources */,
 				22A79BE41861CD220091E5BA /* RVFUtils.m in Sources */,
 				22287A7F1863161D00ABCFF9 /* RVFMarkerModel.m in Sources */,
+				22287A83186318B200ABCFF9 /* XMLDictionary.m in Sources */,
 				D0E31A35184B51E200504C37 /* RVFMapViewController.m in Sources */,
 				D0E31A08184B4ACC00504C37 /* main.m in Sources */,
 				D0E31A0C184B4ACC00504C37 /* RVFAppDelegate.m in Sources */,

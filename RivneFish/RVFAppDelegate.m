@@ -7,13 +7,14 @@
 //
 
 #import "RVFAppDelegate.h"
+#import "RVFServerComminicationsWrapper.h"
+#import "XMLDictionary.h"
 
 @implementation RVFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
     
     return YES;
 }
