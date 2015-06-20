@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */; };
+		3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7851AD7194E0036C8CA /* ViewController.swift */; };
+		3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD7871AD7194E0036C8CA /* Main.storyboard */; };
+		3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD78A1AD7194E0036C8CA /* Images.xcassets */; };
+		3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */; };
+		3E4BD79A1AD7194E0036C8CA /* RivneFishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */; };
+		3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C65A51B35DD5A005BD52C /* MapKit.framework */; };
+		3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65A71B35DF5E005BD52C /* FishViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3E4BD7941AD7194E0036C8CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E4BD7761AD7194E0036C8CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E4BD77D1AD7194E0036C8CA;
+			remoteInfo = RivneFish;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3E4BD77E1AD7194E0036C8CA /* RivneFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivneFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4BD7821AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E4BD7851AD7194E0036C8CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3E4BD7881AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3E4BD78A1AD7194E0036C8CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3E4BD78D1AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RivneFishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4BD7981AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivneFishTests.swift; sourceTree = "<group>"; };
+		3E8C65A51B35DD5A005BD52C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3E8C65A71B35DF5E005BD52C /* FishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FishViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E4BD77B1AD7194E0036C8CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E4BD7901AD7194E0036C8CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E4BD7751AD7194E0036C8CA = {
+			isa = PBXGroup;
+			children = (
+				3E8C65A51B35DD5A005BD52C /* MapKit.framework */,
+				3E4BD7801AD7194E0036C8CA /* RivneFish */,
+				3E4BD7961AD7194E0036C8CA /* RivneFishTests */,
+				3E4BD77F1AD7194E0036C8CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3E4BD77F1AD7194E0036C8CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BD77E1AD7194E0036C8CA /* RivneFish.app */,
+				3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E4BD7801AD7194E0036C8CA /* RivneFish */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */,
+				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
+				3E4BD7871AD7194E0036C8CA /* Main.storyboard */,
+				3E4BD78A1AD7194E0036C8CA /* Images.xcassets */,
+				3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */,
+				3E4BD7811AD7194E0036C8CA /* Supporting Files */,
+				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
+			);
+			path = RivneFish;
+			sourceTree = "<group>";
+		};
+		3E4BD7811AD7194E0036C8CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BD7821AD7194E0036C8CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E4BD7961AD7194E0036C8CA /* RivneFishTests */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */,
+				3E4BD7971AD7194E0036C8CA /* Supporting Files */,
+			);
+			path = RivneFishTests;
+			sourceTree = "<group>";
+		};
+		3E4BD7971AD7194E0036C8CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E4BD7981AD7194E0036C8CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E4BD77D1AD7194E0036C8CA /* RivneFish */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E4BD79D1AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFish" */;
+			buildPhases = (
+				3E4BD77A1AD7194E0036C8CA /* Sources */,
+				3E4BD77B1AD7194E0036C8CA /* Frameworks */,
+				3E4BD77C1AD7194E0036C8CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RivneFish;
+			productName = RivneFish;
+			productReference = 3E4BD77E1AD7194E0036C8CA /* RivneFish.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3E4BD7921AD7194E0036C8CA /* RivneFishTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E4BD7A01AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFishTests" */;
+			buildPhases = (
+				3E4BD78F1AD7194E0036C8CA /* Sources */,
+				3E4BD7901AD7194E0036C8CA /* Frameworks */,
+				3E4BD7911AD7194E0036C8CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E4BD7951AD7194E0036C8CA /* PBXTargetDependency */,
+			);
+			name = RivneFishTests;
+			productName = RivneFishTests;
+			productReference = 3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E4BD7761AD7194E0036C8CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = rivnefish;
+				TargetAttributes = {
+					3E4BD77D1AD7194E0036C8CA = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					3E4BD7921AD7194E0036C8CA = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 3E4BD77D1AD7194E0036C8CA;
+					};
+				};
+			};
+			buildConfigurationList = 3E4BD7791AD7194E0036C8CA /* Build configuration list for PBXProject "RivneFish" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E4BD7751AD7194E0036C8CA;
+			productRefGroup = 3E4BD77F1AD7194E0036C8CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E4BD77D1AD7194E0036C8CA /* RivneFish */,
+				3E4BD7921AD7194E0036C8CA /* RivneFishTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E4BD77C1AD7194E0036C8CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */,
+				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
+				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E4BD7911AD7194E0036C8CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E4BD77A1AD7194E0036C8CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
+				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
+				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E4BD78F1AD7194E0036C8CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E4BD79A1AD7194E0036C8CA /* RivneFishTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3E4BD7951AD7194E0036C8CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E4BD77D1AD7194E0036C8CA /* RivneFish */;
+			targetProxy = 3E4BD7941AD7194E0036C8CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3E4BD7871AD7194E0036C8CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E4BD7881AD7194E0036C8CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E4BD78D1AD7194E0036C8CA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E4BD79B1AD7194E0036C8CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E4BD79C1AD7194E0036C8CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E4BD79E1AD7194E0036C8CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RivneFish/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3E4BD79F1AD7194E0036C8CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RivneFish/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3E4BD7A11AD7194E0036C8CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RivneFishTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RivneFish.app/RivneFish";
+			};
+			name = Debug;
+		};
+		3E4BD7A21AD7194E0036C8CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RivneFishTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RivneFish.app/RivneFish";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E4BD7791AD7194E0036C8CA /* Build configuration list for PBXProject "RivneFish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E4BD79B1AD7194E0036C8CA /* Debug */,
+				3E4BD79C1AD7194E0036C8CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E4BD79D1AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E4BD79E1AD7194E0036C8CA /* Debug */,
+				3E4BD79F1AD7194E0036C8CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E4BD7A01AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFishTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E4BD7A11AD7194E0036C8CA /* Debug */,
+				3E4BD7A21AD7194E0036C8CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E4BD7761AD7194E0036C8CA /* Project object */;
+}
