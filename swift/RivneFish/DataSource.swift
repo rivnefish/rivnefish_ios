@@ -19,13 +19,26 @@ class DataSource: NSObject {
     }*/
 
     func coutries(countriesReceived: (countries: NSArray) -> Void) {
-        var networkManager = HTTPClient.sharedInstance;
-        networkManager.request("http://api.rivnefish.com/countries/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
 
             if let json = data {
                 var dataParser = DataParser()
                 var countries = dataParser.parseCountries(data)
                 countriesReceived(countries: countries)
+            }
+            else {
+                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+            }
+        })
+    }
+
+    func markers(markersReceived: (markers: NSArray) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+
+            if let json = data {
+                var dataParser = DataParser()
+                var markers = dataParser.parseMarkers(data)
+                markersReceived(markers: markers)
             }
             else {
                 println(NSString(data: data, encoding: NSUTF8StringEncoding))

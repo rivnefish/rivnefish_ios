@@ -21,4 +21,10 @@ class DataParser {
         }
         return countries;
     }
+
+    func parseMarkers(jsonData: NSData) -> NSArray {
+        // TODO: add markers parsing
+        println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
+        return NSArray()
+    }
 }

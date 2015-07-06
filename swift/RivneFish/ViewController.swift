@@ -16,8 +16,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        let dataSource:DataSource = DataSource()
-        dataSource.coutries(countriesReceived)
+        // let dataSource:DataSource = DataSource()
+        // dataSource.coutries(countriesReceived)
+
+        self.updateData()
     }
 
     func countriesReceived(countries: NSArray) {
@@ -33,6 +35,10 @@ class ViewController: UIViewController {
     func updateData() {
         dataSource.coutries({ (countries: NSArray) in
             println(countries)
+        })
+
+        dataSource.markers({ (markers: NSArray) in
+            println(markers)
         })
     }
 }

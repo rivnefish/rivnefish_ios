@@ -29,5 +29,6 @@ class HTTPClient {
             (data, response, error) in
             responseCallback(data: data, response: response, error: error)
         }
+        task.resume()
     }
 }
