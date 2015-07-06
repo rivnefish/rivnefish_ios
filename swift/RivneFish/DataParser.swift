@@ -16,15 +16,23 @@ class DataParser {
 
         var countries = NSMutableArray(capacity: countriesData.count)
         for countryDict in countriesData as! [NSDictionary] {
-            var countryName = countryDict["name"] as! NSString
-            countries.addObject(countryName)
+            var country = Country(dict: countryDict)
+            countries.addObject(country)
         }
         return countries;
     }
 
     func parseMarkers(jsonData: NSData) -> NSArray {
-        // TODO: add markers parsing
-        println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
-        return NSArray()
+        // println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
+
+        var markersData: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
+
+        var markers = NSMutableArray(capacity: markersData.count)
+        for markerDict in markersData as! [NSDictionary] {
+
+            let marker = Marker(dict: markerDict)
+            markers.addObject(marker)
+        }
+        return markers
     }
 }

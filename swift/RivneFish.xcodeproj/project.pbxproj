@@ -18,6 +18,8 @@
 		3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65AB1B35EAC8005BD52C /* DataSource.swift */; };
 		3EE306CC1B47B399003225FF /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306CB1B47B399003225FF /* DataParser.swift */; };
 		3EE306CE1B47BF85003225FF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306CD1B47BF85003225FF /* HTTPClient.swift */; };
+		3EE306D31B4A65A3003225FF /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306D21B4A65A3003225FF /* Marker.swift */; };
+		3EE306D71B4A73DE003225FF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306D61B4A73DE003225FF /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		3EE306CB1B47B399003225FF /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 		3EE306CD1B47BF85003225FF /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		3EE306D21B4A65A3003225FF /* Marker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Marker.swift; path = model/Marker.swift; sourceTree = "<group>"; };
+		3EE306D61B4A73DE003225FF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Country.swift; path = model/Country.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		3E4BD7801AD7194E0036C8CA /* RivneFish */ = {
 			isa = PBXGroup;
 			children = (
+				3EE306D11B4A6572003225FF /* Model */,
 				3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */,
 				3EE306CB1B47B399003225FF /* DataParser.swift */,
 				3E8C65AB1B35EAC8005BD52C /* DataSource.swift */,
@@ -126,6 +131,15 @@
 				3E4BD7981AD7194E0036C8CA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EE306D11B4A6572003225FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3EE306D21B4A65A3003225FF /* Marker.swift */,
+				3EE306D61B4A73DE003225FF /* Country.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +246,10 @@
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
+				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
 				3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */,
 				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,
+				3EE306D31B4A65A3003225FF /* Marker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
