@@ -23,7 +23,7 @@ class DataParser {
     }
 
     func parseMarkers(jsonData: NSData) -> NSArray {
-        // println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
+        println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
         var markersData: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
 
