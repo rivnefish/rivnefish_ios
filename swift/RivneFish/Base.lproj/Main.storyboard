@@ -45,6 +45,9 @@
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="8yx-XR-8j1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <outlet property="delegate" destination="hfb-Pu-uww" id="djp-6g-wwL"/>
+                        </connections>
                     </mapView>
                     <navigationItem key="navigationItem" title="Rivnefish" id="caj-OL-Hs9">
                         <barButtonItem key="rightBarButtonItem" title="Fish" id="GU3-vo-7fC">
