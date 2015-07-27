@@ -186,6 +186,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
         self.updateVisibleAnnotations()
+
+        updateAll()
     }
 
     // MKMapViewDelegate
@@ -212,6 +214,41 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     annotation.coordinate = actualCoordinate
                 })
             }
+        }
+    }
+
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        var view: MKAnnotationView? = nil
+        if (annotation is MarkerAnnotation) {
+            let reuseId = "MarkerAnnotationViewId"
+            view = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+            if view == nil {
+                var markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
+                view = MarkerAnnotationView.instanceFromNib(countElements: markerAnnotation.containedItemsCount)
+                view!.canShowCallout = true
+            } else {
+                var markerAnnotationView: MarkerAnnotationView = view as! MarkerAnnotationView
+                var markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
+
+                markerAnnotationView.annotation = markerAnnotation
+                markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
+                markerAnnotationView.updateImageAndText()
+            }
+        }
+        return view
+    }
+
+    func updateAll() {
+        for markerAnnotation: MarkerAnnotation in markersAnnotations as [MarkerAnnotation] {
+            var annotView = mapView.viewForAnnotation(markerAnnotation);
+
+        if annotView != nil {
+            var markerAnnotationView: MarkerAnnotationView = annotView as! MarkerAnnotationView
+
+            markerAnnotationView.annotation = markerAnnotation
+            markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
+            markerAnnotationView.updateImageAndText()
+        }
         }
     }
 

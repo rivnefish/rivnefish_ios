@@ -32,10 +32,20 @@ class MarkerAnnotation : NSObject, MKAnnotation {
     }
 
     var title: String! {
-        return "test"
+        if let array = containedAnnotations {
+            return String(array.count + 1)
+        }
+        return "0"
     }
     var subtitle: String! {
         return "test"
+    }
+
+    var containedItemsCount: Int {
+        if let array = containedAnnotations {
+            return array.count + 1
+        }
+        return Int(0)
     }
 
     // TODO: change in future if needed

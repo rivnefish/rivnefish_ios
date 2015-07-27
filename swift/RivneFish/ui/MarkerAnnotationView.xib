@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MarkerAnnotationView" customModule="RivneFish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fnF-wo-n13">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QY4-fO-ZXd">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="QY4-fO-ZXd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5EM-vr-b4G"/>
+                <constraint firstItem="fnF-wo-n13" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AfL-4z-r5f"/>
+                <constraint firstAttribute="bottom" secondItem="fnF-wo-n13" secondAttribute="bottom" id="OvV-Vo-uJZ"/>
+                <constraint firstItem="QY4-fO-ZXd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fNr-VK-bPZ"/>
+                <constraint firstAttribute="trailing" secondItem="fnF-wo-n13" secondAttribute="trailing" id="fTs-sg-Yq3"/>
+                <constraint firstAttribute="bottom" secondItem="QY4-fO-ZXd" secondAttribute="bottom" id="fYl-Jj-pMJ"/>
+                <constraint firstItem="fnF-wo-n13" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sZn-bG-wmM"/>
+                <constraint firstAttribute="trailing" secondItem="QY4-fO-ZXd" secondAttribute="trailing" id="wlw-PM-Okz"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="fnF-wo-n13" id="Cdc-pl-uir"/>
+                <outlet property="itemsCountLabel" destination="QY4-fO-ZXd" id="nW4-L2-dUZ"/>
+            </connections>
+            <point key="canvasLocation" x="447" y="369"/>
+        </view>
+    </objects>
+</document>
