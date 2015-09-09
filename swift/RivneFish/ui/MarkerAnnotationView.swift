@@ -45,5 +45,13 @@ class MarkerAnnotationView : MKAnnotationView {
         }
         self.imageView.image = UIImage(named: imagePath)
         self.itemsCountLabel.text = self.itemsCount > 1 ? String(self.itemsCount) : ""
+
+        if self.itemsCount == 0 {
+            if let detailButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as? UIButton {
+                self.rightCalloutAccessoryView = detailButton
+            }
+        } else {
+            self.rightCalloutAccessoryView = nil
+        }
     }
 }

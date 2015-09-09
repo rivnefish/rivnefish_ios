@@ -8,18 +8,15 @@
 
 import UIKit
 
-//curl -X GET http://api.rivnefish.com/ -H 'Authorization: Token 9a19e9e3082e5ac1b7dd47572bdc1153fd735c68'
-
 class DataSource: NSObject {
-
-    /*func token() -> String
-    {
-        // TODO: read from keychain
-        return "9a19e9e3082e5ac1b7dd47572bdc1153fd735c68"
-    }*/
 
     func coutries(countriesReceived: (countries: NSArray) -> Void) {
         HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+
+            if self.errorInResponse(response) {
+                countriesReceived(countries: NSArray())
+                return;
+            }
 
             if let json = data {
                 var dataParser = DataParser()
@@ -32,8 +29,14 @@ class DataSource: NSObject {
         })
     }
 
-    func markers(markersReceived: (markers: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+    func allAvailableMarkers(markersReceived: (markers: NSArray) -> Void) {
+//        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback: 
+            HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+
+            if self.errorInResponse(response) {
+                markersReceived(markers: NSArray())
+                return;
+            }
 
             if let json = data {
                 var dataParser = DataParser()
@@ -44,6 +47,16 @@ class DataSource: NSObject {
                 println(NSString(data: data, encoding: NSUTF8StringEncoding))
             }
         })
+    }
+
+    func errorInResponse(response: NSURLResponse) -> Bool {
+        var result = true
+        let statusCodeData: AnyObject? = response.valueForKey("statusCode")
+        if let statusCode: NSInteger = statusCodeData as? NSInteger {
+            let code = Int64(statusCode.value)
+            result = (code == 0)
+        }
+        return result
     }
 
     /*func coutries2(countriesReceived: (countries: NSArray) -> Void) {

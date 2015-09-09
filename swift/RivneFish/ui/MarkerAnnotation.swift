@@ -13,12 +13,12 @@ class MarkerAnnotation : NSObject, MKAnnotation {
     var marker: Marker
 
     var clusterAnnotation: MarkerAnnotation?
-    var containedAnnotations: NSArray?
+    var containedAnnotations: Array<MarkerAnnotation>?
     var innerCoordinate: CLLocationCoordinate2D
 
     init(marker: Marker) {
         self.marker = marker
-        self.containedAnnotations = NSArray()
+        self.containedAnnotations = Array<MarkerAnnotation>()
         self.innerCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(marker.lat), longitude: CLLocationDegrees(marker.lon))
     }
 
@@ -32,20 +32,34 @@ class MarkerAnnotation : NSObject, MKAnnotation {
     }
 
     var title: String! {
-        if let array = containedAnnotations {
-            return String(array.count + 1)
+        let childsCount = self.childsCount()
+        if childsCount > 0 {
+            return String(childsCount + 1)
         }
-        return "0"
+        return self.marker.name
     }
     var subtitle: String! {
-        return "test"
+        let childsCount = self.childsCount()
+        if childsCount > 0 {
+            return String(childsCount + 1)
+        }
+        return self.marker.address
     }
 
     var containedItemsCount: Int {
-        if let array = containedAnnotations {
-            return array.count + 1
+        let childsCount = self.childsCount()
+        if childsCount > 0 {
+            return childsCount + 1
         }
         return Int(0)
+    }
+
+    func childsCount() -> Int {
+        var result = 0
+        if let array = self.containedAnnotations {
+            result = array.count
+        }
+        return result
     }
 
     // TODO: change in future if needed

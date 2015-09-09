@@ -16,6 +16,9 @@
 		3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C65A51B35DD5A005BD52C /* MapKit.framework */; };
 		3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65A71B35DF5E005BD52C /* FishViewController.swift */; };
 		3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65AB1B35EAC8005BD52C /* DataSource.swift */; };
+		3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */; };
+		3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */; };
+		3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */; };
 		3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */; };
 		3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB21C181B66105E00517ECE /* MarkerAnnotationView.swift */; };
 		3EB21C1F1B6617FB00517ECE /* m1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB21C1B1B6617FB00517ECE /* m1.png */; };
@@ -53,6 +56,9 @@
 		3E8C65A51B35DD5A005BD52C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3E8C65A71B35DF5E005BD52C /* FishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FishViewController.swift; sourceTree = "<group>"; };
 		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotViewController.swift; sourceTree = "<group>"; };
+		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkerAnnotationView.xib; path = ui/MarkerAnnotationView.xib; sourceTree = "<group>"; };
 		3EB21C181B66105E00517ECE /* MarkerAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerAnnotationView.swift; path = ui/MarkerAnnotationView.swift; sourceTree = "<group>"; };
 		3EB21C1B1B6617FB00517ECE /* m1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = m1.png; path = resources/m1.png; sourceTree = "<group>"; };
@@ -114,6 +120,9 @@
 				3E8C65AB1B35EAC8005BD52C /* DataSource.swift */,
 				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
 				3EE306CD1B47BF85003225FF /* HTTPClient.swift */,
+				3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */,
+				3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */,
+				3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */,
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
 				3E4BD7871AD7194E0036C8CA /* Main.storyboard */,
 				3E4BD78A1AD7194E0036C8CA /* Images.xcassets */,
@@ -262,6 +271,7 @@
 				3EB21C1F1B6617FB00517ECE /* m1.png in Resources */,
 				3EB21C211B6617FB00517ECE /* m10-99.png in Resources */,
 				3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */,
+				3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */,
 				3EB21C201B6617FB00517ECE /* m2-9.png in Resources */,
 				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
@@ -284,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */,
 				3EE306CE1B47BF85003225FF /* HTTPClient.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
@@ -293,6 +304,7 @@
 				3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */,
 				3EE306DC1B4FAD98003225FF /* MarkerAnnotation.swift in Sources */,
 				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,
+				3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */,
 				3EE306D31B4A65A3003225FF /* Marker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

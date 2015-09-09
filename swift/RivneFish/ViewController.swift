@@ -43,7 +43,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             println(countries)
         })
 
-        dataSource.markers({ (markers: NSArray) in
+        dataSource.allAvailableMarkers({ (markers: NSArray) in
 
             println(markers)
 
@@ -54,9 +54,57 @@ class ViewController: UIViewController, MKMapViewDelegate {
             // TODO: add all annotatios to main map, just for testing, will be removed
             // self.mapView.addAnnotations(self.markersAnnotations)
 
+            // TODO: my way
+            // self.showAnnotations();
+
+            // TODO: apple way clustering
             self.allAnnotationsMapView.addAnnotations(self.markersAnnotations)
             self.updateVisibleAnnotations()
         })
+    }
+
+    func showAnnotations() {
+
+        // remove all annotations
+        for annotation in self.markersAnnotations {
+            self.mapView.removeAnnotation(annotation)
+        }
+
+        // add new
+        var proceededAnnotations: Array<MarkerAnnotation> = Array()
+
+        for var i = 0; i < self.markersAnnotations.count; ++i {
+            // Take marker if it is not proceeded yet
+            var annotation: MarkerAnnotation = self.markersAnnotations[i]
+            if !contains(proceededAnnotations, annotation) {
+                proceededAnnotations.append(annotation)
+                // clear child annotations
+                annotation.containedAnnotations = Array()
+
+                // Loop all annotations and find closest to took annotation
+                for var j = i + 1; j < self.markersAnnotations.count; ++j {
+                    // Check if annotation is not proceeded
+                    var childAnnotation = self.markersAnnotations[j]
+                    if !contains(proceededAnnotations, childAnnotation) {
+
+                        // Check how childAnnotation is close it to annotation
+                        // And add it as child or skip
+
+                        let p1 = self.mapView.convertCoordinate(annotation.coordinate, toPointToView: self.mapView)
+                        let p2 = self.mapView.convertCoordinate(childAnnotation.coordinate, toPointToView: self.mapView)
+                        let xDist = (p2.x - p1.x);
+                        let yDist = (p2.y - p1.y);
+                        let distance = sqrt((xDist * xDist) + (yDist * yDist));
+
+                        if distance < 40 {
+                            annotation.containedAnnotations!.append(childAnnotation)
+                            proceededAnnotations.append(childAnnotation)
+                        }
+                    }
+                }
+                self.mapView.addAnnotation(annotation)
+            }
+        }
     }
 
     func updateVisibleAnnotations() {
@@ -114,7 +162,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     filteredAnnotationsInBucket.removeObject(annotationForGrid)
 
                     // give the annotationForGrid a reference to all the annotations it will represent
-                    annotationForGrid.containedAnnotations = filteredAnnotationsInBucket.allObjects
+                    annotationForGrid.containedAnnotations = filteredAnnotationsInBucket.allObjects as? Array<MarkerAnnotation>
 
                     self.mapView.addAnnotation(annotationForGrid);
 
@@ -242,14 +290,34 @@ class ViewController: UIViewController, MKMapViewDelegate {
         for markerAnnotation: MarkerAnnotation in markersAnnotations as [MarkerAnnotation] {
             var annotView = mapView.viewForAnnotation(markerAnnotation);
 
-        if annotView != nil {
-            var markerAnnotationView: MarkerAnnotationView = annotView as! MarkerAnnotationView
+            if annotView != nil {
+                var markerAnnotationView: MarkerAnnotationView = annotView as! MarkerAnnotationView
 
-            markerAnnotationView.annotation = markerAnnotation
-            markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
-            markerAnnotationView.updateImageAndText()
+                markerAnnotationView.annotation = markerAnnotation
+                markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
+                markerAnnotationView.updateImageAndText()
+            }
         }
+    }
+
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        var annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
+        var spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
+        self.navigationController?.pushViewController(spotViewController, animated: true)
+
+        // TODO:
+        var arr = Array<UIImage>()
+        if let urls = annotation.marker.photoUrls
+        {
+            for url in urls {
+                if let url = NSURL(string: url) {
+                    if let data = NSData(contentsOfURL: url) {
+                         arr.append(UIImage(data: data)!)
+                    }
+                }
+            }
         }
+        spotViewController.imagesArray = arr
     }
 
     /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {

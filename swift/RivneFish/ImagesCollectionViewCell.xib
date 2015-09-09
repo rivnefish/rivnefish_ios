@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="g8x-k7-3BK" customClass="ImagesCollectionViewCell" customModule="RivneFish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lhm-tp-COr">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="lhm-tp-COr" firstAttribute="top" secondItem="g8x-k7-3BK" secondAttribute="top" id="1Fh-cg-u14"/>
+                <constraint firstItem="lhm-tp-COr" firstAttribute="leading" secondItem="g8x-k7-3BK" secondAttribute="leading" id="qPl-Rr-uzU"/>
+                <constraint firstAttribute="trailing" secondItem="lhm-tp-COr" secondAttribute="trailing" id="slo-qa-znY"/>
+                <constraint firstAttribute="bottom" secondItem="lhm-tp-COr" secondAttribute="bottom" id="zyN-M9-TfU"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="lhm-tp-COr" id="RwY-l0-Kuj"/>
+            </connections>
+            <point key="canvasLocation" x="704" y="211"/>
+        </collectionViewCell>
+    </objects>
+</document>
