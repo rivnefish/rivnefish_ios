@@ -263,7 +263,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         var view: MKAnnotationView? = nil
         if (annotation is MarkerAnnotation) {
             let reuseId = "MarkerAnnotationViewId"

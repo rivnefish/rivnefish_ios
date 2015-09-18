@@ -47,9 +47,7 @@ class MarkerAnnotationView : MKAnnotationView {
         self.itemsCountLabel.text = self.itemsCount > 1 ? String(self.itemsCount) : ""
 
         if self.itemsCount == 0 {
-            if let detailButton = UIButton(type: UIButtonType.DetailDisclosure) as? UIButton {
-                self.rightCalloutAccessoryView = detailButton
-            }
+            self.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
         } else {
             self.rightCalloutAccessoryView = nil
         }
