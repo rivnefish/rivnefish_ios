@@ -24,7 +24,9 @@ class ImagesCollectionViewCell : UICollectionViewCell {
     }
 
     func updateCell() {
-        bluredImage.image = self.image
-        imageView.image = self.image
+        if let image = self.image {
+            bluredImage.image = image
+            imageView.image = image
+        }
     }
 }

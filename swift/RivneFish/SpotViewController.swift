@@ -12,12 +12,20 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var imagesCollectionView: UICollectionView!
 
-    var imagesArray: Array<UIImage>!
+    var imagesArray: Array<UIImage?>!
+    var imgUrlsArr: Array<String>! {
+        didSet {
+            imagesArray = [UIImage?](count: imgUrlsArr.count, repeatedValue: nil)
+            loadImages()
+        }
+    }
+
     var currentIndex: Int
     let kCellIdentifier = "cellIdentifier"
 
     required init?(coder aDecoder: NSCoder) {
         imagesArray = Array<UIImage>()
+        imgUrlsArr = Array<String>()
         currentIndex = 0
 
         super.init(coder: aDecoder)
@@ -25,6 +33,31 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     override func viewDidLoad() {
         setupImagesCollectionView()
+    }
+
+    func loadImages() {
+        if let urls = self.imgUrlsArr {
+            var i: Int = 0
+            for url in urls {
+                if let url = NSURL(string: url) {
+                    getDataFromUrl(url, index: i) { data, index in
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.imagesArray[index] = UIImage(data: data!)
+                            if let collectionView = self.imagesCollectionView {
+                                collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                            }
+                        }
+                    }
+                }
+                ++i
+            }
+        }
+    }
+
+    func getDataFromUrl(urL: NSURL, index: Int, completion: ((data: NSData?, index: Int) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
+            completion(data: data, index: index)
+            }.resume()
     }
 
     // UICollectionView methods
@@ -45,7 +78,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesArray.count
+        return imgUrlsArr.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

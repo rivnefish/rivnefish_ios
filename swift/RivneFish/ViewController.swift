@@ -303,19 +303,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
         self.navigationController?.pushViewController(spotViewController, animated: true)
 
-        // TODO:
-        var arr = Array<UIImage>()
         if let urls = annotation.marker.photoUrls
         {
-            for url in urls {
-                if let url = NSURL(string: url) {
-                    if let data = NSData(contentsOfURL: url) {
-                         arr.append(UIImage(data: data)!)
-                    }
-                }
-            }
+            spotViewController.imgUrlsArr = urls
         }
-        spotViewController.imagesArray = arr
     }
 
     /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
