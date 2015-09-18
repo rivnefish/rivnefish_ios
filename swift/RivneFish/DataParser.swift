@@ -25,14 +25,18 @@ class DataParser {
     func parseMarkers(jsonData: NSData) -> NSArray {
         println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
-        var markersData: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
+        if let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as? NSArray {
+            var markersData: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
 
-        var markers = NSMutableArray(capacity: markersData.count)
-        for markerDict in markersData as! [NSDictionary] {
+            var markers = NSMutableArray(capacity: markersData.count)
+            for markerDict in markersData as! [NSDictionary] {
 
-            let marker = Marker(dict: markerDict)
-            markers.addObject(marker)
+                let marker = Marker(dict: markerDict)
+                markers.addObject(marker)
+            }
+            return markers
+        } else {
+            return NSArray()
         }
-        return markers
     }
 }
