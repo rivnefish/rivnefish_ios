@@ -63,9 +63,9 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     // Rotation handling methods
 
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        self.imagesCollectionView.alpha = 0.0
+        /*self.imagesCollectionView.alpha = 0.0
         self.imagesCollectionView.collectionViewLayout.invalidateLayout()
-        self.currentIndex = Int(self.imagesCollectionView.contentOffset.x / self.imagesCollectionView.frame.size.width)
+        self.currentIndex = Int(self.imagesCollectionView.contentOffset.x / self.imagesCollectionView.frame.size.width)*/
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {

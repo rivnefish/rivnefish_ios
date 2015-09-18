@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -77,8 +78,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W6v-Ts-dCF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W6v-Ts-dCF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Pgv-iG-OVx"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k2o-7s-8xG">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -103,6 +107,11 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="W6v-Ts-dCF" secondAttribute="trailing" constant="-20" id="ENG-u7-y45"/>
+                            <constraint firstItem="W6v-Ts-dCF" firstAttribute="leading" secondItem="lim-cs-wL5" secondAttribute="leadingMargin" constant="-20" id="OQg-Ff-C5O"/>
+                            <constraint firstItem="W6v-Ts-dCF" firstAttribute="top" secondItem="lim-cs-wL5" secondAttribute="topMargin" id="SFu-gY-zr2"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imagesCollectionView" destination="W6v-Ts-dCF" id="4uh-Cn-jgg"/>

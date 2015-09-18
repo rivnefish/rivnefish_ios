@@ -10,11 +10,13 @@ import UIKit
 
 class ImagesCollectionViewCell : UICollectionViewCell {
 
+    @IBOutlet weak var bluredImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
+
     var image: UIImage?
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
     }
 
     required override init(frame: CGRect) {
@@ -22,6 +24,7 @@ class ImagesCollectionViewCell : UICollectionViewCell {
     }
 
     func updateCell() {
+        bluredImage.image = self.image
         imageView.image = self.image
     }
 }
