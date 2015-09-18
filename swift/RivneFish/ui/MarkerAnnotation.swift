@@ -31,14 +31,14 @@ class MarkerAnnotation : NSObject, MKAnnotation {
         }
     }
 
-    var title: String! {
+    var title: String? {
         let childsCount = self.childsCount()
         if childsCount > 0 {
             return String(childsCount + 1)
         }
         return self.marker.name
     }
-    var subtitle: String! {
+    var subtitle: String? {
         let childsCount = self.childsCount()
         if childsCount > 0 {
             return String(childsCount + 1)

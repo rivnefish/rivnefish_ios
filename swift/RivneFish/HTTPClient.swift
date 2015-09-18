@@ -18,13 +18,13 @@ class HTTPClient {
     }
 
     func request(urlString: NSString, responseCallback: (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void) {
-        var authValue: String = "Token " + self.token()
+        let authValue: String = "Token " + self.token()
 
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration();
         configuration.HTTPAdditionalHeaders = ["Authorization": authValue];
 
-        var url = NSURL(string: urlString as String)
-        var session = NSURLSession(configuration:configuration)
+        let url = NSURL(string: urlString as String)
+        let session = NSURLSession(configuration:configuration)
         let task = session.dataTaskWithURL(url!) {
             (data, response, error) in
             responseCallback(data: data, response: response, error: error)

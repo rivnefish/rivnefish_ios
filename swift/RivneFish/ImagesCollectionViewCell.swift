@@ -13,7 +13,7 @@ class ImagesCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var image: UIImage?
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

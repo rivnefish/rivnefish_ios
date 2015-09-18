@@ -30,7 +30,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     func countriesReceived(countries: NSArray) {
         // println(NSString(data: data, encoding: NSUTF8StringEncoding))
-        println(countries)
+        print(countries)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,12 +40,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     func updateData() {
         dataSource.coutries({ (countries: NSArray) in
-            println(countries)
+            print(countries)
         })
 
         dataSource.allAvailableMarkers({ (markers: NSArray) in
 
-            println(markers)
+            print(markers)
 
             // add markers to map
             for marker in markers as! [Marker] {
@@ -75,8 +75,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
         for var i = 0; i < self.markersAnnotations.count; ++i {
             // Take marker if it is not proceeded yet
-            var annotation: MarkerAnnotation = self.markersAnnotations[i]
-            if !contains(proceededAnnotations, annotation) {
+            let annotation: MarkerAnnotation = self.markersAnnotations[i]
+            if !proceededAnnotations.contains(annotation) {
                 proceededAnnotations.append(annotation)
                 // clear child annotations
                 annotation.containedAnnotations = Array()
@@ -84,8 +84,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 // Loop all annotations and find closest to took annotation
                 for var j = i + 1; j < self.markersAnnotations.count; ++j {
                     // Check if annotation is not proceeded
-                    var childAnnotation = self.markersAnnotations[j]
-                    if !contains(proceededAnnotations, childAnnotation) {
+                    let childAnnotation = self.markersAnnotations[j]
+                    if !proceededAnnotations.contains(childAnnotation) {
 
                         // Check how childAnnotation is close it to annotation
                         // And add it as child or skip
@@ -120,8 +120,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let bucketSize = 60.0
 
         // find all the annotations in the visible area + a wide margin to avoid popping annotation views in and out while panning the map.
-        var visibleMapRect: MKMapRect = self.mapView.visibleMapRect
-        var adjustedVisibleMapRect: MKMapRect = MKMapRectInset(visibleMapRect, -marginFactor * visibleMapRect.size.width, -marginFactor * visibleMapRect.size.height)
+        let visibleMapRect: MKMapRect = self.mapView.visibleMapRect
+        let adjustedVisibleMapRect: MKMapRect = MKMapRectInset(visibleMapRect, -marginFactor * visibleMapRect.size.width, -marginFactor * visibleMapRect.size.height)
 
         // determine how wide each bucket will be, as a MKMapRect square
         var leftCoordinate: CLLocationCoordinate2D = self.mapView.convertPoint(CGPointZero, toCoordinateFromView: self.view);
@@ -142,64 +142,62 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
             while (MKMapRectGetMinX(gridMapRect) <= endX) {
 
-                if allAnnotationsMapView.annotationsInMapRect(gridMapRect) == nil {
-                    gridMapRect.origin.x += gridSize;
-                    continue
-                }
-                var allAnnotationsInBucket: NSSet = self.allAnnotationsMapView.annotationsInMapRect(gridMapRect);
-                var visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
+                if let objects: Set<NSObject>? = allAnnotationsMapView.annotationsInMapRect(gridMapRect) {
+                    var allAnnotationsInBucket: NSSet = self.allAnnotationsMapView.annotationsInMapRect(gridMapRect);
+                    var visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
 
-                // we only care about PhotoAnnotations
-                var filteredAnnotationsInBucketImmutable: NSSet =
-                allAnnotationsInBucket.objectsPassingTest({ (obj: AnyObject!, stop: UnsafeMutablePointer<ObjCBool>) -> Bool in
+                    // we only care about PhotoAnnotations
+                    var filteredAnnotationsInBucketImmutable: NSSet =
+                    allAnnotationsInBucket.objectsPassingTest({ (obj: AnyObject, stop: UnsafeMutablePointer<ObjCBool>) -> Bool in
                         return obj.isKindOfClass(MarkerAnnotation)
                     })
-                var filteredAnnotationsInBucket: NSMutableSet = filteredAnnotationsInBucketImmutable.mutableCopy() as! NSMutableSet
+                    var filteredAnnotationsInBucket: NSMutableSet = filteredAnnotationsInBucketImmutable.mutableCopy() as! NSMutableSet
 
-                if  filteredAnnotationsInBucket.count > 0 {
-                    var annotationForGrid: MarkerAnnotation = self.annotationInGrid(gridMapRect, annotations: filteredAnnotationsInBucket)
+                    if  filteredAnnotationsInBucket.count > 0 {
+                        var annotationForGrid: MarkerAnnotation = self.annotationInGrid(gridMapRect, annotations: filteredAnnotationsInBucket)
 
-                    filteredAnnotationsInBucket.removeObject(annotationForGrid)
+                        filteredAnnotationsInBucket.removeObject(annotationForGrid)
 
-                    // give the annotationForGrid a reference to all the annotations it will represent
-                    annotationForGrid.containedAnnotations = filteredAnnotationsInBucket.allObjects as? Array<MarkerAnnotation>
+                        // give the annotationForGrid a reference to all the annotations it will represent
+                        annotationForGrid.containedAnnotations = filteredAnnotationsInBucket.allObjects as? Array<MarkerAnnotation>
 
-                    self.mapView.addAnnotation(annotationForGrid);
+                        self.mapView.addAnnotation(annotationForGrid);
 
-                    for annotation in filteredAnnotationsInBucket.allObjects as! [MarkerAnnotation] {
-                        // give all the other annotations a reference to the one which is representing them
-                        annotation.clusterAnnotation = annotationForGrid;
-                        annotation.containedAnnotations = nil;
+                        for annotation in filteredAnnotationsInBucket.allObjects as! [MarkerAnnotation] {
+                            // give all the other annotations a reference to the one which is representing them
+                            annotation.clusterAnnotation = annotationForGrid;
+                            annotation.containedAnnotations = nil;
 
-                        // remove annotations which we've decided to cluster
-                        if visibleAnnotationsInBucket.containsObject(annotation) {
-                            var actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
+                            // remove annotations which we've decided to cluster
+                            if visibleAnnotationsInBucket.containsObject(annotation) {
+                                var actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
 
-                            //annotation.coordinate = CLLocationCoordinate2D()
+                                //annotation.coordinate = CLLocationCoordinate2D()
 
-                            UIView.animateWithDuration(0.3, animations: {
-                                if let a = annotation.clusterAnnotation {
-                                    annotation.coordinate = a.coordinate
-                                }
-                            }, completion: {
-                                (value: Bool) in
-                                annotation.coordinate = actualCoordinate
-                                self.mapView.removeAnnotation(annotation)
-                            })
+                                UIView.animateWithDuration(0.3, animations: {
+                                    if let a = annotation.clusterAnnotation {
+                                        annotation.coordinate = a.coordinate
+                                    }
+                                    }, completion: {
+                                        (value: Bool) in
+                                        annotation.coordinate = actualCoordinate
+                                        self.mapView.removeAnnotation(annotation)
+                                })
+                            }
                         }
                     }
+                    
+                    gridMapRect.origin.x += gridSize;
                 }
-
-                gridMapRect.origin.x += gridSize;
             }
             gridMapRect.origin.y += gridSize;
         }
     }
 
     func annotationInGrid(gridMapRect: MKMapRect, annotations: NSSet) -> MarkerAnnotation {
-        var visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
-        var annotationsForGridSet: NSSet = annotations.objectsPassingTest({ (obj: AnyObject!, stop: UnsafeMutablePointer<ObjCBool>) -> Bool in
-            var returnValue: Bool = visibleAnnotationsInBucket.containsObject(obj)
+        let visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
+        let annotationsForGridSet: NSSet = annotations.objectsPassingTest({ (obj: AnyObject, stop: UnsafeMutablePointer<ObjCBool>) -> Bool in
+            let returnValue: Bool = visibleAnnotationsInBucket.containsObject(obj)
             if returnValue {
                 stop.memory = true
             }
@@ -212,19 +210,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
         // otherwise, sort the annotations based on their distance from the center of the grid square,
         // then choose the one closest to the center to show
-        var centerMapPoint: MKMapPoint = MKMapPointMake(MKMapRectGetMidX(gridMapRect), MKMapRectGetMidY(gridMapRect))
+        let centerMapPoint: MKMapPoint = MKMapPointMake(MKMapRectGetMidX(gridMapRect), MKMapRectGetMidY(gridMapRect))
 
 
-        var sortedAnnotations: NSArray = sorted(annotations.allObjects) {
+        let sortedAnnotations: NSArray = annotations.allObjects.sort {
             (obj1, obj2) in
 
-            var annotation1: MKAnnotation = obj1 as! MKAnnotation
-            var mapPoint1: MKMapPoint = MKMapPointForCoordinate(annotation1.coordinate)
-            var annotation2: MKAnnotation = obj2 as! MKAnnotation
-            var mapPoint2: MKMapPoint = MKMapPointForCoordinate(annotation2.coordinate)
+            let annotation1: MKAnnotation = obj1 as! MKAnnotation
+            let mapPoint1: MKMapPoint = MKMapPointForCoordinate(annotation1.coordinate)
+            let annotation2: MKAnnotation = obj2 as! MKAnnotation
+            let mapPoint2: MKMapPoint = MKMapPointForCoordinate(annotation2.coordinate)
 
-            var distance1: CLLocationDistance = MKMetersBetweenMapPoints(mapPoint1, centerMapPoint)
-            var distance2: CLLocationDistance = MKMetersBetweenMapPoints(mapPoint2, centerMapPoint)
+            let distance1: CLLocationDistance = MKMetersBetweenMapPoints(mapPoint1, centerMapPoint)
+            let distance2: CLLocationDistance = MKMetersBetweenMapPoints(mapPoint2, centerMapPoint)
 
             return distance1 > distance2
         }
@@ -232,7 +230,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return sortedAnnotations[0] as! MarkerAnnotation;
     }
 
-    func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         self.updateVisibleAnnotations()
 
         updateAll()
@@ -240,10 +238,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     // MKMapViewDelegate
 
-    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
 
-        for annotationView: MKAnnotationView in views as! [MKAnnotationView] {
-            if !annotationView.annotation.isKindOfClass(MarkerAnnotation) {
+        for annotationView: MKAnnotationView in views {
+            if !annotationView.annotation!.isKindOfClass(MarkerAnnotation) {
                 continue
             }
             var annotation: MarkerAnnotation = annotationView.annotation as! MarkerAnnotation
@@ -265,18 +263,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
         var view: MKAnnotationView? = nil
         if (annotation is MarkerAnnotation) {
             let reuseId = "MarkerAnnotationViewId"
             view = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
             if view == nil {
-                var markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
-                view = MarkerAnnotationView.instanceFromNib(countElements: markerAnnotation.containedItemsCount)
+                let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
+                view = MarkerAnnotationView.instanceFromNib(markerAnnotation.containedItemsCount)
                 view!.canShowCallout = true
             } else {
-                var markerAnnotationView: MarkerAnnotationView = view as! MarkerAnnotationView
-                var markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
+                let markerAnnotationView: MarkerAnnotationView = view as! MarkerAnnotationView
+                let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
 
                 markerAnnotationView.annotation = markerAnnotation
                 markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
@@ -288,10 +286,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     func updateAll() {
         for markerAnnotation: MarkerAnnotation in markersAnnotations as [MarkerAnnotation] {
-            var annotView = mapView.viewForAnnotation(markerAnnotation);
+            let annotView = mapView.viewForAnnotation(markerAnnotation);
 
             if annotView != nil {
-                var markerAnnotationView: MarkerAnnotationView = annotView as! MarkerAnnotationView
+                let markerAnnotationView: MarkerAnnotationView = annotView as! MarkerAnnotationView
 
                 markerAnnotationView.annotation = markerAnnotation
                 markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
@@ -300,9 +298,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        var annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
-        var spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
+        let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
         self.navigationController?.pushViewController(spotViewController, animated: true)
 
         // TODO:

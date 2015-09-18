@@ -12,23 +12,23 @@ class DataParser {
 
     func parseCountries(jsonData: NSData) -> NSArray {
         var err: NSError
-        var countriesData: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
+        let countriesData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
 
-        var countries = NSMutableArray(capacity: countriesData.count)
+        let countries = NSMutableArray(capacity: countriesData.count)
         for countryDict in countriesData as! [NSDictionary] {
-            var country = Country(dict: countryDict)
+            let country = Country(dict: countryDict)
             countries.addObject(country)
         }
         return countries;
     }
 
     func parseMarkers(jsonData: NSData) -> NSArray {
-        println(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
+        print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
-        if let json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as? NSArray {
-            var markersData: NSArray = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSArray
+        if let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
+            let markersData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
 
-            var markers = NSMutableArray(capacity: markersData.count)
+            let markers = NSMutableArray(capacity: markersData.count)
             for markerDict in markersData as! [NSDictionary] {
 
                 let marker = Marker(dict: markerDict)

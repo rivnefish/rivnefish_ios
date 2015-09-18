@@ -19,12 +19,12 @@ class DataSource: NSObject {
             }
 
             if let json = data {
-                var dataParser = DataParser()
-                var countries = dataParser.parseCountries(data)
+                let dataParser = DataParser()
+                let countries = dataParser.parseCountries(data)
                 countriesReceived(countries: countries)
             }
             else {
-                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                print(NSString(data: data, encoding: NSUTF8StringEncoding))
             }
         })
     }
@@ -39,12 +39,12 @@ class DataSource: NSObject {
             }
 
             if let json = data {
-                var dataParser = DataParser()
-                var markers = dataParser.parseMarkers(data)
+                let dataParser = DataParser()
+                let markers = dataParser.parseMarkers(data)
                 markersReceived(markers: markers)
             }
             else {
-                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                print(NSString(data: data, encoding: NSUTF8StringEncoding))
             }
         })
     }

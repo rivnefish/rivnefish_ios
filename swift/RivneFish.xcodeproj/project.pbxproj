@@ -232,6 +232,8 @@
 		3E4BD7761AD7194E0036C8CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = rivnefish;
 				TargetAttributes = {

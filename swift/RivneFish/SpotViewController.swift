@@ -16,7 +16,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     var currentIndex: Int
     let kCellIdentifier = "cellIdentifier"
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         imagesArray = Array<UIImage>()
         currentIndex = 0
 
@@ -31,7 +31,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setupImagesCollectionView() {
         self.imagesCollectionView.registerNib(UINib(nibName: "ImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
 
-        var flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
@@ -50,7 +50,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-        var cell: ImagesCollectionViewCell = self.imagesCollectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! ImagesCollectionViewCell
+        let cell: ImagesCollectionViewCell = self.imagesCollectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! ImagesCollectionViewCell
         cell.image = imagesArray[indexPath.row]
         cell.updateCell()
         return cell;
@@ -70,7 +70,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         var currentSize = self.imagesCollectionView.frame.size
-        var offset = CGFloat(self.currentIndex) * self.imagesCollectionView.frame.size.width
+        let offset = CGFloat(self.currentIndex) * self.imagesCollectionView.frame.size.width
         self.imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
 
         UIView.animateWithDuration(0.15, animations: ({self.imagesCollectionView.alpha = 1.0}))
