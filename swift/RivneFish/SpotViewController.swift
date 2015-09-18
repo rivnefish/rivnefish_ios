@@ -41,10 +41,12 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             for url in urls {
                 if let url = NSURL(string: url) {
                     getDataFromUrl(url, index: i) { data, index in
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.imagesArray[index] = UIImage(data: data!)
-                            if let collectionView = self.imagesCollectionView {
-                                collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                        if let data = NSData(contentsOfURL: url) {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.imagesArray[index] = UIImage(data: data)
+                                if let collectionView = self.imagesCollectionView {
+                                    collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                                }
                             }
                         }
                     }
