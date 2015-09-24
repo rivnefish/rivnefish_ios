@@ -303,9 +303,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
         self.navigationController?.pushViewController(spotViewController, animated: true)
 
-        if let urls = annotation.marker.photoUrls
+        if let marker: Marker = annotation.marker
         {
-            spotViewController.imgUrlsArr = urls
+            spotViewController.marker = marker
         }
     }
 
