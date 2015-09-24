@@ -8,15 +8,29 @@
 
 import UIKit
 
-class SpotViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class SpotViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, UITextViewDelegate {
 
+    @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
 
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    @IBOutlet weak var contentTextViewHeight: NSLayoutConstraint!
+//    @IBOutlet weak var scrollViewTopContraint: NSLayoutConstraint!
+
+//    @IBOutlet weak var contentWebView: UIWebView!
+//    @IBOutlet weak var webViewHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var imagesViewHeightConstraint: NSLayoutConstraint!
+
     var imagesArray: Array<UIImage?>!
-    var imgUrlsArr: Array<String>! {
+    var imgUrlsArr: Array<String>!
+
+    var marker: Marker! {
         didSet {
+            self.imgUrlsArr = self.marker.photoUrls
+
             imagesArray = [UIImage?](count: imgUrlsArr.count, repeatedValue: nil)
             loadImages()
+            updateContent()
         }
     }
 
@@ -32,7 +46,23 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     override func viewDidLoad() {
+
+        self.contentTextView.delegate = self
         setupImagesCollectionView()
+        updateContent()
+    }
+
+    func updateContent() {
+        if let content: String = marker.content {
+            /*if let webView = contentWebView {
+                webView.loadHTMLString(content, baseURL: nil)
+            }*/
+
+            if let contentTextView = contentTextView {
+                contentTextView.text = content
+                updateContentTextViewHeight()
+            }
+        }
     }
 
     func loadImages() {
@@ -61,6 +91,127 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             completion(data: data, index: index)
             }.resume()
     }
+
+    // UITextViewDelegate methods
+
+    func updateContentTextViewHeight() {
+        //let height:CGFloat = contentTextView.contentSize.height
+
+        /*var frame:CGRect = self.contentTextView.frame
+        frame.size.height = 1.0
+        contentTextView.frame = frame*/
+
+        // let height:CGFloat = contentTextView.contentSize.height
+
+        /*let size: CGSize = contentTextView.sizeThatFits(CGSizeMake(contentTextView.frame.size.width, CGFloat.max));
+        let insets: UIEdgeInsets = contentTextView.textContainerInset;
+        let height = size.height + insets.top + insets.bottom;*/
+
+
+        /*CGSize size = [foo sizeWithFont:[UIFont systemFontOfSize:14]
+            constrainedToSize:CGSizeMake(100, MAX_HEIGHT)
+            lineBreakMode:UILineBreakModeWordWrap];*/
+
+        /*let text: NSString = NSString(string: contentTextView.text)
+        var height = text.sizeWithAttributes([NSFontAttributeName: contentTextView.font!]).height
+
+        print(height)
+
+
+        height = text.boundingRectWithSize(CGSize(width: contentTextView.frame.width, height: CGFloat.max),
+            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            attributes: [NSFontAttributeName: contentTextView.font!],
+            context: nil).size.height
+
+        print(height)*/
+
+
+        /*let fixedWidth = contentTextView.frame.size.width
+        contentTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let newSize = contentTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        var newFrame = contentTextView.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        // textView.frame = newFrame;
+        var height = newFrame.height*/
+
+
+        //print("UIWebView.height: \(height)")
+
+        //contentTextViewHeight.constant = CGFloat( height)
+        
+        let h = contentTextView.sizeThatFits(CGSize(width: self.view.frame.width - 16, height: CGFloat.max)).height
+        
+        self.contentTextViewHeight.constant = h
+        print(h)
+        
+        self.view.layoutIfNeeded()
+
+
+        // Set layout flag
+
+    }
+
+    // UIWebViewDelegate methods
+
+    /*func webViewDidFinishLoad(webView: UIWebView) {
+        resizeWebViewToContent()
+    }
+
+    func resizeWebViewToContent() {
+        // Set to smallest rect value
+        var frame:CGRect = self.contentWebView.frame
+        frame.size.height = 1.0
+        contentWebView.frame = frame
+
+        let height:CGFloat = contentWebView.scrollView.contentSize.height
+        print("UIWebView.height: \(height)")
+
+        // contentWebView.setHeight(height: height)
+        // let heightConstraint = NSLayoutConstraint(item: contentWebView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: height)
+        // contentWebView.addConstraint(heightConstraint)
+
+        webViewHeightConstraint.constant = height
+
+        // Set layout flag
+        contentWebView.window?.setNeedsUpdateConstraints()
+        contentWebView.window?.setNeedsLayout()
+    }*/
+
+    func resizeTextViewToContent() {
+        // Set to smallest rect value
+        var frame:CGRect = self.contentTextView.frame
+        frame.size.height = 1.0
+        contentTextView.frame = frame
+
+        let height:CGFloat = contentTextView.contentSize.height
+        print("UIWebView.height: \(height)")
+
+        // contentWebView.setHeight(height: height)
+        // let heightConstraint = NSLayoutConstraint(item: contentWebView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: height)
+        // contentWebView.addConstraint(heightConstraint)
+
+        contentTextViewHeight.constant = height
+
+        // Set layout flag
+        contentTextView.window?.setNeedsUpdateConstraints()
+        contentTextView.window?.setNeedsLayout()
+    }
+
+    // UIScrollViewDelegate methods
+
+    /*func scrollViewDidScroll(scrollView: UIScrollView) {
+        let contentOffset = self.contentScrollView.contentOffset.y
+        if contentOffset > 0 {
+            if contentOffset <= imagesCollectionView.frame.height {
+                self.imagesViewHeightConstraint.constant -= contentOffset
+            } else {
+                self.imagesViewHeightConstraint.constant = 0
+            }
+        } else {
+            self.imagesViewHeightConstraint.constant = 300
+        }
+        print(contentOffset)
+    }*/
 
     // UICollectionView methods
     func setupImagesCollectionView() {

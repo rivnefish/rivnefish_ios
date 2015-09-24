@@ -49,12 +49,14 @@ class DataSource: NSObject {
         })
     }
 
-    func errorInResponse(response: NSURLResponse) -> Bool {
+    func errorInResponse(response: NSURLResponse?) -> Bool {
         var result = true
-        let statusCodeData: AnyObject? = response.valueForKey("statusCode")
-        if let statusCode: NSInteger = statusCodeData as? NSInteger {
-            let code = Int64(statusCode.value)
-            result = (code == 0)
+        if let response = response {
+            let statusCodeData: AnyObject? = response.valueForKey("statusCode")
+            if let statusCode: NSInteger = statusCodeData as? NSInteger {
+                let code = Int(statusCode.value)
+                result = (code == 0)
+            }
         }
         return result
     }
