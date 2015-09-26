@@ -13,6 +13,10 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     let kNavigationBarPortraitHeight: CGFloat = 64.0
     let kNavigationBarLandscapeHeight: CGFloat = 32.0
 
+    @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var placeAddressLabel: UILabel!
+    @IBOutlet weak var placeCoordinatesLabel: UILabel!
+
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var contentTextView: UITextView!
 
@@ -50,6 +54,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupImagesCollectionView()
         updateContent()
         updateImagesViewTopConstraint()
+        updateLabels()
     }
 
     func updateContent() {
@@ -59,6 +64,12 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
                 updateContentTextViewHeight()
             }
         }
+    }
+    
+    func updateLabels() {
+        self.placeNameLabel.text = marker.name
+        self.placeAddressLabel.text = marker.address
+        self.placeCoordinatesLabel.text = "\(marker.lat), \(marker.lon)"
     }
 
     func loadImages() {

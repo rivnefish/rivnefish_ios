@@ -301,12 +301,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
         let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
-        self.navigationController?.pushViewController(spotViewController, animated: true)
-
         if let marker: Marker = annotation.marker
         {
             spotViewController.marker = marker
         }
+
+        self.navigationController?.pushViewController(spotViewController, animated: true)
     }
 
     /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
