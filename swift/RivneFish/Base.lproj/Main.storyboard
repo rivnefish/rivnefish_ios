@@ -183,9 +183,6 @@
                                     <constraint firstItem="9Rw-xi-9A0" firstAttribute="top" secondItem="DZa-o4-mwr" secondAttribute="bottom" constant="8" id="eff-je-hA2"/>
                                     <constraint firstAttribute="trailing" secondItem="W6v-Ts-dCF" secondAttribute="trailing" id="oHX-3r-16Z"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="HSr-FR-hf2" id="t1H-Vu-FBT"/>
-                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,10 +195,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentScrollView" destination="0Bm-Wh-kKc" id="FbK-UQ-JlM"/>
                         <outlet property="contentTextView" destination="y4Y-tJ-0rT" id="KHc-ZN-AuD"/>
                         <outlet property="contentTextViewHeight" destination="JGA-2O-V5g" id="3CD-Fg-NTf"/>
+                        <outlet property="contentViewLeftMargin" destination="SxQ-CP-jIu" id="mwh-RT-y8f"/>
+                        <outlet property="contentViewRightMargin" destination="qCJ-Ex-gWu" id="7ed-qn-zTY"/>
                         <outlet property="imagesCollectionView" destination="W6v-Ts-dCF" id="JhW-px-g4Z"/>
+                        <outlet property="imagesViewTopConstraint" destination="T2G-4Y-XbU" id="HaI-HU-Ssb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FS5-nc-9Lv" userLabel="First Responder" sceneMemberID="firstResponder"/>
