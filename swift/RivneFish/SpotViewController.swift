@@ -47,8 +47,6 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     override func viewDidLoad() {
-
-        self.contentTextView.delegate = self
         setupImagesCollectionView()
         updateContent()
         updateImagesViewTopConstraint()
