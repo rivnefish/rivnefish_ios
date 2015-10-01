@@ -18,6 +18,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var placeCoordinatesLabel: UILabel!
 
     @IBOutlet weak var imagesCollectionView: UICollectionView!
+    @IBOutlet weak var FishCollectionView: UICollectionView!
     @IBOutlet weak var contentTextView: UITextView!
 
     @IBOutlet weak var imagesViewTopConstraint: NSLayoutConstraint!
