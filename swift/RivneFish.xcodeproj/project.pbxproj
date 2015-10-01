@@ -19,6 +19,7 @@
 		3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */; };
 		3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */; };
 		3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */; };
+		3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */; settings = {ASSET_TAGS = (); }; };
 		3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */; };
 		3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB21C181B66105E00517ECE /* MarkerAnnotationView.swift */; };
 		3EB21C1F1B6617FB00517ECE /* m1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB21C1B1B6617FB00517ECE /* m1.png */; };
@@ -26,7 +27,6 @@
 		3EB21C211B6617FB00517ECE /* m10-99.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB21C1D1B6617FB00517ECE /* m10-99.png */; };
 		3EB21C221B6617FB00517ECE /* m100-.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB21C1E1B6617FB00517ECE /* m100-.png */; };
 		3EE306CC1B47B399003225FF /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306CB1B47B399003225FF /* DataParser.swift */; };
-		3EE306CE1B47BF85003225FF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306CD1B47BF85003225FF /* HTTPClient.swift */; };
 		3EE306D31B4A65A3003225FF /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306D21B4A65A3003225FF /* Marker.swift */; };
 		3EE306D71B4A73DE003225FF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306D61B4A73DE003225FF /* Country.swift */; };
 		3EE306DC1B4FAD98003225FF /* MarkerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE306DB1B4FAD98003225FF /* MarkerAnnotation.swift */; };
@@ -46,7 +46,7 @@
 		3E4BD77E1AD7194E0036C8CA /* RivneFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivneFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BD7821AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3E4BD7851AD7194E0036C8CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3E4BD7851AD7194E0036C8CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = controllers/ViewController.swift; sourceTree = "<group>"; };
 		3E4BD7881AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E4BD78A1AD7194E0036C8CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3E4BD78D1AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -54,19 +54,19 @@
 		3E4BD7981AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivneFishTests.swift; sourceTree = "<group>"; };
 		3E8C65A51B35DD5A005BD52C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3E8C65A71B35DF5E005BD52C /* FishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FishViewController.swift; sourceTree = "<group>"; };
-		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotViewController.swift; sourceTree = "<group>"; };
-		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
-		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
+		3E8C65A71B35DF5E005BD52C /* FishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishViewController.swift; path = controllers/FishViewController.swift; sourceTree = "<group>"; };
+		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = model/DataSource.swift; sourceTree = "<group>"; };
+		3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpotViewController.swift; path = controllers/SpotViewController.swift; sourceTree = "<group>"; };
+		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewCell.swift; path = ui/ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagesCollectionViewCell.xib; path = ui/ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
+		3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = network/HTTPClient.swift; sourceTree = "<group>"; };
 		3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkerAnnotationView.xib; path = ui/MarkerAnnotationView.xib; sourceTree = "<group>"; };
 		3EB21C181B66105E00517ECE /* MarkerAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerAnnotationView.swift; path = ui/MarkerAnnotationView.swift; sourceTree = "<group>"; };
 		3EB21C1B1B6617FB00517ECE /* m1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = m1.png; path = resources/m1.png; sourceTree = "<group>"; };
 		3EB21C1C1B6617FB00517ECE /* m2-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m2-9.png"; path = "resources/m2-9.png"; sourceTree = "<group>"; };
 		3EB21C1D1B6617FB00517ECE /* m10-99.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m10-99.png"; path = "resources/m10-99.png"; sourceTree = "<group>"; };
 		3EB21C1E1B6617FB00517ECE /* m100-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m100-.png"; path = "resources/m100-.png"; sourceTree = "<group>"; };
-		3EE306CB1B47B399003225FF /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
-		3EE306CD1B47BF85003225FF /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		3EE306CB1B47B399003225FF /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataParser.swift; path = model/DataParser.swift; sourceTree = "<group>"; };
 		3EE306D21B4A65A3003225FF /* Marker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Marker.swift; path = model/Marker.swift; sourceTree = "<group>"; };
 		3EE306D61B4A73DE003225FF /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Country.swift; path = model/Country.swift; sourceTree = "<group>"; };
 		3EE306DB1B4FAD98003225FF /* MarkerAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerAnnotation.swift; path = ui/MarkerAnnotation.swift; sourceTree = "<group>"; };
@@ -113,20 +113,12 @@
 		3E4BD7801AD7194E0036C8CA /* RivneFish */ = {
 			isa = PBXGroup;
 			children = (
-				3EE306DA1B4FAD27003225FF /* UI */,
+				3EA7453D1BBD192300AB470A /* Controllers */,
 				3EE306D11B4A6572003225FF /* Model */,
+				3EA7453E1BBD196200AB470A /* Network */,
+				3EE306DA1B4FAD27003225FF /* UI */,
 				3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */,
-				3EE306CB1B47B399003225FF /* DataParser.swift */,
-				3E8C65AB1B35EAC8005BD52C /* DataSource.swift */,
-				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
-				3EE306CD1B47BF85003225FF /* HTTPClient.swift */,
-				3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */,
-				3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */,
-				3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */,
-				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
-				3E4BD7871AD7194E0036C8CA /* Main.storyboard */,
 				3E4BD78A1AD7194E0036C8CA /* Images.xcassets */,
-				3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */,
 				3EB21C1A1B6616DA00517ECE /* Resources */,
 				3E4BD7811AD7194E0036C8CA /* Supporting Files */,
 			);
@@ -158,6 +150,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3EA7453D1BBD192300AB470A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
+				3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */,
+				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3EA7453E1BBD196200AB470A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		3EB21C1A1B6616DA00517ECE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,8 +182,10 @@
 		3EE306D11B4A6572003225FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3EE306D21B4A65A3003225FF /* Marker.swift */,
+				3EE306CB1B47B399003225FF /* DataParser.swift */,
+				3E8C65AB1B35EAC8005BD52C /* DataSource.swift */,
 				3EE306D61B4A73DE003225FF /* Country.swift */,
+				3EE306D21B4A65A3003225FF /* Marker.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -181,6 +193,10 @@
 		3EE306DA1B4FAD27003225FF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */,
+				3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */,
+				3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */,
+				3E4BD7871AD7194E0036C8CA /* Main.storyboard */,
 				3EE306DB1B4FAD98003225FF /* MarkerAnnotation.swift */,
 				3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */,
 				3EB21C181B66105E00517ECE /* MarkerAnnotationView.swift */,
@@ -297,8 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */,
-				3EE306CE1B47BF85003225FF /* HTTPClient.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
+				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
