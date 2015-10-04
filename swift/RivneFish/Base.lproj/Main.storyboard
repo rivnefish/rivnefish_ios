@@ -192,6 +192,10 @@
                                                 </view>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="HSr-FR-hf2" id="NUE-xF-xK8"/>
+                                            <outlet property="delegate" destination="HSr-FR-hf2" id="8rK-Xm-lpR"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <constraints>
@@ -227,11 +231,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="FishCollectionView" destination="Ziu-vd-Xuu" id="spS-LA-qkd"/>
                         <outlet property="contentTextView" destination="y4Y-tJ-0rT" id="KHc-ZN-AuD"/>
                         <outlet property="contentTextViewHeight" destination="JGA-2O-V5g" id="3CD-Fg-NTf"/>
                         <outlet property="contentViewLeftMargin" destination="SxQ-CP-jIu" id="mwh-RT-y8f"/>
                         <outlet property="contentViewRightMargin" destination="qCJ-Ex-gWu" id="7ed-qn-zTY"/>
+                        <outlet property="fishCollectionView" destination="Ziu-vd-Xuu" id="zFq-yC-QLP"/>
                         <outlet property="imagesCollectionView" destination="W6v-Ts-dCF" id="JhW-px-g4Z"/>
                         <outlet property="imagesViewTopConstraint" destination="T2G-4Y-XbU" id="HaI-HU-Ssb"/>
                         <outlet property="placeAddressLabel" destination="SQW-0R-6DK" id="73N-EJ-v0N"/>

@@ -20,7 +20,7 @@ class DataSource: NSObject {
 
             if let json = data {
                 let dataParser = DataParser()
-                let countries = dataParser.parseCountries(data)
+                let countries = dataParser.parseCountries(json)
                 countriesReceived(countries: countries)
             }
             else {
@@ -40,8 +40,27 @@ class DataSource: NSObject {
 
             if let json = data {
                 let dataParser = DataParser()
-                let markers = dataParser.parseMarkers(data)
+                let markers = dataParser.parseMarkers(json)
                 markersReceived(markers: markers)
+            }
+            else {
+                print(NSString(data: data, encoding: NSUTF8StringEncoding))
+            }
+        })
+    }
+    
+    func fishForMarkerID(id: Int, fishReceived: (fish: NSArray) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers-fishes/?marker=\(id)", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+            
+            if self.errorInResponse(response) {
+                fishReceived(fish: NSArray())
+                return;
+            }
+            
+            if let json = data {
+                let dataParser = DataParser()
+                let fish = dataParser.parseFish(json)
+                fishReceived(fish: fish)
             }
             else {
                 print(NSString(data: data, encoding: NSUTF8StringEncoding))

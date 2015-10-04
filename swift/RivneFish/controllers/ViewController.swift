@@ -304,8 +304,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if let marker: Marker = annotation.marker
         {
             spotViewController.marker = marker
+            dataSource.fishForMarkerID(marker.markerID.integerValue, fishReceived: { (fish: NSArray) in
+                spotViewController.fishArray = fish as! Array<Fish>
+            })
         }
-
         self.navigationController?.pushViewController(spotViewController, animated: true)
     }
 

@@ -11,7 +11,6 @@ import Foundation
 class DataParser {
 
     func parseCountries(jsonData: NSData) -> NSArray {
-        var err: NSError
         let countriesData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
 
         let countries = NSMutableArray(capacity: countriesData.count)
@@ -23,7 +22,7 @@ class DataParser {
     }
 
     func parseMarkers(jsonData: NSData) -> NSArray {
-        print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
+        // print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
         if let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
             let markersData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
@@ -35,6 +34,24 @@ class DataParser {
                 markers.addObject(marker)
             }
             return markers
+        } else {
+            return NSArray()
+        }
+    }
+    
+    func parseFish(jsonData: NSData) -> NSArray {
+        print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
+        
+        if let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
+            let fishData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
+            
+            let fishArr = NSMutableArray(capacity: fishData.count)
+            for fishDict in fishData as! [NSDictionary] {
+                
+                let fish = Fish(dict: fishDict)
+                fishArr.addObject(fish)
+            }
+            return fishArr
         } else {
             return NSArray()
         }
