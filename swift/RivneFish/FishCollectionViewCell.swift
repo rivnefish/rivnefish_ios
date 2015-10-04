@@ -12,8 +12,10 @@ class FishCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var nameLabelView: UILabel!
 
     var image: UIImage?
+    var name: String?
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -25,5 +27,8 @@ class FishCollectionViewCell : UICollectionViewCell {
     
     func updateCell() {
         imageView.image = image
+        nameLabelView.text = name
+
+        nameLabelView.hidden = !(image == nil)
     }
 }

@@ -14,8 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUS-gZ-ZgC">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pUS-gZ-ZgC">
+                        <rect key="frame" x="5" y="0.0" width="40" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="oOW-ON-jLE"/>
                         </constraints>
@@ -26,19 +26,32 @@
                             <constraint firstAttribute="height" constant="2" id="VTU-I2-o5r"/>
                         </constraints>
                     </progressView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xno-fK-svN">
+                        <rect key="frame" x="3" y="8" width="44" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Dor-EL-p7M"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Udk-ds-3JW" secondAttribute="bottom" constant="8" id="1Hr-Oo-fW3"/>
-                <constraint firstAttribute="trailing" secondItem="pUS-gZ-ZgC" secondAttribute="trailing" id="IqV-tt-ARz"/>
+                <constraint firstItem="Xno-fK-svN" firstAttribute="leading" secondItem="33A-qf-guf" secondAttribute="leading" constant="3" id="8zI-vS-blI"/>
+                <constraint firstAttribute="trailing" secondItem="Xno-fK-svN" secondAttribute="trailing" constant="3" id="EkF-sw-CnH"/>
+                <constraint firstAttribute="trailing" secondItem="pUS-gZ-ZgC" secondAttribute="trailing" constant="5" id="IqV-tt-ARz"/>
+                <constraint firstItem="Xno-fK-svN" firstAttribute="top" secondItem="33A-qf-guf" secondAttribute="top" constant="8" id="dyU-Kc-PVE"/>
                 <constraint firstAttribute="trailing" secondItem="Udk-ds-3JW" secondAttribute="trailing" constant="8" id="f2d-qp-2Wc"/>
-                <constraint firstItem="pUS-gZ-ZgC" firstAttribute="leading" secondItem="33A-qf-guf" secondAttribute="leading" id="j8B-KT-OdU"/>
+                <constraint firstItem="pUS-gZ-ZgC" firstAttribute="leading" secondItem="33A-qf-guf" secondAttribute="leading" constant="5" id="j8B-KT-OdU"/>
                 <constraint firstItem="Udk-ds-3JW" firstAttribute="leading" secondItem="33A-qf-guf" secondAttribute="leading" constant="8" id="oNT-Kg-sub"/>
                 <constraint firstItem="pUS-gZ-ZgC" firstAttribute="top" secondItem="33A-qf-guf" secondAttribute="top" id="uRs-jC-BCz"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="pUS-gZ-ZgC" id="5lY-4K-Ueh"/>
+                <outlet property="nameLabelView" destination="Xno-fK-svN" id="rzG-rz-LVg"/>
                 <outlet property="progressView" destination="Udk-ds-3JW" id="nVt-Uc-43h"/>
             </connections>
             <point key="canvasLocation" x="194" y="222"/>

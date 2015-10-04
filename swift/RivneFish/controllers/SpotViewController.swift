@@ -13,6 +13,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     var currentIndex: Int
     let kCellIdentifier = "imagesCellIdentifier"
     let kFishCellIdentifier = "fishImagesCellIdentifier"
+    let kFishCellWidth: CGFloat = 70.0
 
     let kNavigationBarPortraitHeight: CGFloat = 64.0
     let kNavigationBarLandscapeHeight: CGFloat = 32.0
@@ -185,7 +186,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
-        
+
         self.fishCollectionView.collectionViewLayout = flowLayout;
         self.fishCollectionView.pagingEnabled = true
     }
@@ -221,6 +222,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             let cell: FishCollectionViewCell = self.fishCollectionView.dequeueReusableCellWithReuseIdentifier(kFishCellIdentifier, forIndexPath: indexPath) as! FishCollectionViewCell
             if let fish = fishArray?[indexPath.row] {
                 cell.image = fish.image
+                cell.name = fish.name
                 // TODO: init fish count progress bar here
             }
             cell.updateCell()
@@ -233,7 +235,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         if collectionView == self.imagesCollectionView {
             return self.imagesCollectionView.frame.size
         } else if collectionView == self.fishCollectionView {
-            return CGSize(width: 50, height: self.fishCollectionView.frame.height)
+            return CGSize(width: kFishCellWidth, height: self.fishCollectionView.frame.height)
         }
         return CGSize(width: 0.0, height: 0.0)
     }
