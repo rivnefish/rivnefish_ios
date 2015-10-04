@@ -34,41 +34,52 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     var imagesArray: Array<UIImage?>
     var imgUrlsArr: Array<String>!
     
-    var fishImagesArray: Array<UIImage?>
-    var fishImgUrlsArr: Array<String>!
-    
-    var fishArray: Array<Fish>! {
+    var fishArray: Array<Fish>? {
         didSet {
-            if fishArray.count <= 0 {
+            if fishArray == nil || fishArray!.count <= 0 {
                 return
             }
-            self.fishImgUrlsArr = Array<String>(count: fishArray.count, repeatedValue: String())
-            for fish: Fish in fishArray {
+
+            // Make fish collection view know fish count (cells count) before updating each cell by index
+            dispatch_async(dispatch_get_main_queue(),{
+                self.fishCollectionView.reloadData()
+            })
+
+            // Get img url strings array
+            var fishImgUrlsArr: Array<String> = Array<String>()
+            fishImgUrlsArr.reserveCapacity(fishArray!.count)
+            for fish: Fish in fishArray! {
                 if let iconUrl: String = fish.iconUrl {
                     fishImgUrlsArr.append(iconUrl)
+                } else {
+                    fishImgUrlsArr.append("")
                 }
             }
-            fishImagesArray = [UIImage?](count: fishImgUrlsArr.count, repeatedValue: nil)
 
-            loadImages(self.fishImgUrlsArr) { (index:Int, image:UIImage?) in
+            // Load images and update view
+            loadImages(fishImgUrlsArr) { (index: Int, image: UIImage?) in
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.fishImagesArray[index] = image
+                    self.fishArray![index].image = image
                     if let collectionView = self.fishCollectionView {
                         collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
                     }
                 }
             }
-            // TODO: remove this
-            dispatch_async(dispatch_get_main_queue(),{
-                self.fishCollectionView.reloadData() })
         }
     }
 
     var marker: Marker! {
         didSet {
             self.imgUrlsArr = self.marker.photoUrls
+
             imagesArray = [UIImage?](count: imgUrlsArr.count, repeatedValue: nil)
 
+            // Make images collection view to know images count (cells count) before updating each cell by index
+            dispatch_async(dispatch_get_main_queue(),{
+                self.imagesCollectionView.reloadData()
+            })
+
+            // Load images and update collection view
             loadImages(self.imgUrlsArr) { (index:Int, image:UIImage?) in
                 dispatch_async(dispatch_get_main_queue()) {
                     self.imagesArray[index] = image
@@ -85,9 +96,6 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         imagesArray = Array<UIImage>()
         imgUrlsArr = Array<String>()
         
-        fishImagesArray = Array<UIImage>()
-        fishImgUrlsArr = Array<String>()
-
         currentIndex = 0
 
         super.init(coder: aDecoder)
@@ -189,10 +197,14 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var count = 0
         if collectionView == self.imagesCollectionView {
-            count = imgUrlsArr.count
+            if let arr = imgUrlsArr {
+                count = arr.count
+            }
         }
         else if collectionView == self.fishCollectionView {
-            count = fishImgUrlsArr.count
+            if let arr = fishArray {
+                count = arr.count
+            }
         }
         return count
     }
@@ -207,7 +219,10 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             collectionViewCell = cell;
         } else if collectionView == self.fishCollectionView {
             let cell: FishCollectionViewCell = self.fishCollectionView.dequeueReusableCellWithReuseIdentifier(kFishCellIdentifier, forIndexPath: indexPath) as! FishCollectionViewCell
-            cell.image = fishImagesArray[indexPath.row]
+            if let fish = fishArray?[indexPath.row] {
+                cell.image = fish.image
+                // TODO: init fish count progress bar here
+            }
             cell.updateCell()
             collectionViewCell = cell;
         }

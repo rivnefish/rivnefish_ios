@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let kMarkerFishKey = "marker_fish"
 
@@ -51,6 +52,7 @@ class Fish {
     var maxWeight: Double?
     var amount: NSNumber?
     var notes: String?
+    var image: UIImage?
     
     init(dict: NSDictionary)
     {

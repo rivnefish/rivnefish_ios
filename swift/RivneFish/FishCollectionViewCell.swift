@@ -24,8 +24,6 @@ class FishCollectionViewCell : UICollectionViewCell {
     }
     
     func updateCell() {
-        if let image = self.image {
-            imageView.image = image
-        }
+        imageView.image = image
     }
 }
