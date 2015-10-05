@@ -222,8 +222,10 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             let cell: FishCollectionViewCell = self.fishCollectionView.dequeueReusableCellWithReuseIdentifier(kFishCellIdentifier, forIndexPath: indexPath) as! FishCollectionViewCell
             if let fish = fishArray?[indexPath.row] {
                 cell.image = fish.image
-                cell.name = fish.name
-                // TODO: init fish count progress bar here
+                cell.name = fish.ukrName
+                if let amount = fish.amount {
+                    cell.amount = amount
+                }
             }
             cell.updateCell()
             collectionViewCell = cell;

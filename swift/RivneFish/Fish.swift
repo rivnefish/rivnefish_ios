@@ -23,7 +23,7 @@ let kEngNameKey = "eng_name"
 let kIconHeightKey = "icon_height"
 let kRedBookKey = "redbook"
 let kArticleUrlKey = "article_url"
-let kUrkNameKey = "ukr_name"
+let kUkrNameKey = "ukr_name"
 let kDescriptionKey = "description"
 
 let kWeightAvgKey = "weight_avg"
@@ -50,7 +50,7 @@ class Fish {
     var description: String?
     var weight: Double?
     var maxWeight: Double?
-    var amount: NSNumber?
+    var amount: Int?
     var notes: String?
     var image: UIImage?
     
@@ -59,9 +59,10 @@ class Fish {
         let markerFishDict: NSDictionary? = dict[kMarkerFishKey] as? NSDictionary
         if let fishDict = markerFishDict {
             name = fishDict[kFishNameKey] as? String
+            ukrName = fishDict[kUkrNameKey] as? String
             iconUrl = fishDict[kIconUrlKey] as? String
             // TODO:
         }
-        amount = dict[kAmountKey] as? NSNumber
+        amount = dict[kAmountKey] as? Int
     }
 }

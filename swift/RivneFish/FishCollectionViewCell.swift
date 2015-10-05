@@ -16,6 +16,7 @@ class FishCollectionViewCell : UICollectionViewCell {
 
     var image: UIImage?
     var name: String?
+    var amount: Int = 0
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -28,5 +29,6 @@ class FishCollectionViewCell : UICollectionViewCell {
     func updateCell() {
         imageView.image = image
         nameLabelView.text = name
+        progressView.progress = Float(amount) / 10.0
     }
 }
