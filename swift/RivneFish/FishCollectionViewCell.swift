@@ -28,7 +28,5 @@ class FishCollectionViewCell : UICollectionViewCell {
     func updateCell() {
         imageView.image = image
         nameLabelView.text = name
-
-        nameLabelView.hidden = !(image == nil)
     }
 }
