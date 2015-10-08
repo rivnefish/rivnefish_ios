@@ -157,10 +157,10 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             if let contentTextView = contentTextView {
                 if !content.isEmpty {
                     contentTextView.text = content
-                    updateContentTextViewHeight()
                 }
             }
         }
+        updateContentTextViewHeight()
     }
 
     func updateLabels() {
@@ -205,10 +205,12 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     // Lyout helper methods
     
     func updateContentTextViewHeight() {
-        self.contentTextViewHeight.constant = contentTextView.sizeThatFits(CGSize(width: self.view.frame.width - (self.contentViewRightMargin.constant + self.contentViewLeftMargin.constant), height: CGFloat.max)).height
-        self.view.layoutIfNeeded()
+        if contentTextView != nil {
+            self.contentTextViewHeight.constant = contentTextView.sizeThatFits(CGSize(width: self.view.frame.width - (self.contentViewRightMargin.constant + self.contentViewLeftMargin.constant), height: CGFloat.max)).height
+            self.view.layoutIfNeeded()
+        }
     }
-    
+
     func updateImagesView() {
         let offset = CGFloat(self.currentIndex) * self.imagesCollectionView.frame.size.width
         self.imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
