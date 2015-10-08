@@ -17,18 +17,31 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     let kNavigationBarPortraitHeight: CGFloat = 64.0
     let kNavigationBarLandscapeHeight: CGFloat = 32.0
+    let kImageViewHeight: CGFloat = 282.0
+    let kContentViewHeight: CGFloat = 1.0
 
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeAddressLabel: UILabel!
     @IBOutlet weak var placeCoordinatesLabel: UILabel!
+    
+    @IBOutlet weak var contactLabel: UILabel!
+    @IBOutlet weak var squareLabel: UILabel!
+    @IBOutlet weak var averageDepthLabel: UILabel!
+    @IBOutlet weak var maxDepthLabel: UILabel!
+    @IBOutlet weak var boatUsageLabel: UILabel!
+    @IBOutlet weak var detailUrlLabel: UILabel!
+    @IBOutlet weak var permitLabel: UILabel!
 
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var fishCollectionView: UICollectionView!
     @IBOutlet weak var contentTextView: UITextView!
 
     @IBOutlet weak var imagesViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imagesViewHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var contentViewRightMargin: NSLayoutConstraint!
     @IBOutlet weak var contentViewLeftMargin: NSLayoutConstraint!
+
+    @IBOutlet weak var descriptionLineViewHeightContraint: NSLayoutConstraint!
 
     @IBOutlet weak var contentTextViewHeight: NSLayoutConstraint!
 
@@ -73,6 +86,9 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         didSet {
             self.imgUrlsArr = self.marker.photoUrls
 
+            updateImagesViewVisibility()
+            updateContentLineVisibilty()
+
             imagesArray = [UIImage?](count: imgUrlsArr.count, repeatedValue: nil)
 
             // Make images collection view to know images count (cells count) before updating each cell by index
@@ -103,6 +119,9 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     override func viewDidLoad() {
+        updateImagesViewVisibility()
+        updateContentLineVisibilty()
+        
         setupFishCollectionView()
 
         setupImagesCollectionView()
@@ -110,20 +129,55 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         updateImagesViewTopConstraint()
         updateLabels()
     }
-
-    func updateContent() {
-        if let content: String = marker.content {
-            if let contentTextView = contentTextView {
-                contentTextView.text = content
-                updateContentTextViewHeight()
+    
+    func updateImagesViewVisibility() {
+        if let contraint = imagesViewHeightContraint {
+            imagesViewHeightContraint.constant = 0
+            if let arr = imgUrlsArr {
+                if arr.count > 0 {
+                    contraint.constant = kImageViewHeight
+                }
             }
         }
     }
     
+    func updateContentLineVisibilty() {
+        if let contraint = descriptionLineViewHeightContraint {
+            descriptionLineViewHeightContraint.constant = 0
+            if let content: String = marker.content {
+                if !content.isEmpty {
+                    contraint.constant = kContentViewHeight
+                }
+            }
+        }
+    }
+
+    func updateContent() {
+        if let content: String = marker.content {
+            if let contentTextView = contentTextView {
+                if !content.isEmpty {
+                    contentTextView.text = content
+                    updateContentTextViewHeight()
+                }
+            }
+        }
+    }
+
     func updateLabels() {
         self.placeNameLabel.text = marker.name
         self.placeAddressLabel.text = marker.address
         self.placeCoordinatesLabel.text = "\(marker.lat), \(marker.lon)"
+
+        self.contactLabel.text = marker.contactStr
+        self.squareLabel.text = marker.areaStr
+        self.maxDepthLabel.text = marker.maxDepthStr
+        self.averageDepthLabel.text = marker.averageDepthStr
+        self.boatUsageLabel.text = marker.boatUsaveStr
+        self.permitLabel.text = marker.permitStr
+
+        // TODO: set url for lable
+        //NSRange range = [label.text rangeOfString:@"me"];
+        //[label addLinkToURL:[NSURL URLWithString:@"http://github.com/mattt/"] withRange:range];
     }
 
     func loadImages(urlsArr: Array<String>?, continuation: ((Int, UIImage?) -> Void)) {

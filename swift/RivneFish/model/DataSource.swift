@@ -30,8 +30,9 @@ class DataSource: NSObject {
     }
 
     func allAvailableMarkers(markersReceived: (markers: NSArray) -> Void) {
-//        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback: 
-            HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+        //HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback:
+            HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback:
+                {(data: NSData!, response: NSURLResponse!, error: NSError!) in
 
             if self.errorInResponse(response) {
                 markersReceived(markers: NSArray())
@@ -79,29 +80,4 @@ class DataSource: NSObject {
         }
         return result
     }
-
-    /*func coutries2(countriesReceived: (countries: NSArray) -> Void) {
-
-        var authValue: String = "Token " + self.token()
-
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration();
-        configuration.HTTPAdditionalHeaders = ["Authorization": authValue];
-
-        var url = NSURL(string: "http://api.rivnefish.com/countries/")
-        var session = NSURLSession(configuration:configuration)
-        let task = session.dataTaskWithURL(url!) {
-            (data, response, error) in
-
-            if let json = data {
-                var dataParser = DataParser()
-                var countries = dataParser.parseCountries(data)
-                countriesReceived(countries: countries)
-            }
-            else {
-                println(NSString(data: data, encoding: NSUTF8StringEncoding))
-            }
-       }
-
-        task.resume()
-    }*/
 }

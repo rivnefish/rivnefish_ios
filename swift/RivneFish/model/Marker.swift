@@ -50,13 +50,13 @@ class Marker {
 
     var name: String?
     var address: String?
-    var area: Int?
+    var area: Float?
     var content: String?
     var conveniences: String?
     var contact: String?
     var contactName: String?
-    var maxDepth: Float?
-    var averageDepth: Float?
+    var maxDepth: String?
+    var averageDepth: String?
     var permit: String?
     var price24: String?
     var dayhourPrice: String?
@@ -72,6 +72,54 @@ class Marker {
     var country: String?
     var photoUrls: Array<String>?
     var url: String?
+    
+    var areaStr: String {
+        if let val = area {
+            return NSLocalizedString("\(val / 100)Га", comment: "area")
+        }
+        return NSLocalizedString("немає ніформації", comment: "no_information")
+    }
+
+    var contactStr: String {
+        return self.readableStrForStrValue(contact)
+    }
+
+    var maxDepthStr: String {
+        return self.readableStrForStrValue(maxDepth)
+    }
+
+    var averageDepthStr: String {
+        return self.readableStrForStrValue(averageDepth)
+    }
+    
+    var permitStr: String {
+        if let val = permit {
+            if val == "paid" {
+                return NSLocalizedString("платно", comment: "paid")
+            } else if val == "free"{
+                return NSLocalizedString("безкоштовно", comment: "free")
+            }
+        }
+        return NSLocalizedString("немає ніформації", comment: "no_information")
+    }
+
+    var boatUsaveStr: String {
+        if let val = boatUsage {
+            if val {
+                return NSLocalizedString("так", comment: "yes")
+            } else {
+                return NSLocalizedString("ні", comment: "no")
+            }
+        }
+        return NSLocalizedString("немає ніформації", comment: "no_information")
+    }
+
+    func readableStrForStrValue(val: String?) -> String {
+        if let v = val {
+            return v
+        }
+        return NSLocalizedString("немає ніформації", comment: "no_information")
+    }
 
     init(dict: NSDictionary)
     {
@@ -81,13 +129,13 @@ class Marker {
 
         name = dict[kNameKey] as? String
         address = dict[kAddressKey] as? String
-        area = dict[kAreaKey] as? Int
+        area = dict[kAreaKey] as? Float
         content = dict[kContentKey] as? String
         conveniences = dict[kConveniencesKey] as? String
         contact = dict[kContactKey] as? String
         contactName = dict[kContactNameKey] as? String
-        maxDepth = dict[kMaxDepthKey] as? Float
-        averageDepth = dict[kAverageDepthKey] as? Float
+        maxDepth = dict[kMaxDepthKey] as? String
+        averageDepth = dict[kAverageDepthKey] as? String
         permit = dict[kPermitKey] as? String
         price24 = dict[kPrice24hKey] as? String
         dayhourPrice = dict[kDayhourPriceKey] as? String
