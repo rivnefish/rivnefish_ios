@@ -19,6 +19,8 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     let kNavigationBarLandscapeHeight: CGFloat = 32.0
     let kImageViewHeight: CGFloat = 282.0
     let kContentViewHeight: CGFloat = 1.0
+    let kDetailViewExpandedHeight: CGFloat = 144.0
+    let kDetailViewClosedHeight: CGFloat = 22.0
 
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeAddressLabel: UILabel!
@@ -32,6 +34,8 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var detailUrlLabel: UILabel!
     @IBOutlet weak var permitLabel: UILabel!
 
+    @IBOutlet weak var expandDetailInfoButton: UIButton!
+
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var fishCollectionView: UICollectionView!
     @IBOutlet weak var contentTextView: UITextView!
@@ -41,9 +45,13 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var contentViewRightMargin: NSLayoutConstraint!
     @IBOutlet weak var contentViewLeftMargin: NSLayoutConstraint!
 
+    @IBOutlet weak var detailedInfoViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var descriptionLineViewHeightContraint: NSLayoutConstraint!
 
+    @IBOutlet weak var fuckingConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentTextViewHeight: NSLayoutConstraint!
+    
+    var detailedViewExpanded = false
 
     var imagesArray: Array<UIImage?>
     var imgUrlsArr: Array<String>!
@@ -128,8 +136,20 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         updateContent()
         updateImagesViewTopConstraint()
         updateLabels()
+        
+        // if just does not work from story board
+        fuckingConstraint.constant = 20
     }
-    
+
+    @IBAction func urlButtonTouched(sender: UIButton) {
+        if let urlStr = marker.url {
+            let url = NSURL(string: urlStr)
+            if let validUrl = url {
+                UIApplication.sharedApplication().openURL(validUrl)
+            }
+        }
+    }
+
     func updateImagesViewVisibility() {
         if let contraint = imagesViewHeightContraint {
             imagesViewHeightContraint.constant = 0
@@ -174,10 +194,6 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.averageDepthLabel.text = marker.averageDepthStr
         self.boatUsageLabel.text = marker.boatUsaveStr
         self.permitLabel.text = marker.permitStr
-
-        // TODO: set url for lable
-        //NSRange range = [label.text rangeOfString:@"me"];
-        //[label addLinkToURL:[NSURL URLWithString:@"http://github.com/mattt/"] withRange:range];
     }
 
     func loadImages(urlsArr: Array<String>?, continuation: ((Int, UIImage?) -> Void)) {
@@ -310,5 +326,12 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         updateImagesView()
         updateContentTextViewHeight()
         updateImagesViewTopConstraint()
+    }
+
+    @IBAction func expandButtonTouched(sender: UIButton) {
+        detailedViewExpanded = !detailedViewExpanded
+        UIView.animateWithDuration(0.3, animations: {
+            self.detailedInfoViewHeightConstraint.constant = self.detailedViewExpanded ? self.kDetailViewExpandedHeight : self.kDetailViewClosedHeight
+        })
     }
 }
