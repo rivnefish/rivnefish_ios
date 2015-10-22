@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2A735C1BD8CDFD00629D8B /* arrowDOWN.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A73591BD8CDFD00629D8B /* arrowDOWN.png */; settings = {ASSET_TAGS = (); }; };
+		3E2A735D1BD8CDFD00629D8B /* arrowDOWN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A735A1BD8CDFD00629D8B /* arrowDOWN@2x.png */; settings = {ASSET_TAGS = (); }; };
+		3E2A735E1BD8CDFD00629D8B /* arrowDOWN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A735B1BD8CDFD00629D8B /* arrowDOWN@3x.png */; settings = {ASSET_TAGS = (); }; };
 		3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */; };
 		3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7851AD7194E0036C8CA /* ViewController.swift */; };
 		3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD7871AD7194E0036C8CA /* Main.storyboard */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E2A73591BD8CDFD00629D8B /* arrowDOWN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowDOWN.png; path = resources/arrowDOWN.png; sourceTree = "<group>"; };
+		3E2A735A1BD8CDFD00629D8B /* arrowDOWN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowDOWN@2x.png"; path = "resources/arrowDOWN@2x.png"; sourceTree = "<group>"; };
+		3E2A735B1BD8CDFD00629D8B /* arrowDOWN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowDOWN@3x.png"; path = "resources/arrowDOWN@3x.png"; sourceTree = "<group>"; };
 		3E4BD77E1AD7194E0036C8CA /* RivneFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivneFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BD7821AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,9 @@
 		3EB21C1A1B6616DA00517ECE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E2A73591BD8CDFD00629D8B /* arrowDOWN.png */,
+				3E2A735A1BD8CDFD00629D8B /* arrowDOWN@2x.png */,
+				3E2A735B1BD8CDFD00629D8B /* arrowDOWN@3x.png */,
 				3EB21C1B1B6617FB00517ECE /* m1.png */,
 				3EB21C1C1B6617FB00517ECE /* m2-9.png */,
 				3EB21C1D1B6617FB00517ECE /* m10-99.png */,
@@ -297,11 +306,14 @@
 			files = (
 				3EA745421BBD1BF500AB470A /* FishCollectionViewCell.xib in Resources */,
 				3EB21C1F1B6617FB00517ECE /* m1.png in Resources */,
+				3E2A735C1BD8CDFD00629D8B /* arrowDOWN.png in Resources */,
 				3EB21C211B6617FB00517ECE /* m10-99.png in Resources */,
 				3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */,
 				3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */,
 				3EB21C201B6617FB00517ECE /* m2-9.png in Resources */,
 				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
+				3E2A735D1BD8CDFD00629D8B /* arrowDOWN@2x.png in Resources */,
+				3E2A735E1BD8CDFD00629D8B /* arrowDOWN@3x.png in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
 				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
 				3EB21C221B6617FB00517ECE /* m100-.png in Resources */,

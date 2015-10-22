@@ -330,8 +330,15 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBAction func expandButtonTouched(sender: UIButton) {
         detailedViewExpanded = !detailedViewExpanded
-        UIView.animateWithDuration(0.3, animations: {
+        let animationDuration = 0.3
+        UIView.animateWithDuration(animationDuration, animations: {
             self.detailedInfoViewHeightConstraint.constant = self.detailedViewExpanded ? self.kDetailViewExpandedHeight : self.kDetailViewClosedHeight
+            self.view.layoutIfNeeded()
+        })
+        
+        UIView.animateWithDuration(animationDuration, animations:{
+            let transform = self.detailedViewExpanded ? CGAffineTransformMakeRotation(CGFloat(M_PI)) : CGAffineTransformMakeRotation(CGFloat(0))
+            self.expandDetailInfoButton.transform = transform
         })
     }
 }

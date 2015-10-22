@@ -23,15 +23,6 @@ class MarkerAnnotationView : MKAnnotationView {
         return view
     }
 
-    /*var annotation: MKAnnotation {
-        get {
-            return self.annotation
-        }
-        set {
-            self.annotation = newValue
-        }
-    }*/
-
     func updateImageAndText() {
         var imagePath = ""
         if self.itemsCount > 99 {

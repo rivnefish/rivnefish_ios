@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="1" green="0.59961456810821456" blue="0.094716267253432629" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.98431372549019602" green="0.52156862745098043" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -51,21 +51,50 @@
         <scene sceneID="9de-RS-QHj">
             <objects>
                 <viewController title="Rivnefish" id="hfb-Pu-uww" customClass="ViewController" customModule="RivneFish" customModuleProvider="target" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="8yx-XR-8j1">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AjA-uY-FQu"/>
+                        <viewControllerLayoutGuide type="bottom" id="sJh-gA-kqe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ei3-CI-Dn7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8yx-XR-8j1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <connections>
+                                    <outlet property="delegate" destination="hfb-Pu-uww" id="djp-6g-wwL"/>
+                                </connections>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iDB-ZE-N27">
+                                <rect key="frame" x="201" y="554" width="200" height="29"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Kqn-bg-FcH"/>
+                                    <constraint firstAttribute="width" constant="200" id="zH7-DJ-sxw"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Карта"/>
+                                    <segment title="Мікс"/>
+                                    <segment title="Супутник"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeChanged:" destination="hfb-Pu-uww" eventType="valueChanged" id="ry9-60-zrA"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <animations/>
-                        <connections>
-                            <outlet property="delegate" destination="hfb-Pu-uww" id="djp-6g-wwL"/>
-                        </connections>
-                    </mapView>
-                    <navigationItem key="navigationItem" title="Rivnefish" id="caj-OL-Hs9">
-                        <barButtonItem key="rightBarButtonItem" title="Fish" id="GU3-vo-7fC">
-                            <connections>
-                                <segue destination="TTx-kC-7R8" kind="show" id="aml-Q5-8yT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iDB-ZE-N27" firstAttribute="centerX" secondItem="Ei3-CI-Dn7" secondAttribute="centerX" constant="1" id="1NI-jn-ljI"/>
+                            <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="iDB-ZE-N27" secondAttribute="bottom" constant="18" id="8qS-0y-aXI"/>
+                            <constraint firstItem="8yx-XR-8j1" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leadingMargin" constant="-20" id="NFv-c3-JhY"/>
+                            <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="8yx-XR-8j1" secondAttribute="bottom" id="Q3S-3V-jkm"/>
+                            <constraint firstItem="8yx-XR-8j1" firstAttribute="top" secondItem="Ei3-CI-Dn7" secondAttribute="topMargin" id="o7o-2H-Bic"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8yx-XR-8j1" secondAttribute="trailing" constant="-20" id="zc8-f8-Egs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Rivnefish" id="caj-OL-Hs9"/>
                     <connections>
                         <outlet property="mapView" destination="8yx-XR-8j1" id="JWb-Fb-IGP"/>
                     </connections>
@@ -123,7 +152,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rw-xi-9A0">
                                         <rect key="frame" x="0.0" y="590" width="600" height="89"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y4Y-tJ-0rT">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y4Y-tJ-0rT">
                                                 <rect key="frame" x="8" y="0.0" width="584" height="89"/>
                                                 <animations/>
                                                 <constraints>
@@ -196,7 +225,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhn-sR-i9N">
                                         <rect key="frame" x="8" y="687" width="584" height="1"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="1" green="0.59961456810000002" blue="0.09471626725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.98431372549999996" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="r3i-2p-xS2"/>
                                         </constraints>
@@ -236,12 +265,13 @@
                                         <rect key="frame" x="8" y="562" width="584" height="20"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq0-m7-99v">
-                                                <rect key="frame" x="282" y="0.0" width="20" height="20"/>
+                                                <rect key="frame" x="272" y="0.0" width="41" height="20"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="1" green="0.59961456810000002" blue="0.09471626725" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="0Ai-CH-oeT"/>
+                                                    <constraint firstAttribute="width" constant="41" id="0Ai-CH-oeT"/>
                                                 </constraints>
+                                                <color key="tintColor" red="0.98431372549999996" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="arrowDOWN.png"/>
                                                 <connections>
                                                     <action selector="expandButtonTouched:" destination="HSr-FR-hf2" eventType="touchUpInside" id="GPa-iq-E7U"/>
                                                 </connections>
@@ -429,4 +459,7 @@
             <point key="canvasLocation" x="1271" y="421"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowDOWN.png" width="20" height="12"/>
+    </resources>
 </document>

@@ -33,6 +33,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
         print(countries)
     }
 
+    @IBAction func mapTypeChanged(sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.mapView.mapType = MKMapType.Standard
+        case 1:
+            self.mapView.mapType = MKMapType.Hybrid
+        case 2:
+            self.mapView.mapType = MKMapType.Satellite
+        default:
+            self.mapView.mapType = MKMapType.Standard
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,8 +58,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         })
 
         dataSource.allAvailableMarkers({ (markers: NSArray) in
-
-            print(markers)
 
             // add markers to map
             for marker in markers as! [Marker] {
@@ -59,7 +71,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
             // TODO: apple way clustering
             self.allAnnotationsMapView.addAnnotations(self.markersAnnotations)
-            self.updateVisibleAnnotations()
+            
+            dispatch_async(dispatch_get_main_queue(),{
+                // TODO: apple way clustering
+                self.updateVisibleAnnotations()
+                self.updateAll()
+            })
         })
     }
 
@@ -124,16 +141,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let adjustedVisibleMapRect: MKMapRect = MKMapRectInset(visibleMapRect, -marginFactor * visibleMapRect.size.width, -marginFactor * visibleMapRect.size.height)
 
         // determine how wide each bucket will be, as a MKMapRect square
-        var leftCoordinate: CLLocationCoordinate2D = self.mapView.convertPoint(CGPointZero, toCoordinateFromView: self.view);
-        var rightCoordinate: CLLocationCoordinate2D = self.mapView.convertPoint(CGPointMake(CGFloat(bucketSize), 0.0), toCoordinateFromView: self.view);
-        var gridSize = MKMapPointForCoordinate(rightCoordinate).x - MKMapPointForCoordinate(leftCoordinate).x;
+        let leftCoordinate: CLLocationCoordinate2D = self.mapView.convertPoint(CGPointZero, toCoordinateFromView: self.view);
+        let rightCoordinate: CLLocationCoordinate2D = self.mapView.convertPoint(CGPointMake(CGFloat(bucketSize), 0.0), toCoordinateFromView: self.view);
+        let gridSize = MKMapPointForCoordinate(rightCoordinate).x - MKMapPointForCoordinate(leftCoordinate).x;
         var gridMapRect: MKMapRect = MKMapRectMake(0, 0, gridSize, gridSize);
 
         // condense annotations, with a padding of two squares, around the visibleMapRect
-        var startX = floor(MKMapRectGetMinX(adjustedVisibleMapRect) / gridSize) * gridSize;
-        var startY = floor(MKMapRectGetMinY(adjustedVisibleMapRect) / gridSize) * gridSize;
-        var endX = floor(MKMapRectGetMaxX(adjustedVisibleMapRect) / gridSize) * gridSize;
-        var endY = floor(MKMapRectGetMaxY(adjustedVisibleMapRect) / gridSize) * gridSize;
+        let startX = floor(MKMapRectGetMinX(adjustedVisibleMapRect) / gridSize) * gridSize;
+        let startY = floor(MKMapRectGetMinY(adjustedVisibleMapRect) / gridSize) * gridSize;
+        let endX = floor(MKMapRectGetMaxX(adjustedVisibleMapRect) / gridSize) * gridSize;
+        let endY = floor(MKMapRectGetMaxY(adjustedVisibleMapRect) / gridSize) * gridSize;
 
         // for each square in our grid, pick one annotation to show
         gridMapRect.origin.y = startY;
@@ -143,18 +160,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
             while (MKMapRectGetMinX(gridMapRect) <= endX) {
 
                 if let objects: Set<NSObject>? = allAnnotationsMapView.annotationsInMapRect(gridMapRect) {
-                    var allAnnotationsInBucket: NSSet = self.allAnnotationsMapView.annotationsInMapRect(gridMapRect);
-                    var visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
+                    let allAnnotationsInBucket: NSSet = self.allAnnotationsMapView.annotationsInMapRect(gridMapRect);
+                    let visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
 
                     // we only care about PhotoAnnotations
-                    var filteredAnnotationsInBucketImmutable: NSSet =
+                    let filteredAnnotationsInBucketImmutable: NSSet =
                     allAnnotationsInBucket.objectsPassingTest({ (obj: AnyObject, stop: UnsafeMutablePointer<ObjCBool>) -> Bool in
                         return obj.isKindOfClass(MarkerAnnotation)
                     })
-                    var filteredAnnotationsInBucket: NSMutableSet = filteredAnnotationsInBucketImmutable.mutableCopy() as! NSMutableSet
+                    let filteredAnnotationsInBucket: NSMutableSet = filteredAnnotationsInBucketImmutable.mutableCopy() as! NSMutableSet
 
                     if  filteredAnnotationsInBucket.count > 0 {
-                        var annotationForGrid: MarkerAnnotation = self.annotationInGrid(gridMapRect, annotations: filteredAnnotationsInBucket)
+                        let annotationForGrid: MarkerAnnotation = self.annotationInGrid(gridMapRect, annotations: filteredAnnotationsInBucket)
 
                         filteredAnnotationsInBucket.removeObject(annotationForGrid)
 
@@ -170,7 +187,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
                             // remove annotations which we've decided to cluster
                             if visibleAnnotationsInBucket.containsObject(annotation) {
-                                var actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
+                                let actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
 
                                 //annotation.coordinate = CLLocationCoordinate2D()
 
@@ -231,9 +248,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
 
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        // apple way clustering
         self.updateVisibleAnnotations()
-
         updateAll()
+        
+        // TODO: my way
+        // self.showAnnotations();
     }
 
     // MKMapViewDelegate
@@ -244,12 +264,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
             if !annotationView.annotation!.isKindOfClass(MarkerAnnotation) {
                 continue
             }
-            var annotation: MarkerAnnotation = annotationView.annotation as! MarkerAnnotation
+            let annotation: MarkerAnnotation = annotationView.annotation as! MarkerAnnotation
 
             if annotation.clusterAnnotation != nil {
                 // animate the annotation from it's old container's coordinate, to its actual coordinate
-                var actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
-                var containerCoordinate: CLLocationCoordinate2D = annotation.clusterAnnotation!.coordinate
+                let actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
+                let containerCoordinate: CLLocationCoordinate2D = annotation.clusterAnnotation!.coordinate
                 // since it's displayed on the map, it is no longer contained by another annotation,
                 // (We couldn't reset this in -updateVisibleAnnotations because we needed the reference to it here
                 // to get the containerCoordinate)
@@ -268,18 +288,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if (annotation is MarkerAnnotation) {
             let reuseId = "MarkerAnnotationViewId"
             view = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+            let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
             if view == nil {
                 let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
                 view = MarkerAnnotationView.instanceFromNib(markerAnnotation.containedItemsCount)
-                view!.canShowCallout = true
             } else {
                 let markerAnnotationView: MarkerAnnotationView = view as! MarkerAnnotationView
-                let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
-
                 markerAnnotationView.annotation = markerAnnotation
                 markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
                 markerAnnotationView.updateImageAndText()
             }
+            view?.canShowCallout = (markerAnnotation.containedItemsCount == 0)
         }
         return view
     }
@@ -294,6 +313,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 markerAnnotationView.annotation = markerAnnotation
                 markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
                 markerAnnotationView.updateImageAndText()
+                markerAnnotationView.canShowCallout = (markerAnnotation.containedItemsCount == 0)
             }
         }
     }
@@ -305,48 +325,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         {
             spotViewController.marker = marker
             dataSource.fishForMarkerID(marker.markerID.integerValue, fishReceived: { (fish: NSArray) in
-                spotViewController.fishArray = fish as! Array<Fish>
+                spotViewController.fishArray = fish as? Array<Fish>
             })
         }
         self.navigationController?.pushViewController(spotViewController, animated: true)
+        let backButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Мапа", comment: "map"), style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
     }
-
-    /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        if (annotation is MKUserLocation) {
-            //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
-            //return nil so map draws default view for it (eg. blue dot)...
-            return nil
-        }
-
-        let reuseId = "test"
-
-        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
-        if anView == nil {
-            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView.image = UIImage(named:"xaxas")
-            anView.canShowCallout = true
-        }
-        else {
-            //we are re-using a view, update its annotation reference...
-            anView.annotation = annotation
-        }
-        
-        return anView
-    }
-
-    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
-
-    }
-
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-
-    }
-
-    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
-
-    }
-
-    func zoomIn(sender: AnyObject) {
-        // TODO:
-    }*/
 }
