@@ -24,7 +24,7 @@ class DataParser {
     func parseMarkers(jsonData: NSData) -> NSArray {
         //print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
-        if let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
+        if let _ = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
             let markersData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
 
             let markers = NSMutableArray(capacity: markersData.count)
@@ -42,7 +42,7 @@ class DataParser {
     func parseFish(jsonData: NSData) -> NSArray {
         //print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
         
-        if let json = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
+        if let _ = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
             let fishData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
             
             let fishArr = NSMutableArray(capacity: fishData.count)

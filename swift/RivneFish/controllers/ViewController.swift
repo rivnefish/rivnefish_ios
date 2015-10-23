@@ -159,8 +159,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
             while (MKMapRectGetMinX(gridMapRect) <= endX) {
 
-                if let objects: Set<NSObject>? = allAnnotationsMapView.annotationsInMapRect(gridMapRect) {
-                    let allAnnotationsInBucket: NSSet = self.allAnnotationsMapView.annotationsInMapRect(gridMapRect);
+                if let objects: Set<NSObject> = allAnnotationsMapView.annotationsInMapRect(gridMapRect) {
+                    let allAnnotationsInBucket: NSSet = objects
                     let visibleAnnotationsInBucket: NSSet = self.mapView.annotationsInMapRect(gridMapRect);
 
                     // we only care about PhotoAnnotations

@@ -30,8 +30,9 @@ class DataSource: NSObject {
     }
 
     func allAvailableMarkers(markersReceived: (markers: NSArray) -> Void) {
-            HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback:
-            //HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback:
+            HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/", responseCallback:
+            // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback:
+            // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback:
                 {(data: NSData!, response: NSURLResponse!, error: NSError!) in
 
             if self.errorInResponse(response) {
