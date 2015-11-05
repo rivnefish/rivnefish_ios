@@ -9,79 +9,200 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+
+    @IBOutlet weak var googleMapView: GMSMapView!
+    let locationManager = CLLocationManager()
+    var clusterManager: GClusterManager!
+
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRectZero)
 
     var dataSource = DataSource()
-
     var markersAnnotations = [MarkerAnnotation]()
+    
+    var gmMarkers = [GMMarkerAnnotation]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        // let dataSource:DataSource = DataSource()
-        // dataSource.coutries(countriesReceived)
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
 
+        initClusterManager()
+        self.googleMapView.delegate = self
         self.updateData()
-    }
-
-    func countriesReceived(countries: NSArray) {
-        // println(NSString(data: data, encoding: NSUTF8StringEncoding))
-        print(countries)
-    }
-
-    @IBAction func mapTypeChanged(sender: UISegmentedControl) {
-        
-        switch sender.selectedSegmentIndex {
-        case 0:
-            self.mapView.mapType = MKMapType.Standard
-        case 1:
-            self.mapView.mapType = MKMapType.Hybrid
-        case 2:
-            self.mapView.mapType = MKMapType.Satellite
-        default:
-            self.mapView.mapType = MKMapType.Standard
-        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - CLLocationManagerDelegate
 
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            googleMapView.myLocationEnabled = true
+            googleMapView.settings.myLocationButton = true
+        }
+    }
+    
+    // MARK: Common methods
+    
+    func countriesReceived(countries: NSArray) {
+        print(countries)
+    }
+    
+    @IBAction func mapTypeChanged(sender: UISegmentedControl) {
+        
+        /*switch sender.selectedSegmentIndex {
+        case 0:
+        self.mapView.mapType = MKMapType.Standard
+        case 1:
+        self.mapView.mapType = MKMapType.Hybrid
+        case 2:
+        self.mapView.mapType = MKMapType.Satellite
+        default:
+        self.mapView.mapType = MKMapType.Standard
+        }*/
+    }
+    
     func updateData() {
         dataSource.coutries({ (countries: NSArray) in
             print(countries)
         })
 
         dataSource.allAvailableMarkers({ (markers: NSArray) in
-
-            // add markers to map
-            for marker in markers as! [Marker] {
-                self.markersAnnotations.append(MarkerAnnotation(marker: marker))
-            }
-            // TODO: add all annotatios to main map, just for testing, will be removed
-            // self.mapView.addAnnotations(self.markersAnnotations)
-
-            // TODO: my way
-            // self.showAnnotations();
-
-            // TODO: apple way clustering
-            self.allAnnotationsMapView.addAnnotations(self.markersAnnotations)
-            
-            dispatch_async(dispatch_get_main_queue(),{
-                // TODO: apple way clustering
-                self.updateVisibleAnnotations()
-                self.updateAll()
-            })
+            // self.addMarkersToAppleMaps(markers)
+            self.addMarkersToGoogleMap(markers)
         })
     }
 
-    func showAnnotations() {
+    // MARK: GOOGLE MAPS
 
+    func initClusterManager() {
+        let renderer = GDefaultClusterRenderer(mapView: self.googleMapView)
+        self.clusterManager = GClusterManager(mapView: self.googleMapView, algorithm: NonHierarchicalDistanceBasedAlgorithm(), renderer: renderer)
+        
+        // Do not do this as GClustering expects.
+        // self.googleMapView.delegate = clusterManager
+        // We needs this controller to be google maps delegate, so just needed method of cluster manager will be called
+        // it is func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!)
+    }
+
+    func addGMMarkers() {
+        self.googleMapView.clear()
+        for markerAnnotation: GMMarkerAnnotation in self.gmMarkers {
+            // markerAnnotation.map = self.googleMapView - do not do that, clusterManager will do everhthing
+
+            markerAnnotation.marker = markerAnnotation
+            clusterManager.addItem(markerAnnotation)
+        }
+        clusterManager.cluster()
+    }
+
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location: CLLocation = locations.first {
+            googleMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            locationManager.stopUpdatingLocation()
+        }
+    }
+
+    func addMarkersToGoogleMap(markers: NSArray)
+    {
+        dispatch_async(dispatch_get_main_queue(),{
+            for marker in markers as! [Marker] {
+                self.gmMarkers.append(GMMarkerAnnotation(marker: marker))
+            }
+            self.addGMMarkers()
+        })
+    }
+    
+    func goToMarkerDetailsView(marker: Marker) {
+        let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
+
+        spotViewController.marker = marker
+        dataSource.fishForMarkerID(marker.markerID.integerValue, fishReceived: { (fish: NSArray) in
+            spotViewController.fishArray = fish as? Array<Fish>
+        })
+        self.navigationController?.pushViewController(spotViewController, animated: true)
+        let backButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Мапа", comment: "map"), style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
+
+    }
+    
+    // MARK: Google Maps delegate methods
+    
+    func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!) {
+        self.clusterManager.mapView(self.googleMapView, idleAtCameraPosition: position)
+    }
+    
+    func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
+        // TODO: do not create image each time
+        if marker.icon == UIImage(named: "m1") { // check if there is single place marker
+            if let annot: GMMarkerAnnotation = self.gmMarkerAnnotationForGMMarker(marker) {
+                let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! MarkerCalloutView
+
+                calloutView.nameLabel.text = annot.myMarker.name
+                calloutView.addressLabel.text = annot.myMarker.address
+                calloutView.updateWidth()
+
+                return calloutView
+            }
+        }
+        return nil
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        if let gmAnnotation: GMMarkerAnnotation = self.gmMarkerAnnotationForGMMarker(marker) {
+            self.goToMarkerDetailsView(gmAnnotation.myMarker)
+        }
+    }
+
+    func gmMarkerAnnotationForGMMarker(marker: GMSMarker) -> GMMarkerAnnotation? {
+        for item: GMMarkerAnnotation in self.gmMarkers {
+            let apos = item.position
+            let mpos = marker.position
+
+            if apos.latitude == mpos.latitude && apos.longitude == mpos.longitude {
+                return item
+            }
+        }
+        return nil
+    }
+
+    // MARK: - APPLE MAPS
+    func addMarkersToAppleMaps(markers: NSArray) {
+        for marker in markers as! [Marker] {
+            self.markersAnnotations.append(MarkerAnnotation(marker: marker))
+        }
+        
+        // TODO: add all annotatios to main map, just for testing, will be removed
+        // self.mapView.addAnnotations(self.markersAnnotations)
+        
+        // TODO: my clustering
+        // self.showAnnotations();
+        
+        // TODO: apple way clustering
+        self.allAnnotationsMapView.addAnnotations(self.markersAnnotations)
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            
+            for marker in markers as! [Marker] {
+                self.markersAnnotations.append(MarkerAnnotation(marker: marker))
+            }
+            
+            // TODO: apple way clustering
+            // self.updateVisibleAnnotations()
+            // self.updateAll()
+        })
+    }
+    
+    func showAnnotations() {
         // remove all annotations
         for annotation in self.markersAnnotations {
             self.mapView.removeAnnotation(annotation)
@@ -125,7 +246,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
 
     func updateVisibleAnnotations() {
-
         // This value to controls the number of off screen annotations are displayed.
         // A bigger number means more annotations, less chance of seeing annotation views pop in but decreased performance.
         // A smaller number means fewer annotations, more chance of seeing annotation views pop in but better performance.
@@ -256,7 +376,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // self.showAnnotations();
     }
 
-    // MKMapViewDelegate
+    // MARK: MKMapViewDelegate
 
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
 
@@ -320,16 +440,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
-        let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
         if let marker: Marker = annotation.marker
         {
-            spotViewController.marker = marker
-            dataSource.fishForMarkerID(marker.markerID.integerValue, fishReceived: { (fish: NSArray) in
-                spotViewController.fishArray = fish as? Array<Fish>
-            })
+            self.goToMarkerDetailsView(marker)
         }
-        self.navigationController?.pushViewController(spotViewController, animated: true)
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Мапа", comment: "map"), style: UIBarButtonItemStyle.Done, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton
     }
 }

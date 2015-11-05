@@ -59,13 +59,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8yx-XR-8j1">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <connections>
-                                    <outlet property="delegate" destination="hfb-Pu-uww" id="djp-6g-wwL"/>
-                                </connections>
-                            </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iDB-ZE-N27">
                                 <rect key="frame" x="201" y="554" width="200" height="29"/>
                                 <animations/>
@@ -82,21 +75,26 @@
                                     <action selector="mapTypeChanged:" destination="hfb-Pu-uww" eventType="valueChanged" id="ry9-60-zrA"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-ON-y9b" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iDB-ZE-N27" firstAttribute="centerX" secondItem="Ei3-CI-Dn7" secondAttribute="centerX" constant="1" id="1NI-jn-ljI"/>
+                            <constraint firstItem="DBE-ON-y9b" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leadingMargin" constant="-20" id="4m2-pd-ENE"/>
+                            <constraint firstItem="DBE-ON-y9b" firstAttribute="top" secondItem="AjA-uY-FQu" secondAttribute="bottom" id="8h1-qh-8e4"/>
                             <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="iDB-ZE-N27" secondAttribute="bottom" constant="18" id="8qS-0y-aXI"/>
-                            <constraint firstItem="8yx-XR-8j1" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leadingMargin" constant="-20" id="NFv-c3-JhY"/>
-                            <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="8yx-XR-8j1" secondAttribute="bottom" id="Q3S-3V-jkm"/>
-                            <constraint firstItem="8yx-XR-8j1" firstAttribute="top" secondItem="Ei3-CI-Dn7" secondAttribute="topMargin" id="o7o-2H-Bic"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8yx-XR-8j1" secondAttribute="trailing" constant="-20" id="zc8-f8-Egs"/>
+                            <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="DBE-ON-y9b" secondAttribute="bottom" id="bE7-Nz-KVW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DBE-ON-y9b" secondAttribute="trailing" constant="-20" id="nIY-V3-kuo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rivnefish" id="caj-OL-Hs9"/>
                     <connections>
-                        <outlet property="mapView" destination="8yx-XR-8j1" id="JWb-Fb-IGP"/>
+                        <outlet property="googleMapView" destination="DBE-ON-y9b" id="229-IC-mTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ap-DAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
