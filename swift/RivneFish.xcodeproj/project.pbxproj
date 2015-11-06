@@ -21,6 +21,7 @@
 		3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65AB1B35EAC8005BD52C /* DataSource.swift */; };
 		3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */; };
 		3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */; };
+		3E9070B01BECA98700268C7F /* rivnefish_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070AF1BECA98700268C7F /* rivnefish_icon.png */; };
 		3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */; };
 		3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175E71BDB846C00671A27 /* GQuadItem.m */; };
 		3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175E91BDB846C00671A27 /* GStaticCluster.m */; };
@@ -80,6 +81,7 @@
 		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = model/DataSource.swift; sourceTree = "<group>"; };
 		3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkerCalloutView.xib; path = ui/MarkerCalloutView.xib; sourceTree = "<group>"; };
 		3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerCalloutView.swift; path = ui/MarkerCalloutView.swift; sourceTree = "<group>"; };
+		3E9070AF1BECA98700268C7F /* rivnefish_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rivnefish_icon.png; path = resources/rivnefish_icon.png; sourceTree = "<group>"; };
 		3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GMMarkerAnnotation.swift; path = ui/GMMarkerAnnotation.swift; sourceTree = "<group>"; };
 		3E9175E51BDB846C00671A27 /* GClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GClusterAlgorithm.h; path = libs/GClustering/Clustering/Algorithms/GClusterAlgorithm.h; sourceTree = "<group>"; };
 		3E9175E61BDB846C00671A27 /* GQuadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQuadItem.h; path = libs/GClustering/Clustering/Algorithms/GQuadItem.h; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		3EB21C1A1B6616DA00517ECE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E9070AF1BECA98700268C7F /* rivnefish_icon.png */,
 				3E2A73591BD8CDFD00629D8B /* arrowDOWN.png */,
 				3E2A735A1BD8CDFD00629D8B /* arrowDOWN@2x.png */,
 				3E2A735B1BD8CDFD00629D8B /* arrowDOWN@3x.png */,
@@ -464,6 +467,7 @@
 				3E2A735E1BD8CDFD00629D8B /* arrowDOWN@3x.png in Resources */,
 				3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
+				3E9070B01BECA98700268C7F /* rivnefish_icon.png in Resources */,
 				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
 				3EB21C221B6617FB00517ECE /* m100-.png in Resources */,
 			);
