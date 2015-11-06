@@ -18,6 +18,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     let kNavigationBarPortraitHeight: CGFloat = 64.0
     let kNavigationBarLandscapeHeight: CGFloat = 32.0
     let kImageViewHeight: CGFloat = 282.0
+    let kFishViewHeight: CGFloat = 70.0
     let kContentViewHeight: CGFloat = 1.0
     let kDetailViewExpandedHeight: CGFloat = 144.0
     let kDetailViewClosedHeight: CGFloat = 22.0
@@ -45,6 +46,8 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var contentViewRightMargin: NSLayoutConstraint!
     @IBOutlet weak var contentViewLeftMargin: NSLayoutConstraint!
 
+    @IBOutlet weak var fishViewHeightContraint: NSLayoutConstraint!
+
     @IBOutlet weak var detailedInfoViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var descriptionLineViewHeightContraint: NSLayoutConstraint!
 
@@ -61,7 +64,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             if fishArray == nil || fishArray!.count <= 0 {
                 return
             }
-
+            
             // Make fish collection view know fish count (cells count) before updating each cell by index
             dispatch_async(dispatch_get_main_queue(),{
                 self.fishCollectionView.reloadData()
@@ -87,10 +90,14 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
                     }
                 }
             }
+            dispatch_async(dispatch_get_main_queue(),{
+                self.updateFishViewVisibility()
+                self.updateContent()
+            })
         }
     }
 
-    var marker: Marker! {
+    var marker: MarkerModel! {
         didSet {
             self.imgUrlsArr = self.marker.photoUrls
 
@@ -113,7 +120,9 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
                     }
                 }
             }
-            updateContent()
+            dispatch_async(dispatch_get_main_queue(),{
+                self.updateContent()
+            })
         }
     }
 
@@ -128,6 +137,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     override func viewDidLoad() {
         updateImagesViewVisibility()
+        updateFishViewVisibility()
         updateContentLineVisibilty()
         
         setupFishCollectionView()
@@ -152,7 +162,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     func updateImagesViewVisibility() {
         if let contraint = imagesViewHeightContraint {
-            imagesViewHeightContraint.constant = 0
+            contraint.constant = 0
             if let arr = imgUrlsArr {
                 if arr.count > 0 {
                     contraint.constant = kImageViewHeight
@@ -160,7 +170,20 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         }
     }
-    
+
+    func updateFishViewVisibility() {
+        // TODO: do not change fish view height if there is no fish data for now
+        return
+        if let contraint = fishViewHeightContraint {
+            contraint.constant = 0
+            if let arr = fishArray {
+                if arr.count > 0 {
+                    contraint.constant = kFishViewHeight
+                }
+            }
+        }
+    }
+
     func updateContentLineVisibilty() {
         if let contraint = descriptionLineViewHeightContraint {
             descriptionLineViewHeightContraint.constant = 0

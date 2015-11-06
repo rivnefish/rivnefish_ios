@@ -30,7 +30,7 @@ class DataParser {
             let markers = NSMutableArray(capacity: markersData.count)
             for markerDict in markersData as! [NSDictionary] {
 
-                let marker = Marker(dict: markerDict)
+                let marker = MarkerModel(dict: markerDict)
                 markers.addObject(marker)
             }
             return markers

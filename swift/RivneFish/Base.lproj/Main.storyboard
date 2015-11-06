@@ -440,6 +440,7 @@
                         <outlet property="detailedInfoViewHeightConstraint" destination="eKG-xa-UAy" id="52a-YV-xUg"/>
                         <outlet property="expandDetailInfoButton" destination="yq0-m7-99v" id="Kas-eL-pD9"/>
                         <outlet property="fishCollectionView" destination="Ziu-vd-Xuu" id="zFq-yC-QLP"/>
+                        <outlet property="fishViewHeightContraint" destination="SAW-UE-aRs" id="hPk-Rg-xon"/>
                         <outlet property="fuckingConstraint" destination="nzI-be-KWd" id="ukW-jS-7iu"/>
                         <outlet property="imagesCollectionView" destination="W6v-Ts-dCF" id="JhW-px-g4Z"/>
                         <outlet property="imagesViewHeightContraint" destination="xVs-Fc-NeH" id="BYy-dn-nyK"/>

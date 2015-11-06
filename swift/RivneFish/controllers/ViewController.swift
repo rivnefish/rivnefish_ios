@@ -22,7 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     var dataSource = DataSource()
     var markersAnnotations = [MarkerAnnotation]()
     
-    var gmMarkers = [GMMarkerAnnotation]()
+    var gmMarkers = [GMarker]()
+    var singleMarkerImageWidth: CGFloat = CGFloat(0.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         initClusterManager()
         self.googleMapView.delegate = self
         self.updateData()
+        
+        if let width = UIImage(named: "m1")?.size.width {
+            singleMarkerImageWidth = width
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,10 +101,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func addGMMarkers() {
         self.googleMapView.clear()
-        for markerAnnotation: GMMarkerAnnotation in self.gmMarkers {
+        for markerAnnotation: GMarker in self.gmMarkers {
             // markerAnnotation.map = self.googleMapView - do not do that, clusterManager will do everhthing
-
-            markerAnnotation.marker = markerAnnotation
             clusterManager.addItem(markerAnnotation)
         }
         clusterManager.cluster()
@@ -115,14 +118,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     func addMarkersToGoogleMap(markers: NSArray)
     {
         dispatch_async(dispatch_get_main_queue(),{
-            for marker in markers as! [Marker] {
-                self.gmMarkers.append(GMMarkerAnnotation(marker: marker))
+            for markerModel in markers as! [MarkerModel] {
+                let markerAnnotation = GMarker(markerModel: markerModel)
+                self.gmMarkers.append(markerAnnotation)
             }
             self.addGMMarkers()
         })
     }
-    
-    func goToMarkerDetailsView(marker: Marker) {
+
+    func goToMarkerDetailsView(marker: MarkerModel) {
         let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
 
         spotViewController.marker = marker
@@ -132,7 +136,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         self.navigationController?.pushViewController(spotViewController, animated: true)
         let backButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Мапа", comment: "map"), style: UIBarButtonItemStyle.Done, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
-
     }
     
     // MARK: Google Maps delegate methods
@@ -142,13 +145,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
     
     func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
-        // TODO: do not create image each time
-        if marker.icon == UIImage(named: "m1") { // check if there is single place marker
-            if let annot: GMMarkerAnnotation = self.gmMarkerAnnotationForGMMarker(marker) {
+        if isSinglePointMarker(marker) {
+            if let markerModel: MarkerModel = marker.userData as? MarkerModel {
                 let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! MarkerCalloutView
 
-                calloutView.nameLabel.text = annot.myMarker.name
-                calloutView.addressLabel.text = annot.myMarker.address
+                calloutView.nameLabel.text = markerModel.name
+                calloutView.addressLabel.text = markerModel.address
                 calloutView.updateWidth()
 
                 return calloutView
@@ -156,28 +158,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
         return nil
     }
-    
-    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        if let gmAnnotation: GMMarkerAnnotation = self.gmMarkerAnnotationForGMMarker(marker) {
-            self.goToMarkerDetailsView(gmAnnotation.myMarker)
+
+    // TODO: to not touching GClustering library, there is temporary solution to check if it is single marker
+    func isSinglePointMarker(marker: GMSMarker) -> Bool {
+        var returnVal = false
+        if marker.icon.size.width == singleMarkerImageWidth {
+            returnVal = true
         }
+        return returnVal
     }
 
-    func gmMarkerAnnotationForGMMarker(marker: GMSMarker) -> GMMarkerAnnotation? {
-        for item: GMMarkerAnnotation in self.gmMarkers {
-            let apos = item.position
-            let mpos = marker.position
-
-            if apos.latitude == mpos.latitude && apos.longitude == mpos.longitude {
-                return item
-            }
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        if let markerModel: MarkerModel = marker.userData as? MarkerModel {
+            self.goToMarkerDetailsView(markerModel)
         }
-        return nil
     }
 
     // MARK: - APPLE MAPS
     func addMarkersToAppleMaps(markers: NSArray) {
-        for marker in markers as! [Marker] {
+        for marker in markers as! [MarkerModel] {
             self.markersAnnotations.append(MarkerAnnotation(marker: marker))
         }
         
@@ -192,7 +191,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         
         dispatch_async(dispatch_get_main_queue(),{
             
-            for marker in markers as! [Marker] {
+            for marker in markers as! [MarkerModel] {
                 self.markersAnnotations.append(MarkerAnnotation(marker: marker))
             }
             
@@ -315,10 +314,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
                                     if let a = annotation.clusterAnnotation {
                                         annotation.coordinate = a.coordinate
                                     }
-                                    }, completion: {
-                                        (value: Bool) in
-                                        annotation.coordinate = actualCoordinate
-                                        self.mapView.removeAnnotation(annotation)
+                                }, completion: {
+                                    (value: Bool) in
+                                    annotation.coordinate = actualCoordinate
+                                    self.mapView.removeAnnotation(annotation)
                                 })
                             }
                         }
@@ -440,7 +439,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
-        if let marker: Marker = annotation.marker
+        if let marker: MarkerModel = annotation.marker
         {
             self.goToMarkerDetailsView(marker)
         }

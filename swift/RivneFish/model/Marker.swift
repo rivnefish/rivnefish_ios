@@ -42,7 +42,7 @@ let kCountryKey = "country"
 let kPhotosKey = "photos"
 let kUrlKey = "url"
 
-class Marker {
+class MarkerModel {
 
     var markerID: NSNumber
     var lat: Float

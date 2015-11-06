@@ -6,18 +6,24 @@
 //  Copyright © 2015 rivnefish. All rights reserved.
 //
 
-class GMMarkerAnnotation: GMSMarker, GClusterItem {
-    let myMarker: Marker
+// Proxy for GClustering library
+
+class GMarker: NSObject, GClusterItem {
+    let markerModel: MarkerModel
     
     var marker: GMSMarker!
-    init(marker: Marker) {
-        self.myMarker = marker
-        super.init()
+    var position: CLLocationCoordinate2D
 
-        position = CLLocationCoordinate2D(latitude: CLLocationDegrees(myMarker.lat), longitude: CLLocationDegrees(myMarker.lon))
+    init(markerModel: MarkerModel) {
+        self.markerModel = markerModel
+        position = CLLocationCoordinate2D(latitude: CLLocationDegrees(markerModel.lat), longitude: CLLocationDegrees(markerModel.lon))
 
-        icon = UIImage(named: "m1")
-        groundAnchor = CGPoint(x: 0.5, y: 0.5)
-        appearAnimation = kGMSMarkerAnimationPop
+        let marker: GMSMarker = GMSMarker()
+        marker.icon = UIImage(named: "m1")
+        marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.userData = markerModel
+        marker.position = position
+        self.marker = marker
     }
 }

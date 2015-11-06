@@ -10,13 +10,13 @@ import Foundation
 import MapKit
 
 class MarkerAnnotation : NSObject, MKAnnotation {
-    var marker: Marker
+    var marker: MarkerModel
 
     var clusterAnnotation: MarkerAnnotation?
     var containedAnnotations: Array<MarkerAnnotation>?
     var innerCoordinate: CLLocationCoordinate2D
 
-    init(marker: Marker) {
+    init(marker: MarkerModel) {
         self.marker = marker
         self.containedAnnotations = Array<MarkerAnnotation>()
         self.innerCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(marker.lat), longitude: CLLocationDegrees(marker.lon))
