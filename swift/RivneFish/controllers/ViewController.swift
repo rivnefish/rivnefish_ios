@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SystemConfiguration
 
 class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
@@ -24,6 +25,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     
     var gmMarkers = [GMarker]()
     var singleMarkerImageWidth: CGFloat = CGFloat(0.0)
+    
+    // will be init in viewDidLoad
+    var reach: Reach!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         if let width = UIImage(named: "m1")?.size.width {
             singleMarkerImageWidth = width
         }
+        
+        self.initRechability()
+    }
+    
+    func initRechability() {
+        self.reach = Reach.reachabilityForInternetConnection()
+
+        // Set the blocks
+        self.reach!.reachableBlock = {
+            (let reach: Reach!) -> Void in
+            
+            // keep in mind this is called on a background thread
+            // and if you are updating the UI it needs to happen
+            // on the main thread, like this:
+            dispatch_async(dispatch_get_main_queue()) {
+                // Simply update data when connection appear
+                self.updateData()
+            }
+        }
+
+        self.reach!.unreachableBlock = {
+            (let reach: Reach!) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                // Show message error when connection is lost
+                self.showConnectionErrorAlert()
+            }
+        }
+        self.reach!.startNotifier()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,14 +109,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
     
     func updateData() {
-        dataSource.coutries({ (countries: NSArray) in
-            print(countries)
-        })
+        //dataSource.coutries({ (countries: NSArray) in
+        //    print(countries)
+        //})
 
         dataSource.allAvailableMarkers({ (markers: NSArray) in
             // self.addMarkersToAppleMaps(markers)
-            self.addMarkersToGoogleMap(markers)
+
+            if (markers.count == 0) {
+                self.showConnectionErrorAlert()
+            } else {
+                self.addMarkersToGoogleMap(markers)
+            }
         })
+    }
+
+    // TODO: move to some ui utils class
+    func showConnectionErrorAlert() {
+        let title = NSLocalizedString("Помилка Підключення", comment: "ConnectionError")
+        let message = NSLocalizedString("Немає підключення або відсутній звя'зок з сервером", comment: "You are offline or there is no connection with server")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
     // MARK: GOOGLE MAPS

@@ -24,6 +24,7 @@
 		3E9070B01BECA98700268C7F /* rivnefish_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070AF1BECA98700268C7F /* rivnefish_icon.png */; };
 		3E9070B31BECBACC00268C7F /* m1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070B11BECBACC00268C7F /* m1@2x.png */; };
 		3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070B21BECBACC00268C7F /* m1@3x.png */; };
+		3E9070BE1BF330F900268C7F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9070BD1BF330F900268C7F /* Reachability.m */; };
 		3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */; };
 		3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175E71BDB846C00671A27 /* GQuadItem.m */; };
 		3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175E91BDB846C00671A27 /* GStaticCluster.m */; };
@@ -86,6 +87,8 @@
 		3E9070AF1BECA98700268C7F /* rivnefish_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rivnefish_icon.png; path = resources/rivnefish_icon.png; sourceTree = "<group>"; };
 		3E9070B11BECBACC00268C7F /* m1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m1@2x.png"; path = "resources/m1@2x.png"; sourceTree = "<group>"; };
 		3E9070B21BECBACC00268C7F /* m1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m1@3x.png"; path = "resources/m1@3x.png"; sourceTree = "<group>"; };
+		3E9070BC1BF330F900268C7F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = libs/Reachability/Reachability.h; sourceTree = "<group>"; };
+		3E9070BD1BF330F900268C7F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = libs/Reachability/Reachability.m; sourceTree = "<group>"; };
 		3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GMMarkerAnnotation.swift; path = ui/GMMarkerAnnotation.swift; sourceTree = "<group>"; };
 		3E9175E51BDB846C00671A27 /* GClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GClusterAlgorithm.h; path = libs/GClustering/Clustering/Algorithms/GClusterAlgorithm.h; sourceTree = "<group>"; };
 		3E9175E61BDB846C00671A27 /* GQuadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQuadItem.h; path = libs/GClustering/Clustering/Algorithms/GQuadItem.h; sourceTree = "<group>"; };
@@ -215,10 +218,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3E9070BB1BF330D500268C7F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				3E9070BC1BF330F900268C7F /* Reachability.h */,
+				3E9070BD1BF330F900268C7F /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		3E9175DB1BDB838F00671A27 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
 				3E9175DF1BDB83E600671A27 /* GClustering */,
+				3E9070BB1BF330D500268C7F /* Reachability */,
 			);
 			name = Libs;
 			sourceTree = "<group>";
@@ -547,6 +560,7 @@
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
+				3E9070BE1BF330F900268C7F /* Reachability.m in Sources */,
 				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */,
 				3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */,

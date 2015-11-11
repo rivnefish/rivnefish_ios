@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfV-Fp-bGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-92" y="503"/>
+            <point key="canvasLocation" x="-99" y="508"/>
         </scene>
         <!--Fish-->
         <scene sceneID="apT-O4-kP9">
@@ -59,22 +59,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iDB-ZE-N27">
-                                <rect key="frame" x="201" y="554" width="200" height="29"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="Kqn-bg-FcH"/>
-                                    <constraint firstAttribute="width" constant="200" id="zH7-DJ-sxw"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Карта"/>
-                                    <segment title="Мікс"/>
-                                    <segment title="Супутник"/>
-                                </segments>
-                                <connections>
-                                    <action selector="mapTypeChanged:" destination="hfb-Pu-uww" eventType="valueChanged" id="ry9-60-zrA"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-ON-y9b" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
@@ -84,10 +68,8 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iDB-ZE-N27" firstAttribute="centerX" secondItem="Ei3-CI-Dn7" secondAttribute="centerX" constant="1" id="1NI-jn-ljI"/>
                             <constraint firstItem="DBE-ON-y9b" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leadingMargin" constant="-20" id="4m2-pd-ENE"/>
                             <constraint firstItem="DBE-ON-y9b" firstAttribute="top" secondItem="AjA-uY-FQu" secondAttribute="bottom" id="8h1-qh-8e4"/>
-                            <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="iDB-ZE-N27" secondAttribute="bottom" constant="18" id="8qS-0y-aXI"/>
                             <constraint firstItem="sJh-gA-kqe" firstAttribute="top" secondItem="DBE-ON-y9b" secondAttribute="bottom" id="bE7-Nz-KVW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DBE-ON-y9b" secondAttribute="trailing" constant="-20" id="nIY-V3-kuo"/>
                         </constraints>
@@ -99,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ap-DAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="508"/>
+            <point key="canvasLocation" x="586" y="508"/>
         </scene>
         <!--Spot View Controller-->
         <scene sceneID="e1d-oY-1ZN">
@@ -455,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FS5-nc-9Lv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="421"/>
+            <point key="canvasLocation" x="1216" y="508"/>
         </scene>
     </scenes>
     <resources>
