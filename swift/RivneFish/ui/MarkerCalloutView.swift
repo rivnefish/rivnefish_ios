@@ -16,6 +16,10 @@ class MarkerCalloutView : UIView {
     @IBOutlet weak var nameLabelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var addressLabelHeightConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var arrowIcon: UIImageView!
+    @IBOutlet weak var arrowIconRightMarginConstraint: NSLayoutConstraint!
+    @IBOutlet weak var arrowIconLeftMarginConstraint: NSLayoutConstraint!
+
     func updateWidth() {
         let addressWidth = self.addressLabel.intrinsicContentSize().width
         let nameWidth = self.nameLabel.intrinsicContentSize().width
@@ -24,7 +28,7 @@ class MarkerCalloutView : UIView {
         let addressHeight = self.addressLabel.text?.characters.count > 0 ? addressLabelHeightConstraint.constant : 0
 
         let margin = CGFloat(20.0)
-        var width = max(addressWidth, nameWidth)
+        var width = max(addressWidth, nameWidth) + (arrowIcon.frame.width + arrowIconRightMarginConstraint.constant + arrowIconLeftMarginConstraint.constant)
         let maxWidth = UIScreen.mainScreen().bounds.width - margin * 2
 
         if width > maxWidth {
