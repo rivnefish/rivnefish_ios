@@ -14,6 +14,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oq7-XZ-X1m">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                     <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
             </subviews>
             <animations/>
@@ -24,7 +25,7 @@
                 <constraint firstItem="Oq7-XZ-X1m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L8j-fZ-nDx"/>
                 <constraint firstAttribute="bottom" secondItem="Oq7-XZ-X1m" secondAttribute="bottom" id="Wyk-JI-BYu"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>

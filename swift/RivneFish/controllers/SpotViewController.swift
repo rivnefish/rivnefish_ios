@@ -15,8 +15,6 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     let kFishCellIdentifier = "fishImagesCellIdentifier"
     let kFishCellWidth: CGFloat = 70.0
 
-    let kNavigationBarPortraitHeight: CGFloat = 64.0
-    let kNavigationBarLandscapeHeight: CGFloat = 32.0
     let kImageViewHeight: CGFloat = 282.0
     let kFishViewHeight: CGFloat = 70.0
     let kContentViewHeight: CGFloat = 1.0
@@ -143,12 +141,12 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupFishCollectionView()
 
         setupImagesCollectionView()
-        updateContent()
         updateImagesViewTopConstraint()
         updateLabels()
         
         // if just does not work from story board
         fuckingConstraint.constant = 20
+        updateContent()
     }
 
     @IBAction func urlButtonTouched(sender: UIButton) {
@@ -257,7 +255,9 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func updateImagesViewTopConstraint() {
-        self.imagesViewTopConstraint.constant = (UIApplication.sharedApplication().statusBarOrientation == UIInterfaceOrientation.Portrait ? kNavigationBarPortraitHeight : kNavigationBarLandscapeHeight)
+        if let height = self.navigationController?.navigationBar.frame.size.height {
+            self.imagesViewTopConstraint.constant = height + UIApplication.sharedApplication().statusBarFrame.size.height
+        }
     }
 
     // UICollectionView methods
