@@ -16,12 +16,12 @@
 		3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD78A1AD7194E0036C8CA /* Images.xcassets */; };
 		3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */; };
 		3E4BD79A1AD7194E0036C8CA /* RivneFishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */; };
+		3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6F44FC1BF4876900D2C4F9 /* app_icon.png */; };
 		3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C65A51B35DD5A005BD52C /* MapKit.framework */; };
 		3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65A71B35DF5E005BD52C /* FishViewController.swift */; };
 		3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65AB1B35EAC8005BD52C /* DataSource.swift */; };
 		3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */; };
 		3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */; };
-		3E9070B01BECA98700268C7F /* rivnefish_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070AF1BECA98700268C7F /* rivnefish_icon.png */; };
 		3E9070B31BECBACC00268C7F /* m1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070B11BECBACC00268C7F /* m1@2x.png */; };
 		3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070B21BECBACC00268C7F /* m1@3x.png */; };
 		3E9070BE1BF330F900268C7F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9070BD1BF330F900268C7F /* Reachability.m */; };
@@ -79,12 +79,12 @@
 		3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RivneFishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BD7981AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivneFishTests.swift; sourceTree = "<group>"; };
+		3E6F44FC1BF4876900D2C4F9 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon.png; path = resources/app_icon.png; sourceTree = "<group>"; };
 		3E8C65A51B35DD5A005BD52C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3E8C65A71B35DF5E005BD52C /* FishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishViewController.swift; path = controllers/FishViewController.swift; sourceTree = "<group>"; };
 		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = model/DataSource.swift; sourceTree = "<group>"; };
 		3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkerCalloutView.xib; path = ui/MarkerCalloutView.xib; sourceTree = "<group>"; };
 		3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerCalloutView.swift; path = ui/MarkerCalloutView.swift; sourceTree = "<group>"; };
-		3E9070AF1BECA98700268C7F /* rivnefish_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rivnefish_icon.png; path = resources/rivnefish_icon.png; sourceTree = "<group>"; };
 		3E9070B11BECBACC00268C7F /* m1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m1@2x.png"; path = "resources/m1@2x.png"; sourceTree = "<group>"; };
 		3E9070B21BECBACC00268C7F /* m1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "m1@3x.png"; path = "resources/m1@3x.png"; sourceTree = "<group>"; };
 		3E9070BC1BF330F900268C7F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = libs/Reachability/Reachability.h; sourceTree = "<group>"; };
@@ -327,9 +327,9 @@
 		3EB21C1A1B6616DA00517ECE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E6F44FC1BF4876900D2C4F9 /* app_icon.png */,
 				3E9070B11BECBACC00268C7F /* m1@2x.png */,
 				3E9070B21BECBACC00268C7F /* m1@3x.png */,
-				3E9070AF1BECA98700268C7F /* rivnefish_icon.png */,
 				3E2A73591BD8CDFD00629D8B /* arrowDOWN.png */,
 				3E2A735A1BD8CDFD00629D8B /* arrowDOWN@2x.png */,
 				3E2A735B1BD8CDFD00629D8B /* arrowDOWN@3x.png */,
@@ -484,11 +484,11 @@
 				3EB21C201B6617FB00517ECE /* m2-9.png in Resources */,
 				3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */,
 				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
+				3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */,
 				3E2A735D1BD8CDFD00629D8B /* arrowDOWN@2x.png in Resources */,
 				3E2A735E1BD8CDFD00629D8B /* arrowDOWN@3x.png in Resources */,
 				3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
-				3E9070B01BECA98700268C7F /* rivnefish_icon.png in Resources */,
 				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
 				3EB21C221B6617FB00517ECE /* m100-.png in Resources */,
 			);
