@@ -28,6 +28,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     
     // will be init in viewDidLoad
     var reach: Reach!
+    
+    var defaultLocation: CLLocation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             singleMarkerImageWidth = width
         }
         
+        // TODO: Save it not here
+        defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
+
         self.initRechability()
     }
     
@@ -86,8 +91,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             googleMapView.myLocationEnabled = true
             googleMapView.settings.myLocationButton = true
         }
+        else
+        {
+            googleMapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: 10, bearing: 0, viewingAngle: 0)
+            locationManager.stopUpdatingLocation()
+        }
     }
-    
+
     // MARK: Common methods
     
     func countriesReceived(countries: NSArray) {
@@ -156,7 +166,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location: CLLocation = locations.first {
-            googleMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            googleMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0)
             locationManager.stopUpdatingLocation()
         }
     }
