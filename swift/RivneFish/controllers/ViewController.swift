@@ -211,6 +211,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
                 return calloutView
             }
+        } else {
+            googleMapView.animateToCameraPosition(GMSCameraPosition(target: marker.position, zoom: googleMapView.camera.zoom + 1, bearing: 0, viewingAngle: 0))
         }
         return nil
     }
