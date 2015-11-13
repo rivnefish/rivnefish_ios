@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="gTr-4W-BKy">
-                    <rect key="frame" x="182" y="0.0" width="12" height="44"/>
+                    <rect key="frame" x="186" y="0.0" width="12" height="44"/>
                     <animations/>
                     <color key="tintColor" red="0.98431372549999996" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -44,13 +44,13 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="kPK-Bj-Z14" secondAttribute="bottom" id="80l-Zi-jds"/>
                 <constraint firstItem="gTr-4W-BKy" firstAttribute="top" secondItem="bqo-XV-cfR" secondAttribute="top" id="CsB-Fc-7rs"/>
-                <constraint firstAttribute="trailing" secondItem="gTr-4W-BKy" secondAttribute="trailing" constant="4" id="IUW-Xz-Gwb"/>
+                <constraint firstAttribute="trailing" secondItem="gTr-4W-BKy" secondAttribute="trailing" id="IUW-Xz-Gwb"/>
                 <constraint firstAttribute="bottom" secondItem="gTr-4W-BKy" secondAttribute="bottom" id="LlI-F2-npd"/>
-                <constraint firstItem="gTr-4W-BKy" firstAttribute="leading" secondItem="kPK-Bj-Z14" secondAttribute="trailing" constant="4" id="Rti-ML-Zb3"/>
+                <constraint firstItem="gTr-4W-BKy" firstAttribute="leading" secondItem="kPK-Bj-Z14" secondAttribute="trailing" constant="8" id="Rti-ML-Zb3"/>
                 <constraint firstItem="4i2-yt-Gbu" firstAttribute="leading" secondItem="bqo-XV-cfR" secondAttribute="leading" id="YLJ-sA-1OR"/>
                 <constraint firstItem="kPK-Bj-Z14" firstAttribute="leading" secondItem="bqo-XV-cfR" secondAttribute="leading" id="l1x-jE-4bp"/>
                 <constraint firstItem="4i2-yt-Gbu" firstAttribute="top" secondItem="bqo-XV-cfR" secondAttribute="top" id="qK3-KB-Blo"/>
-                <constraint firstItem="gTr-4W-BKy" firstAttribute="leading" secondItem="4i2-yt-Gbu" secondAttribute="trailing" constant="4" id="tXl-Iv-QTn"/>
+                <constraint firstItem="gTr-4W-BKy" firstAttribute="leading" secondItem="4i2-yt-Gbu" secondAttribute="trailing" constant="8" id="tXl-Iv-QTn"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
