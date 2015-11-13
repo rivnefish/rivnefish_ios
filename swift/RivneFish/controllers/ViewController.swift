@@ -93,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
         else
         {
-            googleMapView.camera = GMSCameraPosition(target: defaultLocation.coordinate, zoom: 10, bearing: 0, viewingAngle: 0)
+            googleMapView.animateToCameraPosition(GMSCameraPosition(target: defaultLocation.coordinate, zoom: 10, bearing: 0, viewingAngle: 0))
             locationManager.stopUpdatingLocation()
         }
     }
@@ -166,7 +166,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location: CLLocation = locations.first {
-            googleMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0)
+            googleMapView.animateToCameraPosition(GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0))
             locationManager.stopUpdatingLocation()
         }
     }
