@@ -75,14 +75,14 @@
 		3E2A73591BD8CDFD00629D8B /* arrowDOWN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowDOWN.png; path = resources/arrowDOWN.png; sourceTree = "<group>"; };
 		3E2A735A1BD8CDFD00629D8B /* arrowDOWN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowDOWN@2x.png"; path = "resources/arrowDOWN@2x.png"; sourceTree = "<group>"; };
 		3E2A735B1BD8CDFD00629D8B /* arrowDOWN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowDOWN@3x.png"; path = "resources/arrowDOWN@3x.png"; sourceTree = "<group>"; };
-		3E4BD77E1AD7194E0036C8CA /* RivneFish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivneFish.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4BD77E1AD7194E0036C8CA /* Rivnefish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rivnefish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BD7821AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7831AD7194E0036C8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E4BD7851AD7194E0036C8CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = controllers/ViewController.swift; sourceTree = "<group>"; };
 		3E4BD7881AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E4BD78A1AD7194E0036C8CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3E4BD78D1AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RivneFishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E4BD7931AD7194E0036C8CA /* Rivnefish.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rivnefish.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BD7981AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivneFishTests.swift; sourceTree = "<group>"; };
 		3E6F44FC1BF4876900D2C4F9 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon.png; path = resources/app_icon.png; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 		3E4BD77F1AD7194E0036C8CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3E4BD77E1AD7194E0036C8CA /* RivneFish.app */,
-				3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */,
+				3E4BD77E1AD7194E0036C8CA /* Rivnefish.app */,
+				3E4BD7931AD7194E0036C8CA /* Rivnefish.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 			);
 			name = RivneFish;
 			productName = RivneFish;
-			productReference = 3E4BD77E1AD7194E0036C8CA /* RivneFish.app */;
+			productReference = 3E4BD77E1AD7194E0036C8CA /* Rivnefish.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3E4BD7921AD7194E0036C8CA /* RivneFishTests */ = {
@@ -436,7 +436,7 @@
 			);
 			name = RivneFishTests;
 			productName = RivneFishTests;
-			productReference = 3E4BD7931AD7194E0036C8CA /* RivneFishTests.xctest */;
+			productReference = 3E4BD7931AD7194E0036C8CA /* Rivnefish.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -452,6 +452,7 @@
 				TargetAttributes = {
 					3E4BD77D1AD7194E0036C8CA = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 55ZA4X9878;
 					};
 					3E4BD7921AD7194E0036C8CA = {
 						CreatedOnToolsVersion = 6.2;
@@ -720,12 +721,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
+				PRODUCT_NAME = Rivnefish;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -738,12 +740,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
+				PRODUCT_NAME = Rivnefish;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -764,8 +767,8 @@
 				INFOPLIST_FILE = RivneFishTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RivneFish.app/RivneFish";
+				PRODUCT_NAME = Rivnefish;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rivnefish.app/Rivnefish";
 			};
 			name = Debug;
 		};
@@ -780,8 +783,8 @@
 				INFOPLIST_FILE = RivneFishTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RivneFish.app/RivneFish";
+				PRODUCT_NAME = Rivnefish;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rivnefish.app/Rivnefish";
 			};
 			name = Release;
 		};
