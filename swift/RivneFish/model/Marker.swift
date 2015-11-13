@@ -77,7 +77,7 @@ class MarkerModel {
         if let val = area {
             return NSLocalizedString("\(val / 100)Га", comment: "area")
         }
-        return NSLocalizedString("немає ніформації", comment: "no_information")
+        return NSLocalizedString("-", comment: "no_information")
     }
 
     var contactStr: String {
@@ -100,7 +100,7 @@ class MarkerModel {
                 return NSLocalizedString("безкоштовно", comment: "free")
             }
         }
-        return NSLocalizedString("немає ніформації", comment: "no_information")
+        return NSLocalizedString("-", comment: "no_information")
     }
 
     var boatUsaveStr: String {
@@ -111,14 +111,14 @@ class MarkerModel {
                 return NSLocalizedString("ні", comment: "no")
             }
         }
-        return NSLocalizedString("немає ніформації", comment: "no_information")
+        return NSLocalizedString("-", comment: "no_information")
     }
 
     func readableStrForStrValue(val: String?) -> String {
         if let v = val {
             return v
         }
-        return NSLocalizedString("немає ніформації", comment: "no_information")
+        return NSLocalizedString("-", comment: "no_information")
     }
 
     init(dict: NSDictionary)
