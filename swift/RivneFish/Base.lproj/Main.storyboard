@@ -31,7 +31,7 @@
         <!--Fish-->
         <scene sceneID="apT-O4-kP9">
             <objects>
-                <viewController storyboardIdentifier="FishViewController" title="Fish" id="TTx-kC-7R8" customClass="FishViewController" customModule="RivneFish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FishViewController" title="Fish" id="TTx-kC-7R8" customClass="FishViewController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FFU-zB-O5C"/>
                         <viewControllerLayoutGuide type="bottom" id="bEH-BN-cff"/>
@@ -50,7 +50,7 @@
         <!--Rivnefish-->
         <scene sceneID="9de-RS-QHj">
             <objects>
-                <viewController storyboardIdentifier="ViewController" title="Rivnefish" id="hfb-Pu-uww" customClass="ViewController" customModule="RivneFish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="Rivnefish" id="hfb-Pu-uww" customClass="ViewController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AjA-uY-FQu"/>
                         <viewControllerLayoutGuide type="bottom" id="sJh-gA-kqe"/>
@@ -86,7 +86,7 @@
         <!--Spot View Controller-->
         <scene sceneID="e1d-oY-1ZN">
             <objects>
-                <viewController storyboardIdentifier="SpotViewController" automaticallyAdjustsScrollViewInsets="NO" id="HSr-FR-hf2" customClass="SpotViewController" customModule="RivneFish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpotViewController" automaticallyAdjustsScrollViewInsets="NO" id="HSr-FR-hf2" customClass="SpotViewController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8AC-AT-YQY"/>
                         <viewControllerLayoutGuide type="bottom" id="Qc6-HZ-Us0"/>
@@ -130,7 +130,7 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rw-xi-9A0">
-                                        <rect key="frame" x="0.0" y="590" width="600" height="89"/>
+                                        <rect key="frame" x="0.0" y="536" width="600" height="89"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y4Y-tJ-0rT">
                                                 <rect key="frame" x="8" y="0.0" width="584" height="89"/>
@@ -152,7 +152,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32.234, 23.2342" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-o4-mwr">
-                                        <rect key="frame" x="8" y="510" width="584" height="14"/>
+                                        <rect key="frame" x="8" y="456" width="584" height="14"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="7cI-8t-mhs"/>
@@ -192,18 +192,8 @@
                                             <outlet property="delegate" destination="HSr-FR-hf2" id="8rK-Xm-lpR"/>
                                         </connections>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ph-ZF-sOv">
-                                        <rect key="frame" x="20" y="432" width="560" height="46"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="46" id="gGR-cz-b3u"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhn-sR-i9N">
-                                        <rect key="frame" x="8" y="687" width="584" height="1"/>
+                                        <rect key="frame" x="8" y="633" width="584" height="1"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.98431372549999996" green="0.52156862749999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -211,7 +201,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Детальніше" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ7-Jq-bw1">
-                                        <rect key="frame" x="8" y="696" width="584" height="21"/>
+                                        <rect key="frame" x="8" y="642" width="584" height="21"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="N3J-9i-W7t"/>
@@ -221,7 +211,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TrO-jv-enp">
-                                        <rect key="frame" x="8" y="692" width="584" height="30"/>
+                                        <rect key="frame" x="8" y="638" width="584" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Xlg-WN-3j0"/>
@@ -232,7 +222,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32.234, 23.2342" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1Y-HS-g4I">
-                                        <rect key="frame" x="8" y="486" width="584" height="16"/>
+                                        <rect key="frame" x="8" y="432" width="584" height="16"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="ehk-gi-Bvg"/>
@@ -242,7 +232,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2Y-yG-E7X" userLabel="DescriptionLineView">
-                                        <rect key="frame" x="8" y="562" width="584" height="20"/>
+                                        <rect key="frame" x="8" y="508" width="584" height="20"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq0-m7-99v">
                                                 <rect key="frame" x="272" y="0.0" width="41" height="20"/>
@@ -266,7 +256,7 @@
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LY-vK-b2T" userLabel="DetailInfoView">
-                                        <rect key="frame" x="8" y="532" width="584" height="22"/>
+                                        <rect key="frame" x="8" y="478" width="584" height="22"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Оплата:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnx-sO-BdY">
                                                 <rect key="frame" x="0.0" y="0.0" width="164" height="16"/>
@@ -361,7 +351,6 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="4Ph-ZF-sOv" firstAttribute="centerX" secondItem="0Bm-Wh-kKc" secondAttribute="centerX" id="1Yg-BK-MrZ"/>
                                     <constraint firstItem="dQ7-Jq-bw1" firstAttribute="top" secondItem="bhn-sR-i9N" secondAttribute="bottom" constant="8" id="5pR-4F-dU7"/>
                                     <constraint firstItem="DZa-o4-mwr" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" constant="8" id="7ho-SV-h0p"/>
                                     <constraint firstItem="TrO-jv-enp" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" constant="8" id="8NY-0y-fn4"/>
@@ -371,6 +360,7 @@
                                     <constraint firstItem="W6v-Ts-dCF" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" id="CUs-4e-45G"/>
                                     <constraint firstItem="Ziu-vd-Xuu" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" id="HWX-Je-vF9"/>
                                     <constraint firstItem="Ziu-vd-Xuu" firstAttribute="top" secondItem="W6v-Ts-dCF" secondAttribute="bottom" constant="8" id="INN-kD-ghF"/>
+                                    <constraint firstItem="R1Y-HS-g4I" firstAttribute="top" secondItem="Ziu-vd-Xuu" secondAttribute="bottom" constant="8" id="Jde-1J-95Z"/>
                                     <constraint firstAttribute="trailing" secondItem="9Rw-xi-9A0" secondAttribute="trailing" id="KuO-iL-jEJ"/>
                                     <constraint firstItem="d2Y-yG-E7X" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" constant="8" id="L6F-Nv-0uj"/>
                                     <constraint firstItem="bhn-sR-i9N" firstAttribute="top" secondItem="9Rw-xi-9A0" secondAttribute="bottom" constant="8" id="LU1-h1-grQ"/>
@@ -378,14 +368,10 @@
                                     <constraint firstItem="R1Y-HS-g4I" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" constant="8" id="Mpw-P2-lxw"/>
                                     <constraint firstItem="d2Y-yG-E7X" firstAttribute="top" secondItem="5LY-vK-b2T" secondAttribute="bottom" constant="8" id="OHr-db-Pxq"/>
                                     <constraint firstItem="W6v-Ts-dCF" firstAttribute="top" secondItem="0Bm-Wh-kKc" secondAttribute="top" constant="64" id="T2G-4Y-XbU"/>
-                                    <constraint firstAttribute="trailing" secondItem="4Ph-ZF-sOv" secondAttribute="trailing" constant="20" id="XVL-MZ-jL1"/>
                                     <constraint firstItem="DZa-o4-mwr" firstAttribute="top" secondItem="R1Y-HS-g4I" secondAttribute="bottom" constant="8" id="YZt-J8-IJ3"/>
                                     <constraint firstItem="9Rw-xi-9A0" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" id="ZFi-pW-BfI"/>
                                     <constraint firstItem="bhn-sR-i9N" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" constant="8" id="Zxr-32-2TM"/>
-                                    <constraint firstItem="4Ph-ZF-sOv" firstAttribute="leading" secondItem="0Bm-Wh-kKc" secondAttribute="leading" constant="20" id="alC-Vy-SE0"/>
-                                    <constraint firstItem="4Ph-ZF-sOv" firstAttribute="top" secondItem="Ziu-vd-Xuu" secondAttribute="bottom" constant="8" id="bEh-uN-zpW"/>
                                     <constraint firstAttribute="trailing" secondItem="dQ7-Jq-bw1" secondAttribute="trailing" constant="8" id="c7L-FX-2ky"/>
-                                    <constraint firstItem="R1Y-HS-g4I" firstAttribute="top" secondItem="4Ph-ZF-sOv" secondAttribute="bottom" constant="8" id="c7U-O6-os8"/>
                                     <constraint firstAttribute="trailing" secondItem="bhn-sR-i9N" secondAttribute="trailing" constant="8" id="eox-NC-Rbt"/>
                                     <constraint firstItem="TrO-jv-enp" firstAttribute="top" secondItem="bhn-sR-i9N" secondAttribute="bottom" constant="4" id="fAg-HL-WhP"/>
                                     <constraint firstAttribute="trailing" secondItem="DZa-o4-mwr" secondAttribute="trailing" constant="8" id="hKb-4p-7Ta"/>
@@ -423,6 +409,7 @@
                         <outlet property="expandDetailInfoButton" destination="yq0-m7-99v" id="Kas-eL-pD9"/>
                         <outlet property="fishCollectionView" destination="Ziu-vd-Xuu" id="zFq-yC-QLP"/>
                         <outlet property="fishViewHeightContraint" destination="SAW-UE-aRs" id="hPk-Rg-xon"/>
+                        <outlet property="fishViewTopMarginConstraint" destination="INN-kD-ghF" id="LD4-m8-eaR"/>
                         <outlet property="fuckingConstraint" destination="nzI-be-KWd" id="ukW-jS-7iu"/>
                         <outlet property="imagesCollectionView" destination="W6v-Ts-dCF" id="JhW-px-g4Z"/>
                         <outlet property="imagesViewHeightContraint" destination="xVs-Fc-NeH" id="BYy-dn-nyK"/>
@@ -431,7 +418,6 @@
                         <outlet property="permitLabel" destination="unk-ue-Whb" id="BRX-n1-3sP"/>
                         <outlet property="placeAddressLabel" destination="R1Y-HS-g4I" id="l4y-we-T3v"/>
                         <outlet property="placeCoordinatesLabel" destination="DZa-o4-mwr" id="jX2-ja-Otq"/>
-                        <outlet property="placeNameLabel" destination="4Ph-ZF-sOv" id="4c6-Zd-Yov"/>
                         <outlet property="squareLabel" destination="6Pz-zn-LVK" id="5XV-C1-tbq"/>
                     </connections>
                 </viewController>
