@@ -7,27 +7,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="bqo-XV-cfR" customClass="MarkerCalloutView" customModule="RivneFish" customModuleProvider="target">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="bqo-XV-cfR" customClass="MarkerCalloutView" customModule="Rivnefish" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="198" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i2-yt-Gbu">
-                    <rect key="frame" x="0.0" y="0.0" width="178" height="24"/>
+                    <rect key="frame" x="0.0" y="0.0" width="178" height="44"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="gGp-EY-RBh"/>
+                        <constraint firstAttribute="height" constant="44" id="gGp-EY-RBh"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPK-Bj-Z14">
-                    <rect key="frame" x="0.0" y="23" width="178" height="21"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="mJY-8X-Ld2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -42,13 +32,10 @@
             </subviews>
             <animations/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="kPK-Bj-Z14" secondAttribute="bottom" id="80l-Zi-jds"/>
                 <constraint firstItem="gTr-4W-BKy" firstAttribute="top" secondItem="bqo-XV-cfR" secondAttribute="top" id="CsB-Fc-7rs"/>
                 <constraint firstAttribute="trailing" secondItem="gTr-4W-BKy" secondAttribute="trailing" id="IUW-Xz-Gwb"/>
                 <constraint firstAttribute="bottom" secondItem="gTr-4W-BKy" secondAttribute="bottom" id="LlI-F2-npd"/>
-                <constraint firstItem="gTr-4W-BKy" firstAttribute="leading" secondItem="kPK-Bj-Z14" secondAttribute="trailing" constant="8" id="Rti-ML-Zb3"/>
                 <constraint firstItem="4i2-yt-Gbu" firstAttribute="leading" secondItem="bqo-XV-cfR" secondAttribute="leading" id="YLJ-sA-1OR"/>
-                <constraint firstItem="kPK-Bj-Z14" firstAttribute="leading" secondItem="bqo-XV-cfR" secondAttribute="leading" id="l1x-jE-4bp"/>
                 <constraint firstItem="4i2-yt-Gbu" firstAttribute="top" secondItem="bqo-XV-cfR" secondAttribute="top" id="qK3-KB-Blo"/>
                 <constraint firstItem="gTr-4W-BKy" firstAttribute="leading" secondItem="4i2-yt-Gbu" secondAttribute="trailing" constant="8" id="tXl-Iv-QTn"/>
             </constraints>
@@ -57,15 +44,13 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="addressLabel" destination="kPK-Bj-Z14" id="Tq9-0s-fX6"/>
-                <outlet property="addressLabelHeightConstraint" destination="mJY-8X-Ld2" id="wU5-xq-kdR"/>
                 <outlet property="arrowIcon" destination="gTr-4W-BKy" id="fNv-Yw-amF"/>
                 <outlet property="arrowIconLeftMarginConstraint" destination="tXl-Iv-QTn" id="OSB-TV-sW9"/>
                 <outlet property="arrowIconRightMarginConstraint" destination="IUW-Xz-Gwb" id="FXq-5v-Vgl"/>
                 <outlet property="nameLabel" destination="4i2-yt-Gbu" id="BKj-9n-h1C"/>
                 <outlet property="nameLabelHeightConstraint" destination="gGp-EY-RBh" id="FS1-45-f94"/>
             </connections>
-            <point key="canvasLocation" x="398" y="361"/>
+            <point key="canvasLocation" x="398" y="356"/>
         </view>
     </objects>
     <resources>

@@ -190,10 +190,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             spotViewController.fishArray = fish as? Array<Fish>
         })
         self.navigationController?.pushViewController(spotViewController, animated: true)
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Мапа", comment: "map"), style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+        let backButton: UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
     }
-    
+
     // MARK: Google Maps delegate methods
     
     func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!) {
@@ -206,7 +206,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
                 let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! MarkerCalloutView
 
                 calloutView.nameLabel.text = markerModel.name
-                calloutView.addressLabel.text = markerModel.address
                 calloutView.updateWidth()
 
                 return calloutView

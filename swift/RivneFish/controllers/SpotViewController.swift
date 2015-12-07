@@ -15,13 +15,13 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     let kFishCellIdentifier = "fishImagesCellIdentifier"
     let kFishCellWidth: CGFloat = 70.0
 
-    let kImageViewHeight: CGFloat = 282.0
     let kFishViewHeight: CGFloat = 70.0
     let kContentViewHeight: CGFloat = 1.0
     let kDetailViewExpandedHeight: CGFloat = 144.0
     let kDetailViewClosedHeight: CGFloat = 22.0
+    let kImageAspectRatioIndex: CGFloat = 1.33333
+    let kMaxImagesCollectionViewHeight: CGFloat = CGFloat(768.0) / 1.33333
 
-    @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var placeAddressLabel: UILabel!
     @IBOutlet weak var placeCoordinatesLabel: UILabel!
     
@@ -51,7 +51,8 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var fuckingConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentTextViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var fishViewTopMarginConstraint: NSLayoutConstraint!
+
     var detailedViewExpanded = false
 
     var imagesArray: Array<UIImage?>
@@ -82,7 +83,27 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             // Load images and update view
             loadImages(fishImgUrlsArr) { (index: Int, image: UIImage?) in
                 dispatch_async(dispatch_get_main_queue()) {
+
                     self.fishArray![index].image = image
+
+                    // TODO: MEGA TEST
+                    /*switch index {
+                    case 0:
+                        self.fishArray![index].image = UIImage(named: "crucian")
+                    case 1:
+                        self.fishArray![index].image = UIImage(named: "crucian2")
+                    case 2:
+                        self.fishArray![index].image = UIImage(named: "crucian_gold")
+                    case 3:
+                        self.fishArray![index].image = UIImage(named: "crucian_gold2")
+                    case 4:
+                        self.fishArray![index].image = UIImage(named: "zander")
+                    case 5:
+                        self.fishArray![index].image = UIImage(named: "zander2")
+                    default:
+                        self.fishArray![index].image = UIImage(named: "zander2")
+                    }*/
+
                     if let collectionView = self.fishCollectionView {
                         collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
                     }
@@ -99,7 +120,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         didSet {
             self.imgUrlsArr = self.marker.photoUrls
 
-            updateImagesViewVisibility()
+            updateImagesViewHeight()
             updateContentLineVisibilty()
 
             imagesArray = [UIImage?](count: imgUrlsArr.count, repeatedValue: nil)
@@ -134,7 +155,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     override func viewDidLoad() {
-        updateImagesViewVisibility()
+        updateImagesViewHeight()
         updateFishViewVisibility()
         updateContentLineVisibilty()
         
@@ -149,6 +170,14 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         updateContent()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.updateImagesViewHeight()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = self.marker.name;
+    }
+
     @IBAction func urlButtonTouched(sender: UIButton) {
         if let urlStr = marker.url {
             let url = NSURL(string: urlStr)
@@ -158,15 +187,26 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
 
-    func updateImagesViewVisibility() {
+    func updateImagesViewHeight() {
         if let contraint = imagesViewHeightContraint {
             contraint.constant = 0
             if let arr = imgUrlsArr {
                 if arr.count > 0 {
-                    contraint.constant = kImageViewHeight
+                    contraint.constant = imagesViewHeight()
                 }
             }
         }
+    }
+    
+    func imagesViewHeight() -> CGFloat {
+        let height: CGFloat = self.imagesCollectionView.frame.width / kImageAspectRatioIndex
+        
+        var maxImagesViewPossibleHeight: CGFloat = 0
+        if let navBarHeight = self.navigationController?.navigationBar.frame.height {
+            maxImagesViewPossibleHeight = UIScreen.mainScreen().bounds.height - (navBarHeight + self.fishCollectionView.frame.height + fishViewTopMarginConstraint.constant)
+        }
+        let max = maxImagesViewPossibleHeight < kMaxImagesCollectionViewHeight ? maxImagesViewPossibleHeight : kMaxImagesCollectionViewHeight
+        return height <= max ? height : max
     }
 
     func updateFishViewVisibility() {
@@ -205,7 +245,6 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func updateLabels() {
-        self.placeNameLabel.text = marker.name
         self.placeAddressLabel.text = marker.address
         self.placeCoordinatesLabel.text = "\(marker.lat), \(marker.lon)"
 
@@ -349,6 +388,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         updateImagesView()
         updateContentTextViewHeight()
         updateImagesViewTopConstraint()
+        updateImagesViewHeight()
     }
 
     @IBAction func expandButtonTouched(sender: UIButton) {
