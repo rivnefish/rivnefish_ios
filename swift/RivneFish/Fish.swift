@@ -61,6 +61,10 @@ class Fish {
             name = fishDict[kFishNameKey] as? String
             ukrName = fishDict[kUkrNameKey] as? String
             iconUrl = fishDict[kIconUrlKey] as? String
+            if let num = fishDict[kFishIDKey] as? NSNumber {
+                fishID = num
+                image = UIImage(named: "\(num)")
+            }
             // TODO:
         }
         amount = dict[kAmountKey] as? Int

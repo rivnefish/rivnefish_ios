@@ -68,52 +68,37 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             dispatch_async(dispatch_get_main_queue(),{
                 self.fishCollectionView.reloadData()
             })
-
-            // Get img url strings array
-            var fishImgUrlsArr: Array<String> = Array<String>()
-            fishImgUrlsArr.reserveCapacity(fishArray!.count)
-            for fish: Fish in fishArray! {
-                if let iconUrl: String = fish.iconUrl {
-                    fishImgUrlsArr.append(iconUrl)
-                } else {
-                    fishImgUrlsArr.append("")
-                }
-            }
-
-            // Load images and update view
-            loadImages(fishImgUrlsArr) { (index: Int, image: UIImage?) in
-                dispatch_async(dispatch_get_main_queue()) {
-
-                    self.fishArray![index].image = image
-
-                    // TODO: MEGA TEST
-                    /*switch index {
-                    case 0:
-                        self.fishArray![index].image = UIImage(named: "crucian")
-                    case 1:
-                        self.fishArray![index].image = UIImage(named: "crucian2")
-                    case 2:
-                        self.fishArray![index].image = UIImage(named: "crucian_gold")
-                    case 3:
-                        self.fishArray![index].image = UIImage(named: "crucian_gold2")
-                    case 4:
-                        self.fishArray![index].image = UIImage(named: "zander")
-                    case 5:
-                        self.fishArray![index].image = UIImage(named: "zander2")
-                    default:
-                        self.fishArray![index].image = UIImage(named: "zander2")
-                    }*/
-
-                    if let collectionView = self.fishCollectionView {
-                        collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
-                    }
-                }
-            }
-            dispatch_async(dispatch_get_main_queue(),{
-                self.updateFishViewVisibility()
-                self.updateContent()
-            })
+            // Do not load fish from server, use resouces icons
+            // self.loadFishFromServer()
         }
+    }
+    
+    func loadFishFromServer() {
+        // Get img url strings array
+        var fishImgUrlsArr: Array<String> = Array<String>()
+        fishImgUrlsArr.reserveCapacity(fishArray!.count)
+        for fish: Fish in fishArray! {
+            if let iconUrl: String = fish.iconUrl {
+                fishImgUrlsArr.append(iconUrl)
+            } else {
+                fishImgUrlsArr.append("")
+            }
+        }
+        
+        // Load images and update view
+        loadImages(fishImgUrlsArr) { (index: Int, image: UIImage?) in
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.fishArray![index].image = image
+                if let collectionView = self.fishCollectionView {
+                    collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(),{
+            self.updateFishViewVisibility()
+            self.updateContent()
+        })
     }
 
     var marker: MarkerModel! {
