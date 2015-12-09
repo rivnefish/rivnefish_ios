@@ -38,6 +38,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var fishCollectionView: UICollectionView!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var fishingInfoView: UITextView!
 
     @IBOutlet weak var imagesViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imagesViewHeightContraint: NSLayoutConstraint!
@@ -49,6 +50,9 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var detailedInfoViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var descriptionLineViewHeightContraint: NSLayoutConstraint!
 
+    @IBOutlet weak var fishingInfoViewLeftMargin: NSLayoutConstraint!
+    @IBOutlet weak var fishingInfoViewRightMargin: NSLayoutConstraint!
+    @IBOutlet weak var fishingInfoViewHeight: NSLayoutConstraint!
     @IBOutlet weak var fuckingConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var fishViewTopMarginConstraint: NSLayoutConstraint!
@@ -98,6 +102,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         dispatch_async(dispatch_get_main_queue(),{
             self.updateFishViewVisibility()
             self.updateContent()
+            self.updateFishingInfoView()
         })
     }
 
@@ -126,6 +131,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
             dispatch_async(dispatch_get_main_queue(),{
                 self.updateContent()
+                self.updateFishingInfoView()
             })
         }
     }
@@ -153,6 +159,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         // if just does not work from story board
         fuckingConstraint.constant = 20
         updateContent()
+        updateFishingInfoView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -228,6 +235,18 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         updateContentTextViewHeight()
     }
+    
+    func updateFishingInfoView() {
+        if let content: String = marker.paidFish {
+            if let view = fishingInfoView {
+                if !content.isEmpty {
+                    view.text = NSLocalizedString("Умови риболовлі: ", comment: "Paid Fish Preffix") + content
+                }
+            }
+        }
+        updateFishingInfoViewHeight()
+    }
+
 
     func updateLabels() {
         self.placeAddressLabel.text = marker.address
@@ -267,7 +286,22 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func updateContentTextViewHeight() {
         if contentTextView != nil {
-            self.contentTextViewHeight.constant = contentTextView.sizeThatFits(CGSize(width: self.view.frame.width - (self.contentViewRightMargin.constant + self.contentViewLeftMargin.constant), height: CGFloat.max)).height
+            if contentTextView.text.isEmpty {
+                self.contentTextViewHeight.constant = 0
+            } else {
+                self.contentTextViewHeight.constant = contentTextView.sizeThatFits(CGSize(width: self.view.frame.width - (self.contentViewRightMargin.constant + self.contentViewLeftMargin.constant), height: CGFloat.max)).height
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func updateFishingInfoViewHeight() {
+        if fishingInfoView != nil {
+            if fishingInfoView.text.isEmpty {
+                self.fishingInfoViewHeight.constant = 0
+            } else {
+                self.fishingInfoViewHeight.constant = fishingInfoView.sizeThatFits(CGSize(width: self.view.frame.width - (self.fishingInfoViewRightMargin.constant + self.fishingInfoViewLeftMargin.constant), height: CGFloat.max)).height
+            }
             self.view.layoutIfNeeded()
         }
     }
@@ -372,6 +406,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateImagesView()
         updateContentTextViewHeight()
+        updateFishingInfoViewHeight()
         updateImagesViewTopConstraint()
         updateImagesViewHeight()
     }
