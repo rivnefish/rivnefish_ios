@@ -12,6 +12,7 @@ class ImagesCollectionViewCell : UICollectionViewCell {
 
     @IBOutlet weak var bluredImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
     var image: UIImage?
 
@@ -27,6 +28,11 @@ class ImagesCollectionViewCell : UICollectionViewCell {
         if let image = self.image {
             bluredImage.image = image
             imageView.image = image
+            loadingIndicator.hidden = true
+        } else {
+            bluredImage.image = nil
+            imageView.image = nil
+            loadingIndicator.hidden = false
         }
     }
 }
