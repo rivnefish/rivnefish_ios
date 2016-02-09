@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/akyryl/Builds2/rivnefish_ios/swift/Rivnefish.xcodeproj">
+      location = "group:RivneFish.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
