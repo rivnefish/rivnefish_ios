@@ -10,3 +10,5 @@
 #import "GDefaultClusterRenderer.h"
 
 #import "Reachability.h"
+
+#import "TMCache.h"

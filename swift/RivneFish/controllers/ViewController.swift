@@ -35,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        self.initRechability()
+
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
 
@@ -48,8 +50,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         
         // TODO: Save it not here
         defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
-
-        self.initRechability()
     }
     
     func initRechability() {
@@ -123,7 +123,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         //    print(countries)
         //})
 
-        dataSource.allAvailableMarkers({ (markers: NSArray) in
+        dataSource.allAvailableMarkers(self.reach, completionHandler: { (markers: NSArray) in
             // self.addMarkersToAppleMaps(markers)
 
             if (markers.count == 0) {
@@ -185,6 +185,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     func goToMarkerDetailsView(marker: MarkerModel) {
         let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
 
+        spotViewController.ourDataSource = dataSource
         spotViewController.marker = marker
         dataSource.fishForMarkerID(marker.markerID.integerValue, fishReceived: { (fish: NSArray) in
             spotViewController.fishArray = fish as? Array<Fish>

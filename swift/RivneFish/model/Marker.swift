@@ -42,7 +42,7 @@ let kCountryKey = "country"
 let kPhotosKey = "photos"
 let kUrlKey = "url"
 
-class MarkerModel {
+class MarkerModel: NSObject, NSCoding {
 
     var markerID: NSNumber
     var lat: Float
@@ -119,6 +119,18 @@ class MarkerModel {
             return v
         }
         return NSLocalizedString("-", comment: "no_information")
+    }
+
+    required init(coder decoder: NSCoder) {
+        markerID = (decoder.decodeObjectForKey(kMarkerIDKey) as? NSNumber)!
+        lat = (decoder.decodeObjectForKey(kLatKey) as? Float)!
+        lon = (decoder.decodeObjectForKey(kLonKey) as? Float)!
+    }
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(markerID, forKey: kMarkerIDKey)
+        aCoder.encodeObject(lat, forKey: kLatKey)
+        aCoder.encodeObject(lon, forKey: kLonKey)
     }
 
     init(dict: NSDictionary)

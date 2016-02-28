@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
+		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
+		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
+		28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD671C82F336001DBF29 /* ModifiedDate.swift */; };
+		28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */; };
+		28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD6B1C834661001DBF29 /* ActualityValidator.swift */; };
 		3E22016F1BF4FEE90056FE7A /* arrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E22016C1BF4FEE90056FE7A /* arrowRight.png */; };
 		3E2201701BF4FEE90056FE7A /* arrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E22016D1BF4FEE90056FE7A /* arrowRight@2x.png */; };
 		3E2201711BF4FEE90056FE7A /* arrowRight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E22016E1BF4FEE90056FE7A /* arrowRight@3x.png */; };
@@ -168,6 +174,16 @@
 
 /* Begin PBXFileReference section */
 		18882211F1ECA2AFF45859F1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		28C5A8741C6F761400C86F5E /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = libs/TMCache/TMCache.h; sourceTree = "<group>"; };
+		28C5A8751C6F761400C86F5E /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = libs/TMCache/TMCache.m; sourceTree = "<group>"; };
+		28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCacheBackgroundTaskManager.h; path = libs/TMCache/TMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
+		28C5A8771C6F761400C86F5E /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMDiskCache.h; path = libs/TMCache/TMDiskCache.h; sourceTree = "<group>"; };
+		28C5A8781C6F761400C86F5E /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMDiskCache.m; path = libs/TMCache/TMDiskCache.m; sourceTree = "<group>"; };
+		28C5A8791C6F761400C86F5E /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMMemoryCache.h; path = libs/TMCache/TMMemoryCache.h; sourceTree = "<group>"; };
+		28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMMemoryCache.m; path = libs/TMCache/TMMemoryCache.m; sourceTree = "<group>"; };
+		28FACD671C82F336001DBF29 /* ModifiedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDate.swift; path = model/ModifiedDate.swift; sourceTree = "<group>"; };
+		28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkDataSource.swift; path = model/NetworkDataSource.swift; sourceTree = "<group>"; };
+		28FACD6B1C834661001DBF29 /* ActualityValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActualityValidator.swift; path = model/ActualityValidator.swift; sourceTree = "<group>"; };
 		3E22016C1BF4FEE90056FE7A /* arrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowRight.png; path = resources/arrowRight.png; sourceTree = "<group>"; };
 		3E22016D1BF4FEE90056FE7A /* arrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowRight@2x.png"; path = "resources/arrowRight@2x.png"; sourceTree = "<group>"; };
 		3E22016E1BF4FEE90056FE7A /* arrowRight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrowRight@3x.png"; path = "resources/arrowRight@3x.png"; sourceTree = "<group>"; };
@@ -359,6 +375,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28C5A8731C6F75FE00C86F5E /* TMCache */ = {
+			isa = PBXGroup;
+			children = (
+				28C5A8741C6F761400C86F5E /* TMCache.h */,
+				28C5A8751C6F761400C86F5E /* TMCache.m */,
+				28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */,
+				28C5A8771C6F761400C86F5E /* TMDiskCache.h */,
+				28C5A8781C6F761400C86F5E /* TMDiskCache.m */,
+				28C5A8791C6F761400C86F5E /* TMMemoryCache.h */,
+				28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */,
+			);
+			name = TMCache;
+			sourceTree = "<group>";
+		};
 		3E4BD7751AD7194E0036C8CA = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +464,7 @@
 		3E9175DB1BDB838F00671A27 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				28C5A8731C6F75FE00C86F5E /* TMCache */,
 				3E9175DF1BDB83E600671A27 /* GClustering */,
 				3E9070BB1BF330D500268C7F /* Reachability */,
 			);
@@ -557,6 +588,9 @@
 				3EE306D61B4A73DE003225FF /* Country.swift */,
 				3EA745531BBEFA5600AB470A /* Fish.swift */,
 				3EE306D21B4A65A3003225FF /* Marker.swift */,
+				28FACD671C82F336001DBF29 /* ModifiedDate.swift */,
+				28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */,
+				28FACD6B1C834661001DBF29 /* ActualityValidator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -765,7 +799,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3E4BD7791AD7194E0036C8CA /* Build configuration list for PBXProject "Rivnefish" */;
+			buildConfigurationList = 3E4BD7791AD7194E0036C8CA /* Build configuration list for PBXProject "RivneFish" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -974,11 +1008,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */,
+				28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */,
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
+				28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */,
 				3E9070BE1BF330F900268C7F /* Reachability.m in Sources */,
 				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
+				28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */,
 				3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */,
 				3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */,
 				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
@@ -988,10 +1025,13 @@
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
 				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
+				28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */,
+				28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */,
 				3EA745541BBEFA5600AB470A /* Fish.swift in Sources */,
 				3E9175F71BDB848900671A27 /* GClusterManager.m in Sources */,
 				3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */,
 				3EE306DC1B4FAD98003225FF /* MarkerAnnotation.swift in Sources */,
+				28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */,
 				3EA745441BBD1C1B00AB470A /* FishCollectionViewCell.swift in Sources */,
 				3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */,
 				3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */,
@@ -1195,7 +1235,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E4BD7791AD7194E0036C8CA /* Build configuration list for PBXProject "Rivnefish" */ = {
+		3E4BD7791AD7194E0036C8CA /* Build configuration list for PBXProject "RivneFish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E4BD79B1AD7194E0036C8CA /* Debug */,

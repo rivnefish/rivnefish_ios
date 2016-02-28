@@ -56,4 +56,13 @@ class DataParser {
             return NSArray()
         }
     }
+
+    func parseLastChanges(jsonData: NSData) -> NSNumber {
+        let dateDict = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as? NSDictionary
+        var number = NSNumber()
+        if let dict = dateDict, let num = ModifiedDate(dict: dict).number {
+            number = num
+        }
+        return number
+    }
 }

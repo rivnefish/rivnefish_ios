@@ -61,6 +61,8 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     var imagesArray: Array<UIImage?>
     var imgUrlsArr: Array<String>!
+
+    var ourDataSource: DataSource!
     
     var fishArray: Array<Fish>? {
         didSet {
@@ -90,12 +92,13 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         // Load images and update view
-        loadImages(fishImgUrlsArr) { (index: Int, image: UIImage?) in
+        ourDataSource.loadImages(fishImgUrlsArr) { (url: String, image: UIImage?) in
             dispatch_async(dispatch_get_main_queue()) {
-                
-                self.fishArray![index].image = image
-                if let collectionView = self.fishCollectionView {
-                    collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                if let index = self.imgUrlsArr.indexOf(url) {
+                    self.fishArray![index].image = image
+                    if let collectionView = self.fishCollectionView {
+                        collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                    }
                 }
             }
         }
@@ -121,11 +124,13 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             })
 
             // Load images and update collection view
-            loadImages(self.imgUrlsArr) { (index:Int, image:UIImage?) in
+            ourDataSource.loadImages(self.imgUrlsArr) { (url: String, image:UIImage?) in
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.imagesArray[index] = image
-                    if let collectionView = self.imagesCollectionView {
-                        collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                    if let index = self.imgUrlsArr.indexOf(url) {
+                        self.imagesArray[index] = image
+                        if let collectionView = self.imagesCollectionView {
+                            collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
+                        }
                     }
                 }
             }
@@ -260,29 +265,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.permitLabel.text = marker.permitStr
     }
 
-    func loadImages(urlsArr: Array<String>?, continuation: ((Int, UIImage?) -> Void)) {
-        if let urlStringArr = urlsArr {
-            var i: Int = 0
-            for urlString in urlStringArr {
-                if let url = NSURL(string: urlString) {
-                    getDataFromUrl(url, index: i) { data, index in
-                        if let data = NSData(contentsOfURL: url) {
-                            continuation(index, UIImage(data: data))
-                        }
-                    }
-                }
-                ++i
-            }
-        }
-    }
-
-    func getDataFromUrl(urL: NSURL, index: Int, completion: ((data: NSData?, index: Int) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
-            completion(data: data, index: index)
-            }.resume()
-    }
-    
-    // Lyout helper methods
+    // Layout helper methods
     
     func updateContentTextViewHeight() {
         if contentTextView != nil {
