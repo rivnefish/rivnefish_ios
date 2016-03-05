@@ -28,6 +28,16 @@ class ActualityValidator {
         })
     }
 
+    func markerUpToDate(marker: MarkerModel) -> Bool {
+        var upToDate = false
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let date: String? = defaults.objectForKey(marker.markerID.stringValue) as? String
+        if let savedDate = date, currentDate = marker.modifyDate {
+            upToDate = (savedDate.compare(currentDate) == .OrderedSame)
+        }
+        return upToDate
+    }
+
     func updateUserLastChangesDate() {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue(self.serverLastChanges, forKey: ActualityValidator.kLastChangesKey)

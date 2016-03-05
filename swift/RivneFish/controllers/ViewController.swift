@@ -187,7 +187,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
         spotViewController.ourDataSource = dataSource
         spotViewController.marker = marker
-        dataSource.fishForMarkerID(marker.markerID.integerValue, fishReceived: { (fish: NSArray) in
+        dataSource.fishForMarker(self.reach, marker: marker, completionHandler: { (fish: NSArray) in
             spotViewController.fishArray = fish as? Array<Fish>
         })
         self.navigationController?.pushViewController(spotViewController, animated: true)

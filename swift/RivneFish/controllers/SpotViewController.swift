@@ -123,6 +123,10 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.imagesCollectionView.reloadData()
             })
 
+            if false == ActualityValidator.actualityValidator.markerUpToDate(marker) {
+                ourDataSource.removeMarkerCachedImages(marker)
+            }
+
             // Load images and update collection view
             ourDataSource.loadImages(self.imgUrlsArr) { (url: String, image:UIImage?) in
                 dispatch_async(dispatch_get_main_queue()) {

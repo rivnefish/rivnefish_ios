@@ -10,21 +10,24 @@ class NetworkDataSource {
 
     static var sharedInstace = NetworkDataSource()
 
-    /*func allAvailableMarkers(completionHandler: (jsonData: NSData) -> Void) {
-        let urlStr = "http://api.rivnefish.com/markers/"
-        HTTPClient.sharedInstance.request(urlStr, responseCallback:
-            // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback:
-            // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback:
-            {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+    func coutries(countriesReceived: (countries: NSArray) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
 
-                if self.errorInResponse(response) {
-                    completionHandler(jsonData: data)
-                    return;
-                } else {
-                    completionHandler(jsonData: data)
-                }
+            if self.errorInResponse(response) {
+                countriesReceived(countries: NSArray())
+                return;
+            }
+
+            if let json = data {
+                let dataParser = DataParser()
+                let countries = dataParser.parseCountries(json)
+                countriesReceived(countries: countries)
+            }
+            else {
+                print(NSString(data: data, encoding: NSUTF8StringEncoding))
+            }
         })
-    }*/
+    }
 
     func allAvailableMarkers(completionHandler: (markers: NSArray) -> Void) {
         let urlStr = "http://api.rivnefish.com/markers/"
@@ -68,23 +71,29 @@ class NetworkDataSource {
         })
     }
 
-    func markerModifyDate(completionHandler: (modifyDate: NSDate) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/lastchanges/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+    func fishForMarkerID(id: String, fishReceived: (fish: NSArray) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers-fishes/?marker=\(id)", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
 
             if self.errorInResponse(response) {
-                completionHandler(modifyDate: NSDate())
+                fishReceived(fish: NSArray())
                 return;
             }
 
             if let json = data {
                 let dataParser = DataParser()
-                //let date = dataParser.parseDate(json)
-                //completionHandler(modifyDate: date)
+                let fish = dataParser.parseFish(json)
+                fishReceived(fish: fish)
             }
             else {
                 print(NSString(data: data, encoding: NSUTF8StringEncoding))
             }
         })
+    }
+
+    func getDataFromUrl(urL: NSURL, completion: ((data: NSData?, url: String) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
+            completion(data: data, url: urL.absoluteString)
+            }.resume()
     }
 
     func errorInResponse(response: NSURLResponse?) -> Bool {

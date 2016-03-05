@@ -31,7 +31,9 @@ let kWeightMaxKey = "weight_max"
 let kAmountKey = "amount"
 let kNotesKey = "notes"
 
-class Fish {
+let kFishImageKey = "fish_image"
+
+class Fish: NSObject, NSCoding {
 
     var name: String?
     var latinName: String?
@@ -47,7 +49,7 @@ class Fish {
     var iconHeight: NSNumber?
     var redBook: Bool?
     var articleUrl: String?
-    var description: String?
+    var fishDescription: String?
     var weight: Double?
     var maxWeight: Double?
     var amount: Int?
@@ -61,12 +63,31 @@ class Fish {
             name = fishDict[kFishNameKey] as? String
             ukrName = fishDict[kUkrNameKey] as? String
             iconUrl = fishDict[kIconUrlKey] as? String
+            amount = dict[kAmountKey] as? Int
             if let num = fishDict[kFishIDKey] as? NSNumber {
                 fishID = num
                 image = UIImage(named: "\(num)")
             }
             // TODO:
         }
-        amount = dict[kAmountKey] as? Int
+    }
+
+    required init(coder decoder: NSCoder) {
+        name = (decoder.decodeObjectForKey(kFishNameKey) as? String)!
+        ukrName = (decoder.decodeObjectForKey(kUkrNameKey) as? String)!
+        iconUrl = (decoder.decodeObjectForKey(kIconUrlKey) as? String)!
+        fishID = decoder.decodeObjectForKey(kFishIDKey) as? NSNumber
+        amount = decoder.decodeObjectForKey(kAmountKey) as? Int
+        if let num = fishID {
+            image = UIImage(named: "\(num)")
+        }
+    }
+
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: kFishNameKey)
+        aCoder.encodeObject(ukrName, forKey: kUkrNameKey)
+        aCoder.encodeObject(iconUrl, forKey: kIconUrlKey)
+        aCoder.encodeObject(fishID, forKey: kFishIDKey)
+        aCoder.encodeObject(amount, forKey: kAmountKey)
     }
 }

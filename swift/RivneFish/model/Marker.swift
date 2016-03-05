@@ -65,8 +65,8 @@ class MarkerModel: NSObject, NSCoding {
     var paidFish: String?
     var note: String?
     var note2: String?
-    var createDate: NSDate?
-    var modifyDate: NSDate?
+    var createDate: String?
+    var modifyDate: String?
     var region: String?
     var district: String?
     var country: String?
@@ -125,12 +125,62 @@ class MarkerModel: NSObject, NSCoding {
         markerID = (decoder.decodeObjectForKey(kMarkerIDKey) as? NSNumber)!
         lat = (decoder.decodeObjectForKey(kLatKey) as? Float)!
         lon = (decoder.decodeObjectForKey(kLonKey) as? Float)!
+
+        name = decoder.decodeObjectForKey(kNameKey) as? String
+        address = decoder.decodeObjectForKey(kAddressKey) as? String
+        area = decoder.decodeObjectForKey(kAreaKey) as? Float
+        content = decoder.decodeObjectForKey(kContentKey) as? String
+        conveniences = decoder.decodeObjectForKey(kConveniencesKey) as? String
+        contact = decoder.decodeObjectForKey(kContactKey) as? String
+        contactName = decoder.decodeObjectForKey(kContactNameKey) as? String
+        maxDepth = decoder.decodeObjectForKey(kMaxDepthKey) as? String
+        averageDepth = decoder.decodeObjectForKey(kAverageDepthKey) as? String
+        permit = decoder.decodeObjectForKey(kPermitKey) as? String
+        price24 = decoder.decodeObjectForKey(kPrice24hKey) as? String
+        dayhourPrice = decoder.decodeObjectForKey(kDayhourPriceKey) as? String
+        boatUsage = decoder.decodeObjectForKey(kBoatUsageKey) as? Bool
+        timeToFish = decoder.decodeObjectForKey(kTimeToFishKey) as? String
+        paidFish = decoder.decodeObjectForKey(kPaidFishKey) as? String
+        note = decoder.decodeObjectForKey(kNoteKey) as? String
+        note2 = decoder.decodeObjectForKey(kNote2Key) as? String
+        createDate = decoder.decodeObjectForKey(kCreateDateKey) as? String
+        modifyDate = decoder.decodeObjectForKey(kModifyDateKey) as? String
+        region = decoder.decodeObjectForKey(kRegionKey) as? String
+        district = decoder.decodeObjectForKey(kDistrictKey) as? String
+        country = decoder.decodeObjectForKey(kCountryKey) as? String
+        photoUrls = decoder.decodeObjectForKey(kPhotosKey) as? Array
+        url = decoder.decodeObjectForKey(kUrlKey) as? String
     }
 
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(markerID, forKey: kMarkerIDKey)
         aCoder.encodeObject(lat, forKey: kLatKey)
         aCoder.encodeObject(lon, forKey: kLonKey)
+
+        aCoder.encodeObject(name, forKey: kNameKey)
+        aCoder.encodeObject(address, forKey: kAddressKey)
+        aCoder.encodeObject(area, forKey: kAreaKey)
+        aCoder.encodeObject(content, forKey: kContentKey)
+        aCoder.encodeObject(conveniences, forKey: kConveniencesKey)
+        aCoder.encodeObject(contact, forKey: kContactKey)
+        aCoder.encodeObject(contactName, forKey: kContactNameKey)
+        aCoder.encodeObject(maxDepth, forKey: kMaxDepthKey)
+        aCoder.encodeObject(averageDepth, forKey: kAverageDepthKey)
+        aCoder.encodeObject(permit, forKey: kPermitKey)
+        aCoder.encodeObject(price24, forKey: kPrice24hKey)
+        aCoder.encodeObject(dayhourPrice, forKey: kDayhourPriceKey)
+        aCoder.encodeObject(boatUsage, forKey: kBoatUsageKey)
+        aCoder.encodeObject(timeToFish, forKey: kTimeToFishKey)
+        aCoder.encodeObject(paidFish, forKey: kPaidFishKey)
+        aCoder.encodeObject(note, forKey: kNoteKey)
+        aCoder.encodeObject(note2, forKey: kNote2Key)
+        aCoder.encodeObject(createDate, forKey: kCreateDateKey)
+        aCoder.encodeObject(modifyDate, forKey: kModifyDateKey)
+        aCoder.encodeObject(region, forKey: kRegionKey)
+        aCoder.encodeObject(district, forKey: kDistrictKey)
+        aCoder.encodeObject(country, forKey: kCountryKey)
+        aCoder.encodeObject(photoUrls, forKey: kPhotosKey)
+        aCoder.encodeObject(url, forKey: kUrlKey)
     }
 
     init(dict: NSDictionary)
@@ -156,8 +206,8 @@ class MarkerModel: NSObject, NSCoding {
         paidFish = dict[kPaidFishKey] as? String
         note = dict[kNoteKey] as? String
         note2 = dict[kNote2Key] as? String
-        createDate = dict[kCreateDateKey] as? NSDate
-        modifyDate = dict[kModifyDateKey] as? NSDate
+        createDate = dict[kCreateDateKey] as? String
+        modifyDate = dict[kModifyDateKey] as? String
         region = dict[kRegionKey] as? String
         district = dict[kDistrictKey] as? String
         country = dict[kCountryKey] as? String

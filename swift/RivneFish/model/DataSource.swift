@@ -9,24 +9,6 @@
 import UIKit
 
 class DataSource: NSObject {
-    func coutries(countriesReceived: (countries: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
-
-            if self.errorInResponse(response) {
-                countriesReceived(countries: NSArray())
-                return;
-            }
-
-            if let json = data {
-                let dataParser = DataParser()
-                let countries = dataParser.parseCountries(json)
-                countriesReceived(countries: countries)
-            }
-            else {
-                print(NSString(data: data, encoding: NSUTF8StringEncoding))
-            }
-        })
-    }
 
     func allAvailableMarkers(rechability: Reach, completionHandler: (markers: NSArray) -> Void) {
         let urlStr = "http://api.rivnefish.com/markers/"
@@ -54,6 +36,7 @@ class DataSource: NSObject {
                         NetworkDataSource.sharedInstace.allAvailableMarkers({ (markers: NSArray) in
                             if markers.count != 0 {
                                 TMCache.sharedCache().setObject(markers, forKey: urlStr)
+                                self.saveMarkersIdAndModifyDate(markers)
 
                                 // Update last changes num
                                 ActualityValidator.actualityValidator.updateUserLastChangesDate()
@@ -76,23 +59,62 @@ class DataSource: NSObject {
         }
     }
 
-    func fishForMarkerID(id: Int, fishReceived: (fish: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers-fishes/?marker=\(id)", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
-            
-            if self.errorInResponse(response) {
-                fishReceived(fish: NSArray())
-                return;
+    func saveMarkersIdAndModifyDate(markers: NSArray) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let markersArr = markers as! Array<MarkerModel>
+        for marker: MarkerModel in markersArr {
+            defaults.setObject(marker.modifyDate, forKey: marker.markerID.stringValue)
+        }
+    }
+
+    func removeMarkerCachedImages(marker: MarkerModel) {
+        let imgUrlsArr = marker.photoUrls
+        if let urls = imgUrlsArr {
+            for imgUrl in urls {
+                TMCache.sharedCache().removeObjectForKey(imgUrl)
             }
-            
-            if let json = data {
-                let dataParser = DataParser()
-                let fish = dataParser.parseFish(json)
-                fishReceived(fish: fish)
+        }
+    }
+
+    func fishForMarker(rechability: Reach, marker: MarkerModel, completionHandler: (fish: NSArray) -> Void) {
+        // if marker is outdated - remove fish from cache
+        var requestFromNetwork = false
+        let markerId = marker.markerID.stringValue
+        let fishCacheId = "Fish:" + marker.markerID.stringValue
+        if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable &&
+            false == ActualityValidator.actualityValidator.markerUpToDate(marker)
+        {
+            TMCache.sharedCache().removeObjectForKey(fishCacheId)
+            requestFromNetwork = true
+        }
+
+        if requestFromNetwork {
+            // request directly from network
+            NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
+                // save to cache
+                if fish.count > 0 {
+                    TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
+                }
+                completionHandler(fish: fish)
+            })
+        } else {
+            // try to request from cache
+            TMCache.sharedCache().objectForKey(fishCacheId) { (cache, key, object) in
+                if let fish = object as? NSArray {
+                    if fish.count != 0 {
+                        completionHandler(fish: fish)
+                    }
+                } else { // if no data in cache - request from network
+                    NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
+                        // save to cache
+                        if fish.count > 0 {
+                            TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
+                        }
+                        completionHandler(fish: fish)
+                    })
+                }
             }
-            else {
-                print(NSString(data: data, encoding: NSUTF8StringEncoding))
-            }
-        })
+        }
     }
 
     func loadImages(urlsArr: Array<String>?, completionHandler: ((String, UIImage?) -> Void)) {
@@ -106,7 +128,7 @@ class DataSource: NSObject {
                     } else {
                         // If there is no image in cache - request it
                         if let url = NSURL(string: urlString) {
-                            self.getDataFromUrl(url) { data, index in
+                            NetworkDataSource.sharedInstace.getDataFromUrl(url) { data, index in
                                 if let data = NSData(contentsOfURL: url) {
                                     TMCache.sharedCache().setObject(UIImage(data: data), forKey: urlString)
                                     completionHandler(urlString, UIImage(data: data))
@@ -118,23 +140,5 @@ class DataSource: NSObject {
                 ++i
             }
         }
-    }
-
-    func getDataFromUrl(urL: NSURL, completion: ((data: NSData?, url: String) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
-            completion(data: data, url: urL.absoluteString)
-            }.resume()
-    }
-
-    func errorInResponse(response: NSURLResponse?) -> Bool {
-        var result = true
-        if let response = response {
-            let statusCodeData: AnyObject? = response.valueForKey("statusCode")
-            if let statusCode: NSInteger = statusCodeData as? NSInteger {
-                let code = Int(statusCode.value)
-                result = (code == 0)
-            }
-        }
-        return result
     }
 }
