@@ -51,7 +51,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         // TODO: Save it not here
         defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
     }
-    
+
     func initRechability() {
         self.reach = Reach.reachabilityForInternetConnection()
 
@@ -157,6 +157,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func addGMMarkers() {
         self.googleMapView.clear()
+        clusterManager.removeItems()
+
         for markerAnnotation: GMarker in self.gmMarkers {
             // markerAnnotation.map = self.googleMapView - do not do that, clusterManager will do everhthing
             clusterManager.addItem(markerAnnotation)
@@ -174,6 +176,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     func addMarkersToGoogleMap(markers: NSArray)
     {
         dispatch_async(dispatch_get_main_queue(),{
+            // remove old
+            self.gmMarkers.removeAll()
+
+            // add new
             for markerModel in markers as! [MarkerModel] {
                 let markerAnnotation = GMarker(markerModel: markerModel)
                 self.gmMarkers.append(markerAnnotation)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284F3DE81C90867400B4AF62 /* no_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DE71C90867400B4AF62 /* no_photo.png */; };
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
@@ -174,6 +175,7 @@
 
 /* Begin PBXFileReference section */
 		18882211F1ECA2AFF45859F1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		284F3DE71C90867400B4AF62 /* no_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_photo.png; path = resources/no_photo.png; sourceTree = "<group>"; };
 		28C5A8741C6F761400C86F5E /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = libs/TMCache/TMCache.h; sourceTree = "<group>"; };
 		28C5A8751C6F761400C86F5E /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = libs/TMCache/TMCache.m; sourceTree = "<group>"; };
 		28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCacheBackgroundTaskManager.h; path = libs/TMCache/TMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 		3EB21C1A1B6616DA00517ECE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				284F3DE71C90867400B4AF62 /* no_photo.png */,
 				3EF771841C156EFD00A83A3A /* Fish */,
 				3E22016C1BF4FEE90056FE7A /* arrowRight.png */,
 				3E22016D1BF4FEE90056FE7A /* arrowRight@2x.png */,
@@ -836,6 +839,7 @@
 				3EF772431C15949900A83A3A /* 22@2x.png in Resources */,
 				3EF772321C15949900A83A3A /* 15@3x.png in Resources */,
 				3EF772611C15949900A83A3A /* 33@2x.png in Resources */,
+				284F3DE81C90867400B4AF62 /* no_photo.png in Resources */,
 				3EA745421BBD1BF500AB470A /* FishCollectionViewCell.xib in Resources */,
 				3EF772081C15949900A83A3A /* 1@3x.png in Resources */,
 				3EF772281C15949900A83A3A /* 12@2x.png in Resources */,

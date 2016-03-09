@@ -132,6 +132,8 @@ class DataSource: NSObject {
                                 if let data = NSData(contentsOfURL: url) {
                                     TMCache.sharedCache().setObject(UIImage(data: data), forKey: urlString)
                                     completionHandler(urlString, UIImage(data: data))
+                                } else {
+                                    completionHandler(urlString, UIImage(named: "no_photo"))
                                 }
                             }
                         }

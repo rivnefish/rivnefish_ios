@@ -198,7 +198,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         }
     }
-    
+
     func imagesViewHeight() -> CGFloat {
         let height: CGFloat = self.imagesCollectionView.frame.width / kImageAspectRatioIndex
         
