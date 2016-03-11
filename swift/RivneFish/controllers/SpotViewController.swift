@@ -66,6 +66,8 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var fishArray: Array<Fish>? {
         didSet {
+            updateFishViewVisibility()
+
             if fishArray == nil || fishArray!.count <= 0 {
                 return
             }
@@ -75,11 +77,11 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.fishCollectionView.reloadData()
             })
             // Do not load fish from server, use resouces icons
-            // self.loadFishFromServer()
+            // self.loadFishImagesFromServer()
         }
     }
     
-    func loadFishFromServer() {
+    func loadFishImagesFromServer() {
         // Get img url strings array
         var fishImgUrlsArr: Array<String> = Array<String>()
         fishImgUrlsArr.reserveCapacity(fishArray!.count)
@@ -156,7 +158,6 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     override func viewDidLoad() {
         updateImagesViewHeight()
-        updateFishViewVisibility()
         updateContentLineVisibilty()
         
         setupFishCollectionView()
@@ -211,16 +212,14 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func updateFishViewVisibility() {
-        // TODO: do not change fish view height if there is no fish data for now
-        return
-        if let contraint = fishViewHeightContraint {
-            contraint.constant = 0
-            if let arr = fishArray {
-                if arr.count > 0 {
-                    contraint.constant = kFishViewHeight
+        dispatch_async(dispatch_get_main_queue(),{
+            if let contraint = self.fishViewHeightContraint {
+                contraint.constant = 0
+                if let arr = self.fishArray where arr.count > 0 {
+                    contraint.constant = self.kFishViewHeight
                 }
             }
-        }
+        })
     }
 
     func updateContentLineVisibilty() {
