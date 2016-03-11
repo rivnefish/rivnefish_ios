@@ -17,6 +17,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     @IBOutlet weak var googleMapView: GMSMapView!
     let locationManager = CLLocationManager()
     var clusterManager: GClusterManager!
+    private var spotViewController: SpotViewController?
+
+    private var currentMarkerModel: MarkerModel?
 
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRectZero)
 
@@ -65,6 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             dispatch_async(dispatch_get_main_queue()) {
                 // Simply update data when connection appear
                 self.updateData()
+                self.populateSpotControllerWithData()
             }
         }
 
@@ -188,17 +192,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         })
     }
 
-    func goToMarkerDetailsView(marker: MarkerModel) {
-        let spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as! SpotViewController
+    func goToMarkerDetailsView() {
+        spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as? SpotViewController
+        populateSpotControllerWithData()
 
-        spotViewController.ourDataSource = dataSource
-        spotViewController.marker = marker
-        dataSource.fishForMarker(self.reach, marker: marker, completionHandler: { (fish: NSArray) in
-            spotViewController.fishArray = fish as? Array<Fish>
-        })
-        self.navigationController?.pushViewController(spotViewController, animated: true)
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton
+        if let controller = spotViewController {
+            self.navigationController?.pushViewController(controller, animated: true)
+            let backButton: UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
+            self.navigationItem.backBarButtonItem = backButton
+        }
+    }
+
+    private func populateSpotControllerWithData() {
+        if let controller = spotViewController {
+            controller.ourDataSource = dataSource
+            if let markerModel = currentMarkerModel {
+                controller.marker = markerModel
+                dataSource.fishForMarker(self.reach, marker: markerModel, completionHandler: { (fish: NSArray) in
+                    controller.fishArray = fish as? Array<Fish>
+                })
+            }
+        }
     }
 
     // MARK: Google Maps delegate methods
@@ -234,7 +248,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
         if let markerModel: MarkerModel = marker.userData as? MarkerModel {
-            self.goToMarkerDetailsView(markerModel)
+            self.currentMarkerModel = markerModel
+            self.goToMarkerDetailsView()
         }
     }
 
@@ -505,7 +520,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         let annotation: MarkerAnnotation = view.annotation as! MarkerAnnotation
         if let marker: MarkerModel = annotation.marker
         {
-            self.goToMarkerDetailsView(marker)
+            self.currentMarkerModel = marker
+            self.goToMarkerDetailsView()
         }
     }
 }
