@@ -133,7 +133,7 @@ class DataSource: NSObject {
                                     TMCache.sharedCache().setObject(UIImage(data: data), forKey: urlString)
                                     completionHandler(urlString, UIImage(data: data))
                                 } else {
-                                    completionHandler(urlString, UIImage(named: "no_photo"))
+                                    completionHandler(urlString, UIImage(named: "no_image"))
                                 }
                             }
                         }
