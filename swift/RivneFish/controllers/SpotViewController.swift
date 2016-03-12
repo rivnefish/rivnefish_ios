@@ -66,15 +66,13 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     var fishArray: Array<Fish>? {
         didSet {
-            updateFishViewVisibility()
-
-            if fishArray == nil || fishArray!.count <= 0 {
-                return
-            }
-            
             // Make fish collection view know fish count (cells count) before updating each cell by index
             dispatch_async(dispatch_get_main_queue(),{
-                self.fishCollectionView.reloadData()
+                self.updateFishViewVisibility()
+
+                if self.fishArray?.count > 0 {
+                    self.fishCollectionView.reloadData()
+                }
             })
             // Do not load fish from server, use resouces icons
             // self.loadFishImagesFromServer()
@@ -212,14 +210,13 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     func updateFishViewVisibility() {
-        dispatch_async(dispatch_get_main_queue(),{
-            if let contraint = self.fishViewHeightContraint {
-                contraint.constant = 0
-                if let arr = self.fishArray where arr.count > 0 {
-                    contraint.constant = self.kFishViewHeight
-                }
+        if let contraint = self.fishViewHeightContraint {
+            contraint.constant = 0
+            if let arr = self.fishArray where arr.count > 0 {
+                contraint.constant = self.kFishViewHeight
             }
-        })
+            self.view.layoutIfNeeded()
+        }
     }
 
     func updateContentLineVisibilty() {
