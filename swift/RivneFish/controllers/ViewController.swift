@@ -217,11 +217,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     // MARK: Google Maps delegate methods
     
-    func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!) {
+    func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
         self.clusterManager.mapView(self.googleMapView, idleAtCameraPosition: position)
     }
     
-    func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
+    func mapView(mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
         if isSinglePointMarker(marker) {
             if let markerModel: MarkerModel = marker.userData as? MarkerModel {
                 let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! MarkerCalloutView
@@ -240,13 +240,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     // TODO: to not touching GClustering library, there is temporary solution to check if it is single marker
     func isSinglePointMarker(marker: GMSMarker) -> Bool {
         var returnVal = false
-        if marker.icon.size.width == singleMarkerImageWidth {
+        if marker.icon?.size.width == singleMarkerImageWidth {
             returnVal = true
         }
         return returnVal
     }
 
-    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+    func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
         if let markerModel: MarkerModel = marker.userData as? MarkerModel {
             self.currentMarkerModel = markerModel
             self.goToMarkerDetailsView()

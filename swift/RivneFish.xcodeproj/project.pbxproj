@@ -16,6 +16,7 @@
 		28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD671C82F336001DBF29 /* ModifiedDate.swift */; };
 		28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */; };
 		28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD6B1C834661001DBF29 /* ActualityValidator.swift */; };
+		2FDA03B883C738AFCFC38E18 /* Pods_RivneFish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76A73F8242433C3F0EFDC8A4 /* Pods_RivneFish.framework */; };
 		3E22016F1BF4FEE90056FE7A /* arrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E22016C1BF4FEE90056FE7A /* arrowRight.png */; };
 		3E2201701BF4FEE90056FE7A /* arrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E22016D1BF4FEE90056FE7A /* arrowRight@2x.png */; };
 		3E2201711BF4FEE90056FE7A /* arrowRight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E22016E1BF4FEE90056FE7A /* arrowRight@3x.png */; };
@@ -162,7 +163,7 @@
 		3EF772661C15949900A83A3A /* 35.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EF772031C15949900A83A3A /* 35.png */; };
 		3EF772671C15949900A83A3A /* 35@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EF772041C15949900A83A3A /* 35@2x.png */; };
 		3EF772681C15949900A83A3A /* 35@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EF772051C15949900A83A3A /* 35@3x.png */; };
-		490FF928B7738341DE821D2F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7455EB07D266470760C53FE /* Pods.framework */; };
+		F3491A7D12C146E061A985E9 /* Pods_RivneFishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73EB8308BFAB47B34C23C6F /* Pods_RivneFishTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,7 +177,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18882211F1ECA2AFF45859F1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish.debug.xcconfig"; sourceTree = "<group>"; };
 		284F3DF31C92FE6600B4AF62 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_image.png; path = resources/no_image.png; sourceTree = "<group>"; };
 		284F3DF41C92FE6600B4AF62 /* no_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@2x.png"; path = "resources/no_image@2x.png"; sourceTree = "<group>"; };
 		284F3DF51C92FE6600B4AF62 /* no_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@3x.png"; path = "resources/no_image@3x.png"; sourceTree = "<group>"; };
@@ -357,8 +358,12 @@
 		3EF772031C15949900A83A3A /* 35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 35.png; path = resources/fish/35.png; sourceTree = "<group>"; };
 		3EF772041C15949900A83A3A /* 35@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "35@2x.png"; path = "resources/fish/35@2x.png"; sourceTree = "<group>"; };
 		3EF772051C15949900A83A3A /* 35@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "35@3x.png"; path = "resources/fish/35@3x.png"; sourceTree = "<group>"; };
-		7C8ED33FF0955537B1170A0F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		76A73F8242433C3F0EFDC8A4 /* Pods_RivneFish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RivneFish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8107178751E8CADAB2C721CC /* Pods-RivneFishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFishTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E496CDE8F668C6802EE857CC /* Pods-RivneFish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFish.release.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish.release.xcconfig"; sourceTree = "<group>"; };
+		E73EB8308BFAB47B34C23C6F /* Pods_RivneFishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RivneFishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7455EB07D266470760C53FE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9545607F2692A6D4F5C9B1B /* Pods-RivneFishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFishTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,7 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */,
-				490FF928B7738341DE821D2F /* Pods.framework in Frameworks */,
+				2FDA03B883C738AFCFC38E18 /* Pods_RivneFish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3491A7D12C146E061A985E9 /* Pods_RivneFishTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,8 +408,8 @@
 				3E4BD7801AD7194E0036C8CA /* RivneFish */,
 				3E4BD7961AD7194E0036C8CA /* RivneFishTests */,
 				3E4BD77F1AD7194E0036C8CA /* Products */,
-				BD19FAD342DF94347B7EE309 /* Pods */,
 				5B2072A62D998BC2002B1316 /* Frameworks */,
+				65256FD4C096B328271518D6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -733,15 +739,19 @@
 			isa = PBXGroup;
 			children = (
 				F7455EB07D266470760C53FE /* Pods.framework */,
+				76A73F8242433C3F0EFDC8A4 /* Pods_RivneFish.framework */,
+				E73EB8308BFAB47B34C23C6F /* Pods_RivneFishTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BD19FAD342DF94347B7EE309 /* Pods */ = {
+		65256FD4C096B328271518D6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				18882211F1ECA2AFF45859F1 /* Pods.debug.xcconfig */,
-				7C8ED33FF0955537B1170A0F /* Pods.release.xcconfig */,
+				0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */,
+				E496CDE8F668C6802EE857CC /* Pods-RivneFish.release.xcconfig */,
+				8107178751E8CADAB2C721CC /* Pods-RivneFishTests.debug.xcconfig */,
+				F9545607F2692A6D4F5C9B1B /* Pods-RivneFishTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -753,12 +763,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E4BD79D1AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFish" */;
 			buildPhases = (
-				6300CF61024382484D447ED5 /* Check Pods Manifest.lock */,
+				BC0939A7DD6B79C1765A5270 /* Check Pods Manifest.lock */,
 				3E4BD77A1AD7194E0036C8CA /* Sources */,
 				3E4BD77B1AD7194E0036C8CA /* Frameworks */,
 				3E4BD77C1AD7194E0036C8CA /* Resources */,
-				22A73F0CE8ACFCCEC01EE44D /* Embed Pods Frameworks */,
-				9C3D3D520AE97F59AF6BAACB /* Copy Pods Resources */,
+				9F4D1B6FEE850FCA6492BA0F /* Embed Pods Frameworks */,
+				019EBE6C17E5E5491A4ABD9C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -773,9 +783,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E4BD7A01AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFishTests" */;
 			buildPhases = (
+				BBA5974B7A2BE18AC85A2F5B /* Check Pods Manifest.lock */,
 				3E4BD78F1AD7194E0036C8CA /* Sources */,
 				3E4BD7901AD7194E0036C8CA /* Frameworks */,
 				3E4BD7911AD7194E0036C8CA /* Resources */,
+				6EC14D9C34EC15541E7CE277 /* Embed Pods Frameworks */,
+				B2106CDCB96FA80AE8078875 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -967,7 +980,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22A73F0CE8ACFCCEC01EE44D /* Embed Pods Frameworks */ = {
+		019EBE6C17E5E5491A4ABD9C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EC14D9C34EC15541E7CE277 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -979,10 +1007,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6300CF61024382484D447ED5 /* Check Pods Manifest.lock */ = {
+		9F4D1B6FEE850FCA6492BA0F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2106CDCB96FA80AE8078875 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBA5974B7A2BE18AC85A2F5B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -997,19 +1055,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9C3D3D520AE97F59AF6BAACB /* Copy Pods Resources */ = {
+		BC0939A7DD6B79C1765A5270 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1173,7 +1231,7 @@
 		};
 		3E4BD79E1AD7194E0036C8CA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18882211F1ECA2AFF45859F1 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1192,7 +1250,7 @@
 		};
 		3E4BD79F1AD7194E0036C8CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C8ED33FF0955537B1170A0F /* Pods.release.xcconfig */;
+			baseConfigurationReference = E496CDE8F668C6802EE857CC /* Pods-RivneFish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1210,6 +1268,7 @@
 		};
 		3E4BD7A11AD7194E0036C8CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8107178751E8CADAB2C721CC /* Pods-RivneFishTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1230,6 +1289,7 @@
 		};
 		3E4BD7A21AD7194E0036C8CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9545607F2692A6D4F5C9B1B /* Pods-RivneFishTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
