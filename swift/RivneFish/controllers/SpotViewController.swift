@@ -265,7 +265,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.permitLabel.text = marker.permitStr
     }
 
-    // Layout helper methods
+    // MARK: Layout helper methods
     
     func updateContentTextViewHeight() {
         if contentTextView != nil {
@@ -301,7 +301,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
 
-    // UICollectionView methods
+    // MARK: UICollectionView methods
 
     func setupImagesCollectionView() {
         self.imagesCollectionView.registerNib(UINib(nibName: "ImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
@@ -378,7 +378,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         return CGSize(width: 0.0, height: 0.0)
     }
 
-    // Rotation handling methods
+    // MARK: Rotation handling methods
 
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         self.imagesCollectionView.alpha = 0.0
@@ -392,6 +392,7 @@ class SpotViewController: UIViewController, UICollectionViewDataSource, UICollec
         updateFishingInfoViewHeight()
         updateImagesViewTopConstraint()
         updateImagesViewHeight()
+        self.imagesCollectionView.collectionViewLayout.invalidateLayout()
     }
 
     @IBAction func expandButtonTouched(sender: UIButton) {
