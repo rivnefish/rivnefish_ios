@@ -289,7 +289,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         // add new
         var proceededAnnotations: Array<MarkerAnnotation> = Array()
 
-        for var i = 0; i < self.markersAnnotations.count; ++i {
+        for i in 0 ..< self.markersAnnotations.count {
             // Take marker if it is not proceeded yet
             let annotation: MarkerAnnotation = self.markersAnnotations[i]
             if !proceededAnnotations.contains(annotation) {
@@ -298,7 +298,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
                 annotation.containedAnnotations = Array()
 
                 // Loop all annotations and find closest to took annotation
-                for var j = i + 1; j < self.markersAnnotations.count; ++j {
+                for j in i + 1 ..< self.markersAnnotations.count {
                     // Check if annotation is not proceeded
                     let childAnnotation = self.markersAnnotations[j]
                     if !proceededAnnotations.contains(childAnnotation) {

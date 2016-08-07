@@ -101,7 +101,7 @@ class NetworkDataSource {
         if let response = response {
             let statusCodeData: AnyObject? = response.valueForKey("statusCode")
             if let statusCode: NSInteger = statusCodeData as? NSInteger {
-                let code = Int(statusCode.value)
+                let code = statusCode
                 result = (code == 0)
             }
         }

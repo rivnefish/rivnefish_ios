@@ -139,7 +139,7 @@ class DataSource: NSObject {
                         }
                     }
                 }
-                ++i
+                i += 1
             }
         }
     }
