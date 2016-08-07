@@ -1,5 +1,5 @@
 //
-//  SpotViewController.swift
+//  MarkerDetailsController.swift
 //  RivneFish
 //
 //  Created by akyryl on 06/09/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpotViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, UITextViewDelegate {
+class MarkerDetailsController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, UITextViewDelegate {
     
     var currentIndex: Int
     let kCellIdentifier = "imagesCellIdentifier"

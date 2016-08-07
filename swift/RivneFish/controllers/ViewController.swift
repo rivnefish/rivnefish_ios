@@ -17,7 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     @IBOutlet weak var googleMapView: GMSMapView!
     let locationManager = CLLocationManager()
     var clusterManager: GClusterManager!
-    private var spotViewController: SpotViewController?
+    private var markerDetailsController: MarkerDetailsController?
 
     private var currentMarkerModel: MarkerModel?
 
@@ -68,7 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             dispatch_async(dispatch_get_main_queue()) {
                 // Simply update data when connection appear
                 self.updateData()
-                self.populateSpotControllerWithData()
+                self.populateMarkerDetailsControllerWithData()
             }
         }
 
@@ -193,18 +193,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
 
     func goToMarkerDetailsView() {
-        spotViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SpotViewController") as? SpotViewController
-        populateSpotControllerWithData()
+        markerDetailsController = self.storyboard!.instantiateViewControllerWithIdentifier("MarkerDetailsController") as? MarkerDetailsController
+        populateMarkerDetailsControllerWithData()
 
-        if let controller = spotViewController {
+        if let controller = markerDetailsController {
             self.navigationController?.pushViewController(controller, animated: true)
             let backButton: UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: nil, action: nil)
             self.navigationItem.backBarButtonItem = backButton
         }
     }
 
-    private func populateSpotControllerWithData() {
-        if let controller = spotViewController {
+    private func populateMarkerDetailsControllerWithData() {
+        if let controller = markerDetailsController {
             controller.ourDataSource = dataSource
             if let markerModel = currentMarkerModel {
                 controller.marker = markerModel

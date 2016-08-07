@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vCg-mE-lDV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vCg-mE-lDV">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="586" y="508"/>
         </scene>
-        <!--Spot View Controller-->
+        <!--Marker Details Controller-->
         <scene sceneID="e1d-oY-1ZN">
             <objects>
-                <viewController storyboardIdentifier="SpotViewController" automaticallyAdjustsScrollViewInsets="NO" id="HSr-FR-hf2" customClass="SpotViewController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarkerDetailsController" automaticallyAdjustsScrollViewInsets="NO" id="HSr-FR-hf2" customClass="MarkerDetailsController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8AC-AT-YQY"/>
                         <viewControllerLayoutGuide type="bottom" id="Qc6-HZ-Us0"/>

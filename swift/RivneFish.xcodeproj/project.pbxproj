@@ -47,7 +47,7 @@
 		3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175F91BDB84CA00671A27 /* SphericalMercatorProjection.m */; };
 		3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175FE1BDB84D500671A27 /* GQTPointQuadTree.m */; };
 		3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */; };
-		3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */; };
+		3E9707E41B9C887A00B0CCC3 /* MarkerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */; };
 		3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */; };
 		3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */; };
 		3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */; };
@@ -241,7 +241,7 @@
 		3E9175FF1BDB84D500671A27 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeChild.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
 		3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GQTPointQuadTreeChild.m; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
 		3E9176011BDB84D500671A27 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeItem.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
-		3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpotViewController.swift; path = controllers/SpotViewController.swift; sourceTree = "<group>"; };
+		3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsController.swift; path = controllers/MarkerDetailsController.swift; sourceTree = "<group>"; };
 		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewCell.swift; path = ui/ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagesCollectionViewCell.xib; path = ui/ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = network/HTTPClient.swift; sourceTree = "<group>"; };
@@ -557,7 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
-				3E9707E31B9C887A00B0CCC3 /* SpotViewController.swift */,
+				3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */,
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
 			);
 			name = Controllers;
@@ -1077,7 +1077,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E9707E41B9C887A00B0CCC3 /* SpotViewController.swift in Sources */,
+				3E9707E41B9C887A00B0CCC3 /* MarkerDetailsController.swift in Sources */,
 				28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */,
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
