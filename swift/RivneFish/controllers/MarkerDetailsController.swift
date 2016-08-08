@@ -20,35 +20,30 @@ class MarkerDetailsController: UIViewController {
 
     var markerDetailsModel: MarkerModel? {
         didSet {
-            if let name = markerDetailsModel?.name {
-                if !name.isEmpty {
-                    cellTypes.append(.Caption)
-                }
+            let name = markerDetailsModel?.name ?? ""
+            if !name.isEmpty {
+                cellTypes.append(.Caption)
             }
-            if let contact = markerDetailsModel?.contact,
-                let contactName = markerDetailsModel?.contactName {
-                if !contact.isEmpty || !contactName.isEmpty {
-                    cellTypes.append(.Contacts)
-                }
+            let contact = markerDetailsModel?.contact ?? ""
+            let contactName = markerDetailsModel?.contactName ?? ""
+            if !contact.isEmpty || !contactName.isEmpty {
+                cellTypes.append(.Contacts)
             }
-            if let area = markerDetailsModel?.areaStr,
-                let averDepth = markerDetailsModel?.averageDepth,
-                let maxDepth = markerDetailsModel?.maxDepth {
-                if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
-                    cellTypes.append(.PlaceDetails)
-                }
+            let area = markerDetailsModel?.areaStr ?? ""
+            let averDepth = markerDetailsModel?.averageDepth ?? ""
+            let maxDepth = markerDetailsModel?.maxDepth ?? ""
+            if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
+                cellTypes.append(.PlaceDetails)
             }
-            if let price24 = markerDetailsModel?.price24,
-                let boat = markerDetailsModel?.boatUsageStr,
-                let time = markerDetailsModel?.timeToFish {
-                if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
-                    cellTypes.append(.FishingConditions)
-                }
+            let price24 = markerDetailsModel?.price24 ?? ""
+            let boat = markerDetailsModel?.boatUsageStr ?? ""
+            let time = markerDetailsModel?.timeToFish ?? ""
+            if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
+                cellTypes.append(.FishingConditions)
             }
-            if let content = markerDetailsModel?.content {
-                if !content.isEmpty {
-                    cellTypes.append(.Description)
-                }
+            let content = markerDetailsModel?.content ?? ""
+            if !content.isEmpty {
+                cellTypes.append(.Description)
             }
             contentTable?.reloadData()
         }
