@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281566DB1D575753008B1E12 /* MarkerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566DA1D575753008B1E12 /* MarkerDetailsController.swift */; };
+		281566E11D5759DC008B1E12 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566E01D5759DC008B1E12 /* LabelCell.swift */; };
+		281566E51D575AC4008B1E12 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* LabelCell.xib */; };
+		282D90081D578ED000DE8550 /* TitleLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90071D578ED000DE8550 /* TitleLabelCell.xib */; };
+		282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90091D578FD500DE8550 /* TitleLabelCell.swift */; };
+		282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */; };
+		282D900E1D5796C500DE8550 /* PlaceDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */; };
+		282D90101D579FBE00DE8550 /* FishingConditionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */; };
+		282D90121D57A00A00DE8550 /* FishingConditionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */; };
+		282D90141D57AA0A00DE8550 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90131D57AA0A00DE8550 /* ContactsCell.swift */; };
+		282D90161D57AA3E00DE8550 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90151D57AA3E00DE8550 /* ContactsCell.xib */; };
+		282D90181D57B6B100DE8550 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90171D57B6B100DE8550 /* AddressCell.swift */; };
+		282D901A1D57B6C700DE8550 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90191D57B6C700DE8550 /* AddressCell.xib */; };
 		284F3DF61C92FE6600B4AF62 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF31C92FE6600B4AF62 /* no_image.png */; };
 		284F3DF71C92FE6600B4AF62 /* no_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF41C92FE6600B4AF62 /* no_image@2x.png */; };
 		284F3DF81C92FE6600B4AF62 /* no_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF51C92FE6600B4AF62 /* no_image@3x.png */; };
@@ -47,7 +60,7 @@
 		3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175F91BDB84CA00671A27 /* SphericalMercatorProjection.m */; };
 		3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175FE1BDB84D500671A27 /* GQTPointQuadTree.m */; };
 		3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */; };
-		3E9707E41B9C887A00B0CCC3 /* MarkerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */; };
+		3E9707E41B9C887A00B0CCC3 /* MarkerDetailsControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* MarkerDetailsControllerOld.swift */; };
 		3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */; };
 		3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */; };
 		3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */; };
@@ -178,6 +191,19 @@
 
 /* Begin PBXFileReference section */
 		0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish.debug.xcconfig"; sourceTree = "<group>"; };
+		281566DA1D575753008B1E12 /* MarkerDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsController.swift; path = controllers/MarkerDetailsController.swift; sourceTree = "<group>"; };
+		281566E01D5759DC008B1E12 /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelCell.swift; path = ui/markerDetails/LabelCell.swift; sourceTree = "<group>"; };
+		281566E41D575AC4008B1E12 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LabelCell.xib; path = ui/markerDetails/LabelCell.xib; sourceTree = "<group>"; };
+		282D90071D578ED000DE8550 /* TitleLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TitleLabelCell.xib; path = ui/markerDetails/TitleLabelCell.xib; sourceTree = "<group>"; };
+		282D90091D578FD500DE8550 /* TitleLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleLabelCell.swift; path = ui/markerDetails/TitleLabelCell.swift; sourceTree = "<group>"; };
+		282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCell.swift; path = ui/markerDetails/PlaceDetailsCell.swift; sourceTree = "<group>"; };
+		282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceDetailsCell.xib; path = ui/markerDetails/PlaceDetailsCell.xib; sourceTree = "<group>"; };
+		282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishingConditionsCell.swift; path = ui/markerDetails/FishingConditionsCell.swift; sourceTree = "<group>"; };
+		282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FishingConditionsCell.xib; path = ui/markerDetails/FishingConditionsCell.xib; sourceTree = "<group>"; };
+		282D90131D57AA0A00DE8550 /* ContactsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsCell.swift; path = ui/markerDetails/ContactsCell.swift; sourceTree = "<group>"; };
+		282D90151D57AA3E00DE8550 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactsCell.xib; path = ui/markerDetails/ContactsCell.xib; sourceTree = "<group>"; };
+		282D90171D57B6B100DE8550 /* AddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressCell.swift; path = ui/markerDetails/AddressCell.swift; sourceTree = "<group>"; };
+		282D90191D57B6C700DE8550 /* AddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddressCell.xib; path = ui/markerDetails/AddressCell.xib; sourceTree = "<group>"; };
 		284F3DF31C92FE6600B4AF62 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_image.png; path = resources/no_image.png; sourceTree = "<group>"; };
 		284F3DF41C92FE6600B4AF62 /* no_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@2x.png"; path = "resources/no_image@2x.png"; sourceTree = "<group>"; };
 		284F3DF51C92FE6600B4AF62 /* no_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@3x.png"; path = "resources/no_image@3x.png"; sourceTree = "<group>"; };
@@ -241,7 +267,7 @@
 		3E9175FF1BDB84D500671A27 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeChild.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
 		3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GQTPointQuadTreeChild.m; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
 		3E9176011BDB84D500671A27 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeItem.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
-		3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsController.swift; path = controllers/MarkerDetailsController.swift; sourceTree = "<group>"; };
+		3E9707E31B9C887A00B0CCC3 /* MarkerDetailsControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsControllerOld.swift; path = controllers/MarkerDetailsControllerOld.swift; sourceTree = "<group>"; };
 		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewCell.swift; path = ui/ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagesCollectionViewCell.xib; path = ui/ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = network/HTTPClient.swift; sourceTree = "<group>"; };
@@ -387,6 +413,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281566DF1D5759C6008B1E12 /* MarkerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				282D90191D57B6C700DE8550 /* AddressCell.xib */,
+				282D90151D57AA3E00DE8550 /* ContactsCell.xib */,
+				282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */,
+				281566E01D5759DC008B1E12 /* LabelCell.swift */,
+				281566E41D575AC4008B1E12 /* LabelCell.xib */,
+				282D90071D578ED000DE8550 /* TitleLabelCell.xib */,
+				282D90091D578FD500DE8550 /* TitleLabelCell.swift */,
+				282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */,
+				282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */,
+				282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */,
+				282D90131D57AA0A00DE8550 /* ContactsCell.swift */,
+				282D90171D57B6B100DE8550 /* AddressCell.swift */,
+			);
+			name = MarkerDetails;
+			sourceTree = "<group>";
+		};
 		28C5A8731C6F75FE00C86F5E /* TMCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,8 +602,9 @@
 			isa = PBXGroup;
 			children = (
 				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
-				3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */,
+				3E9707E31B9C887A00B0CCC3 /* MarkerDetailsControllerOld.swift */,
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
+				281566DA1D575753008B1E12 /* MarkerDetailsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -613,6 +659,7 @@
 		3EE306DA1B4FAD27003225FF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				281566DF1D5759C6008B1E12 /* MarkerDetails */,
 				3EA745431BBD1C1B00AB470A /* FishCollectionViewCell.swift */,
 				3EA745411BBD1BF500AB470A /* FishCollectionViewCell.xib */,
 				3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */,
@@ -856,8 +903,10 @@
 				3EF772251C15949900A83A3A /* 11@2x.png in Resources */,
 				3EF772371C15949900A83A3A /* 17@2x.png in Resources */,
 				3EF772431C15949900A83A3A /* 22@2x.png in Resources */,
+				282D900E1D5796C500DE8550 /* PlaceDetailsCell.xib in Resources */,
 				3EF772321C15949900A83A3A /* 15@3x.png in Resources */,
 				3EF772611C15949900A83A3A /* 33@2x.png in Resources */,
+				282D90161D57AA3E00DE8550 /* ContactsCell.xib in Resources */,
 				3EA745421BBD1BF500AB470A /* FishCollectionViewCell.xib in Resources */,
 				3EF772081C15949900A83A3A /* 1@3x.png in Resources */,
 				3EF772281C15949900A83A3A /* 12@2x.png in Resources */,
@@ -893,10 +942,12 @@
 				3EF772361C15949900A83A3A /* 17.png in Resources */,
 				3EF7720E1C15949900A83A3A /* 3@3x.png in Resources */,
 				3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */,
+				281566E51D575AC4008B1E12 /* LabelCell.xib in Resources */,
 				3EF7724B1C15949900A83A3A /* 25.png in Resources */,
 				3EF7722F1C15949900A83A3A /* 14@3x.png in Resources */,
 				3E22016F1BF4FEE90056FE7A /* arrowRight.png in Resources */,
 				3EF7721D1C15949900A83A3A /* 8@3x.png in Resources */,
+				282D90081D578ED000DE8550 /* TitleLabelCell.xib in Resources */,
 				3EF772631C15949900A83A3A /* 34.png in Resources */,
 				3EF7720D1C15949900A83A3A /* 3@2x.png in Resources */,
 				3EF7725B1C15949900A83A3A /* 30@2x.png in Resources */,
@@ -911,6 +962,7 @@
 				3EF7725A1C15949900A83A3A /* 30.png in Resources */,
 				3EF7725D1C15949900A83A3A /* 31.png in Resources */,
 				3EF772571C15949900A83A3A /* 29.png in Resources */,
+				282D901A1D57B6C700DE8550 /* AddressCell.xib in Resources */,
 				3EF772271C15949900A83A3A /* 12.png in Resources */,
 				3EF772541C15949900A83A3A /* 28.png in Resources */,
 				3EF772211C15949900A83A3A /* 10.png in Resources */,
@@ -924,6 +976,7 @@
 				3EF7724E1C15949900A83A3A /* 26.png in Resources */,
 				3EB21C201B6617FB00517ECE /* m2-9.png in Resources */,
 				3EF772161C15949900A83A3A /* 6@2x.png in Resources */,
+				282D90121D57A00A00DE8550 /* FishingConditionsCell.xib in Resources */,
 				3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */,
 				3EF7720F1C15949900A83A3A /* 4.png in Resources */,
 				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
@@ -1077,11 +1130,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E9707E41B9C887A00B0CCC3 /* MarkerDetailsController.swift in Sources */,
+				3E9707E41B9C887A00B0CCC3 /* MarkerDetailsControllerOld.swift in Sources */,
 				28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */,
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
+				281566DB1D575753008B1E12 /* MarkerDetailsController.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
+				282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */,
 				28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */,
 				3E9070BE1BF330F900268C7F /* Reachability.m in Sources */,
 				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
@@ -1099,12 +1154,17 @@
 				28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */,
 				3EA745541BBEFA5600AB470A /* Fish.swift in Sources */,
 				3E9175F71BDB848900671A27 /* GClusterManager.m in Sources */,
+				282D90101D579FBE00DE8550 /* FishingConditionsCell.swift in Sources */,
+				282D90141D57AA0A00DE8550 /* ContactsCell.swift in Sources */,
+				282D90181D57B6B100DE8550 /* AddressCell.swift in Sources */,
 				3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */,
 				3EE306DC1B4FAD98003225FF /* MarkerAnnotation.swift in Sources */,
 				28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */,
 				3EA745441BBD1C1B00AB470A /* FishCollectionViewCell.swift in Sources */,
 				3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */,
 				3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */,
+				282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */,
+				281566E11D5759DC008B1E12 /* LabelCell.swift in Sources */,
 				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,
 				3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */,
 				3EE306D31B4A65A3003225FF /* Marker.swift in Sources */,

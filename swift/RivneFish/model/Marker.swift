@@ -73,11 +73,11 @@ class MarkerModel: NSObject, NSCoding {
     var photoUrls: Array<String>?
     var url: String?
     
-    var areaStr: String {
-        if let val = area {
+    var areaStr: String? {
+        if let val = area where val != 0.0 {
             return NSLocalizedString("\(val / 100)Га", comment: "area")
         }
-        return NSLocalizedString("-", comment: "no_information")
+        return nil
     }
 
     var contactStr: String {
@@ -103,7 +103,7 @@ class MarkerModel: NSObject, NSCoding {
         return NSLocalizedString("-", comment: "no_information")
     }
 
-    var boatUsaveStr: String {
+    var boatUsageStr: String? {
         if let val = boatUsage {
             if val {
                 return NSLocalizedString("так", comment: "yes")
@@ -111,7 +111,7 @@ class MarkerModel: NSObject, NSCoding {
                 return NSLocalizedString("ні", comment: "no")
             }
         }
-        return NSLocalizedString("-", comment: "no_information")
+        return nil
     }
 
     func readableStrForStrValue(val: String?) -> String {

@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="586" y="508"/>
         </scene>
-        <!--Marker Details Controller-->
+        <!--Marker Details Controller Old-->
         <scene sceneID="e1d-oY-1ZN">
             <objects>
-                <viewController storyboardIdentifier="MarkerDetailsController" automaticallyAdjustsScrollViewInsets="NO" id="HSr-FR-hf2" customClass="MarkerDetailsController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarkerDetailsControllerOld" automaticallyAdjustsScrollViewInsets="NO" id="HSr-FR-hf2" customClass="MarkerDetailsControllerOld" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8AC-AT-YQY"/>
                         <viewControllerLayoutGuide type="bottom" id="Qc6-HZ-Us0"/>
@@ -334,7 +334,7 @@
                                             <constraint firstAttribute="height" constant="14" id="7cI-8t-mhs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -423,7 +423,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FS5-nc-9Lv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216" y="508"/>
+            <point key="canvasLocation" x="1220" y="278"/>
+        </scene>
+        <!--Marker Details Controller-->
+        <scene sceneID="4Cb-3C-4cL">
+            <objects>
+                <viewController storyboardIdentifier="MarkerDetailsController" automaticallyAdjustsScrollViewInsets="NO" id="gek-IZ-hcr" customClass="MarkerDetailsController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bOn-VD-FGU"/>
+                        <viewControllerLayoutGuide type="bottom" id="BDH-hY-OQZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UPD-5m-bxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PpS-ET-jkm">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gek-IZ-hcr" id="JRv-bY-JIt"/>
+                                    <outlet property="delegate" destination="gek-IZ-hcr" id="ew6-mw-Fru"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BDH-hY-OQZ" firstAttribute="top" secondItem="PpS-ET-jkm" secondAttribute="bottom" id="c6F-e5-FJY"/>
+                            <constraint firstItem="PpS-ET-jkm" firstAttribute="leading" secondItem="UPD-5m-bxZ" secondAttribute="leading" id="oMq-9x-jsh"/>
+                            <constraint firstAttribute="trailing" secondItem="PpS-ET-jkm" secondAttribute="trailing" id="pNp-EM-XYQ"/>
+                            <constraint firstItem="PpS-ET-jkm" firstAttribute="top" secondItem="bOn-VD-FGU" secondAttribute="bottom" id="ryM-Dm-HEJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentTable" destination="PpS-ET-jkm" id="G88-4n-KTc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2c-7T-uZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1219" y="941"/>
         </scene>
     </scenes>
     <resources>

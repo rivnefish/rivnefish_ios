@@ -205,12 +205,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     private func populateMarkerDetailsControllerWithData() {
         if let controller = markerDetailsController {
-            controller.ourDataSource = dataSource
+            /*controller.ourDataSource = dataSource
             if let markerModel = currentMarkerModel {
                 controller.marker = markerModel
                 dataSource.fishForMarker(self.reach, marker: markerModel, completionHandler: { (fish: NSArray) in
                     controller.fishArray = fish as? Array<Fish>
                 })
+            }*/
+
+            if let markerModel = currentMarkerModel {
+                controller.markerDetailsModel = markerModel
             }
         }
     }

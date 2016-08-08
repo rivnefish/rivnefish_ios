@@ -261,7 +261,7 @@ class MarkerDetailsControllerOld: UIViewController, UICollectionViewDataSource, 
         self.squareLabel.text = marker.areaStr
         self.maxDepthLabel.text = marker.maxDepthStr
         self.averageDepthLabel.text = marker.averageDepthStr
-        self.boatUsageLabel.text = marker.boatUsaveStr
+        self.boatUsageLabel.text = marker.boatUsageStr
         self.permitLabel.text = marker.permitStr
     }
 

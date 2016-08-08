@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TitleLabelCell" selectionStyle="default" indentationWidth="10" rowHeight="130" id="eZG-3J-U1d" customClass="ContactsCell" customModule="Rivnefish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZG-3J-U1d" id="LgP-xc-SU0">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контактна інформація:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLH-nr-x1C">
+                        <rect key="frame" x="8" y="8" width="304" height="22"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Телефон:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="99999" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBJ-Nw-BVQ">
+                        <rect key="frame" x="8" y="38" width="304" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Деталі" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="99999" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-r5-cJl">
+                        <rect key="frame" x="8" y="96" width="304" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqO-lA-BZF">
+                        <rect key="frame" x="8" y="67" width="51" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Ogv-dB-OzS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="phonePressed:" destination="eZG-3J-U1d" eventType="touchUpInside" id="P3V-Eg-mf2"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="VqO-lA-BZF" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="2CB-oJ-KXY"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="y6z-r5-cJl" secondAttribute="bottom" constant="4.5" id="GZ7-Xa-9RR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nBJ-Nw-BVQ" secondAttribute="trailing" id="O1c-T8-grG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yLH-nr-x1C" secondAttribute="trailing" id="ORN-nh-hfa"/>
+                    <constraint firstItem="y6z-r5-cJl" firstAttribute="trailing" secondItem="LgP-xc-SU0" secondAttribute="trailingMargin" id="Rr9-81-j3B"/>
+                    <constraint firstItem="y6z-r5-cJl" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="SL1-rt-p7x"/>
+                    <constraint firstItem="y6z-r5-cJl" firstAttribute="top" secondItem="VqO-lA-BZF" secondAttribute="bottom" constant="8" id="ToD-oZ-mr9"/>
+                    <constraint firstItem="yLH-nr-x1C" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="WEc-bJ-fGu"/>
+                    <constraint firstItem="nBJ-Nw-BVQ" firstAttribute="top" secondItem="yLH-nr-x1C" secondAttribute="bottom" constant="8" id="YEw-LE-F6e"/>
+                    <constraint firstItem="y6z-r5-cJl" firstAttribute="trailing" secondItem="LgP-xc-SU0" secondAttribute="trailingMargin" id="b2v-95-MOL"/>
+                    <constraint firstItem="nBJ-Nw-BVQ" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="ifb-gX-d9Q"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="VqO-lA-BZF" secondAttribute="trailing" constant="10" id="jvh-6A-K7T"/>
+                    <constraint firstItem="y6z-r5-cJl" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="m4m-QI-3pX"/>
+                    <constraint firstItem="yLH-nr-x1C" firstAttribute="top" secondItem="LgP-xc-SU0" secondAttribute="topMargin" id="njl-3W-wCZ"/>
+                    <constraint firstItem="VqO-lA-BZF" firstAttribute="top" secondItem="nBJ-Nw-BVQ" secondAttribute="bottom" constant="8" id="vH4-1k-1Ny"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailsConstraint" destination="ToD-oZ-mr9" id="M49-xI-ijh"/>
+                <outlet property="detailsLabel" destination="y6z-r5-cJl" id="fMG-AS-m0z"/>
+                <outlet property="phoneButton" destination="VqO-lA-BZF" id="rEd-yl-nSq"/>
+                <outlet property="phoneCaptionLabel" destination="nBJ-Nw-BVQ" id="jAg-V3-b8H"/>
+                <outlet property="phoneCaptionVConstraint" destination="nBJ-Nw-BVQ" id="ujV-Tf-Ban"/>
+                <outlet property="phoneHeightConstraint" destination="Ogv-dB-OzS" id="QBl-6B-CzT"/>
+                <outlet property="phoneVConstraint" destination="vH4-1k-1Ny" id="PHw-WA-DMp"/>
+            </connections>
+            <point key="canvasLocation" x="279" y="255"/>
+        </tableViewCell>
+    </objects>
+</document>
