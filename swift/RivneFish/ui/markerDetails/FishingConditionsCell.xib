@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="289" height="192"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cbz-IZ-D6K" id="APf-9z-mRq">
-                <rect key="frame" x="0.0" y="0.0" width="289" height="191.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="289" height="191"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqB-Fp-vYW">

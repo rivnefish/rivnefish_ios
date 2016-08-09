@@ -16,6 +16,7 @@ class MarkerDetailsController: UIViewController {
         case PlaceDetails = 2
         case FishingConditions = 3
         case Description = 4
+        case LinkCell = 5
     }
 
     var markerDetailsModel: MarkerModel? {
@@ -45,6 +46,10 @@ class MarkerDetailsController: UIViewController {
             if !content.isEmpty {
                 cellTypes.append(.Description)
             }
+            let urlStr = markerDetailsModel?.url ?? ""
+            if !urlStr.isEmpty {
+                cellTypes.append(.LinkCell)
+            }
             contentTable?.reloadData()
         }
     }
@@ -68,7 +73,10 @@ class MarkerDetailsController: UIViewController {
             nibName = UINib(nibName: "PlaceDetailsCell", bundle:nil)
             contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceDetailsCell")
             nibName = UINib(nibName: "FishingConditionsCell", bundle:nil)
-            contentTable.registerNib(nibName, forCellReuseIdentifier: "FishingConditionsCell")
+            contentTable.registerNib(nibName, forCellReuseIdentifier:
+                "FishingConditionsCell")
+            nibName = UINib(nibName: "LinkCell", bundle:nil)
+            contentTable.registerNib(nibName, forCellReuseIdentifier: "LinkCell")
         }
     }
 
@@ -92,6 +100,8 @@ extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
             cell = fishingConditionsCell(forIndexPath: indexPath)
         case .Description:
             cell = descriptionCell(forIndexPath: indexPath)
+        case .LinkCell:
+            cell = linkCell(forIndexPath: indexPath)
         }
         return cell ?? UITableViewCell()
     }
@@ -140,6 +150,16 @@ extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("PlaceDetailsCell", forIndexPath: indexPath) as? PlaceDetailsCell {
             cell.setup(withSquare: markerDetailsModel?.areaStr, averageDepth: markerDetailsModel?.averageDepth, maxDepth: markerDetailsModel?.maxDepth)
             return cell
+        }
+        return nil
+    }
+
+    private func linkCell(forIndexPath indexPath: NSIndexPath) -> LinkCell? {
+        if let cell = contentTable.dequeueReusableCellWithIdentifier("LinkCell", forIndexPath: indexPath) as? LinkCell {
+            if let urlStr = markerDetailsModel?.url {
+                cell.setup(withLinkText: "Детальніше", urlString: urlStr)
+                return cell
+            }
         }
         return nil
     }
