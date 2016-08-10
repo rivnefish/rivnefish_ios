@@ -12,6 +12,8 @@
 		281566E51D575AC4008B1E12 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* LabelCell.xib */; };
 		282C946A1D590D1700161303 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C94691D590D1700161303 /* LinkCell.xib */; };
 		282C946C1D590D2F00161303 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C946B1D590D2F00161303 /* LinkCell.swift */; };
+		282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C946F1D5A25B200161303 /* PlaceImagesCell.xib */; };
+		282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C94711D5A2C8500161303 /* PlaceImagesCell.swift */; };
 		282D90081D578ED000DE8550 /* TitleLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90071D578ED000DE8550 /* TitleLabelCell.xib */; };
 		282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90091D578FD500DE8550 /* TitleLabelCell.swift */; };
 		282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */; };
@@ -25,6 +27,8 @@
 		284F3DF61C92FE6600B4AF62 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF31C92FE6600B4AF62 /* no_image.png */; };
 		284F3DF71C92FE6600B4AF62 /* no_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF41C92FE6600B4AF62 /* no_image@2x.png */; };
 		284F3DF81C92FE6600B4AF62 /* no_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF51C92FE6600B4AF62 /* no_image@3x.png */; };
+		28515FF91D5B06C0009804F5 /* FishImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28515FF81D5B06C0009804F5 /* FishImagesCell.xib */; };
+		28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */; };
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
@@ -198,6 +202,8 @@
 		281566E41D575AC4008B1E12 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LabelCell.xib; path = ui/markerDetails/LabelCell.xib; sourceTree = "<group>"; };
 		282C94691D590D1700161303 /* LinkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkCell.xib; path = ui/markerDetails/LinkCell.xib; sourceTree = "<group>"; };
 		282C946B1D590D2F00161303 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkCell.swift; path = ui/markerDetails/LinkCell.swift; sourceTree = "<group>"; };
+		282C946F1D5A25B200161303 /* PlaceImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceImagesCell.xib; path = ui/markerDetails/PlaceImagesCell.xib; sourceTree = "<group>"; };
+		282C94711D5A2C8500161303 /* PlaceImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceImagesCell.swift; path = ui/markerDetails/PlaceImagesCell.swift; sourceTree = "<group>"; };
 		282D90071D578ED000DE8550 /* TitleLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TitleLabelCell.xib; path = ui/markerDetails/TitleLabelCell.xib; sourceTree = "<group>"; };
 		282D90091D578FD500DE8550 /* TitleLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleLabelCell.swift; path = ui/markerDetails/TitleLabelCell.swift; sourceTree = "<group>"; };
 		282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCell.swift; path = ui/markerDetails/PlaceDetailsCell.swift; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 		284F3DF31C92FE6600B4AF62 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_image.png; path = resources/no_image.png; sourceTree = "<group>"; };
 		284F3DF41C92FE6600B4AF62 /* no_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@2x.png"; path = "resources/no_image@2x.png"; sourceTree = "<group>"; };
 		284F3DF51C92FE6600B4AF62 /* no_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@3x.png"; path = "resources/no_image@3x.png"; sourceTree = "<group>"; };
+		28515FF81D5B06C0009804F5 /* FishImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FishImagesCell.xib; path = ui/markerDetails/FishImagesCell.xib; sourceTree = "<group>"; };
+		28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishImagesCell.swift; path = ui/markerDetails/FishImagesCell.swift; sourceTree = "<group>"; };
 		28C5A8741C6F761400C86F5E /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = libs/TMCache/TMCache.h; sourceTree = "<group>"; };
 		28C5A8751C6F761400C86F5E /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = libs/TMCache/TMCache.m; sourceTree = "<group>"; };
 		28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCacheBackgroundTaskManager.h; path = libs/TMCache/TMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
@@ -424,6 +432,8 @@
 				282D90191D57B6C700DE8550 /* AddressCell.xib */,
 				282D90131D57AA0A00DE8550 /* ContactsCell.swift */,
 				282D90151D57AA3E00DE8550 /* ContactsCell.xib */,
+				28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */,
+				28515FF81D5B06C0009804F5 /* FishImagesCell.xib */,
 				282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */,
 				282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */,
 				281566E01D5759DC008B1E12 /* LabelCell.swift */,
@@ -432,6 +442,8 @@
 				282C94691D590D1700161303 /* LinkCell.xib */,
 				282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */,
 				282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */,
+				282C94711D5A2C8500161303 /* PlaceImagesCell.swift */,
+				282C946F1D5A25B200161303 /* PlaceImagesCell.xib */,
 				282D90091D578FD500DE8550 /* TitleLabelCell.swift */,
 				282D90071D578ED000DE8550 /* TitleLabelCell.xib */,
 			);
@@ -455,7 +467,6 @@
 		3E4BD7751AD7194E0036C8CA = {
 			isa = PBXGroup;
 			children = (
-				3E8C65A51B35DD5A005BD52C /* MapKit.framework */,
 				3E4BD7801AD7194E0036C8CA /* RivneFish */,
 				3E4BD7961AD7194E0036C8CA /* RivneFishTests */,
 				3E4BD77F1AD7194E0036C8CA /* Products */,
@@ -791,6 +802,7 @@
 		5B2072A62D998BC2002B1316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E8C65A51B35DD5A005BD52C /* MapKit.framework */,
 				F7455EB07D266470760C53FE /* Pods.framework */,
 				76A73F8242433C3F0EFDC8A4 /* Pods_RivneFish.framework */,
 				E73EB8308BFAB47B34C23C6F /* Pods_RivneFishTests.framework */,
@@ -991,6 +1003,7 @@
 				3E2201701BF4FEE90056FE7A /* arrowRight@2x.png in Resources */,
 				3EF772411C15949900A83A3A /* 21@3x.png in Resources */,
 				3EF772401C15949900A83A3A /* 21@2x.png in Resources */,
+				282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */,
 				3EF7725C1C15949900A83A3A /* 30@3x.png in Resources */,
 				3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */,
 				3EF772221C15949900A83A3A /* 10@2x.png in Resources */,
@@ -1021,6 +1034,7 @@
 				3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
 				3EF772331C15949900A83A3A /* 16.png in Resources */,
+				28515FF91D5B06C0009804F5 /* FishImagesCell.xib in Resources */,
 				3EF772101C15949900A83A3A /* 4@2x.png in Resources */,
 				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
 				3EF772341C15949900A83A3A /* 16@2x.png in Resources */,
@@ -1156,6 +1170,7 @@
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
+				282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */,
 				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
 				28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */,
@@ -1171,6 +1186,7 @@
 				3EA745441BBD1C1B00AB470A /* FishCollectionViewCell.swift in Sources */,
 				3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */,
 				3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */,
+				28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */,
 				282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */,
 				281566E11D5759DC008B1E12 /* LabelCell.swift in Sources */,
 				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,

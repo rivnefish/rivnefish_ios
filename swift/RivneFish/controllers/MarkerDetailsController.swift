@@ -11,50 +11,32 @@ import UIKit
 class MarkerDetailsController: UIViewController {
 
     enum Cells: Int {
-        case Caption = 0
-        case Contacts = 1
-        case PlaceDetails = 2
-        case FishingConditions = 3
-        case Description = 4
-        case LinkCell = 5
+        case PlaceImages = 0
+        case FishImages = 1
+        case Caption = 2
+        case Contacts = 3
+        case PlaceDetails = 4
+        case FishingConditions = 5
+        case Description = 6
+        case LinkCell = 7
     }
 
     var markerDetailsModel: MarkerModel? {
         didSet {
-            let name = markerDetailsModel?.name ?? ""
-            if !name.isEmpty {
-                cellTypes.append(.Caption)
-            }
-            let contact = markerDetailsModel?.contact ?? ""
-            let contactName = markerDetailsModel?.contactName ?? ""
-            if !contact.isEmpty || !contactName.isEmpty {
-                cellTypes.append(.Contacts)
-            }
-            let area = markerDetailsModel?.areaStr ?? ""
-            let averDepth = markerDetailsModel?.averageDepth ?? ""
-            let maxDepth = markerDetailsModel?.maxDepth ?? ""
-            if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
-                cellTypes.append(.PlaceDetails)
-            }
-            let price24 = markerDetailsModel?.price24 ?? ""
-            let boat = markerDetailsModel?.boatUsageStr ?? ""
-            let time = markerDetailsModel?.timeToFish ?? ""
-            if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
-                cellTypes.append(.FishingConditions)
-            }
-            let content = markerDetailsModel?.content ?? ""
-            if !content.isEmpty {
-                cellTypes.append(.Description)
-            }
-            let urlStr = markerDetailsModel?.url ?? ""
-            if !urlStr.isEmpty {
-                cellTypes.append(.LinkCell)
-            }
+            loadFishList()
+            updateCellTypes()
             contentTable?.reloadData()
         }
     }
 
     var cellTypes = Array<Cells>()
+    var dataSource: DataSource?
+    var fishArray: Array<Fish>? {
+        didSet {
+            updateCellTypes()
+            contentTable?.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         contentTable?.reloadData()
@@ -62,7 +44,11 @@ class MarkerDetailsController: UIViewController {
 
     @IBOutlet weak var contentTable: UITableView! {
         didSet {
-            var nibName = UINib(nibName: "LabelCell", bundle:nil)
+            var nibName = UINib(nibName: "PlaceImagesCell", bundle:nil)
+            contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceImagesCell")
+            nibName = UINib(nibName: "FishImagesCell", bundle:nil)
+            contentTable.registerNib(nibName, forCellReuseIdentifier: "FishImagesCell")
+            nibName = UINib(nibName: "LabelCell", bundle:nil)
             contentTable.registerNib(nibName, forCellReuseIdentifier: "LabelCell")
             nibName = UINib(nibName: "AddressCell", bundle:nil)
             contentTable.registerNib(nibName, forCellReuseIdentifier: "AddressCell")
@@ -73,8 +59,7 @@ class MarkerDetailsController: UIViewController {
             nibName = UINib(nibName: "PlaceDetailsCell", bundle:nil)
             contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceDetailsCell")
             nibName = UINib(nibName: "FishingConditionsCell", bundle:nil)
-            contentTable.registerNib(nibName, forCellReuseIdentifier:
-                "FishingConditionsCell")
+            contentTable.registerNib(nibName, forCellReuseIdentifier: "FishingConditionsCell")
             nibName = UINib(nibName: "LinkCell", bundle:nil)
             contentTable.registerNib(nibName, forCellReuseIdentifier: "LinkCell")
         }
@@ -83,6 +68,59 @@ class MarkerDetailsController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    private func updateCellTypes() {
+        cellTypes.removeAll()
+
+        let arr = markerDetailsModel?.photoUrls ?? Array()
+        if !arr.isEmpty {
+            cellTypes.append(.PlaceImages)
+        }
+        let fish = fishArray ?? Array()
+        if !fish.isEmpty {
+            cellTypes.append(.FishImages)
+        }
+        let name = markerDetailsModel?.name ?? ""
+        if !name.isEmpty {
+            cellTypes.append(.Caption)
+        }
+        let contact = markerDetailsModel?.contact ?? ""
+        let contactName = markerDetailsModel?.contactName ?? ""
+        if !contact.isEmpty || !contactName.isEmpty {
+            cellTypes.append(.Contacts)
+        }
+        let area = markerDetailsModel?.areaStr ?? ""
+        let averDepth = markerDetailsModel?.averageDepth ?? ""
+        let maxDepth = markerDetailsModel?.maxDepth ?? ""
+        if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
+            cellTypes.append(.PlaceDetails)
+        }
+        let price24 = markerDetailsModel?.price24 ?? ""
+        let boat = markerDetailsModel?.boatUsageStr ?? ""
+        let time = markerDetailsModel?.timeToFish ?? ""
+        if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
+            cellTypes.append(.FishingConditions)
+        }
+        let content = markerDetailsModel?.content ?? ""
+        if !content.isEmpty {
+            cellTypes.append(.Description)
+        }
+        let urlStr = markerDetailsModel?.url ?? ""
+        if !urlStr.isEmpty {
+            cellTypes.append(.LinkCell)
+        }
+    }
+
+    private func loadFishList() {
+        guard let model = markerDetailsModel else { return }
+
+        dataSource?.fishForMarker(Reach.reachabilityForInternetConnection(), marker: model, completionHandler: { (fish: NSArray) in
+            // TODO: move dispatch to datasource
+            dispatch_async(dispatch_get_main_queue(),{
+                self.fishArray = fish as? Array<Fish>
+            })
+        })
+    }
 }
 
 extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
@@ -90,6 +128,10 @@ extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
         let cell: UITableViewCell?
         let cellType = cellTypes[indexPath.row]
         switch cellType {
+        case .PlaceImages:
+            cell = placeImagesCell(forIndexPath: indexPath)
+        case .FishImages:
+            cell = fishImagesCell(forIndexPath: indexPath)
         case .Caption:
             cell = captionCell(forIndexPath: indexPath)
         case .Contacts:
@@ -112,6 +154,24 @@ extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellTypes.count
+    }
+
+    private func placeImagesCell(forIndexPath indexPath: NSIndexPath) -> PlaceImagesCell? {
+        if let cell = contentTable.dequeueReusableCellWithIdentifier("PlaceImagesCell", forIndexPath: indexPath) as? PlaceImagesCell,
+            let arr = markerDetailsModel?.photoUrls {
+            cell.setup(withUrlsArray: arr, dataSource: dataSource)
+            return cell
+        }
+        return nil
+    }
+
+    private func fishImagesCell(forIndexPath indexPath: NSIndexPath) -> FishImagesCell? {
+        if let cell = contentTable.dequeueReusableCellWithIdentifier("FishImagesCell", forIndexPath: indexPath) as? FishImagesCell,
+            let fishArr = fishArray {
+            cell.setup(withFishArray: fishArr)
+            return cell
+        }
+        return nil
     }
 
     private func contactsCell(forIndexPath indexPath: NSIndexPath) -> ContactsCell? {
