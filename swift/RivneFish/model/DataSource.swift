@@ -28,7 +28,9 @@ class DataSource: NSObject {
                 TMCache.sharedCache().objectForKey(urlStr) { (cache, key, object) in
                     if let markers = object as? NSArray {
                         if markers.count != 0 {
-                            completionHandler(markers: markers)
+                            dispatch_async(dispatch_get_main_queue(),{
+                                completionHandler(markers: markers)
+                            })
                         }
 
                     } else {
@@ -41,7 +43,9 @@ class DataSource: NSObject {
                                 // Update last changes num
                                 ActualityValidator.actualityValidator.updateUserLastChangesDate()
 
-                                completionHandler(markers: markers)
+                                dispatch_async(dispatch_get_main_queue(),{
+                                    completionHandler(markers: markers)
+                                })
                             }
                         })
                     }
@@ -52,7 +56,9 @@ class DataSource: NSObject {
             TMCache.sharedCache().objectForKey(urlStr) { (cache, key, object) in
                 if let markers = object as? NSArray {
                     if markers.count != 0 {
-                        completionHandler(markers: markers)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(markers: markers)
+                        })
                     }
                 }
             }
@@ -95,14 +101,18 @@ class DataSource: NSObject {
                 if fish.count > 0 {
                     TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
                 }
-                completionHandler(fish: fish)
+                dispatch_async(dispatch_get_main_queue(),{
+                    completionHandler(fish: fish)
+                })
             })
         } else {
             // try to request from cache
             TMCache.sharedCache().objectForKey(fishCacheId) { (cache, key, object) in
                 if let fish = object as? NSArray {
                     if fish.count != 0 {
-                        completionHandler(fish: fish)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(fish: fish)
+                        })
                     }
                 } else { // if no data in cache - request from network
                     NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
@@ -110,7 +120,9 @@ class DataSource: NSObject {
                         if fish.count > 0 {
                             TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
                         }
-                        completionHandler(fish: fish)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(fish: fish)
+                        })
                     })
                 }
             }
@@ -124,16 +136,22 @@ class DataSource: NSObject {
                 // Read from cache
                 TMCache.sharedCache().objectForKey(urlString) { (cache, key, object) in
                     if let image = object as? UIImage {
-                        completionHandler(urlString, image)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(urlString, image)
+                        })
                     } else {
                         // If there is no image in cache - request it
                         if let url = NSURL(string: urlString) {
                             NetworkDataSource.sharedInstace.getDataFromUrl(url) { data, index in
                                 if let data = NSData(contentsOfURL: url) {
                                     TMCache.sharedCache().setObject(UIImage(data: data), forKey: urlString)
-                                    completionHandler(urlString, UIImage(data: data))
+                                    dispatch_async(dispatch_get_main_queue(),{
+                                        completionHandler(urlString, UIImage(data: data))
+                                    })
                                 } else {
-                                    completionHandler(urlString, UIImage(named: "no_image"))
+                                    dispatch_async(dispatch_get_main_queue(),{
+                                        completionHandler(urlString, UIImage(named: "no_image"))
+                                    })
                                 }
                             }
                         }

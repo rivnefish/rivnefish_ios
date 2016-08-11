@@ -10,19 +10,21 @@ import UIKit
 
 class MarkerDetailsController: UIViewController {
 
+    static let kPictureRatio:CGFloat = 4.0 / 3.0
     enum Cells: Int {
-        case PlaceImages = 0
-        case FishImages = 1
-        case Caption = 2
-        case Contacts = 3
-        case PlaceDetails = 4
-        case FishingConditions = 5
-        case Description = 6
-        case LinkCell = 7
+        case PlaceImages
+        case FishImages
+        case Caption
+        case Contacts
+        case PlaceDetails
+        case FishingConditions
+        case Description
+        case LinkCell
     }
 
     var markerDetailsModel: MarkerModel? {
         didSet {
+            validate()
             loadFishList()
             updateCellTypes()
             contentTable?.reloadData()
@@ -39,7 +41,11 @@ class MarkerDetailsController: UIViewController {
     }
 
     override func viewDidLoad() {
-        contentTable?.reloadData()
+        // contentTable?.reloadData()
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = self.markerDetailsModel?.name;
     }
 
     @IBOutlet weak var contentTable: UITableView! {
@@ -67,6 +73,14 @@ class MarkerDetailsController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+
+    private func validate() {
+        if let model = markerDetailsModel,
+            let source = dataSource where
+            false == ActualityValidator.actualityValidator.markerUpToDate(model) {
+            source.removeMarkerCachedImages(model)
+        }
     }
 
     private func updateCellTypes() {
@@ -115,11 +129,21 @@ class MarkerDetailsController: UIViewController {
         guard let model = markerDetailsModel else { return }
 
         dataSource?.fishForMarker(Reach.reachabilityForInternetConnection(), marker: model, completionHandler: { (fish: NSArray) in
-            // TODO: move dispatch to datasource
-            dispatch_async(dispatch_get_main_queue(),{
-                self.fishArray = fish as? Array<Fish>
-            })
+            self.fishArray = fish as? Array<Fish>
         })
+    }
+
+    private func navigate(destC: CLLocationCoordinate2D) {
+        let location = CLLocationManager().location
+        if let clat = location?.coordinate.latitude,
+            let clon = location?.coordinate.longitude,
+            let dlat = markerDetailsModel?.lat,
+            let dlon = markerDetailsModel?.lon {
+            let urlStr = "https://maps.apple.com?saddr=\(clat),\(clon)&daddr=\(dlat),\(dlon)"
+            if let url = NSURL(string: urlStr) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
     }
 }
 
@@ -149,7 +173,33 @@ extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        let cellType = cellTypes[indexPath.row]
+        switch cellType {
+        case .PlaceImages:
+            return placeImagesCellHeight()
+        case .FishImages:
+            return FishImagesCell.kFishCellWidth
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cellType = cellTypes[indexPath.row]
+        switch cellType {
+        case .PlaceImages:
+            return placeImagesCellHeight()
+        case .FishImages:
+            return FishImagesCell.kFishCellWidth
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+
+    private func placeImagesCellHeight() -> CGFloat {
+        let max = self.contentTable.frame.height - FishImagesCell.kFishCellWidth
+        let h = self.contentTable.frame.width / MarkerDetailsController.kPictureRatio
+        return h < max ? h : max
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -217,10 +267,14 @@ extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
     private func linkCell(forIndexPath indexPath: NSIndexPath) -> LinkCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("LinkCell", forIndexPath: indexPath) as? LinkCell {
             if let urlStr = markerDetailsModel?.url {
-                cell.setup(withLinkText: "Детальніше", urlString: urlStr)
+                cell.setup(withLinkText: "До сайту rivnefish", urlString: urlStr)
                 return cell
             }
         }
         return nil
+    }
+
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        contentTable.reloadData()
     }
 }

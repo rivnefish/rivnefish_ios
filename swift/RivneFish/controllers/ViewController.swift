@@ -177,19 +177,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    func addMarkersToGoogleMap(markers: NSArray)
-    {
-        dispatch_async(dispatch_get_main_queue(),{
-            // remove old
-            self.gmMarkers.removeAll()
+    func addMarkersToGoogleMap(markers: NSArray) {
+        // remove old
+        self.gmMarkers.removeAll()
 
-            // add new
-            for markerModel in markers as! [MarkerModel] {
-                let markerAnnotation = GMarker(markerModel: markerModel)
-                self.gmMarkers.append(markerAnnotation)
-            }
-            self.addGMMarkers()
-        })
+        // add new
+        for markerModel in markers as! [MarkerModel] {
+            let markerAnnotation = GMarker(markerModel: markerModel)
+            self.gmMarkers.append(markerAnnotation)
+        }
+        self.addGMMarkers()
     }
 
     func goToMarkerDetailsView() {

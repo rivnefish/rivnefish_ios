@@ -351,8 +351,8 @@ class MarkerDetailsControllerOld: UIViewController, UICollectionViewDataSource, 
         var collectionViewCell = UICollectionViewCell()
         if collectionView == self.imagesCollectionView {
             let cell: ImagesCollectionViewCell = self.imagesCollectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! ImagesCollectionViewCell
-            cell.image = imagesArray[indexPath.row]
-            cell.updateCell()
+            //cell.image = imagesArray[indexPath.row]
+            //cell.updateCell()
             collectionViewCell = cell;
         } else if collectionView == self.fishCollectionView {
             let cell: FishCollectionViewCell = self.fishCollectionView.dequeueReusableCellWithReuseIdentifier(kFishCellIdentifier, forIndexPath: indexPath) as! FishCollectionViewCell

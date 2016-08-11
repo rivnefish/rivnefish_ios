@@ -11,14 +11,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZG-3J-U1d" id="LgP-xc-SU0">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="141.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ll2-gK-bmV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="141" id="Wrh-89-RuV"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbY-by-ggu">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,7 +37,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="heightConstraint" destination="Wrh-89-RuV" id="4G5-aG-Rxl"/>
                 <outlet property="imagesCollectionView" destination="Ll2-gK-bmV" id="Jnw-k2-uNU"/>
             </connections>
             <point key="canvasLocation" x="273" y="230"/>

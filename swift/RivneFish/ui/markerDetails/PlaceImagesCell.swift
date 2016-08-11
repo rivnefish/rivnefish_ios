@@ -7,87 +7,63 @@
 //
 
 class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
-    let kImageAspectRatioIndex: CGFloat = 1.33333
-    let kMaxImagesCollectionViewHeight: CGFloat = CGFloat(768.0) / 1.33333
-
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     let kCellIdentifier = "imagesCellIdentifier"
 
-    var imgUrlsArr: Array<String>!
-    var imagesArray: Array<UIImage?>!
-    var ourDataSource: DataSource?
+    var imgUrlsArr: Array<String>?
+    var imagesArray: Array<UIImage?>?
+    var dataSource: DataSource?
+
+    var currentImageIndex = 0
 
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
         didSet {
-            imagesCollectionView.dataSource = self
-            imagesCollectionView.delegate = self
+            setupImagesCollectionView()
         }
     }
 
     func setup(withUrlsArray urlsArray: Array<String>, dataSource: DataSource?) {
-        imgUrlsArr = urlsArray
-        imagesArray = Array<UIImage?>(count: urlsArray.count, repeatedValue: UIImage())
-        self.ourDataSource = dataSource
-        
-        setupImagesCollectionView()
-        loadImages()
-
-        // TODO: move to somewhere like viewDidLoad
-        heightConstraint?.constant = imagesViewHeight()
+        if imgUrlsArr == nil || imagesArray == nil {
+            imgUrlsArr = urlsArray
+            imagesArray = Array<UIImage?>(count: urlsArray.count, repeatedValue: nil)
+            self.dataSource = dataSource
+            loadImagesIfNeeded()
+        }
+        correctCollectionViewOffset()
     }
 
-    func imagesViewHeight() -> CGFloat {
-        let height: CGFloat = self.imagesCollectionView.frame.width / kImageAspectRatioIndex
-
-        var maxImagesViewPossibleHeight: CGFloat = 450
-        /*if let navBarHeight = self.navigationController?.navigationBar.frame.height {
-            maxImagesViewPossibleHeight = UIScreen.mainScreen().bounds.height - (navBarHeight + self.fishCollectionView.frame.height + fishViewTopMarginConstraint.constant)
-        }*/
-        let max = maxImagesViewPossibleHeight < kMaxImagesCollectionViewHeight ? maxImagesViewPossibleHeight : kMaxImagesCollectionViewHeight
-        return height <= max ? height : max
+    private func correctCollectionViewOffset() {
+        let offset = CGFloat(currentImageIndex) * imagesCollectionView.frame.size.width
+        imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
     }
 
-    private func loadImages() {
-        imagesArray = [UIImage?](count: imgUrlsArr.count, repeatedValue: nil)
-
-        // Make images collection view to know images count (cells count) before updating each cell by index
-        dispatch_async(dispatch_get_main_queue(),{
-            self.imagesCollectionView.reloadData()
-        })
-
-        // TODO: implement
-        //if false == ActualityValidator.actualityValidator.markerUpToDate(marker) {
-        //    ourDataSource.removeMarkerCachedImages(marker)
-       // }
+    private func loadImagesIfNeeded() {
+        if imagesArray == nil {
+            imagesArray = [UIImage?](count: imgUrlsArr?.count ?? 0, repeatedValue: nil)
+        }
 
         // Load images and update collection view
-        ourDataSource?.loadImages(self.imgUrlsArr) { (url: String, image:UIImage?) in
-            dispatch_async(dispatch_get_main_queue()) {
-                if let index = self.imgUrlsArr.indexOf(url) {
-                    self.imagesArray[index] = image
-                    if let collectionView = self.imagesCollectionView {
-                        collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
-                    }
+        dataSource?.loadImages(self.imgUrlsArr) { (url: String, image:UIImage?) in
+            if let index = self.imgUrlsArr?.indexOf(url) {
+                self.imagesArray?[index] = image
+                if let collectionView = self.imagesCollectionView {
+                    collectionView.reloadItemsAtIndexPaths([NSIndexPath.init(forItem: index, inSection: 0)])
                 }
             }
         }
-        //dispatch_async(dispatch_get_main_queue(),{
-        //    self.updateContent()
-        //    self.updateFishingInfoView()
-        //})
     }
 
     private func setupImagesCollectionView() {
-        self.imagesCollectionView.registerNib(UINib(nibName: "ImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
+        imagesCollectionView.dataSource = self
+        imagesCollectionView.delegate = self
 
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
-
         self.imagesCollectionView.collectionViewLayout = flowLayout;
+
         self.imagesCollectionView.pagingEnabled = true
+        self.imagesCollectionView.registerNib(UINib(nibName: "ImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
     }
 
     internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -95,23 +71,23 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
 
     internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count = 0
-        if let arr = imgUrlsArr {
-            count = arr.count
-        }
-        return count
+        return imgUrlsArr?.count ?? 0
     }
 
     internal func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var collectionViewCell = UICollectionViewCell()
-        let cell: ImagesCollectionViewCell = self.imagesCollectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! ImagesCollectionViewCell
-        cell.image = imagesArray[indexPath.row]
-        cell.updateCell()
-        collectionViewCell = cell;
+        if let cell: ImagesCollectionViewCell = self.imagesCollectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as? ImagesCollectionViewCell {
+            cell.updateCell(withImage: imagesArray?[indexPath.row])
+            collectionViewCell = cell;
+        }
         return collectionViewCell
     }
 
     internal func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return self.imagesCollectionView.frame.size
+    }
+
+    internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        currentImageIndex = Int(imagesCollectionView.contentOffset.x / imagesCollectionView.frame.size.width)
     }
 }

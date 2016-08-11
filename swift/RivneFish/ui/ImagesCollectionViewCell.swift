@@ -14,7 +14,7 @@ class ImagesCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
-    var image: UIImage?
+    private var image: UIImage?
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -24,7 +24,8 @@ class ImagesCollectionViewCell : UICollectionViewCell {
         super.init(frame: frame)
     }
 
-    func updateCell() {
+    func updateCell(withImage image: UIImage?) {
+        self.image = image
         if let image = self.image {
             bluredImage.image = image
             imageView.image = image

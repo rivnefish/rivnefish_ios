@@ -11,7 +11,7 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
 
     let kCellIdentifier = "imagesCellIdentifier"
     let kFishCellIdentifier = "fishImagesCellIdentifier"
-    let kFishCellWidth: CGFloat = 70.0
+    static let kFishCellWidth: CGFloat = 70.0
 
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
         didSet {
@@ -63,6 +63,6 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: kFishCellWidth, height: self.imagesCollectionView.frame.height)
+        return CGSize(width: FishImagesCell.kFishCellWidth, height: self.imagesCollectionView.frame.height)
     }
 }
