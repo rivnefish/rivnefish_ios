@@ -11,6 +11,7 @@
 		281566E11D5759DC008B1E12 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566E01D5759DC008B1E12 /* LabelCell.swift */; };
 		281566E51D575AC4008B1E12 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* LabelCell.xib */; };
 		282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F951D5CCD3600B18F86 /* AlertUtils.swift */; };
+		282A5F981D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */; };
 		282C946A1D590D1700161303 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C94691D590D1700161303 /* LinkCell.xib */; };
 		282C946C1D590D2F00161303 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C946B1D590D2F00161303 /* LinkCell.swift */; };
 		282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C946F1D5A25B200161303 /* PlaceImagesCell.xib */; };
@@ -202,6 +203,7 @@
 		281566E01D5759DC008B1E12 /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelCell.swift; path = ui/markerDetails/LabelCell.swift; sourceTree = "<group>"; };
 		281566E41D575AC4008B1E12 /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LabelCell.xib; path = ui/markerDetails/LabelCell.xib; sourceTree = "<group>"; };
 		282A5F951D5CCD3600B18F86 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = utils/AlertUtils.swift; sourceTree = "<group>"; };
+		282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsCellCreator.swift; path = controllers/MarkerDetailsCellCreator.swift; sourceTree = "<group>"; };
 		282C94691D590D1700161303 /* LinkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkCell.xib; path = ui/markerDetails/LinkCell.xib; sourceTree = "<group>"; };
 		282C946B1D590D2F00161303 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkCell.swift; path = ui/markerDetails/LinkCell.swift; sourceTree = "<group>"; };
 		282C946F1D5A25B200161303 /* PlaceImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceImagesCell.xib; path = ui/markerDetails/PlaceImagesCell.xib; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				3E9707E31B9C887A00B0CCC3 /* MarkerDetailsControllerOld.swift */,
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
 				281566DA1D575753008B1E12 /* MarkerDetailsController.swift */,
+				282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1174,6 +1177,7 @@
 				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */,
 				3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */,
+				282A5F981D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift in Sources */,
 				3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */,
 				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
 				282C946C1D590D2F00161303 /* LinkCell.swift in Sources */,
