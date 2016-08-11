@@ -39,10 +39,7 @@ class MarkerDetailsController: UIViewController {
             contentTable?.reloadData()
         }
     }
-
-    override func viewDidLoad() {
-        // contentTable?.reloadData()
-    }
+    var currentLocation: CLLocation?
 
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = self.markerDetailsModel?.name;
@@ -73,6 +70,17 @@ class MarkerDetailsController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+
+    @IBAction func navigateButtonPressed(sender: UIBarButtonItem) {
+        if let currentCoordinate = currentLocation?.coordinate {
+            navigate(currentCoordinate)
+        } else {
+            let title = NSLocalizedString("Ідентифікацію місцезнаходження вимкнено", comment: "Location turn off")
+            let message = NSLocalizedString("Увімкніть доступ до геолокації в системних налаштуваннях цього пристрою щоб мати можливість використовувати навігацію до водойми", comment: "Please allow use location in system settings")
+            let alert = AlertUtils.okeyAlertWith(title: title, message: message)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 
     private func validate() {

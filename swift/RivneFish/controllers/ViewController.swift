@@ -28,6 +28,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     
     var gmMarkers = [GMarker]()
     var singleMarkerImageWidth: CGFloat = CGFloat(0.0)
+
+    var currentLocation: CLLocation? = nil
     
     // will be init in viewDidLoad
     var reach: Reach!
@@ -142,8 +144,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     func showConnectionErrorAlert() {
         let title = NSLocalizedString("Помилка Підключення", comment: "ConnectionError")
         let message = NSLocalizedString("Немає підключення або відсутній звя'зок з сервером", comment: "You are offline or there is no connection with server")
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        let alert = AlertUtils.okeyAlertWith(title: title, message: message)
         self.presentViewController(alert, animated: true, completion: nil)
     }
 
@@ -172,6 +173,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location: CLLocation = locations.first {
+            currentLocation = location
             googleMapView.animateToCameraPosition(GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0))
             locationManager.stopUpdatingLocation()
         }
@@ -203,6 +205,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     private func populateMarkerDetailsControllerWithData() {
         if let controller = markerDetailsController {
             controller.dataSource = dataSource
+            controller.currentLocation = currentLocation
             /*if let markerModel = currentMarkerModel {
                 controller.marker = markerModel
                 dataSource.fishForMarker(self.reach, marker: markerModel, completionHandler: { (fish: NSArray) in

@@ -29,6 +29,7 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
             loadImagesIfNeeded()
         }
         correctCollectionViewOffset()
+        imagesCollectionView.reloadData()
     }
 
     private func correctCollectionViewOffset() {
