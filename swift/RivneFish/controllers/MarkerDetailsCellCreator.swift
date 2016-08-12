@@ -15,8 +15,10 @@ class MarkerDetailsCellCreator {
         case Contacts
         case PlaceDetails
         case FishingConditions
+        case Conveniences
         case Description
         case LinkCell
+        case LastUpdateCell
     }
 
     let contentTable: UITableView
@@ -43,8 +45,6 @@ class MarkerDetailsCellCreator {
         contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceImagesCell")
         nibName = UINib(nibName: "FishImagesCell", bundle:nil)
         contentTable.registerNib(nibName, forCellReuseIdentifier: "FishImagesCell")
-        nibName = UINib(nibName: "LabelCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "LabelCell")
         nibName = UINib(nibName: "AddressCell", bundle:nil)
         contentTable.registerNib(nibName, forCellReuseIdentifier: "AddressCell")
         nibName = UINib(nibName: "ContactsCell", bundle:nil)
@@ -55,8 +55,12 @@ class MarkerDetailsCellCreator {
         contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceDetailsCell")
         nibName = UINib(nibName: "FishingConditionsCell", bundle:nil)
         contentTable.registerNib(nibName, forCellReuseIdentifier: "FishingConditionsCell")
+        nibName = UINib(nibName: "ConveniencesCell", bundle:nil)
+        contentTable.registerNib(nibName, forCellReuseIdentifier: "ConveniencesCell")
         nibName = UINib(nibName: "LinkCell", bundle:nil)
         contentTable.registerNib(nibName, forCellReuseIdentifier: "LinkCell")
+        nibName = UINib(nibName: "ModifiedDateCell", bundle:nil)
+        contentTable.registerNib(nibName, forCellReuseIdentifier: "ModifiedDateCell")
     }
 
     private func updateCellTypes() {
@@ -91,9 +95,17 @@ class MarkerDetailsCellCreator {
         if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
             cellTypes.append(.FishingConditions)
         }
+        let convenieces = markerDetailsModel?.conveniences ?? ""
+        if !convenieces.isEmpty {
+            cellTypes.append(.Conveniences)
+        }
         let content = markerDetailsModel?.content ?? ""
         if !content.isEmpty {
             cellTypes.append(.Description)
+        }
+        let lastUpdate = markerDetailsModel?.modifyDate ?? ""
+        if !lastUpdate.isEmpty {
+            cellTypes.append(.LastUpdateCell)
         }
         let urlStr = markerDetailsModel?.url ?? ""
         if !urlStr.isEmpty {
@@ -117,10 +129,14 @@ class MarkerDetailsCellCreator {
             cell = placeDetailsCell(forIndexPath: indexPath)
         case.FishingConditions:
             cell = fishingConditionsCell(forIndexPath: indexPath)
+        case .Conveniences:
+            cell = conveniencesCell(forIndexPath: indexPath)
         case .Description:
             cell = descriptionCell(forIndexPath: indexPath)
         case .LinkCell:
             cell = linkCell(forIndexPath: indexPath)
+        case .LastUpdateCell:
+            cell = lastUpdateCell(forIndexPath: indexPath)
         }
         return cell
     }
@@ -209,6 +225,14 @@ class MarkerDetailsCellCreator {
         return nil
     }
 
+    func conveniencesCell(forIndexPath indexPath: NSIndexPath) -> ConveniencesCell? {
+        if let cell = contentTable.dequeueReusableCellWithIdentifier("ConveniencesCell", forIndexPath: indexPath) as? ConveniencesCell {
+            cell.setup(withTitle: "Умови відпочинку:", text: markerDetailsModel?.conveniences)
+            return cell
+        }
+        return nil
+    }
+
     func placeDetailsCell(forIndexPath indexPath: NSIndexPath) -> PlaceDetailsCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("PlaceDetailsCell", forIndexPath: indexPath) as? PlaceDetailsCell {
             cell.setup(withSquare: markerDetailsModel?.areaStr, averageDepth: markerDetailsModel?.averageDepth, maxDepth: markerDetailsModel?.maxDepth)
@@ -220,7 +244,17 @@ class MarkerDetailsCellCreator {
     func linkCell(forIndexPath indexPath: NSIndexPath) -> LinkCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("LinkCell", forIndexPath: indexPath) as? LinkCell {
             if let urlStr = markerDetailsModel?.url {
-                cell.setup(withLinkText: "До сайту rivnefish", urlString: urlStr)
+                cell.setup(withLinkText: "Переглянути на сайті rivnefish", urlString: urlStr)
+                return cell
+            }
+        }
+        return nil
+    }
+
+    func lastUpdateCell(forIndexPath indexPath: NSIndexPath) -> ModifiedDateCell? {
+        if let cell = contentTable.dequeueReusableCellWithIdentifier("ModifiedDateCell", forIndexPath: indexPath) as? ModifiedDateCell {
+            if let text = markerDetailsModel?.modifyDate {
+                cell.setupWithText("Редаговано: " + text)
                 return cell
             }
         }
