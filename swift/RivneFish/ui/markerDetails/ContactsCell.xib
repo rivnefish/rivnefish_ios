@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZG-3J-U1d" id="LgP-xc-SU0">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контактна інформація:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLH-nr-x1C">
@@ -63,6 +63,7 @@
                     <constraint firstItem="VqO-lA-BZF" firstAttribute="top" secondItem="nBJ-Nw-BVQ" secondAttribute="bottom" constant="8" id="vH4-1k-1Ny"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="detailsConstraint" destination="ToD-oZ-mr9" id="M49-xI-ijh"/>
                 <outlet property="detailsLabel" destination="y6z-r5-cJl" id="fMG-AS-m0z"/>

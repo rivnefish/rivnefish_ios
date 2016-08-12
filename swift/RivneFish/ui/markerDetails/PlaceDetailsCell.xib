@@ -92,6 +92,7 @@
                     <constraint firstItem="uEa-XU-aGz" firstAttribute="top" secondItem="GqB-Fp-vYW" secondAttribute="top" id="yg6-bi-MhG"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="averageDepthCaptionLabel" destination="sdj-3i-iug" id="puS-dd-duX"/>
                 <outlet property="averageDepthLabel" destination="ePM-76-MxM" id="W8t-6v-Etc"/>

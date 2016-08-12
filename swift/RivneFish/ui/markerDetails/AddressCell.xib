@@ -49,6 +49,7 @@
                     <constraint firstItem="yLH-nr-x1C" firstAttribute="top" secondItem="LgP-xc-SU0" secondAttribute="topMargin" id="njl-3W-wCZ"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="addressLabel" destination="nBJ-Nw-BVQ" id="OUm-GC-80P"/>
                 <outlet property="addressVConstraint" destination="YEw-LE-F6e" id="32b-Xg-DkM"/>

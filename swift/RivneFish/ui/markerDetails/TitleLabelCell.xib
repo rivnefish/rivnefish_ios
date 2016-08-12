@@ -38,6 +38,7 @@
                     <constraint firstItem="yLH-nr-x1C" firstAttribute="top" secondItem="LgP-xc-SU0" secondAttribute="topMargin" id="njl-3W-wCZ"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="label" destination="nBJ-Nw-BVQ" id="Bnq-4u-KFM"/>
                 <outlet property="title" destination="yLH-nr-x1C" id="AXJ-fj-YfW"/>

@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZG-3J-U1d" id="LgP-xc-SU0">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="141.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ll2-gK-bmV">
@@ -39,6 +39,7 @@
                     <constraint firstAttribute="bottom" secondItem="Ll2-gK-bmV" secondAttribute="bottom" id="nsY-rh-SF2"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="heightConstraint" destination="Wrh-89-RuV" id="4G5-aG-Rxl"/>
                 <outlet property="imagesCollectionView" destination="Ll2-gK-bmV" id="mYC-mt-lta"/>

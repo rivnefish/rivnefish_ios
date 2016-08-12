@@ -17,7 +17,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoM-8a-lgJ">
                         <rect key="frame" x="8" y="8" width="304" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -29,7 +29,7 @@
                     <constraint firstItem="WoM-8a-lgJ" firstAttribute="bottom" secondItem="9LE-vA-VjN" secondAttribute="bottomMargin" id="wgg-Wx-Xo3"/>
                 </constraints>
             </tableViewCellContentView>
-            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="contentLabel" destination="WoM-8a-lgJ" id="OVs-pP-fBc"/>
             </connections>

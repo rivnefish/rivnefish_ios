@@ -75,23 +75,11 @@ class MarkerModel: NSObject, NSCoding {
     
     var areaStr: String? {
         if let val = area where val != 0.0 {
-            return NSLocalizedString("\(val / 100)Га", comment: "area")
+            return NSLocalizedString("\(val / 100) Га", comment: "area")
         }
         return nil
     }
 
-    var contactStr: String {
-        return self.readableStrForStrValue(contact)
-    }
-
-    var maxDepthStr: String {
-        return self.readableStrForStrValue(maxDepth)
-    }
-
-    var averageDepthStr: String {
-        return self.readableStrForStrValue(averageDepth)
-    }
-    
     var permitStr: String {
         if let val = permit {
             if val == "paid" {
@@ -114,11 +102,15 @@ class MarkerModel: NSObject, NSCoding {
         return nil
     }
 
-    func readableStrForStrValue(val: String?) -> String {
-        if let v = val {
-            return v
+    var timeToFishStr: String? {
+        if let val = timeToFish {
+            if val == "daylight" {
+                return "Лише вдень"
+            } else if val == "24h" {
+                return "Цілодобово"
+            }
         }
-        return NSLocalizedString("-", comment: "no_information")
+        return timeToFish
     }
 
     required init(coder decoder: NSCoder) {
