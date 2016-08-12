@@ -8,6 +8,7 @@
 
 class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     let kCellIdentifier = "imagesCellIdentifier"
+    let kMaxPageCount = 10
 
     var imgUrlsArr: Array<String>?
     var imagesArray: Array<UIImage?>?
@@ -15,6 +16,7 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
 
     var currentImageIndex = 0
 
+    @IBOutlet weak var viewPageControl: UIPageControl!
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
         didSet {
             setupImagesCollectionView()
@@ -27,6 +29,9 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
             imagesArray = Array<UIImage?>(count: urlsArray.count, repeatedValue: nil)
             self.dataSource = dataSource
             loadImagesIfNeeded()
+            let urlsCount = urlsArray.count
+            viewPageControl?.numberOfPages = kMaxPageCount < urlsCount ? kMaxPageCount : urlsCount
+            viewPageControl?.currentPage = 0
         }
         correctCollectionViewOffset()
         imagesCollectionView.reloadData()
@@ -90,5 +95,19 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
 
     internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         currentImageIndex = Int(imagesCollectionView.contentOffset.x / imagesCollectionView.frame.size.width)
+        updatePageCountrol()
+    }
+
+    private func updatePageCountrol() {
+        guard let imagesCount = imgUrlsArr?.count else { return }
+
+        var currentIndex: Int
+        if imagesCount <= kMaxPageCount {
+            currentIndex = currentImageIndex
+        } else {
+            let index = imagesCount / kMaxPageCount
+            currentIndex = currentImageIndex / index
+        }
+        viewPageControl?.currentPage = currentIndex
     }
 }

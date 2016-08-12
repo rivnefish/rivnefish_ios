@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ll2-gK-bmV">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ll2-gK-bmV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbY-by-ggu">
@@ -28,9 +28,17 @@
                             <outlet property="delegate" destination="-1" id="pSO-Ek-5dV"/>
                         </connections>
                     </collectionView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Tyw-Eo-RO5">
+                        <rect key="frame" x="141" y="104" width="39" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="nKl-kL-byF"/>
+                        </constraints>
+                    </pageControl>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Tyw-Eo-RO5" secondAttribute="bottom" id="8tI-1X-j68"/>
                     <constraint firstItem="Ll2-gK-bmV" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leading" id="OkJ-Xd-McQ"/>
+                    <constraint firstItem="Tyw-Eo-RO5" firstAttribute="centerX" secondItem="LgP-xc-SU0" secondAttribute="centerX" id="SrE-jO-eUf"/>
                     <constraint firstAttribute="trailing" secondItem="Ll2-gK-bmV" secondAttribute="trailing" id="UFg-j4-DHJ"/>
                     <constraint firstItem="Ll2-gK-bmV" firstAttribute="top" secondItem="LgP-xc-SU0" secondAttribute="top" id="eOR-lC-Jsi"/>
                     <constraint firstAttribute="bottom" secondItem="Ll2-gK-bmV" secondAttribute="bottom" id="nsY-rh-SF2"/>
@@ -38,6 +46,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imagesCollectionView" destination="Ll2-gK-bmV" id="Jnw-k2-uNU"/>
+                <outlet property="viewPageControl" destination="Tyw-Eo-RO5" id="hML-sS-R5B"/>
             </connections>
             <point key="canvasLocation" x="273" y="230"/>
         </tableViewCell>
