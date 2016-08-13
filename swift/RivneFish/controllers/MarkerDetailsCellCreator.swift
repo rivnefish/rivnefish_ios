@@ -90,7 +90,7 @@ class MarkerDetailsCellCreator {
             cellTypes.append(.PlaceDetails)
         }
         let price24 = markerDetailsModel?.dayhourPrice ?? ""
-        let boat = markerDetailsModel?.boatUsageStr ?? ""
+        let boat = markerDetailsModel?.boatUsageReadable ?? ""
         let time = markerDetailsModel?.timeToFishStr ?? ""
         if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
             cellTypes.append(.FishingConditions)
@@ -219,7 +219,7 @@ class MarkerDetailsCellCreator {
 
     func fishingConditionsCell(forIndexPath indexPath: NSIndexPath) -> FishingConditionsCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("FishingConditionsCell", forIndexPath: indexPath) as? FishingConditionsCell {
-            cell.setup(withPayment: markerDetailsModel?.dayhourPrice, boatUsage: markerDetailsModel?.boatUsageStr, fishingTime: markerDetailsModel?.timeToFishStr)
+            cell.setup(withPayment: markerDetailsModel?.dayhourPrice, boatUsage: markerDetailsModel?.boatUsageReadable, fishingTime: markerDetailsModel?.timeToFishStr)
             return cell
         }
         return nil
@@ -253,7 +253,7 @@ class MarkerDetailsCellCreator {
 
     func lastUpdateCell(forIndexPath indexPath: NSIndexPath) -> ModifiedDateCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("ModifiedDateCell", forIndexPath: indexPath) as? ModifiedDateCell {
-            if let text = markerDetailsModel?.modifyDate {
+            if let text = markerDetailsModel?.modifyDateLocalized {
                 cell.setupWithText("Востаннє ця інформація оновлювалась: " + text)
                 return cell
             }

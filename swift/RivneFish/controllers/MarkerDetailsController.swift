@@ -50,7 +50,7 @@ class MarkerDetailsController: UIViewController {
             navigate(currentCoordinate)
         } else {
             let title = NSLocalizedString("Ідентифікацію місцезнаходження вимкнено", comment: "Location turn off")
-            let message = NSLocalizedString("Увімкніть доступ до геолокації в системних налаштуваннях цього пристрою щоб мати можливість використовувати навігацію до водойми", comment: "Please allow use location in system settings")
+            let message = NSLocalizedString("Увімкніть доступ до геолокації в системних налаштуваннях цього пристрою щоб мати можливість використовувати навігацію до водойми:\n1. Системні налаштування\n2. rivnefish\n3. місце", comment: "Please allow use location in system settings")
             let alert = AlertUtils.okeyAlertWith(title: title, message: message)
             self.presentViewController(alert, animated: true, completion: nil)
         }

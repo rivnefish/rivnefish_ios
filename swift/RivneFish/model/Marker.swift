@@ -60,7 +60,7 @@ class MarkerModel: NSObject, NSCoding {
     var permit: String?
     var price24: String?
     var dayhourPrice: String?
-    var boatUsage: Bool?
+    var boatUsage: String?
     var timeToFish: String?
     var paidFish: String?
     var note: String?
@@ -91,15 +91,31 @@ class MarkerModel: NSObject, NSCoding {
         return NSLocalizedString("-", comment: "no_information")
     }
 
-    var boatUsageStr: String? {
+    var boatUsageReadable: String? {
         if let val = boatUsage {
-            if val {
-                return NSLocalizedString("так", comment: "yes")
+            if NSString(string: val).boolValue {
+                return NSLocalizedString("дозволено", comment: "allowed")
             } else {
-                return NSLocalizedString("ні", comment: "no")
+                return NSLocalizedString("заборонено", comment: "not allowed")
             }
         }
         return nil
+    }
+
+    var modifyDateLocalized: String? {
+        guard let origDateStr = modifyDate else { return nil }
+
+        let kFormat = "yyyy-MM-dd"
+        let dayStr = origDateStr.substringWithRange(origDateStr.startIndex ..< origDateStr.startIndex.advancedBy(10))
+
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = kFormat
+
+        if let date = formatter.dateFromString(dayStr) {
+            formatter.dateStyle = NSDateFormatterStyle.LongStyle
+            return formatter.stringFromDate(date)
+        }
+        return origDateStr
     }
 
     var timeToFishStr: String? {
@@ -130,7 +146,7 @@ class MarkerModel: NSObject, NSCoding {
         permit = decoder.decodeObjectForKey(kPermitKey) as? String
         price24 = decoder.decodeObjectForKey(kPrice24hKey) as? String
         dayhourPrice = decoder.decodeObjectForKey(kDayhourPriceKey) as? String
-        boatUsage = decoder.decodeObjectForKey(kBoatUsageKey) as? Bool
+        boatUsage = decoder.decodeObjectForKey(kBoatUsageKey) as? String
         timeToFish = decoder.decodeObjectForKey(kTimeToFishKey) as? String
         paidFish = decoder.decodeObjectForKey(kPaidFishKey) as? String
         note = decoder.decodeObjectForKey(kNoteKey) as? String
@@ -193,7 +209,7 @@ class MarkerModel: NSObject, NSCoding {
         permit = dict[kPermitKey] as? String
         price24 = dict[kPrice24hKey] as? String
         dayhourPrice = dict[kDayhourPriceKey] as? String
-        boatUsage = dict[kBoatUsageKey] as? Bool
+        boatUsage = dict[kBoatUsageKey] as? String
         timeToFish = dict[kTimeToFishKey] as? String
         paidFish = dict[kPaidFishKey] as? String
         note = dict[kNoteKey] as? String
