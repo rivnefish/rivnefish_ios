@@ -90,4 +90,13 @@ class Fish: NSObject, NSCoding {
         aCoder.encodeObject(fishID, forKey: kFishIDKey)
         aCoder.encodeObject(amount, forKey: kAmountKey)
     }
+
+    func compare(fish: Fish) -> NSComparisonResult {
+        let a1: Int = amount ?? 0
+        let a2: Int = fish.amount ?? 0
+
+        if a1 > a2 { return NSComparisonResult.OrderedAscending }
+        else if a1 < a2 { return NSComparisonResult.OrderedDescending }
+        else { return NSComparisonResult.OrderedSame }
+    }
 }

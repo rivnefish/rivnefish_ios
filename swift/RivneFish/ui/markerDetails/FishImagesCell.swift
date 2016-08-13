@@ -53,9 +53,7 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
             let fish = fishArray?[indexPath.row] {
             cell.image = fish.image
             cell.name = fish.ukrName
-            if let amount = fish.amount {
-                cell.amount = amount
-            }
+            cell.amount = fish.amount ?? 0
             cell.updateCell()
             return cell
         }

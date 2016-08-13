@@ -98,11 +98,12 @@ class DataSource: NSObject {
             // request directly from network
             NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
                 // save to cache
-                if fish.count > 0 {
-                    TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
+                let sortedFish = self.sortedFishArray(fish)
+                if sortedFish.count > 0 {
+                    TMCache.sharedCache().setObject(sortedFish, forKey: fishCacheId)
                 }
                 dispatch_async(dispatch_get_main_queue(),{
-                    completionHandler(fish: fish)
+                    completionHandler(fish: sortedFish)
                 })
             })
         } else {
@@ -110,22 +111,37 @@ class DataSource: NSObject {
             TMCache.sharedCache().objectForKey(fishCacheId) { (cache, key, object) in
                 if let fish = object as? NSArray {
                     if fish.count != 0 {
+                        // TODO: sort temporary, untill not sorted fish in cache
+                        let sortedFish = self.sortedFishArray(fish)
                         dispatch_async(dispatch_get_main_queue(),{
-                            completionHandler(fish: fish)
+                            completionHandler(fish: sortedFish)
                         })
                     }
                 } else { // if no data in cache - request from network
                     NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
                         // save to cache
+                        let sortedFish = self.sortedFishArray(fish)
                         if fish.count > 0 {
-                            TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
+                            TMCache.sharedCache().setObject(sortedFish, forKey: fishCacheId)
                         }
                         dispatch_async(dispatch_get_main_queue(),{
-                            completionHandler(fish: fish)
+                            completionHandler(fish: sortedFish)
                         })
                     })
                 }
             }
+        }
+    }
+
+    func sortedFishArray(fish: NSArray) -> NSArray {
+        return fish.sortedArrayUsingComparator {
+            (obj1, obj2) -> NSComparisonResult in
+
+            if let f1 = obj1 as? Fish,
+                let f2 = obj2 as? Fish {
+                return f1.compare(f2)
+            }
+            return NSComparisonResult.OrderedSame
         }
     }
 
