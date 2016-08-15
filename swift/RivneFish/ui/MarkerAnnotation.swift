@@ -62,11 +62,6 @@ class MarkerAnnotation : NSObject, MKAnnotation {
         return result
     }
 
-    // TODO: change in future if needed
-    func pinColor() -> MKPinAnnotationColor  {
-        return .Red
-    }
-
     // TODO: implement in future if needed
     //func mapItem() -> MKMapItem {
     //}
