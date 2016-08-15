@@ -30,7 +30,8 @@ class ContactsCell: UITableViewCell {
     }
 
     func setup(withPhone phone: String?, details: String?) {
-        if let phone = phone where phone.isEmpty == false {
+        let phone = phone ?? ""
+        if  !phone.isEmpty {
             phoneButton.setTitle(phone, forState: UIControlState.Normal)
         } else {
             phoneCaptionLabel.text = ""
@@ -39,7 +40,8 @@ class ContactsCell: UITableViewCell {
             phoneHeightConstraint.constant = 0
             phoneVConstraint.constant = 0
         }
-        if let details = details {
+        let details = details ?? ""
+        if !details.isEmpty {
             detailsLabel.text = details
         } else {
             detailsLabel.text = ""

@@ -22,7 +22,8 @@ class PlaceDetailsCell: UITableViewCell {
     @IBOutlet weak var maxDepthVConstraint: NSLayoutConstraint!
     
     func setup(withSquare square: String?, averageDepth: String?, maxDepth: String?) {
-        if let square = square {
+        let square = square ?? ""
+        if !square.isEmpty {
             squareLabel.text = square
         } else {
             squareLabel.text = ""
@@ -30,7 +31,8 @@ class PlaceDetailsCell: UITableViewCell {
             squareLabelVConstraint.constant = 0
         }
 
-        if let averageDepth = averageDepth {
+        let averageDepth = averageDepth ?? ""
+        if !averageDepth.isEmpty {
             averageDepthLabel.text = averageDepth
         } else {
             averageDepthLabel.text = ""
@@ -38,7 +40,8 @@ class PlaceDetailsCell: UITableViewCell {
             averageDepthVConstraint.constant = 0
         }
 
-        if let maxDepth = maxDepth {
+        let maxDepth = maxDepth ?? ""
+        if !maxDepth.isEmpty {
             maxDepthLabel.text = maxDepth
         } else {
             maxDepthLabel.text = ""

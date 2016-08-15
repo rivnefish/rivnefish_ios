@@ -12,12 +12,14 @@ class TitleLabelCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
 
     func setup(withTitle title: String?, text: String?) {
-        if let title = title {
+        let title = title ?? ""
+        if !title.isEmpty {
             self.title.text = title
         } else {
             self.title.hidden = true
         }
-        if let text = text {
+        let text = text ?? ""
+        if !text.isEmpty {
             self.label.text = text
         } else {
             self.label.hidden = true

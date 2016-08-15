@@ -20,13 +20,15 @@ class AddressCell: UITableViewCell, UITextFieldDelegate {
         } else {
             captionLabel.text = ""
         }
-        if let address = address {
+        let address = address ?? ""
+        if !address.isEmpty {
             addressLabel.text = address
         } else {
             addressLabel.text = ""
             addressVConstraint.constant = 0
         }
-        if let coordinates = coordinates {
+        let coordinates = coordinates ?? ""
+        if !coordinates.isEmpty {
             coordinatesTextEdit.text = coordinates
         } else {
             coordinatesTextEdit.text = ""

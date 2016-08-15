@@ -89,10 +89,10 @@ class MarkerDetailsCellCreator {
         if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
             cellTypes.append(.PlaceDetails)
         }
-        let price24 = markerDetailsModel?.dayhourPrice ?? ""
+        let price = markerDetailsModel?.paidFish ?? ""
         let boat = markerDetailsModel?.boatUsageReadable ?? ""
         let time = markerDetailsModel?.timeToFishStr ?? ""
-        if !price24.isEmpty || !boat.isEmpty || !time.isEmpty {
+        if !price.isEmpty || !boat.isEmpty || !time.isEmpty {
             cellTypes.append(.FishingConditions)
         }
         let convenieces = markerDetailsModel?.conveniences ?? ""
@@ -219,7 +219,7 @@ class MarkerDetailsCellCreator {
 
     func fishingConditionsCell(forIndexPath indexPath: NSIndexPath) -> FishingConditionsCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("FishingConditionsCell", forIndexPath: indexPath) as? FishingConditionsCell {
-            cell.setup(withPayment: markerDetailsModel?.dayhourPrice, boatUsage: markerDetailsModel?.boatUsageReadable, fishingTime: markerDetailsModel?.timeToFishStr)
+            cell.setup(withMainInfo: markerDetailsModel?.permitStr, payment: markerDetailsModel?.paidFish, boatUsage: markerDetailsModel?.boatUsageReadable, fishingTime: markerDetailsModel?.timeToFishStr)
             return cell
         }
         return nil

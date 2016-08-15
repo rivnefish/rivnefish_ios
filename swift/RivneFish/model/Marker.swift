@@ -81,14 +81,19 @@ class MarkerModel: NSObject, NSCoding {
     }
 
     var permitStr: String {
-        if let val = permit {
-            if val == "paid" {
-                return NSLocalizedString("платно", comment: "paid")
-            } else if val == "free"{
-                return NSLocalizedString("безкоштовно", comment: "free")
-            }
+        let val = permit ?? ""
+        switch val {
+        case "paid":
+            return NSLocalizedString("платно", comment: "paid")
+        case "free":
+            return NSLocalizedString("безкоштовно", comment: "free")
+        case "prohibited":
+            return NSLocalizedString("рибалити заборонено", comment: "fishing prohibited")
+        case "unknown":
+            return ""
+        default:
+            return ""
         }
-        return NSLocalizedString("-", comment: "no_information")
     }
 
     var boatUsageReadable: String? {
@@ -124,6 +129,8 @@ class MarkerModel: NSObject, NSCoding {
                 return "Лише вдень"
             } else if val == "24h" {
                 return "Цілодобово"
+            } else if val == "unknown" {
+                return nil
             }
         }
         return timeToFish

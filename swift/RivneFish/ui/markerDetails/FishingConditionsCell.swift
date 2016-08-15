@@ -8,6 +8,9 @@
 
 class FishingConditionsCell: UITableViewCell {
 
+    @IBOutlet weak var mainInfoLabel: UILabel!
+    @IBOutlet weak var mainInfoVConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var paymentCaptionLabel: UILabel!
     @IBOutlet weak var paymentCaptionVConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentLabel: UILabel!
@@ -23,9 +26,17 @@ class FishingConditionsCell: UITableViewCell {
     @IBOutlet weak var fishingVConstraint: NSLayoutConstraint!
     @IBOutlet weak var fishingTimeLabel: UILabel!
 
-    func setup(withPayment payment: String?, boatUsage: String?, fishingTime: String?) {
+    func setup(withMainInfo info: String?, payment: String?, boatUsage: String?, fishingTime: String?) {
 
-        if let payment = payment {
+        let info = info ?? ""
+        if !info.isEmpty {
+            mainInfoLabel.text = info
+        } else {
+            mainInfoLabel.text = ""
+            mainInfoVConstraint.constant = 0
+        }
+        let payment = payment ?? ""
+        if !payment.isEmpty {
             paymentLabel.text = payment
         } else {
             paymentCaptionLabel.text = ""
@@ -34,7 +45,8 @@ class FishingConditionsCell: UITableViewCell {
             paymentVConstraint.constant = 0
         }
 
-        if let usage = boatUsage {
+        let usage = boatUsage ?? ""
+        if !usage.isEmpty {
             boatUsageLabel.text = usage
         } else {
             boatUsageCaptionLabel.text = ""
@@ -43,7 +55,8 @@ class FishingConditionsCell: UITableViewCell {
             boatVConstraint.constant = 0
         }
 
-        if let time = fishingTime {
+        let time = fishingTime ?? ""
+        if !time.isEmpty {
             fishingTimeLabel.text = time
         } else {
             fishingTimeCaptionLabel.text = ""
