@@ -7,9 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281566DB1D575753008B1E12 /* MarkerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566DA1D575753008B1E12 /* MarkerDetailsController.swift */; };
+		281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */; };
+		281566E51D575AC4008B1E12 /* ModifiedDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */; };
+		282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F951D5CCD3600B18F86 /* AlertUtils.swift */; };
+		282A5F981D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */; };
+		282C946A1D590D1700161303 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C94691D590D1700161303 /* LinkCell.xib */; };
+		282C946C1D590D2F00161303 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C946B1D590D2F00161303 /* LinkCell.swift */; };
+		282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C946F1D5A25B200161303 /* PlaceImagesCell.xib */; };
+		282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C94711D5A2C8500161303 /* PlaceImagesCell.swift */; };
+		282D90081D578ED000DE8550 /* TitleLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90071D578ED000DE8550 /* TitleLabelCell.xib */; };
+		282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90091D578FD500DE8550 /* TitleLabelCell.swift */; };
+		282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */; };
+		282D900E1D5796C500DE8550 /* PlaceDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */; };
+		282D90101D579FBE00DE8550 /* FishingConditionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */; };
+		282D90121D57A00A00DE8550 /* FishingConditionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */; };
+		282D90141D57AA0A00DE8550 /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90131D57AA0A00DE8550 /* ContactsCell.swift */; };
+		282D90161D57AA3E00DE8550 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90151D57AA3E00DE8550 /* ContactsCell.xib */; };
+		282D90181D57B6B100DE8550 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90171D57B6B100DE8550 /* AddressCell.swift */; };
+		282D901A1D57B6C700DE8550 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90191D57B6C700DE8550 /* AddressCell.xib */; };
 		284F3DF61C92FE6600B4AF62 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF31C92FE6600B4AF62 /* no_image.png */; };
 		284F3DF71C92FE6600B4AF62 /* no_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF41C92FE6600B4AF62 /* no_image@2x.png */; };
 		284F3DF81C92FE6600B4AF62 /* no_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF51C92FE6600B4AF62 /* no_image@3x.png */; };
+		28515FF91D5B06C0009804F5 /* FishImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28515FF81D5B06C0009804F5 /* FishImagesCell.xib */; };
+		28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */; };
+		288D18841D5E1D0900604D0E /* ConveniencesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288D18831D5E1D0900604D0E /* ConveniencesCell.xib */; };
+		288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */; };
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
@@ -47,7 +70,6 @@
 		3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175F91BDB84CA00671A27 /* SphericalMercatorProjection.m */; };
 		3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175FE1BDB84D500671A27 /* GQTPointQuadTree.m */; };
 		3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */; };
-		3E9707E41B9C887A00B0CCC3 /* MarkerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */; };
 		3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */; };
 		3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */; };
 		3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */; };
@@ -178,9 +200,32 @@
 
 /* Begin PBXFileReference section */
 		0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish.debug.xcconfig"; sourceTree = "<group>"; };
+		281566DA1D575753008B1E12 /* MarkerDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsController.swift; path = controllers/MarkerDetailsController.swift; sourceTree = "<group>"; };
+		281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDateCell.swift; path = ui/markerDetails/ModifiedDateCell.swift; sourceTree = "<group>"; };
+		281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifiedDateCell.xib; path = ui/markerDetails/ModifiedDateCell.xib; sourceTree = "<group>"; };
+		282A5F951D5CCD3600B18F86 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = utils/AlertUtils.swift; sourceTree = "<group>"; };
+		282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsCellCreator.swift; path = controllers/MarkerDetailsCellCreator.swift; sourceTree = "<group>"; };
+		282C94691D590D1700161303 /* LinkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkCell.xib; path = ui/markerDetails/LinkCell.xib; sourceTree = "<group>"; };
+		282C946B1D590D2F00161303 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkCell.swift; path = ui/markerDetails/LinkCell.swift; sourceTree = "<group>"; };
+		282C946F1D5A25B200161303 /* PlaceImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceImagesCell.xib; path = ui/markerDetails/PlaceImagesCell.xib; sourceTree = "<group>"; };
+		282C94711D5A2C8500161303 /* PlaceImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceImagesCell.swift; path = ui/markerDetails/PlaceImagesCell.swift; sourceTree = "<group>"; };
+		282D90071D578ED000DE8550 /* TitleLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TitleLabelCell.xib; path = ui/markerDetails/TitleLabelCell.xib; sourceTree = "<group>"; };
+		282D90091D578FD500DE8550 /* TitleLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleLabelCell.swift; path = ui/markerDetails/TitleLabelCell.swift; sourceTree = "<group>"; };
+		282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCell.swift; path = ui/markerDetails/PlaceDetailsCell.swift; sourceTree = "<group>"; };
+		282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceDetailsCell.xib; path = ui/markerDetails/PlaceDetailsCell.xib; sourceTree = "<group>"; };
+		282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishingConditionsCell.swift; path = ui/markerDetails/FishingConditionsCell.swift; sourceTree = "<group>"; };
+		282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FishingConditionsCell.xib; path = ui/markerDetails/FishingConditionsCell.xib; sourceTree = "<group>"; };
+		282D90131D57AA0A00DE8550 /* ContactsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsCell.swift; path = ui/markerDetails/ContactsCell.swift; sourceTree = "<group>"; };
+		282D90151D57AA3E00DE8550 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactsCell.xib; path = ui/markerDetails/ContactsCell.xib; sourceTree = "<group>"; };
+		282D90171D57B6B100DE8550 /* AddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressCell.swift; path = ui/markerDetails/AddressCell.swift; sourceTree = "<group>"; };
+		282D90191D57B6C700DE8550 /* AddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddressCell.xib; path = ui/markerDetails/AddressCell.xib; sourceTree = "<group>"; };
 		284F3DF31C92FE6600B4AF62 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_image.png; path = resources/no_image.png; sourceTree = "<group>"; };
 		284F3DF41C92FE6600B4AF62 /* no_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@2x.png"; path = "resources/no_image@2x.png"; sourceTree = "<group>"; };
 		284F3DF51C92FE6600B4AF62 /* no_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@3x.png"; path = "resources/no_image@3x.png"; sourceTree = "<group>"; };
+		28515FF81D5B06C0009804F5 /* FishImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FishImagesCell.xib; path = ui/markerDetails/FishImagesCell.xib; sourceTree = "<group>"; };
+		28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishImagesCell.swift; path = ui/markerDetails/FishImagesCell.swift; sourceTree = "<group>"; };
+		288D18831D5E1D0900604D0E /* ConveniencesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConveniencesCell.xib; path = ui/markerDetails/ConveniencesCell.xib; sourceTree = "<group>"; };
+		288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConveniencesCell.swift; path = ui/markerDetails/ConveniencesCell.swift; sourceTree = "<group>"; };
 		28C5A8741C6F761400C86F5E /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = libs/TMCache/TMCache.h; sourceTree = "<group>"; };
 		28C5A8751C6F761400C86F5E /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = libs/TMCache/TMCache.m; sourceTree = "<group>"; };
 		28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCacheBackgroundTaskManager.h; path = libs/TMCache/TMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
@@ -241,7 +286,6 @@
 		3E9175FF1BDB84D500671A27 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeChild.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
 		3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GQTPointQuadTreeChild.m; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
 		3E9176011BDB84D500671A27 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeItem.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
-		3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsController.swift; path = controllers/MarkerDetailsController.swift; sourceTree = "<group>"; };
 		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewCell.swift; path = ui/ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagesCollectionViewCell.xib; path = ui/ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = network/HTTPClient.swift; sourceTree = "<group>"; };
@@ -387,6 +431,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281566DF1D5759C6008B1E12 /* MarkerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				282D90171D57B6B100DE8550 /* AddressCell.swift */,
+				282D90191D57B6C700DE8550 /* AddressCell.xib */,
+				288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */,
+				288D18831D5E1D0900604D0E /* ConveniencesCell.xib */,
+				282D90131D57AA0A00DE8550 /* ContactsCell.swift */,
+				282D90151D57AA3E00DE8550 /* ContactsCell.xib */,
+				28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */,
+				28515FF81D5B06C0009804F5 /* FishImagesCell.xib */,
+				282D900F1D579FBE00DE8550 /* FishingConditionsCell.swift */,
+				282D90111D57A00A00DE8550 /* FishingConditionsCell.xib */,
+				281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */,
+				281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */,
+				282C946B1D590D2F00161303 /* LinkCell.swift */,
+				282C94691D590D1700161303 /* LinkCell.xib */,
+				282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */,
+				282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */,
+				282C94711D5A2C8500161303 /* PlaceImagesCell.swift */,
+				282C946F1D5A25B200161303 /* PlaceImagesCell.xib */,
+				282D90091D578FD500DE8550 /* TitleLabelCell.swift */,
+				282D90071D578ED000DE8550 /* TitleLabelCell.xib */,
+			);
+			name = MarkerDetails;
+			sourceTree = "<group>";
+		};
+		282A5F941D5CCD0200B18F86 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				282A5F951D5CCD3600B18F86 /* AlertUtils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		28C5A8731C6F75FE00C86F5E /* TMCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +483,6 @@
 		3E4BD7751AD7194E0036C8CA = {
 			isa = PBXGroup;
 			children = (
-				3E8C65A51B35DD5A005BD52C /* MapKit.framework */,
 				3E4BD7801AD7194E0036C8CA /* RivneFish */,
 				3E4BD7961AD7194E0036C8CA /* RivneFishTests */,
 				3E4BD77F1AD7194E0036C8CA /* Products */,
@@ -425,6 +503,7 @@
 		3E4BD7801AD7194E0036C8CA /* RivneFish */ = {
 			isa = PBXGroup;
 			children = (
+				282A5F941D5CCD0200B18F86 /* Utils */,
 				3EA7453D1BBD192300AB470A /* Controllers */,
 				3E9175DB1BDB838F00671A27 /* Libs */,
 				3EE306D11B4A6572003225FF /* Model */,
@@ -557,8 +636,9 @@
 			isa = PBXGroup;
 			children = (
 				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
-				3E9707E31B9C887A00B0CCC3 /* MarkerDetailsController.swift */,
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
+				281566DA1D575753008B1E12 /* MarkerDetailsController.swift */,
+				282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -613,6 +693,7 @@
 		3EE306DA1B4FAD27003225FF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				281566DF1D5759C6008B1E12 /* MarkerDetails */,
 				3EA745431BBD1C1B00AB470A /* FishCollectionViewCell.swift */,
 				3EA745411BBD1BF500AB470A /* FishCollectionViewCell.xib */,
 				3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */,
@@ -738,6 +819,7 @@
 		5B2072A62D998BC2002B1316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E8C65A51B35DD5A005BD52C /* MapKit.framework */,
 				F7455EB07D266470760C53FE /* Pods.framework */,
 				76A73F8242433C3F0EFDC8A4 /* Pods_RivneFish.framework */,
 				E73EB8308BFAB47B34C23C6F /* Pods_RivneFishTests.framework */,
@@ -856,8 +938,11 @@
 				3EF772251C15949900A83A3A /* 11@2x.png in Resources */,
 				3EF772371C15949900A83A3A /* 17@2x.png in Resources */,
 				3EF772431C15949900A83A3A /* 22@2x.png in Resources */,
+				282D900E1D5796C500DE8550 /* PlaceDetailsCell.xib in Resources */,
+				282C946A1D590D1700161303 /* LinkCell.xib in Resources */,
 				3EF772321C15949900A83A3A /* 15@3x.png in Resources */,
 				3EF772611C15949900A83A3A /* 33@2x.png in Resources */,
+				282D90161D57AA3E00DE8550 /* ContactsCell.xib in Resources */,
 				3EA745421BBD1BF500AB470A /* FishCollectionViewCell.xib in Resources */,
 				3EF772081C15949900A83A3A /* 1@3x.png in Resources */,
 				3EF772281C15949900A83A3A /* 12@2x.png in Resources */,
@@ -884,6 +969,7 @@
 				3EF772231C15949900A83A3A /* 10@3x.png in Resources */,
 				3EF7723F1C15949900A83A3A /* 21.png in Resources */,
 				3EF772441C15949900A83A3A /* 22@3x.png in Resources */,
+				288D18841D5E1D0900604D0E /* ConveniencesCell.xib in Resources */,
 				3E2201711BF4FEE90056FE7A /* arrowRight@3x.png in Resources */,
 				3E9070B31BECBACC00268C7F /* m1@2x.png in Resources */,
 				3EF772171C15949900A83A3A /* 6@3x.png in Resources */,
@@ -893,10 +979,12 @@
 				3EF772361C15949900A83A3A /* 17.png in Resources */,
 				3EF7720E1C15949900A83A3A /* 3@3x.png in Resources */,
 				3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */,
+				281566E51D575AC4008B1E12 /* ModifiedDateCell.xib in Resources */,
 				3EF7724B1C15949900A83A3A /* 25.png in Resources */,
 				3EF7722F1C15949900A83A3A /* 14@3x.png in Resources */,
 				3E22016F1BF4FEE90056FE7A /* arrowRight.png in Resources */,
 				3EF7721D1C15949900A83A3A /* 8@3x.png in Resources */,
+				282D90081D578ED000DE8550 /* TitleLabelCell.xib in Resources */,
 				3EF772631C15949900A83A3A /* 34.png in Resources */,
 				3EF7720D1C15949900A83A3A /* 3@2x.png in Resources */,
 				3EF7725B1C15949900A83A3A /* 30@2x.png in Resources */,
@@ -911,6 +999,7 @@
 				3EF7725A1C15949900A83A3A /* 30.png in Resources */,
 				3EF7725D1C15949900A83A3A /* 31.png in Resources */,
 				3EF772571C15949900A83A3A /* 29.png in Resources */,
+				282D901A1D57B6C700DE8550 /* AddressCell.xib in Resources */,
 				3EF772271C15949900A83A3A /* 12.png in Resources */,
 				3EF772541C15949900A83A3A /* 28.png in Resources */,
 				3EF772211C15949900A83A3A /* 10.png in Resources */,
@@ -924,6 +1013,7 @@
 				3EF7724E1C15949900A83A3A /* 26.png in Resources */,
 				3EB21C201B6617FB00517ECE /* m2-9.png in Resources */,
 				3EF772161C15949900A83A3A /* 6@2x.png in Resources */,
+				282D90121D57A00A00DE8550 /* FishingConditionsCell.xib in Resources */,
 				3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */,
 				3EF7720F1C15949900A83A3A /* 4.png in Resources */,
 				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
@@ -931,6 +1021,7 @@
 				3E2201701BF4FEE90056FE7A /* arrowRight@2x.png in Resources */,
 				3EF772411C15949900A83A3A /* 21@3x.png in Resources */,
 				3EF772401C15949900A83A3A /* 21@2x.png in Resources */,
+				282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */,
 				3EF7725C1C15949900A83A3A /* 30@3x.png in Resources */,
 				3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */,
 				3EF772221C15949900A83A3A /* 10@2x.png in Resources */,
@@ -961,6 +1052,7 @@
 				3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
 				3EF772331C15949900A83A3A /* 16.png in Resources */,
+				28515FF91D5B06C0009804F5 /* FishImagesCell.xib in Resources */,
 				3EF772101C15949900A83A3A /* 4@2x.png in Resources */,
 				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
 				3EF772341C15949900A83A3A /* 16@2x.png in Resources */,
@@ -1077,34 +1169,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E9707E41B9C887A00B0CCC3 /* MarkerDetailsController.swift in Sources */,
 				28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */,
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
+				281566DB1D575753008B1E12 /* MarkerDetailsController.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
+				282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */,
 				28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */,
 				3E9070BE1BF330F900268C7F /* Reachability.m in Sources */,
 				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */,
 				3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */,
+				288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */,
+				282A5F981D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift in Sources */,
 				3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */,
 				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
+				282C946C1D590D2F00161303 /* LinkCell.swift in Sources */,
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
+				282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */,
 				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
 				28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */,
 				28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */,
 				3EA745541BBEFA5600AB470A /* Fish.swift in Sources */,
 				3E9175F71BDB848900671A27 /* GClusterManager.m in Sources */,
+				282D90101D579FBE00DE8550 /* FishingConditionsCell.swift in Sources */,
+				282D90141D57AA0A00DE8550 /* ContactsCell.swift in Sources */,
+				282D90181D57B6B100DE8550 /* AddressCell.swift in Sources */,
 				3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */,
 				3EE306DC1B4FAD98003225FF /* MarkerAnnotation.swift in Sources */,
 				28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */,
 				3EA745441BBD1C1B00AB470A /* FishCollectionViewCell.swift in Sources */,
 				3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */,
+				282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */,
 				3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */,
+				28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */,
+				282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */,
+				281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */,
 				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,
 				3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */,
 				3EE306D31B4A65A3003225FF /* Marker.swift in Sources */,

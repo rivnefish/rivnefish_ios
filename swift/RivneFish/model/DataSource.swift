@@ -28,7 +28,9 @@ class DataSource: NSObject {
                 TMCache.sharedCache().objectForKey(urlStr) { (cache, key, object) in
                     if let markers = object as? NSArray {
                         if markers.count != 0 {
-                            completionHandler(markers: markers)
+                            dispatch_async(dispatch_get_main_queue(),{
+                                completionHandler(markers: markers)
+                            })
                         }
 
                     } else {
@@ -41,7 +43,9 @@ class DataSource: NSObject {
                                 // Update last changes num
                                 ActualityValidator.actualityValidator.updateUserLastChangesDate()
 
-                                completionHandler(markers: markers)
+                                dispatch_async(dispatch_get_main_queue(),{
+                                    completionHandler(markers: markers)
+                                })
                             }
                         })
                     }
@@ -52,7 +56,9 @@ class DataSource: NSObject {
             TMCache.sharedCache().objectForKey(urlStr) { (cache, key, object) in
                 if let markers = object as? NSArray {
                     if markers.count != 0 {
-                        completionHandler(markers: markers)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(markers: markers)
+                        })
                     }
                 }
             }
@@ -92,28 +98,50 @@ class DataSource: NSObject {
             // request directly from network
             NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
                 // save to cache
-                if fish.count > 0 {
-                    TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
+                let sortedFish = self.sortedFishArray(fish)
+                if sortedFish.count > 0 {
+                    TMCache.sharedCache().setObject(sortedFish, forKey: fishCacheId)
                 }
-                completionHandler(fish: fish)
+                dispatch_async(dispatch_get_main_queue(),{
+                    completionHandler(fish: sortedFish)
+                })
             })
         } else {
             // try to request from cache
             TMCache.sharedCache().objectForKey(fishCacheId) { (cache, key, object) in
                 if let fish = object as? NSArray {
                     if fish.count != 0 {
-                        completionHandler(fish: fish)
+                        // TODO: sort temporary, untill not sorted fish in cache
+                        let sortedFish = self.sortedFishArray(fish)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(fish: sortedFish)
+                        })
                     }
                 } else { // if no data in cache - request from network
                     NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
                         // save to cache
+                        let sortedFish = self.sortedFishArray(fish)
                         if fish.count > 0 {
-                            TMCache.sharedCache().setObject(fish, forKey: fishCacheId)
+                            TMCache.sharedCache().setObject(sortedFish, forKey: fishCacheId)
                         }
-                        completionHandler(fish: fish)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(fish: sortedFish)
+                        })
                     })
                 }
             }
+        }
+    }
+
+    func sortedFishArray(fish: NSArray) -> NSArray {
+        return fish.sortedArrayUsingComparator {
+            (obj1, obj2) -> NSComparisonResult in
+
+            if let f1 = obj1 as? Fish,
+                let f2 = obj2 as? Fish {
+                return f1.compare(f2)
+            }
+            return NSComparisonResult.OrderedSame
         }
     }
 
@@ -124,16 +152,22 @@ class DataSource: NSObject {
                 // Read from cache
                 TMCache.sharedCache().objectForKey(urlString) { (cache, key, object) in
                     if let image = object as? UIImage {
-                        completionHandler(urlString, image)
+                        dispatch_async(dispatch_get_main_queue(),{
+                            completionHandler(urlString, image)
+                        })
                     } else {
                         // If there is no image in cache - request it
                         if let url = NSURL(string: urlString) {
                             NetworkDataSource.sharedInstace.getDataFromUrl(url) { data, index in
                                 if let data = NSData(contentsOfURL: url) {
                                     TMCache.sharedCache().setObject(UIImage(data: data), forKey: urlString)
-                                    completionHandler(urlString, UIImage(data: data))
+                                    dispatch_async(dispatch_get_main_queue(),{
+                                        completionHandler(urlString, UIImage(data: data))
+                                    })
                                 } else {
-                                    completionHandler(urlString, UIImage(named: "no_image"))
+                                    dispatch_async(dispatch_get_main_queue(),{
+                                        completionHandler(urlString, UIImage(named: "no_image"))
+                                    })
                                 }
                             }
                         }

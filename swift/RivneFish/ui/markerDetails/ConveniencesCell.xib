@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConveniencesCell" rowHeight="67" id="cbz-IZ-D6K" customClass="ConveniencesCell" customModule="Rivnefish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cbz-IZ-D6K" id="APf-9z-mRq">
+                <rect key="frame" x="0.0" y="0.0" width="289" height="66.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqB-Fp-vYW">
+                        <rect key="frame" x="8" y="37" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Умови відпочинку:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quV-HQ-q3k">
+                        <rect key="frame" x="8" y="8" width="273" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="GqB-Fp-vYW" secondAttribute="bottom" constant="4" id="Erh-Je-YFe"/>
+                    <constraint firstItem="quV-HQ-q3k" firstAttribute="trailing" secondItem="APf-9z-mRq" secondAttribute="trailingMargin" id="IpE-03-ciz"/>
+                    <constraint firstItem="GqB-Fp-vYW" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="OTF-ee-TAF"/>
+                    <constraint firstItem="quV-HQ-q3k" firstAttribute="top" secondItem="APf-9z-mRq" secondAttribute="topMargin" id="bp7-lr-QTJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GqB-Fp-vYW" secondAttribute="trailing" constant="8" id="ivl-wi-A0t"/>
+                    <constraint firstItem="GqB-Fp-vYW" firstAttribute="top" secondItem="quV-HQ-q3k" secondAttribute="bottom" constant="8" id="jMk-NP-eFg"/>
+                    <constraint firstItem="quV-HQ-q3k" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="vXH-Fz-06e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+            <connections>
+                <outlet property="bodyLabel" destination="GqB-Fp-vYW" id="hCR-5x-hyK"/>
+                <outlet property="titleLabel" destination="quV-HQ-q3k" id="2Mm-7e-YX1"/>
+            </connections>
+            <point key="canvasLocation" x="263.5" y="139.5"/>
+        </tableViewCell>
+    </objects>
+</document>

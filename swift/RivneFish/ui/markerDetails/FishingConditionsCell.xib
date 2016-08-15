@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FishingConditionsCell" rowHeight="217" id="cbz-IZ-D6K" customClass="FishingConditionsCell" customModule="Rivnefish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="217"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cbz-IZ-D6K" id="APf-9z-mRq">
+                <rect key="frame" x="0.0" y="0.0" width="289" height="216.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оплата:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqB-Fp-vYW">
+                        <rect key="frame" x="8" y="62" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 грн за день" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdj-3i-iug">
+                        <rect key="frame" x="8" y="87" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дозволено" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dG-8z-byW">
+                        <rect key="frame" x="8" y="137" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Коли дозволено риболовлю:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-nX-hA5">
+                        <rect key="frame" x="8" y="162" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цілодобово" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivl-HH-heo">
+                        <rect key="frame" x="8" y="187" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Використання човна:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ez-MK-FLY">
+                        <rect key="frame" x="8" y="112" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Умови риболовлі:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quV-HQ-q3k">
+                        <rect key="frame" x="8" y="8" width="273" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="інфа" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukj-EA-nBb">
+                        <rect key="frame" x="8" y="37" width="265" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="ukj-EA-nBb" secondAttribute="trailing" constant="8" id="0CO-SY-ZQ7"/>
+                    <constraint firstItem="sdj-3i-iug" firstAttribute="top" secondItem="GqB-Fp-vYW" secondAttribute="bottom" constant="8" id="4lb-ES-d7W"/>
+                    <constraint firstItem="ukj-EA-nBb" firstAttribute="top" secondItem="quV-HQ-q3k" secondAttribute="bottom" constant="8" id="8Xn-aJ-Pdk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="TGD-nX-hA5" secondAttribute="trailing" constant="8" id="9iX-HR-V6Y"/>
+                    <constraint firstItem="4dG-8z-byW" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="CTW-DA-fxU"/>
+                    <constraint firstItem="TGD-nX-hA5" firstAttribute="top" secondItem="4dG-8z-byW" secondAttribute="bottom" constant="8" id="CY9-c9-shh"/>
+                    <constraint firstItem="quV-HQ-q3k" firstAttribute="trailing" secondItem="APf-9z-mRq" secondAttribute="trailingMargin" id="IpE-03-ciz"/>
+                    <constraint firstItem="4dG-8z-byW" firstAttribute="top" secondItem="6ez-MK-FLY" secondAttribute="bottom" constant="8" id="KF3-6v-ZmI"/>
+                    <constraint firstItem="Ivl-HH-heo" firstAttribute="top" secondItem="TGD-nX-hA5" secondAttribute="bottom" constant="8" id="MzH-03-SW2"/>
+                    <constraint firstItem="GqB-Fp-vYW" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="OTF-ee-TAF"/>
+                    <constraint firstItem="Ivl-HH-heo" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="RaN-ty-6OA"/>
+                    <constraint firstItem="GqB-Fp-vYW" firstAttribute="top" secondItem="ukj-EA-nBb" secondAttribute="bottom" constant="8" id="RuY-Fo-EQX"/>
+                    <constraint firstItem="ukj-EA-nBb" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="SGb-mg-tsk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="4dG-8z-byW" secondAttribute="trailing" constant="8" id="TW6-qk-LIo"/>
+                    <constraint firstItem="TGD-nX-hA5" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="bEC-N9-tGF"/>
+                    <constraint firstItem="quV-HQ-q3k" firstAttribute="top" secondItem="APf-9z-mRq" secondAttribute="topMargin" id="bp7-lr-QTJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ivl-HH-heo" secondAttribute="trailing" constant="8" id="c1C-L3-C0Z"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="GqB-Fp-vYW" secondAttribute="trailing" constant="8" id="ivl-wi-A0t"/>
+                    <constraint firstItem="sdj-3i-iug" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="kX9-Zd-iRD"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="6ez-MK-FLY" secondAttribute="trailing" constant="8" id="qQo-qo-PWO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ivl-HH-heo" secondAttribute="bottom" constant="4.5" id="rbY-5m-ws3"/>
+                    <constraint firstItem="6ez-MK-FLY" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="uFk-6M-AfR"/>
+                    <constraint firstItem="6ez-MK-FLY" firstAttribute="top" secondItem="sdj-3i-iug" secondAttribute="bottom" constant="8" id="vBi-eM-vbq"/>
+                    <constraint firstItem="quV-HQ-q3k" firstAttribute="leading" secondItem="APf-9z-mRq" secondAttribute="leadingMargin" id="vXH-Fz-06e"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sdj-3i-iug" secondAttribute="trailing" constant="8" id="yEf-4L-T7O"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+            <connections>
+                <outlet property="boatUsageCaptionLabel" destination="6ez-MK-FLY" id="x1N-eR-cs4"/>
+                <outlet property="boatUsageCaptionVConstraint" destination="vBi-eM-vbq" id="3p0-gB-rT7"/>
+                <outlet property="boatUsageLabel" destination="4dG-8z-byW" id="RMV-96-New"/>
+                <outlet property="boatVConstraint" destination="KF3-6v-ZmI" id="oyV-bW-a52"/>
+                <outlet property="fishingTimeCaptionLabel" destination="TGD-nX-hA5" id="bFI-pW-Xn6"/>
+                <outlet property="fishingTimeCaptionVConstraint" destination="CY9-c9-shh" id="O9K-fF-KYh"/>
+                <outlet property="fishingTimeLabel" destination="Ivl-HH-heo" id="RsN-PL-DR4"/>
+                <outlet property="fishingVConstraint" destination="MzH-03-SW2" id="8BE-Gn-7PR"/>
+                <outlet property="mainInfoLabel" destination="ukj-EA-nBb" id="z2f-qe-pBC"/>
+                <outlet property="mainInfoVConstraint" destination="8Xn-aJ-Pdk" id="YKe-UB-fuK"/>
+                <outlet property="paymentCaptionLabel" destination="GqB-Fp-vYW" id="kHY-ee-35R"/>
+                <outlet property="paymentCaptionVConstraint" destination="RuY-Fo-EQX" id="TLW-bu-sIa"/>
+                <outlet property="paymentLabel" destination="sdj-3i-iug" id="qQ4-KT-8Tc"/>
+                <outlet property="paymentVConstraint" destination="4lb-ES-d7W" id="auk-WS-h36"/>
+            </connections>
+            <point key="canvasLocation" x="263.5" y="214.5"/>
+        </tableViewCell>
+    </objects>
+</document>
