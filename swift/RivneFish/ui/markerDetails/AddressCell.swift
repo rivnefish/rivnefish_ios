@@ -6,14 +6,14 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class AddressCell: UITableViewCell, UITextFieldDelegate {
+class AddressCell: UITableViewCell {
     
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var coordinatesTextEdit: UITextField!
     @IBOutlet weak var addressVConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var coordinatesTextView: UITextView!
     @IBOutlet weak var coordinatesVConstraint: NSLayoutConstraint!
+
     func setup(withName name: String?, address: String? ,coordinates: String?) {
         if let name = name {
             captionLabel.text = name
@@ -29,14 +29,10 @@ class AddressCell: UITableViewCell, UITextFieldDelegate {
         }
         let coordinates = coordinates ?? ""
         if !coordinates.isEmpty {
-            coordinatesTextEdit.text = coordinates
+            coordinatesTextView.text = coordinates
         } else {
-            coordinatesTextEdit.text = ""
+            coordinatesTextView.text = ""
             coordinatesVConstraint.constant = 0
         }
-    }
-
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return false
     }
 }
