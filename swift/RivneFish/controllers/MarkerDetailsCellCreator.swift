@@ -211,7 +211,7 @@ class MarkerDetailsCellCreator {
 
     func captionCell(forIndexPath indexPath: NSIndexPath) -> AddressCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("AddressCell", forIndexPath: indexPath) as? AddressCell {
-            cell.setup(withName: markerDetailsModel?.name, address: markerDetailsModel?.address, coordinates: "\(markerDetailsModel?.lat ?? 0), \(markerDetailsModel?.lon ?? 0)")
+            cell.setup(withName: nil, address: markerDetailsModel?.address, coordinates: "\(markerDetailsModel?.lat ?? 0), \(markerDetailsModel?.lon ?? 0)")
             return cell
         }
         return nil
@@ -235,7 +235,7 @@ class MarkerDetailsCellCreator {
 
     func placeDetailsCell(forIndexPath indexPath: NSIndexPath) -> PlaceDetailsCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("PlaceDetailsCell", forIndexPath: indexPath) as? PlaceDetailsCell {
-            cell.setup(withSquare: markerDetailsModel?.areaStr, averageDepth: markerDetailsModel?.averageDepth, maxDepth: markerDetailsModel?.maxDepth)
+            cell.setup(withSquare: markerDetailsModel?.areaStr, averageDepth: markerDetailsModel?.averageDepthReadable, maxDepth: markerDetailsModel?.maxDepthReadable)
             return cell
         }
         return nil
