@@ -12,11 +12,11 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     let kCellIdentifier = "imagesCellIdentifier"
     let kFishCellIdentifier = "fishImagesCellIdentifier"
     static let kFishCellWidth: CGFloat = 70.0
+    var currentImageIndex = 0
 
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
         didSet {
-            imagesCollectionView.dataSource = self
-            imagesCollectionView.delegate = self
+            setupFishCollectionView()
         }
     }
 
@@ -25,10 +25,15 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
 
     func setup(withFishArray fishArray: Array<Fish>) {
         self.fishArray = fishArray
-        setupFishCollectionView()
+
+        correctCollectionViewOffset()
+        imagesCollectionView.reloadData()
     }
 
     func setupFishCollectionView() {
+        imagesCollectionView.dataSource = self
+        imagesCollectionView.delegate = self
+
         self.imagesCollectionView.registerNib(UINib(nibName: "FishCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kFishCellIdentifier)
 
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -36,8 +41,13 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
 
-        self.imagesCollectionView.collectionViewLayout = flowLayout;
-        self.imagesCollectionView.pagingEnabled = true
+        imagesCollectionView.collectionViewLayout.invalidateLayout()
+        imagesCollectionView.collectionViewLayout = flowLayout
+    }
+
+    private func correctCollectionViewOffset() {
+        let offset = CGFloat(currentImageIndex) * imagesCollectionView.frame.size.width
+        imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -62,5 +72,9 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: FishImagesCell.kFishCellWidth, height: self.imagesCollectionView.frame.height)
+    }
+
+    internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        currentImageIndex = Int(imagesCollectionView.contentOffset.x / imagesCollectionView.frame.size.width)
     }
 }

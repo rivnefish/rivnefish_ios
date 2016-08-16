@@ -58,18 +58,20 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
         }
     }
 
-    private func setupImagesCollectionView() {
+    func setupImagesCollectionView() {
         imagesCollectionView.dataSource = self
         imagesCollectionView.delegate = self
+
+        self.imagesCollectionView.registerNib(UINib(nibName: "ImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
 
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
-        self.imagesCollectionView.collectionViewLayout = flowLayout;
 
-        self.imagesCollectionView.pagingEnabled = true
-        self.imagesCollectionView.registerNib(UINib(nibName: "ImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
+        imagesCollectionView.collectionViewLayout.invalidateLayout()
+        imagesCollectionView.collectionViewLayout = flowLayout
+        imagesCollectionView.pagingEnabled = true
     }
 
     internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

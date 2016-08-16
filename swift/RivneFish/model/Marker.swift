@@ -96,6 +96,20 @@ class MarkerModel: NSObject, NSCoding {
         }
     }
 
+    var maxDepthReadable: String? {
+        if let maxDepth = self.maxDepth {
+            return "\(maxDepth) м"
+        }
+        return maxDepth
+    }
+
+    var averageDepthReadable: String? {
+        if let averageDepth = self.averageDepth {
+            return "\(averageDepth) м"
+        }
+        return averageDepth
+    }
+
     var boatUsageReadable: String? {
         if let val = boatUsage {
             if NSString(string: val).boolValue {
@@ -126,9 +140,9 @@ class MarkerModel: NSObject, NSCoding {
     var timeToFishStr: String? {
         if let val = timeToFish {
             if val == "daylight" {
-                return "Лише вдень"
+                return "лише вдень"
             } else if val == "24h" {
-                return "Цілодобово"
+                return "цілодобово"
             } else if val == "unknown" {
                 return nil
             }
