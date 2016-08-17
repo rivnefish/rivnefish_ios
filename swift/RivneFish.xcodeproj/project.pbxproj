@@ -34,6 +34,12 @@
 		288D18841D5E1D0900604D0E /* ConveniencesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288D18831D5E1D0900604D0E /* ConveniencesCell.xib */; };
 		288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */; };
 		28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */; };
+		28B74BE51D64AD7000AB7FAA /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BDF1D64AD7000AB7FAA /* 18.png */; };
+		28B74BE61D64AD7000AB7FAA /* 18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BE01D64AD7000AB7FAA /* 18@2x.png */; };
+		28B74BE71D64AD7000AB7FAA /* 18@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BE11D64AD7000AB7FAA /* 18@3x.png */; };
+		28B74BE81D64AD7000AB7FAA /* 32.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BE21D64AD7000AB7FAA /* 32.png */; };
+		28B74BE91D64AD7000AB7FAA /* 32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BE31D64AD7000AB7FAA /* 32@2x.png */; };
+		28B74BEA1D64AD7000AB7FAA /* 32@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BE41D64AD7000AB7FAA /* 32@3x.png */; };
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
@@ -228,6 +234,12 @@
 		288D18831D5E1D0900604D0E /* ConveniencesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConveniencesCell.xib; path = ui/markerDetails/ConveniencesCell.xib; sourceTree = "<group>"; };
 		288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConveniencesCell.swift; path = ui/markerDetails/ConveniencesCell.swift; sourceTree = "<group>"; };
 		28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneNumberFormatter.swift; path = utils/PhoneNumberFormatter.swift; sourceTree = "<group>"; };
+		28B74BDF1D64AD7000AB7FAA /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 18.png; path = resources/fish/18.png; sourceTree = "<group>"; };
+		28B74BE01D64AD7000AB7FAA /* 18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "18@2x.png"; path = "resources/fish/18@2x.png"; sourceTree = "<group>"; };
+		28B74BE11D64AD7000AB7FAA /* 18@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "18@3x.png"; path = "resources/fish/18@3x.png"; sourceTree = "<group>"; };
+		28B74BE21D64AD7000AB7FAA /* 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 32.png; path = resources/fish/32.png; sourceTree = "<group>"; };
+		28B74BE31D64AD7000AB7FAA /* 32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "32@2x.png"; path = "resources/fish/32@2x.png"; sourceTree = "<group>"; };
+		28B74BE41D64AD7000AB7FAA /* 32@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "32@3x.png"; path = "resources/fish/32@3x.png"; sourceTree = "<group>"; };
 		28C5A8741C6F761400C86F5E /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = libs/TMCache/TMCache.h; sourceTree = "<group>"; };
 		28C5A8751C6F761400C86F5E /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = libs/TMCache/TMCache.m; sourceTree = "<group>"; };
 		28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCacheBackgroundTaskManager.h; path = libs/TMCache/TMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
@@ -716,6 +728,12 @@
 		3EF771841C156EFD00A83A3A /* Fish */ = {
 			isa = PBXGroup;
 			children = (
+				28B74BDF1D64AD7000AB7FAA /* 18.png */,
+				28B74BE01D64AD7000AB7FAA /* 18@2x.png */,
+				28B74BE11D64AD7000AB7FAA /* 18@3x.png */,
+				28B74BE21D64AD7000AB7FAA /* 32.png */,
+				28B74BE31D64AD7000AB7FAA /* 32@2x.png */,
+				28B74BE41D64AD7000AB7FAA /* 32@3x.png */,
 				3EF771A31C15949900A83A3A /* 1.png */,
 				3EF771A41C15949900A83A3A /* 1@2x.png */,
 				3EF771A51C15949900A83A3A /* 1@3x.png */,
@@ -952,6 +970,7 @@
 				284F3DF71C92FE6600B4AF62 /* no_image@2x.png in Resources */,
 				3EB21C1F1B6617FB00517ECE /* m1.png in Resources */,
 				284F3DF81C92FE6600B4AF62 /* no_image@3x.png in Resources */,
+				28B74BE81D64AD7000AB7FAA /* 32.png in Resources */,
 				3EF772241C15949900A83A3A /* 11.png in Resources */,
 				3EF7722D1C15949900A83A3A /* 14.png in Resources */,
 				3EF772591C15949900A83A3A /* 29@3x.png in Resources */,
@@ -970,6 +989,8 @@
 				3EF7723B1C15949900A83A3A /* 19@3x.png in Resources */,
 				3EF7722B1C15949900A83A3A /* 13@2x.png in Resources */,
 				3EF772231C15949900A83A3A /* 10@3x.png in Resources */,
+				28B74BE51D64AD7000AB7FAA /* 18.png in Resources */,
+				28B74BE61D64AD7000AB7FAA /* 18@2x.png in Resources */,
 				3EF7723F1C15949900A83A3A /* 21.png in Resources */,
 				3EF772441C15949900A83A3A /* 22@3x.png in Resources */,
 				288D18841D5E1D0900604D0E /* ConveniencesCell.xib in Resources */,
@@ -1012,18 +1033,21 @@
 				3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */,
 				3EF7724A1C15949900A83A3A /* 24@3x.png in Resources */,
 				3EF772531C15949900A83A3A /* 27@3x.png in Resources */,
+				28B74BE91D64AD7000AB7FAA /* 32@2x.png in Resources */,
 				3EF772451C15949900A83A3A /* 23.png in Resources */,
 				3EF7724E1C15949900A83A3A /* 26.png in Resources */,
 				3EB21C201B6617FB00517ECE /* m2-9.png in Resources */,
 				3EF772161C15949900A83A3A /* 6@2x.png in Resources */,
 				282D90121D57A00A00DE8550 /* FishingConditionsCell.xib in Resources */,
 				3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */,
+				28B74BEA1D64AD7000AB7FAA /* 32@3x.png in Resources */,
 				3EF7720F1C15949900A83A3A /* 4.png in Resources */,
 				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
 				3EF7724C1C15949900A83A3A /* 25@2x.png in Resources */,
 				3E2201701BF4FEE90056FE7A /* arrowRight@2x.png in Resources */,
 				3EF772411C15949900A83A3A /* 21@3x.png in Resources */,
 				3EF772401C15949900A83A3A /* 21@2x.png in Resources */,
+				28B74BE71D64AD7000AB7FAA /* 18@3x.png in Resources */,
 				282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */,
 				3EF7725C1C15949900A83A3A /* 30@3x.png in Resources */,
 				3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */,
