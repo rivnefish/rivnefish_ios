@@ -18,8 +18,10 @@ class ContactsCell: UITableViewCell {
     @IBOutlet weak var detailsConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailsLabel: UILabel!
 
+    var phoneNumber: String?
+
     @IBAction func phonePressed(sender: UIButton) {
-        if let phone = phoneButton.titleLabel?.text,
+        if let phone = phoneNumber,
             let url = NSURL(string: "tel://\(phone)") {
 
             let application:UIApplication = UIApplication.sharedApplication()
@@ -32,7 +34,8 @@ class ContactsCell: UITableViewCell {
     func setup(withPhone phone: String?, details: String?) {
         let phone = phone ?? ""
         if  !phone.isEmpty {
-            phoneButton.setTitle(phone, forState: UIControlState.Normal)
+            phoneNumber = phone
+            phoneButton.setTitle(PhoneNumberFormatter.format(phone), forState: UIControlState.Normal)
         } else {
             phoneCaptionLabel.text = ""
             phoneVConstraint.constant = 0

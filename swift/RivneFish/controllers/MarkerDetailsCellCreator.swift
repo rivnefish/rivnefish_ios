@@ -78,7 +78,7 @@ class MarkerDetailsCellCreator {
         if !name.isEmpty {
             cellTypes.append(.Caption)
         }
-        let contact = markerDetailsModel?.contactReadable ?? ""
+        let contact = markerDetailsModel?.contact ?? ""
         let contactName = markerDetailsModel?.contactName ?? ""
         if !contact.isEmpty || !contactName.isEmpty {
             cellTypes.append(.Contacts)
@@ -195,7 +195,7 @@ class MarkerDetailsCellCreator {
 
     func contactsCell(forIndexPath indexPath: NSIndexPath) -> ContactsCell? {
         if let cell = contentTable.dequeueReusableCellWithIdentifier("ContactsCell", forIndexPath: indexPath) as? ContactsCell {
-            cell.setup(withPhone: markerDetailsModel?.contactReadable, details: markerDetailsModel?.contactName)
+            cell.setup(withPhone: markerDetailsModel?.contact, details: markerDetailsModel?.contactName)
             return cell
         }
         return nil

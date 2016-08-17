@@ -33,6 +33,7 @@
 		28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */; };
 		288D18841D5E1D0900604D0E /* ConveniencesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288D18831D5E1D0900604D0E /* ConveniencesCell.xib */; };
 		288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */; };
+		28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */; };
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
@@ -226,6 +227,7 @@
 		28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishImagesCell.swift; path = ui/markerDetails/FishImagesCell.swift; sourceTree = "<group>"; };
 		288D18831D5E1D0900604D0E /* ConveniencesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConveniencesCell.xib; path = ui/markerDetails/ConveniencesCell.xib; sourceTree = "<group>"; };
 		288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConveniencesCell.swift; path = ui/markerDetails/ConveniencesCell.swift; sourceTree = "<group>"; };
+		28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneNumberFormatter.swift; path = utils/PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		28C5A8741C6F761400C86F5E /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = libs/TMCache/TMCache.h; sourceTree = "<group>"; };
 		28C5A8751C6F761400C86F5E /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = libs/TMCache/TMCache.m; sourceTree = "<group>"; };
 		28C5A8761C6F761400C86F5E /* TMCacheBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCacheBackgroundTaskManager.h; path = libs/TMCache/TMCacheBackgroundTaskManager.h; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				282A5F951D5CCD3600B18F86 /* AlertUtils.swift */,
+				28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
+				28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */,
 				282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */,
 				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
@@ -1342,7 +1346,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;
@@ -1361,7 +1365,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;
