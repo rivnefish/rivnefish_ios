@@ -9,16 +9,16 @@
 class MarkerDetailsCellCreator {
     static let kPictureRatio:CGFloat = 4.0 / 3.0
     enum Cells: Int {
-        case PlaceImages
-        case FishImages
-        case Caption
-        case Contacts
-        case PlaceDetails
-        case FishingConditions
-        case Conveniences
-        case Description
-        case LinkCell
-        case LastUpdateCell
+        case placeImages
+        case fishImages
+        case caption
+        case contacts
+        case placeDetails
+        case fishingConditions
+        case conveniences
+        case description
+        case linkCell
+        case lastUpdateCell
     }
 
     let contentTable: UITableView
@@ -40,132 +40,132 @@ class MarkerDetailsCellCreator {
         self.registerCells()
     }
 
-    private func registerCells() {
+    fileprivate func registerCells() {
         var nibName = UINib(nibName: "PlaceImagesCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceImagesCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "PlaceImagesCell")
         nibName = UINib(nibName: "FishImagesCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "FishImagesCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "FishImagesCell")
         nibName = UINib(nibName: "AddressCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "AddressCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "AddressCell")
         nibName = UINib(nibName: "ContactsCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "ContactsCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "ContactsCell")
         nibName = UINib(nibName: "TitleLabelCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "TitleLabelCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "TitleLabelCell")
         nibName = UINib(nibName: "PlaceDetailsCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "PlaceDetailsCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "PlaceDetailsCell")
         nibName = UINib(nibName: "FishingConditionsCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "FishingConditionsCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "FishingConditionsCell")
         nibName = UINib(nibName: "ConveniencesCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "ConveniencesCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "ConveniencesCell")
         nibName = UINib(nibName: "LinkCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "LinkCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "LinkCell")
         nibName = UINib(nibName: "ModifiedDateCell", bundle:nil)
-        contentTable.registerNib(nibName, forCellReuseIdentifier: "ModifiedDateCell")
+        contentTable.register(nibName, forCellReuseIdentifier: "ModifiedDateCell")
     }
 
-    private func updateCellTypes() {
+    fileprivate func updateCellTypes() {
         cellTypes.removeAll()
 
         let arr = markerDetailsModel?.photoUrls ?? Array()
         if !arr.isEmpty {
-            cellTypes.append(.PlaceImages)
+            cellTypes.append(.placeImages)
         }
         let fish = fishArray ?? Array()
         if !fish.isEmpty {
-            cellTypes.append(.FishImages)
+            cellTypes.append(.fishImages)
         }
         let name = markerDetailsModel?.name ?? ""
         if !name.isEmpty {
-            cellTypes.append(.Caption)
+            cellTypes.append(.caption)
         }
         let contact = markerDetailsModel?.contact ?? ""
         let contactName = markerDetailsModel?.contactName ?? ""
         if !contact.isEmpty || !contactName.isEmpty {
-            cellTypes.append(.Contacts)
+            cellTypes.append(.contacts)
         }
         let area = markerDetailsModel?.areaStr ?? ""
         let averDepth = markerDetailsModel?.averageDepth ?? ""
         let maxDepth = markerDetailsModel?.maxDepth ?? ""
         if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
-            cellTypes.append(.PlaceDetails)
+            cellTypes.append(.placeDetails)
         }
         let price = markerDetailsModel?.paidFish ?? ""
         let boat = markerDetailsModel?.boatUsageReadable ?? ""
         let time = markerDetailsModel?.timeToFishStr ?? ""
         if !price.isEmpty || !boat.isEmpty || !time.isEmpty {
-            cellTypes.append(.FishingConditions)
+            cellTypes.append(.fishingConditions)
         }
         let convenieces = markerDetailsModel?.conveniences ?? ""
         if !convenieces.isEmpty {
-            cellTypes.append(.Conveniences)
+            cellTypes.append(.conveniences)
         }
         let content = markerDetailsModel?.content ?? ""
         if !content.isEmpty {
-            cellTypes.append(.Description)
+            cellTypes.append(.description)
         }
         let lastUpdate = markerDetailsModel?.modifyDate ?? ""
         if !lastUpdate.isEmpty {
-            cellTypes.append(.LastUpdateCell)
+            cellTypes.append(.lastUpdateCell)
         }
         let urlStr = markerDetailsModel?.url ?? ""
         if !urlStr.isEmpty {
-            cellTypes.append(.LinkCell)
+            cellTypes.append(.linkCell)
         }
     }
 
-    func cell(forRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell? {
+    func cell(forRowAtIndexPath indexPath: IndexPath) -> UITableViewCell? {
         let cell: UITableViewCell?
-        let cellType = cellTypes[indexPath.row]
+        let cellType = cellTypes[(indexPath as NSIndexPath).row]
         switch cellType {
-        case .PlaceImages:
+        case .placeImages:
             cell = placeImagesCell(forIndexPath: indexPath)
-        case .FishImages:
+        case .fishImages:
             cell = fishImagesCell(forIndexPath: indexPath)
-        case .Caption:
+        case .caption:
             cell = captionCell(forIndexPath: indexPath)
-        case .Contacts:
+        case .contacts:
             cell = contactsCell(forIndexPath: indexPath)
-        case .PlaceDetails:
+        case .placeDetails:
             cell = placeDetailsCell(forIndexPath: indexPath)
-        case.FishingConditions:
+        case.fishingConditions:
             cell = fishingConditionsCell(forIndexPath: indexPath)
-        case .Conveniences:
+        case .conveniences:
             cell = conveniencesCell(forIndexPath: indexPath)
-        case .Description:
+        case .description:
             cell = descriptionCell(forIndexPath: indexPath)
-        case .LinkCell:
+        case .linkCell:
             cell = linkCell(forIndexPath: indexPath)
-        case .LastUpdateCell:
+        case .lastUpdateCell:
             cell = lastUpdateCell(forIndexPath: indexPath)
         }
         return cell
     }
 
-    func cellEstimatedHeight(forRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cellType = cellTypes[indexPath.row]
+    func cellEstimatedHeight(forRowAtIndexPath indexPath: IndexPath) -> CGFloat {
+        let cellType = cellTypes[(indexPath as NSIndexPath).row]
         switch cellType {
-        case .PlaceImages:
+        case .placeImages:
             return placeImagesCellHeight()
-        case .FishImages:
+        case .fishImages:
             return FishImagesCell.kFishCellWidth
         default:
             return UITableViewAutomaticDimension
         }
     }
 
-    func cellHeight(forRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cellType = cellTypes[indexPath.row]
+    func cellHeight(forRowAtIndexPath indexPath: IndexPath) -> CGFloat {
+        let cellType = cellTypes[(indexPath as NSIndexPath).row]
         switch cellType {
-        case .PlaceImages:
+        case .placeImages:
             return placeImagesCellHeight()
-        case .FishImages:
+        case .fishImages:
             return FishImagesCell.kFishCellWidth
         default:
             return UITableViewAutomaticDimension
         }
     }
 
-    private func placeImagesCellHeight() -> CGFloat {
+    fileprivate func placeImagesCellHeight() -> CGFloat {
         let max = self.contentTable.frame.height - FishImagesCell.kFishCellWidth
         let h = self.contentTable.frame.width / MarkerDetailsCellCreator.kPictureRatio
         return h < max ? h : max
@@ -175,8 +175,8 @@ class MarkerDetailsCellCreator {
         return cellTypes.count
     }
 
-    func placeImagesCell(forIndexPath indexPath: NSIndexPath) -> PlaceImagesCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("PlaceImagesCell", forIndexPath: indexPath) as? PlaceImagesCell,
+    func placeImagesCell(forIndexPath indexPath: IndexPath) -> PlaceImagesCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceImagesCell", for: indexPath) as? PlaceImagesCell,
             let arr = markerDetailsModel?.photoUrls {
             cell.setup(withUrlsArray: arr, dataSource: dataSource)
             return cell
@@ -184,8 +184,8 @@ class MarkerDetailsCellCreator {
         return nil
     }
 
-    func fishImagesCell(forIndexPath indexPath: NSIndexPath) -> FishImagesCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("FishImagesCell", forIndexPath: indexPath) as? FishImagesCell,
+    func fishImagesCell(forIndexPath indexPath: IndexPath) -> FishImagesCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "FishImagesCell", for: indexPath) as? FishImagesCell,
             let fishArr = fishArray {
             cell.setup(withFishArray: fishArr)
             return cell
@@ -193,56 +193,56 @@ class MarkerDetailsCellCreator {
         return nil
     }
 
-    func contactsCell(forIndexPath indexPath: NSIndexPath) -> ContactsCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("ContactsCell", forIndexPath: indexPath) as? ContactsCell {
+    func contactsCell(forIndexPath indexPath: IndexPath) -> ContactsCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as? ContactsCell {
             cell.setup(withPhone: markerDetailsModel?.contact, details: markerDetailsModel?.contactName)
             return cell
         }
         return nil
     }
 
-    func descriptionCell(forIndexPath indexPath: NSIndexPath) -> TitleLabelCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("TitleLabelCell", forIndexPath: indexPath) as? TitleLabelCell {
+    func descriptionCell(forIndexPath indexPath: IndexPath) -> TitleLabelCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "TitleLabelCell", for: indexPath) as? TitleLabelCell {
             cell.setup(withTitle: "Опис", text: markerDetailsModel?.content)
             return cell
         }
         return nil
     }
 
-    func captionCell(forIndexPath indexPath: NSIndexPath) -> AddressCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("AddressCell", forIndexPath: indexPath) as? AddressCell {
+    func captionCell(forIndexPath indexPath: IndexPath) -> AddressCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath) as? AddressCell {
             cell.setup(withName: nil, address: markerDetailsModel?.address, coordinates: "\(markerDetailsModel?.lat ?? 0), \(markerDetailsModel?.lon ?? 0)")
             return cell
         }
         return nil
     }
 
-    func fishingConditionsCell(forIndexPath indexPath: NSIndexPath) -> FishingConditionsCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("FishingConditionsCell", forIndexPath: indexPath) as? FishingConditionsCell {
+    func fishingConditionsCell(forIndexPath indexPath: IndexPath) -> FishingConditionsCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "FishingConditionsCell", for: indexPath) as? FishingConditionsCell {
             cell.setup(withMainInfo: markerDetailsModel?.permitStr, payment: markerDetailsModel?.paidFish, boatUsage: markerDetailsModel?.boatUsageReadable, fishingTime: markerDetailsModel?.timeToFishStr)
             return cell
         }
         return nil
     }
 
-    func conveniencesCell(forIndexPath indexPath: NSIndexPath) -> ConveniencesCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("ConveniencesCell", forIndexPath: indexPath) as? ConveniencesCell {
+    func conveniencesCell(forIndexPath indexPath: IndexPath) -> ConveniencesCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "ConveniencesCell", for: indexPath) as? ConveniencesCell {
             cell.setup(withTitle: "Умови відпочинку:", text: markerDetailsModel?.conveniences)
             return cell
         }
         return nil
     }
 
-    func placeDetailsCell(forIndexPath indexPath: NSIndexPath) -> PlaceDetailsCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("PlaceDetailsCell", forIndexPath: indexPath) as? PlaceDetailsCell {
+    func placeDetailsCell(forIndexPath indexPath: IndexPath) -> PlaceDetailsCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceDetailsCell", for: indexPath) as? PlaceDetailsCell {
             cell.setup(withSquare: markerDetailsModel?.areaStr, averageDepth: markerDetailsModel?.averageDepthReadable, maxDepth: markerDetailsModel?.maxDepthReadable)
             return cell
         }
         return nil
     }
 
-    func linkCell(forIndexPath indexPath: NSIndexPath) -> LinkCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("LinkCell", forIndexPath: indexPath) as? LinkCell {
+    func linkCell(forIndexPath indexPath: IndexPath) -> LinkCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as? LinkCell {
             if let urlStr = markerDetailsModel?.url {
                 cell.setup(withLinkText: "Переглянути на сайті rivnefish", urlString: urlStr)
                 return cell
@@ -251,8 +251,8 @@ class MarkerDetailsCellCreator {
         return nil
     }
 
-    func lastUpdateCell(forIndexPath indexPath: NSIndexPath) -> ModifiedDateCell? {
-        if let cell = contentTable.dequeueReusableCellWithIdentifier("ModifiedDateCell", forIndexPath: indexPath) as? ModifiedDateCell {
+    func lastUpdateCell(forIndexPath indexPath: IndexPath) -> ModifiedDateCell? {
+        if let cell = contentTable.dequeueReusableCell(withIdentifier: "ModifiedDateCell", for: indexPath) as? ModifiedDateCell {
             if let text = markerDetailsModel?.modifyDateLocalized {
                 cell.setupWithText("Востаннє ця інформація оновлювалась: " + text)
                 return cell

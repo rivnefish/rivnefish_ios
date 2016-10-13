@@ -19,10 +19,10 @@ class MarkerCalloutView : UIView {
     @IBOutlet weak var arrowIconLeftMarginConstraint: NSLayoutConstraint!
 
     func updateWidth() {
-        let nameWidth = self.nameLabel.intrinsicContentSize().width
+        let nameWidth = self.nameLabel.intrinsicContentSize.width
         let margin = CGFloat(20.0)
         var width = nameWidth + (arrowIcon.frame.width + arrowIconRightMarginConstraint.constant + arrowIconLeftMarginConstraint.constant)
-        let maxWidth = UIScreen.mainScreen().bounds.width - margin * 2
+        let maxWidth = UIScreen.main.bounds.width - margin * 2
 
         if width > maxWidth {
             width = maxWidth

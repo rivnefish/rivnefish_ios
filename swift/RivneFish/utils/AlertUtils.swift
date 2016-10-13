@@ -7,10 +7,10 @@
 //
 
 class AlertUtils {
-    static func okeyAlertWith(title title: String, message: String?) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    static func okeyAlertWith(title: String, message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = NSLocalizedString("Гаразд", comment: "OK")
-        let okAction = UIAlertAction(title: ok, style: .Default, handler: nil)
+        let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
         alert.addAction(okAction)
         return alert
     }

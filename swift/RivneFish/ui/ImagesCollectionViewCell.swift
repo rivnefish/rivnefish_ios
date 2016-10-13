@@ -14,7 +14,7 @@ class ImagesCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
-    private var image: UIImage?
+    fileprivate var image: UIImage?
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -29,11 +29,11 @@ class ImagesCollectionViewCell : UICollectionViewCell {
         if let image = self.image {
             bluredImage.image = image
             imageView.image = image
-            loadingIndicator.hidden = true
+            loadingIndicator.isHidden = true
         } else {
             bluredImage.image = nil
             imageView.image = nil
-            loadingIndicator.hidden = false
+            loadingIndicator.isHidden = false
         }
     }
 }

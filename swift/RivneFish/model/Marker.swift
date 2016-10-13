@@ -74,7 +74,7 @@ class MarkerModel: NSObject, NSCoding {
     var url: String?
 
     var areaStr: String? {
-        if let val = area where val != 0.0 {
+        if let val = area , val != 0.0 {
             return NSLocalizedString("\(val / 100) Га", comment: "area")
         }
         return nil
@@ -125,14 +125,14 @@ class MarkerModel: NSObject, NSCoding {
         guard let origDateStr = modifyDate else { return nil }
 
         let kFormat = "yyyy-MM-dd"
-        let dayStr = origDateStr.substringWithRange(origDateStr.startIndex ..< origDateStr.startIndex.advancedBy(10))
+        let dayStr = origDateStr.substring(with: origDateStr.startIndex ..< origDateStr.characters.index(origDateStr.startIndex, offsetBy: 10))
 
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = kFormat
 
-        if let date = formatter.dateFromString(dayStr) {
-            formatter.dateStyle = NSDateFormatterStyle.LongStyle
-            return formatter.stringFromDate(date)
+        if let date = formatter.date(from: dayStr) {
+            formatter.dateStyle = DateFormatter.Style.long
+            return formatter.string(from: date)
         }
         return origDateStr
     }
@@ -151,72 +151,72 @@ class MarkerModel: NSObject, NSCoding {
     }
 
     required init(coder decoder: NSCoder) {
-        markerID = (decoder.decodeObjectForKey(kMarkerIDKey) as? NSNumber)!
-        lat = (decoder.decodeObjectForKey(kLatKey) as? Float)!
-        lon = (decoder.decodeObjectForKey(kLonKey) as? Float)!
+        markerID = decoder.decodeObject(forKey: kMarkerIDKey) as? NSNumber ?? 0
+        lat = decoder.decodeObject(forKey: kLatKey) as? Float ?? 0.0
+        lon = decoder.decodeObject(forKey: kLonKey) as? Float ?? 0.0
 
-        name = decoder.decodeObjectForKey(kNameKey) as? String
-        address = decoder.decodeObjectForKey(kAddressKey) as? String
-        area = decoder.decodeObjectForKey(kAreaKey) as? Float
-        content = decoder.decodeObjectForKey(kContentKey) as? String
-        conveniences = decoder.decodeObjectForKey(kConveniencesKey) as? String
-        contact = decoder.decodeObjectForKey(kContactKey) as? String
-        contactName = decoder.decodeObjectForKey(kContactNameKey) as? String
-        maxDepth = decoder.decodeObjectForKey(kMaxDepthKey) as? String
-        averageDepth = decoder.decodeObjectForKey(kAverageDepthKey) as? String
-        permit = decoder.decodeObjectForKey(kPermitKey) as? String
-        price24 = decoder.decodeObjectForKey(kPrice24hKey) as? String
-        dayhourPrice = decoder.decodeObjectForKey(kDayhourPriceKey) as? String
-        boatUsage = decoder.decodeObjectForKey(kBoatUsageKey) as? String
-        timeToFish = decoder.decodeObjectForKey(kTimeToFishKey) as? String
-        paidFish = decoder.decodeObjectForKey(kPaidFishKey) as? String
-        note = decoder.decodeObjectForKey(kNoteKey) as? String
-        note2 = decoder.decodeObjectForKey(kNote2Key) as? String
-        createDate = decoder.decodeObjectForKey(kCreateDateKey) as? String
-        modifyDate = decoder.decodeObjectForKey(kModifyDateKey) as? String
-        region = decoder.decodeObjectForKey(kRegionKey) as? String
-        district = decoder.decodeObjectForKey(kDistrictKey) as? String
-        country = decoder.decodeObjectForKey(kCountryKey) as? String
-        photoUrls = decoder.decodeObjectForKey(kPhotosKey) as? Array
-        url = decoder.decodeObjectForKey(kUrlKey) as? String
+        name = decoder.decodeObject(forKey: kNameKey) as? String
+        address = decoder.decodeObject(forKey: kAddressKey) as? String
+        area = decoder.decodeObject(forKey: kAreaKey) as? Float
+        content = decoder.decodeObject(forKey: kContentKey) as? String
+        conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
+        contact = decoder.decodeObject(forKey: kContactKey) as? String
+        contactName = decoder.decodeObject(forKey: kContactNameKey) as? String
+        maxDepth = decoder.decodeObject(forKey: kMaxDepthKey) as? String
+        averageDepth = decoder.decodeObject(forKey: kAverageDepthKey) as? String
+        permit = decoder.decodeObject(forKey: kPermitKey) as? String
+        price24 = decoder.decodeObject(forKey: kPrice24hKey) as? String
+        dayhourPrice = decoder.decodeObject(forKey: kDayhourPriceKey) as? String
+        boatUsage = decoder.decodeObject(forKey: kBoatUsageKey) as? String
+        timeToFish = decoder.decodeObject(forKey: kTimeToFishKey) as? String
+        paidFish = decoder.decodeObject(forKey: kPaidFishKey) as? String
+        note = decoder.decodeObject(forKey: kNoteKey) as? String
+        note2 = decoder.decodeObject(forKey: kNote2Key) as? String
+        createDate = decoder.decodeObject(forKey: kCreateDateKey) as? String
+        modifyDate = decoder.decodeObject(forKey: kModifyDateKey) as? String
+        region = decoder.decodeObject(forKey: kRegionKey) as? String
+        district = decoder.decodeObject(forKey: kDistrictKey) as? String
+        country = decoder.decodeObject(forKey: kCountryKey) as? String
+        photoUrls = decoder.decodeObject(forKey: kPhotosKey) as? Array
+        url = decoder.decodeObject(forKey: kUrlKey) as? String
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(markerID, forKey: kMarkerIDKey)
-        aCoder.encodeObject(lat, forKey: kLatKey)
-        aCoder.encodeObject(lon, forKey: kLonKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(markerID, forKey: kMarkerIDKey)
+        aCoder.encode(lat, forKey: kLatKey)
+        aCoder.encode(lon, forKey: kLonKey)
 
-        aCoder.encodeObject(name, forKey: kNameKey)
-        aCoder.encodeObject(address, forKey: kAddressKey)
-        aCoder.encodeObject(area, forKey: kAreaKey)
-        aCoder.encodeObject(content, forKey: kContentKey)
-        aCoder.encodeObject(conveniences, forKey: kConveniencesKey)
-        aCoder.encodeObject(contact, forKey: kContactKey)
-        aCoder.encodeObject(contactName, forKey: kContactNameKey)
-        aCoder.encodeObject(maxDepth, forKey: kMaxDepthKey)
-        aCoder.encodeObject(averageDepth, forKey: kAverageDepthKey)
-        aCoder.encodeObject(permit, forKey: kPermitKey)
-        aCoder.encodeObject(price24, forKey: kPrice24hKey)
-        aCoder.encodeObject(dayhourPrice, forKey: kDayhourPriceKey)
-        aCoder.encodeObject(boatUsage, forKey: kBoatUsageKey)
-        aCoder.encodeObject(timeToFish, forKey: kTimeToFishKey)
-        aCoder.encodeObject(paidFish, forKey: kPaidFishKey)
-        aCoder.encodeObject(note, forKey: kNoteKey)
-        aCoder.encodeObject(note2, forKey: kNote2Key)
-        aCoder.encodeObject(createDate, forKey: kCreateDateKey)
-        aCoder.encodeObject(modifyDate, forKey: kModifyDateKey)
-        aCoder.encodeObject(region, forKey: kRegionKey)
-        aCoder.encodeObject(district, forKey: kDistrictKey)
-        aCoder.encodeObject(country, forKey: kCountryKey)
-        aCoder.encodeObject(photoUrls, forKey: kPhotosKey)
-        aCoder.encodeObject(url, forKey: kUrlKey)
+        aCoder.encode(name, forKey: kNameKey)
+        aCoder.encode(address, forKey: kAddressKey)
+        aCoder.encode(area, forKey: kAreaKey)
+        aCoder.encode(content, forKey: kContentKey)
+        aCoder.encode(conveniences, forKey: kConveniencesKey)
+        aCoder.encode(contact, forKey: kContactKey)
+        aCoder.encode(contactName, forKey: kContactNameKey)
+        aCoder.encode(maxDepth, forKey: kMaxDepthKey)
+        aCoder.encode(averageDepth, forKey: kAverageDepthKey)
+        aCoder.encode(permit, forKey: kPermitKey)
+        aCoder.encode(price24, forKey: kPrice24hKey)
+        aCoder.encode(dayhourPrice, forKey: kDayhourPriceKey)
+        aCoder.encode(boatUsage, forKey: kBoatUsageKey)
+        aCoder.encode(timeToFish, forKey: kTimeToFishKey)
+        aCoder.encode(paidFish, forKey: kPaidFishKey)
+        aCoder.encode(note, forKey: kNoteKey)
+        aCoder.encode(note2, forKey: kNote2Key)
+        aCoder.encode(createDate, forKey: kCreateDateKey)
+        aCoder.encode(modifyDate, forKey: kModifyDateKey)
+        aCoder.encode(region, forKey: kRegionKey)
+        aCoder.encode(district, forKey: kDistrictKey)
+        aCoder.encode(country, forKey: kCountryKey)
+        aCoder.encode(photoUrls, forKey: kPhotosKey)
+        aCoder.encode(url, forKey: kUrlKey)
     }
 
     init(dict: NSDictionary)
     {
-        markerID = dict[kMarkerIDKey] as! NSNumber
-        lat = dict[kLatKey] as! Float
-        lon = dict[kLonKey] as! Float
+        markerID = dict[kMarkerIDKey] as? NSNumber ?? NSNumber()
+        lat = dict[kLatKey] as? Float ?? 0.0
+        lon = dict[kLonKey] as? Float ?? 0.0
 
         name = dict[kNameKey] as? String
         address = dict[kAddressKey] as? String

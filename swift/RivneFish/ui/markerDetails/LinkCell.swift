@@ -11,10 +11,10 @@ class LinkCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     var urlString: String?
     
-    @IBAction func buttonCliccked(sender: AnyObject) {
+    @IBAction func buttonCliccked(_ sender: AnyObject) {
         if let urlStr = urlString,
-            let url = NSURL(string: urlStr) {
-            UIApplication.sharedApplication().openURL(url)
+            let url = URL(string: urlStr) {
+            UIApplication.shared.openURL(url)
         }
     }
 

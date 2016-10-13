@@ -16,13 +16,13 @@ class TitleLabelCell: UITableViewCell {
         if !title.isEmpty {
             self.title.text = title
         } else {
-            self.title.hidden = true
+            self.title.isHidden = true
         }
         let text = text ?? ""
         if !text.isEmpty {
             self.label.text = text
         } else {
-            self.label.hidden = true
+            self.label.isHidden = true
         }
     }
 }

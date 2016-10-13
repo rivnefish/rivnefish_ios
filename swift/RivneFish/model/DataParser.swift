@@ -10,28 +10,28 @@ import Foundation
 
 class DataParser {
 
-    func parseCountries(jsonData: NSData) -> NSArray {
-        let countriesData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
+    func parseCountries(_ jsonData: Data) -> NSArray {
+        let countriesData: NSArray = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray ?? NSArray()
 
         let countries = NSMutableArray(capacity: countriesData.count)
         for countryDict in countriesData as! [NSDictionary] {
             let country = Country(dict: countryDict)
-            countries.addObject(country)
+            countries.add(country)
         }
         return countries;
     }
 
-    func parseMarkers(jsonData: NSData) -> NSArray {
+    func parseMarkers(_ jsonData: Data) -> NSArray {
         //print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
-        if let _ = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
-            let markersData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
+        if let _ = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? NSArray {
+            let markersData: NSArray = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray ?? NSArray()
 
             let markers = NSMutableArray(capacity: markersData.count)
             for markerDict in markersData as! [NSDictionary] {
 
                 let marker = MarkerModel(dict: markerDict)
-                markers.addObject(marker)
+                markers.add(marker)
             }
             return markers
         } else {
@@ -39,17 +39,17 @@ class DataParser {
         }
     }
     
-    func parseFish(jsonData: NSData) -> NSArray {
+    func parseFish(_ jsonData: Data) -> NSArray {
         //print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
         
-        if let _ = (try? NSJSONSerialization.JSONObjectWithData(jsonData, options: [])) as? NSArray {
-            let fishData: NSArray = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as! NSArray
+        if let _ = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? NSArray {
+            let fishData: NSArray = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray ?? NSArray()
             
             let fishArr = NSMutableArray(capacity: fishData.count)
             for fishDict in fishData as! [NSDictionary] {
                 
                 let fish = Fish(dict: fishDict)
-                fishArr.addObject(fish)
+                fishArr.add(fish)
             }
             return fishArr
         } else {
@@ -57,8 +57,8 @@ class DataParser {
         }
     }
 
-    func parseLastChanges(jsonData: NSData) -> NSNumber {
-        let dateDict = (try! NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers)) as? NSDictionary
+    func parseLastChanges(_ jsonData: Data) -> NSNumber {
+        let dateDict = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary
         var number = NSNumber()
         if let dict = dateDict, let num = ModifiedDate(dict: dict).number {
             number = num

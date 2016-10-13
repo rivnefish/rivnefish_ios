@@ -73,30 +73,30 @@ class Fish: NSObject, NSCoding {
     }
 
     required init(coder decoder: NSCoder) {
-        name = (decoder.decodeObjectForKey(kFishNameKey) as? String)!
-        ukrName = (decoder.decodeObjectForKey(kUkrNameKey) as? String)!
-        iconUrl = (decoder.decodeObjectForKey(kIconUrlKey) as? String)!
-        fishID = decoder.decodeObjectForKey(kFishIDKey) as? NSNumber
-        amount = decoder.decodeObjectForKey(kAmountKey) as? Int
+        name = decoder.decodeObject(forKey: kFishNameKey) as? String
+        ukrName = decoder.decodeObject(forKey: kUkrNameKey) as? String
+        iconUrl = decoder.decodeObject(forKey: kIconUrlKey) as? String
+        fishID = decoder.decodeObject(forKey: kFishIDKey) as? NSNumber
+        amount = decoder.decodeObject(forKey: kAmountKey) as? Int
         if let num = fishID {
             image = UIImage(named: "\(num)")
         }
     }
 
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: kFishNameKey)
-        aCoder.encodeObject(ukrName, forKey: kUkrNameKey)
-        aCoder.encodeObject(iconUrl, forKey: kIconUrlKey)
-        aCoder.encodeObject(fishID, forKey: kFishIDKey)
-        aCoder.encodeObject(amount, forKey: kAmountKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: kFishNameKey)
+        aCoder.encode(ukrName, forKey: kUkrNameKey)
+        aCoder.encode(iconUrl, forKey: kIconUrlKey)
+        aCoder.encode(fishID, forKey: kFishIDKey)
+        aCoder.encode(amount, forKey: kAmountKey)
     }
 
-    func compare(fish: Fish) -> NSComparisonResult {
+    func compare(_ fish: Fish) -> ComparisonResult {
         let a1: Int = amount ?? 0
         let a2: Int = fish.amount ?? 0
 
-        if a1 > a2 { return NSComparisonResult.OrderedAscending }
-        else if a1 < a2 { return NSComparisonResult.OrderedDescending }
-        else { return NSComparisonResult.OrderedSame }
+        if a1 > a2 { return ComparisonResult.orderedAscending }
+        else if a1 < a2 { return ComparisonResult.orderedDescending }
+        else { return ComparisonResult.orderedSame }
     }
 }

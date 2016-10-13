@@ -20,11 +20,11 @@ class ContactsCell: UITableViewCell {
 
     var phoneNumber: String?
 
-    @IBAction func phonePressed(sender: UIButton) {
+    @IBAction func phonePressed(_ sender: UIButton) {
         if let phone = phoneNumber,
-            let url = NSURL(string: "tel://\(phone)") {
+            let url = URL(string: "tel://\(phone)") {
 
-            let application:UIApplication = UIApplication.sharedApplication()
+            let application:UIApplication = UIApplication.shared
             if application.canOpenURL(url) {
                 application.openURL(url)
             }
@@ -35,11 +35,11 @@ class ContactsCell: UITableViewCell {
         let phone = phone ?? ""
         if  !phone.isEmpty {
             phoneNumber = phone
-            phoneButton.setTitle(PhoneNumberFormatter.format(phone), forState: UIControlState.Normal)
+            phoneButton.setTitle(PhoneNumberFormatter.format(phone), for: UIControlState())
         } else {
             phoneCaptionLabel.text = ""
             phoneVConstraint.constant = 0
-            phoneButton.setTitle("", forState: UIControlState.Normal)
+            phoneButton.setTitle("", for: UIControlState())
             phoneHeightConstraint.constant = 0
             phoneVConstraint.constant = 0
         }

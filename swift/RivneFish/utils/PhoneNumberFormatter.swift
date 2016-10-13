@@ -7,17 +7,17 @@
 //
 
 class PhoneNumberFormatter {
-    static func format(tel: String) -> String {
+    static func format(_ tel: String) -> String {
         var s = tel
         if s.characters.first != "+" {
-            s.insert("+", atIndex: s.characters.startIndex)
+            s.insert("+", at: s.characters.startIndex)
         }
         if s.characters.count >= 13 {
-            return String(format: "%@ (%@) %@ %@ %@", s.substringToIndex(s.startIndex.advancedBy(4)),
-                          s.substringWithRange(s.startIndex.advancedBy(4) ... s.startIndex.advancedBy(5)),
-                          s.substringWithRange(s.startIndex.advancedBy(6) ... s.startIndex.advancedBy(8)),
-                          s.substringWithRange(s.startIndex.advancedBy(9) ... s.startIndex.advancedBy(10)),
-                          s.substringWithRange(s.startIndex.advancedBy(11) ... s.startIndex.advancedBy(12))
+            return String(format: "%@ (%@) %@ %@ %@", s.substring(to: s.characters.index(s.startIndex, offsetBy: 4)),
+                          s.substring(with: s.characters.index(s.startIndex, offsetBy: 4) ..< s.characters.index(s.startIndex, offsetBy: 6)),
+                          s.substring(with: s.characters.index(s.startIndex, offsetBy: 6) ..< s.characters.index(s.startIndex, offsetBy: 9)),
+                          s.substring(with: s.characters.index(s.startIndex, offsetBy: 9) ..< s.characters.index(s.startIndex, offsetBy: 11)),
+                          s.substring(with: s.characters.index(s.startIndex, offsetBy: 11) ..< s.characters.index(s.startIndex, offsetBy: 13))
             )
         }
         return tel

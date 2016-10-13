@@ -15,8 +15,8 @@ class MarkerAnnotationView : MKAnnotationView {
     @IBOutlet weak var itemsCountLabel: UILabel!
     var itemsCount: Int = 1
 
-    class func instanceFromNib(countElements: Int = 1) -> MarkerAnnotationView {
-        let view: MarkerAnnotationView = UINib(nibName: "MarkerAnnotationView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! MarkerAnnotationView
+    class func instanceFromNib(_ countElements: Int = 1) -> MarkerAnnotationView {
+        let view: MarkerAnnotationView = UINib(nibName: "MarkerAnnotationView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MarkerAnnotationView
 
         view.itemsCount = countElements
         view.updateImageAndText()
@@ -38,7 +38,7 @@ class MarkerAnnotationView : MKAnnotationView {
         self.itemsCountLabel.text = self.itemsCount > 1 ? String(self.itemsCount) : ""
 
         if self.itemsCount == 0 {
-            self.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure)
+            self.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
         } else {
             self.rightCalloutAccessoryView = nil
         }

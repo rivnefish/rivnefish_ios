@@ -14,32 +14,32 @@ class ActualityValidator {
 
     static let kLastChangesKey = "LastChanges"
 
-    func checkMarkers(completionHandler: (isOutdated: Bool) -> Void) {
+    func checkMarkers(_ completionHandler: @escaping (_ isOutdated: Bool) -> Void) {
         NetworkDataSource.sharedInstace.lastChanges({ (lastChanges: NSNumber) in
             var outdated = true
-            let defaults = NSUserDefaults.standardUserDefaults()
+            let defaults = UserDefaults.standard
             self.serverLastChanges = lastChanges
 
-            let lastSavedNum = defaults.objectForKey(ActualityValidator.kLastChangesKey)
-            if let savedNum = lastSavedNum where savedNum.isEqual(self.serverLastChanges) {
+            let lastSavedNum = defaults.object(forKey: ActualityValidator.kLastChangesKey)
+            if let savedNum = lastSavedNum , (savedNum as AnyObject).isEqual(self.serverLastChanges) {
                 outdated = false
             }
-            completionHandler(isOutdated: outdated)
+            completionHandler(outdated)
         })
     }
 
-    func markerUpToDate(marker: MarkerModel) -> Bool {
+    func markerUpToDate(_ marker: MarkerModel) -> Bool {
         var upToDate = false
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let date: String? = defaults.objectForKey(marker.markerID.stringValue) as? String
-        if let savedDate = date, currentDate = marker.modifyDate {
-            upToDate = (savedDate.compare(currentDate) == .OrderedSame)
+        let defaults = UserDefaults.standard
+        let date: String? = defaults.object(forKey: marker.markerID.stringValue) as? String
+        if let savedDate = date, let currentDate = marker.modifyDate {
+            upToDate = (savedDate.compare(currentDate) == .orderedSame)
         }
         return upToDate
     }
 
     func updateUserLastChangesDate() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         defaults.setValue(self.serverLastChanges, forKey: ActualityValidator.kLastChangesKey)
     }
 }

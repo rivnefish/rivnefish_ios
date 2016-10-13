@@ -10,7 +10,7 @@ class ModifiedDateCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
 
-    func setupWithText(text: String?) {
+    func setupWithText(_ text: String?) {
         self.contentLabel.text = text ?? ""
     }
 }

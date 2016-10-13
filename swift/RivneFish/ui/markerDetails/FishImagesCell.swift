@@ -34,10 +34,10 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         imagesCollectionView.dataSource = self
         imagesCollectionView.delegate = self
 
-        self.imagesCollectionView.registerNib(UINib(nibName: "FishCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kFishCellIdentifier)
+        self.imagesCollectionView.register(UINib(nibName: "FishCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kFishCellIdentifier)
 
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
 
@@ -45,22 +45,22 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         imagesCollectionView.collectionViewLayout = flowLayout
     }
 
-    private func correctCollectionViewOffset() {
+    fileprivate func correctCollectionViewOffset() {
         let offset = CGFloat(currentImageIndex) * imagesCollectionView.frame.size.width
         imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
     }
 
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fishArray?.count ?? 0
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if let cell: FishCollectionViewCell = self.imagesCollectionView.dequeueReusableCellWithReuseIdentifier(kFishCellIdentifier, forIndexPath: indexPath) as? FishCollectionViewCell,
-            let fish = fishArray?[indexPath.row] {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell: FishCollectionViewCell = self.imagesCollectionView.dequeueReusableCell(withReuseIdentifier: kFishCellIdentifier, for: indexPath) as? FishCollectionViewCell,
+            let fish = fishArray?[(indexPath as NSIndexPath).row] {
             cell.image = fish.image
             cell.name = fish.ukrName
             cell.amount = fish.amount ?? 0
@@ -70,11 +70,11 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         return UICollectionViewCell()
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: FishImagesCell.kFishCellWidth, height: self.imagesCollectionView.frame.height)
     }
 
-    internal func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    internal func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         currentImageIndex = Int(imagesCollectionView.contentOffset.x / imagesCollectionView.frame.size.width)
     }
 }

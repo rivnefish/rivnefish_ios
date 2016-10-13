@@ -10,98 +10,106 @@ class NetworkDataSource {
 
     static var sharedInstace = NetworkDataSource()
 
-    func coutries(countriesReceived: (countries: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+    func coutries(_ countriesReceived: @escaping (_ countries: NSArray) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
-                countriesReceived(countries: NSArray())
+                countriesReceived(NSArray())
                 return;
             }
 
             if let json = data {
                 let dataParser = DataParser()
                 let countries = dataParser.parseCountries(json)
-                countriesReceived(countries: countries)
+                countriesReceived(countries)
             }
             else {
-                print(NSString(data: data, encoding: NSUTF8StringEncoding))
+                if let data = data {
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                }
             }
-        })
+        } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func allAvailableMarkers(completionHandler: (markers: NSArray) -> Void) {
+    func allAvailableMarkers(_ completionHandler: @escaping (_ markers: NSArray) -> Void) {
         let urlStr = "http://api.rivnefish.com/markers/"
-        HTTPClient.sharedInstance.request(urlStr, responseCallback:
+        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback:
             // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback:
             // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback:
-            {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+            {(data: Data?, response: URLResponse?, error: NSError?) in
 
                 if self.errorInResponse(response) {
-                    completionHandler(markers: NSArray())
+                    completionHandler(NSArray())
                     return;
                 }
 
                 if let json = data {
                     let dataParser = DataParser()
                     let markers = dataParser.parseMarkers(json)
-                    completionHandler(markers: markers)
+                    completionHandler(markers)
                 }
                 else {
-                    print(NSString(data: data, encoding: NSUTF8StringEncoding))
+                    if let data = data {
+                        print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                    }
                 }
-        })
+        } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func lastChanges(completionHandler: (lastChanges: NSNumber) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/lastchanges/", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+    func lastChanges(_ completionHandler: @escaping (_ lastChanges: NSNumber) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/lastchanges/", responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
-                completionHandler(lastChanges: NSNumber())
+                completionHandler(NSNumber())
                 return;
             }
 
             if let json = data {
                 let dataParser = DataParser()
                 let num = dataParser.parseLastChanges(json)
-                completionHandler(lastChanges: num)
+                completionHandler(num)
             }
             else {
-                print(NSString(data: data, encoding: NSUTF8StringEncoding))
+                if let data = data {
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                }
             }
-        })
+        } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func fishForMarkerID(id: String, fishReceived: (fish: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers-fishes/?marker=\(id)", responseCallback: {(data: NSData!, response: NSURLResponse!, error: NSError!) in
+    func fishForMarkerID(_ id: String, fishReceived: @escaping (_ fish: NSArray) -> Void) {
+        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers-fishes/?marker=\(id)" as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
-                fishReceived(fish: NSArray())
+                fishReceived(NSArray())
                 return;
             }
 
             if let json = data {
                 let dataParser = DataParser()
                 let fish = dataParser.parseFish(json)
-                fishReceived(fish: fish)
+                fishReceived(fish)
             }
             else {
-                print(NSString(data: data, encoding: NSUTF8StringEncoding))
+                if let data = data {
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                }
             }
-        })
+        } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func getDataFromUrl(urL: NSURL, completion: ((data: NSData?, url: String) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
-            if let string = urL.absoluteString {
-                completion(data: data, url: string)
+    func getDataFromUrl(_ urL: URL, completion: @escaping ((_ data: Data?, _ url: String?) -> Void)) {
+        URLSession.shared.dataTask(with: urL, completionHandler: { (data, response, error) in
+            if let data = data {
+                completion(data, urL.absoluteString)
             }
-        }.resume()
+        }) .resume()
     }
 
-    func errorInResponse(response: NSURLResponse?) -> Bool {
+    func errorInResponse(_ response: URLResponse?) -> Bool {
         var result = true
         if let response = response {
-            let statusCodeData: AnyObject? = response.valueForKey("statusCode")
+            let statusCodeData: AnyObject? = response.value(forKey: "statusCode") as AnyObject?
             if let statusCode: NSInteger = statusCodeData as? NSInteger {
                 let code = statusCode
                 result = (code == 0)
