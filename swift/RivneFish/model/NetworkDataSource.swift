@@ -92,8 +92,10 @@ class NetworkDataSource {
 
     func getDataFromUrl(urL: NSURL, completion: ((data: NSData?, url: String) -> Void)) {
         NSURLSession.sharedSession().dataTaskWithURL(urL) { (data, response, error) in
-            completion(data: data, url: urL.absoluteString)
-            }.resume()
+            if let string = urL.absoluteString {
+                completion(data: data, url: string)
+            }
+        }.resume()
     }
 
     func errorInResponse(response: NSURLResponse?) -> Bool {

@@ -866,12 +866,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E4BD79D1AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFish" */;
 			buildPhases = (
-				BC0939A7DD6B79C1765A5270 /* 📦 Check Pods Manifest.lock */,
+				BC0939A7DD6B79C1765A5270 /* [CP] Check Pods Manifest.lock */,
 				3E4BD77A1AD7194E0036C8CA /* Sources */,
 				3E4BD77B1AD7194E0036C8CA /* Frameworks */,
 				3E4BD77C1AD7194E0036C8CA /* Resources */,
-				9F4D1B6FEE850FCA6492BA0F /* 📦 Embed Pods Frameworks */,
-				019EBE6C17E5E5491A4ABD9C /* 📦 Copy Pods Resources */,
+				9F4D1B6FEE850FCA6492BA0F /* [CP] Embed Pods Frameworks */,
+				019EBE6C17E5E5491A4ABD9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -886,12 +886,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E4BD7A01AD7194E0036C8CA /* Build configuration list for PBXNativeTarget "RivneFishTests" */;
 			buildPhases = (
-				BBA5974B7A2BE18AC85A2F5B /* 📦 Check Pods Manifest.lock */,
+				BBA5974B7A2BE18AC85A2F5B /* [CP] Check Pods Manifest.lock */,
 				3E4BD78F1AD7194E0036C8CA /* Sources */,
 				3E4BD7901AD7194E0036C8CA /* Frameworks */,
 				3E4BD7911AD7194E0036C8CA /* Resources */,
-				6EC14D9C34EC15541E7CE277 /* 📦 Embed Pods Frameworks */,
-				B2106CDCB96FA80AE8078875 /* 📦 Copy Pods Resources */,
+				6EC14D9C34EC15541E7CE277 /* [CP] Embed Pods Frameworks */,
+				B2106CDCB96FA80AE8078875 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -911,15 +911,17 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = rivnefish;
 				TargetAttributes = {
 					3E4BD77D1AD7194E0036C8CA = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 55ZA4X9878;
+						LastSwiftMigration = 0800;
 					};
 					3E4BD7921AD7194E0036C8CA = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 0800;
 						TestTargetID = 3E4BD77D1AD7194E0036C8CA;
 					};
 				};
@@ -1099,14 +1101,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		019EBE6C17E5E5491A4ABD9C /* 📦 Copy Pods Resources */ = {
+		019EBE6C17E5E5491A4ABD9C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1114,14 +1116,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6EC14D9C34EC15541E7CE277 /* 📦 Embed Pods Frameworks */ = {
+		6EC14D9C34EC15541E7CE277 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1129,14 +1131,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9F4D1B6FEE850FCA6492BA0F /* 📦 Embed Pods Frameworks */ = {
+		9F4D1B6FEE850FCA6492BA0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1144,14 +1146,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B2106CDCB96FA80AE8078875 /* 📦 Copy Pods Resources */ = {
+		B2106CDCB96FA80AE8078875 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1159,34 +1161,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBA5974B7A2BE18AC85A2F5B /* 📦 Check Pods Manifest.lock */ = {
+		BBA5974B7A2BE18AC85A2F5B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BC0939A7DD6B79C1765A5270 /* 📦 Check Pods Manifest.lock */ = {
+		BC0939A7DD6B79C1765A5270 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1294,8 +1296,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1304,6 +1308,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1338,8 +1343,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1347,6 +1354,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1356,6 +1364,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1376,6 +1385,7 @@
 				PRODUCT_NAME = Rivnefish;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1394,6 +1404,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1415,6 +1426,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Rivnefish;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rivnefish.app/Rivnefish";
 			};
 			name = Debug;
@@ -1432,6 +1444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Rivnefish;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rivnefish.app/Rivnefish";
 			};
 			name = Release;
