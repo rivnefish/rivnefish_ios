@@ -56,11 +56,11 @@ class NetworkDataSource {
         } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func lastChanges(_ completionHandler: @escaping (_ lastChanges: NSNumber) -> Void) {
+    func lastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
         HTTPClient.sharedInstance.request("http://api.rivnefish.com/lastchanges/", responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
-                completionHandler(NSNumber())
+                completionHandler(0)
                 return;
             }
 

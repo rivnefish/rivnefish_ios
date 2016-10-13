@@ -10,10 +10,10 @@ let kLastChangesKey = "lastchanges"
 
 class ModifiedDate {
 
-    var number: NSNumber?
+    var number: Int?
 
     init(dict: NSDictionary)
     {
-        number = dict[kLastChangesKey] as? NSNumber
+        number = dict[kLastChangesKey] as? Int
     }
 }

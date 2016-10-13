@@ -10,18 +10,18 @@ import Foundation
 
 class ActualityValidator {
     static var actualityValidator = ActualityValidator()
-    var serverLastChanges = NSNumber()
+    var serverLastChanges = 0
 
     static let kLastChangesKey = "LastChanges"
 
     func checkMarkers(_ completionHandler: @escaping (_ isOutdated: Bool) -> Void) {
-        NetworkDataSource.sharedInstace.lastChanges({ (lastChanges: NSNumber) in
+        NetworkDataSource.sharedInstace.lastChanges({ (lastChanges: Int) in
             var outdated = true
             let defaults = UserDefaults.standard
             self.serverLastChanges = lastChanges
 
-            let lastSavedNum = defaults.object(forKey: ActualityValidator.kLastChangesKey)
-            if let savedNum = lastSavedNum , (savedNum as AnyObject).isEqual(self.serverLastChanges) {
+            let lastSavedNum = defaults.integer(forKey: ActualityValidator.kLastChangesKey)
+            if lastSavedNum == self.serverLastChanges {
                 outdated = false
             }
             completionHandler(outdated)
@@ -31,7 +31,7 @@ class ActualityValidator {
     func markerUpToDate(_ marker: MarkerModel) -> Bool {
         var upToDate = false
         let defaults = UserDefaults.standard
-        let date: String? = defaults.object(forKey: marker.markerID.stringValue) as? String
+        let date: String? = defaults.string(forKey: String(marker.markerID))
         if let savedDate = date, let currentDate = marker.modifyDate {
             upToDate = (savedDate.compare(currentDate) == .orderedSame)
         }
@@ -40,6 +40,6 @@ class ActualityValidator {
 
     func updateUserLastChangesDate() {
         let defaults = UserDefaults.standard
-        defaults.setValue(self.serverLastChanges, forKey: ActualityValidator.kLastChangesKey)
+        defaults.set(self.serverLastChanges, forKey: ActualityValidator.kLastChangesKey)
     }
 }

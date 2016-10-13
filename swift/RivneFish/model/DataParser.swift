@@ -57,9 +57,9 @@ class DataParser {
         }
     }
 
-    func parseLastChanges(_ jsonData: Data) -> NSNumber {
+    func parseLastChanges(_ jsonData: Data) -> Int {
         let dateDict = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary
-        var number = NSNumber()
+        var number = 0
         if let dict = dateDict, let num = ModifiedDate(dict: dict).number {
             number = num
         }

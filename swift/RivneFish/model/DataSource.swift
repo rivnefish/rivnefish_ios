@@ -69,7 +69,7 @@ class DataSource: NSObject {
         let defaults = UserDefaults.standard
         let markersArr = markers as! Array<MarkerModel>
         for marker: MarkerModel in markersArr {
-            defaults.set(marker.modifyDate, forKey: marker.markerID.stringValue)
+            defaults.set(marker.modifyDate, forKey: String(marker.markerID))
         }
     }
 
@@ -85,8 +85,8 @@ class DataSource: NSObject {
     func fishForMarker(_ rechability: Reach, marker: MarkerModel, completionHandler: @escaping (_ fish: NSArray) -> Void) {
         // if marker is outdated - remove fish from cache
         var requestFromNetwork = false
-        let markerId = marker.markerID.stringValue
-        let fishCacheId = "Fish:" + marker.markerID.stringValue
+        let markerId = String(marker.markerID)
+        let fishCacheId = "Fish:" + markerId
         if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable &&
             false == ActualityValidator.actualityValidator.markerUpToDate(marker)
         {

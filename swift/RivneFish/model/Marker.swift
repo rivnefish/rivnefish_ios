@@ -44,7 +44,7 @@ let kUrlKey = "url"
 
 class MarkerModel: NSObject, NSCoding {
 
-    var markerID: NSNumber
+    var markerID: Int
     var lat: Float
     var lon: Float
 
@@ -151,13 +151,13 @@ class MarkerModel: NSObject, NSCoding {
     }
 
     required init(coder decoder: NSCoder) {
-        markerID = decoder.decodeObject(forKey: kMarkerIDKey) as? NSNumber ?? 0
-        lat = decoder.decodeObject(forKey: kLatKey) as? Float ?? 0.0
-        lon = decoder.decodeObject(forKey: kLonKey) as? Float ?? 0.0
+        markerID = decoder.decodeInteger(forKey: kMarkerIDKey)
+        lat = decoder.decodeFloat(forKey: kLatKey)
+        lon = decoder.decodeFloat(forKey: kLonKey)
 
         name = decoder.decodeObject(forKey: kNameKey) as? String
         address = decoder.decodeObject(forKey: kAddressKey) as? String
-        area = decoder.decodeObject(forKey: kAreaKey) as? Float
+        area = decoder.decodeFloat(forKey: kAreaKey)
         content = decoder.decodeObject(forKey: kContentKey) as? String
         conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
         contact = decoder.decodeObject(forKey: kContactKey) as? String
@@ -214,9 +214,9 @@ class MarkerModel: NSObject, NSCoding {
 
     init(dict: NSDictionary)
     {
-        markerID = dict[kMarkerIDKey] as? NSNumber ?? NSNumber()
-        lat = dict[kLatKey] as? Float ?? 0.0
-        lon = dict[kLonKey] as? Float ?? 0.0
+        markerID = dict[kMarkerIDKey] as! Int
+        lat = dict[kLatKey] as! Float
+        lon = dict[kLonKey] as! Float
 
         name = dict[kNameKey] as? String
         address = dict[kAddressKey] as? String
