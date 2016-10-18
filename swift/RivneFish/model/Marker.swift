@@ -157,7 +157,7 @@ class MarkerModel: NSObject, NSCoding {
 
         name = decoder.decodeObject(forKey: kNameKey) as? String
         address = decoder.decodeObject(forKey: kAddressKey) as? String
-        area = decoder.decodeFloat(forKey: kAreaKey)
+        area = decoder.decodeObject(forKey: kAreaKey) as? Float
         content = decoder.decodeObject(forKey: kContentKey) as? String
         conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
         contact = decoder.decodeObject(forKey: kContactKey) as? String
