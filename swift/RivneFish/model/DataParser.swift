@@ -9,51 +9,44 @@
 import Foundation
 
 class DataParser {
-
-    func parseCountries(_ jsonData: Data) -> NSArray {
-        let countriesData: NSArray = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray ?? NSArray()
-
-        let countries = NSMutableArray(capacity: countriesData.count)
-        for countryDict in countriesData as! [NSDictionary] {
-            let country = Country(dict: countryDict)
-            countries.add(country)
-        }
-        return countries;
-    }
-
-    func parseMarkers(_ jsonData: Data) -> NSArray {
+    func parseMarkers(jsonData: Data) -> Array<Place> {
         //print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
 
         if let _ = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? NSArray {
             let markersData: NSArray = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray ?? NSArray()
 
-            let markers = NSMutableArray(capacity: markersData.count)
+            var places = Array<Place>()
+            places.reserveCapacity(markersData.count)
+
             for markerDict in markersData as! [NSDictionary] {
 
-                let marker = MarkerModel(dict: markerDict)
-                markers.add(marker)
+                let marker = Place(dict: markerDict)
+                places.append(marker)
             }
-            return markers
+            return places
         } else {
-            return NSArray()
+            return Array<Place>()
         }
     }
-    
-    func parseFish(_ jsonData: Data) -> NSArray {
-        //print(NSString(data: jsonData, encoding: NSUTF8StringEncoding))
-        
-        if let _ = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? NSArray {
-            let fishData: NSArray = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSArray ?? NSArray()
-            
-            let fishArr = NSMutableArray(capacity: fishData.count)
-            for fishDict in fishData as! [NSDictionary] {
-                
+
+    func parsePlaceDetails(jsonData: Data) -> PlaceDetails? {
+        if let placeDetailsDict = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary {
+            return PlaceDetails(dict: placeDetailsDict)
+        }
+        return nil
+    }
+
+    func parseFish(_ jsonData: Data) -> Array<Fish>? {
+        let fishData = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+        if let dataArr = fishData as? Array<Dictionary<String, Any>> {
+            var fishArr = Array<Fish>()
+            for fishDict in dataArr {
                 let fish = Fish(dict: fishDict)
-                fishArr.add(fish)
+                fishArr.append(fish)
             }
             return fishArr
         } else {
-            return NSArray()
+            return nil
         }
     }
 

@@ -10,16 +10,17 @@ import Foundation
 import MapKit
 
 class MarkerAnnotation : NSObject, MKAnnotation {
-    var marker: MarkerModel
+    var place: Place
 
     var clusterAnnotation: MarkerAnnotation?
     var containedAnnotations: Array<MarkerAnnotation>?
     var innerCoordinate: CLLocationCoordinate2D
 
-    init(marker: MarkerModel) {
-        self.marker = marker
+    init(place: Place) {
+        self.place = place
         self.containedAnnotations = Array<MarkerAnnotation>()
-        self.innerCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(marker.lat), longitude: CLLocationDegrees(marker.lon))
+        self.innerCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(place.lat),
+                                                      longitude: CLLocationDegrees(place.lon))
     }
 
     dynamic var coordinate: CLLocationCoordinate2D {
@@ -36,14 +37,7 @@ class MarkerAnnotation : NSObject, MKAnnotation {
         if childsCount > 0 {
             return String(childsCount + 1)
         }
-        return self.marker.name
-    }
-    var subtitle: String? {
-        let childsCount = self.childsCount()
-        if childsCount > 0 {
-            return String(childsCount + 1)
-        }
-        return self.marker.address
+        return self.place.name
     }
 
     var containedItemsCount: Int {

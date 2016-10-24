@@ -62,8 +62,8 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         if let cell: FishCollectionViewCell = self.imagesCollectionView.dequeueReusableCell(withReuseIdentifier: kFishCellIdentifier, for: indexPath) as? FishCollectionViewCell,
             let fish = fishArray?[(indexPath as NSIndexPath).row] {
             cell.image = fish.image
-            cell.name = fish.ukrName
-            cell.amount = fish.amount ?? 0
+            cell.name = fish.name
+            cell.amount = 0
             cell.updateCell()
             return cell
         }

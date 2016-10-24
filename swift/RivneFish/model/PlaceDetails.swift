@@ -8,7 +8,7 @@
 
 import Foundation
 
-let kMarkerIDKey = "marker_id"
+let kMarkerIDKey = "id"
 let kNameKey = "name"
 let kAddressKey = "address"
 let kLatKey = "lat"
@@ -41,8 +41,9 @@ let kDistrictKey = "district"
 let kCountryKey = "country"
 let kPhotosKey = "photos"
 let kUrlKey = "url"
+let kFishKey = "place_fishes"
 
-class MarkerModel: NSObject, NSCoding {
+class PlaceDetails: NSObject, NSCoding {
 
     var markerID: Int
     var lat: Float
@@ -72,6 +73,8 @@ class MarkerModel: NSObject, NSCoding {
     var country: String?
     var photoUrls: Array<String>?
     var url: String?
+    var modifiedDate: Date?
+    var fish: Array<PlaceFish>?
 
     var areaStr: String? {
         if let val = area , val != 0.0 {
@@ -179,6 +182,7 @@ class MarkerModel: NSObject, NSCoding {
         country = decoder.decodeObject(forKey: kCountryKey) as? String
         photoUrls = decoder.decodeObject(forKey: kPhotosKey) as? Array
         url = decoder.decodeObject(forKey: kUrlKey) as? String
+        fish = decoder.decodeObject(forKey: kFishKey) as? Array<PlaceFish>
     }
 
     func encode(with aCoder: NSCoder) {
@@ -210,13 +214,14 @@ class MarkerModel: NSObject, NSCoding {
         aCoder.encode(country, forKey: kCountryKey)
         aCoder.encode(photoUrls, forKey: kPhotosKey)
         aCoder.encode(url, forKey: kUrlKey)
+        aCoder.encode(fish, forKey: kFishKey)
     }
 
     init(dict: NSDictionary)
     {
         markerID = dict[kMarkerIDKey] as! Int
-        lat = dict[kLatKey] as! Float
-        lon = dict[kLonKey] as! Float
+        lat = Float(dict[kLatKey] as! String)!
+        lon = Float(dict[kLonKey] as! String)!
 
         name = dict[kNameKey] as? String
         address = dict[kAddressKey] as? String
@@ -242,5 +247,13 @@ class MarkerModel: NSObject, NSCoding {
         country = dict[kCountryKey] as? String
         photoUrls = dict[kPhotosKey] as? Array<String>
         url = dict[kUrlKey] as? String
+        if let fishDictArr = dict[kFishKey] as? Array<Dictionary<String, Any>> {
+            fish = Array<PlaceFish>()
+            for fishDict in fishDictArr {
+                if let f = PlaceFish(dict: fishDict) {
+                    fish?.append(f)
+                }
+            }
+        }
     }
 }

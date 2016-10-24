@@ -11,12 +11,36 @@ import UIKit
 class MarkerDetailsController: UIViewController {
     var cellsCreator: MarkerDetailsCellCreator?
 
-    var markerDetailsModel: MarkerModel? {
-        didSet {
-            validate()
-            loadFishList()
+    var allFish: Array<Fish>?
 
-            cellsCreator?.markerDetailsModel = markerDetailsModel
+    var place: Place? {
+        didSet {
+            guard let place = place else { return }
+
+            dataSource?.placeDetails(rechability: Reach.reachabilityForInternetConnection(), place: place) { placeDetails, cached in
+                self.cached = cached
+                if let details = placeDetails {
+                    self.placeDetailsModel = details
+                }
+            }
+        }
+    }
+
+    var cached: Bool = false
+
+    var placeDetailsModel: PlaceDetails? {
+        didSet {
+            // TODO:
+            // validate()
+
+            fishArray = allFish?.filter {
+                let detailsId = $0.id
+                let arr = placeDetailsModel?.fish?.filter { $0.fishId == detailsId }
+                return arr?.count ?? 0 > 0 && arr?[0] != nil
+            }
+
+            cellsCreator?.placeDetailsModel = placeDetailsModel
+            loadFishList()
             contentTable?.reloadData()
         }
     }
@@ -30,13 +54,13 @@ class MarkerDetailsController: UIViewController {
     var currentLocation: CLLocation?
 
     override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = self.markerDetailsModel?.name;
+        self.navigationController?.navigationBar.topItem?.title = self.placeDetailsModel?.name;
     }
 
     @IBOutlet weak var contentTable: UITableView! {
         didSet {
             cellsCreator = MarkerDetailsCellCreator(table: contentTable)
-            cellsCreator?.markerDetailsModel = markerDetailsModel
+            cellsCreator?.placeDetailsModel = placeDetailsModel
             cellsCreator?.dataSource = dataSource
         }
     }
@@ -56,28 +80,20 @@ class MarkerDetailsController: UIViewController {
         }
     }
 
-    fileprivate func validate() {
-        if let model = markerDetailsModel,
-            let source = dataSource ,
-            false == ActualityValidator.actualityValidator.markerUpToDate(model) {
-            source.removeMarkerCachedImages(model)
-        }
-    }
-
     fileprivate func loadFishList() {
-        guard let model = markerDetailsModel else { return }
+        /*guard let model = placeDetailsModel else { return }
 
-        dataSource?.fishForMarker(Reach.reachabilityForInternetConnection(), marker: model, completionHandler: { (fish: NSArray) in
-            self.fishArray = fish as? Array<Fish>
-        })
+        dataSource?.fishForMarker(fromCache: cached, Reach.reachabilityForInternetConnection(), placeId: model.markerID, completionHandler: { (fish: Array<Fish>?) in
+            self.fishArray = fish
+        })*/
     }
 
     fileprivate func navigate(_ destC: CLLocationCoordinate2D) {
         let location = CLLocationManager().location
         if let clat = location?.coordinate.latitude,
             let clon = location?.coordinate.longitude,
-            let dlat = markerDetailsModel?.lat,
-            let dlon = markerDetailsModel?.lon {
+            let dlat = placeDetailsModel?.lat,
+            let dlon = placeDetailsModel?.lon {
             let urlStr = "https://maps.apple.com?saddr=\(clat),\(clon)&daddr=\(dlat),\(dlon)"
             if let url = URL(string: urlStr) {
                 UIApplication.shared.openURL(url)

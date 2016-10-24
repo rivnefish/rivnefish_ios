@@ -9,20 +9,20 @@
 // Proxy for GClustering library
 
 class GMarker: NSObject, GClusterItem {
-    let markerModel: MarkerModel
+    let placeModel: Place
     
     var marker: GMSMarker!
     var position: CLLocationCoordinate2D
 
-    init(markerModel: MarkerModel) {
-        self.markerModel = markerModel
-        position = CLLocationCoordinate2D(latitude: CLLocationDegrees(markerModel.lat), longitude: CLLocationDegrees(markerModel.lon))
+    init(placeModel: Place) {
+        self.placeModel = placeModel
+        position = CLLocationCoordinate2D(latitude: CLLocationDegrees(placeModel.lat), longitude: CLLocationDegrees(placeModel.lon))
 
         let marker: GMSMarker = GMSMarker()
         marker.icon = UIImage(named: "m1")
         marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
         marker.appearAnimation = kGMSMarkerAnimationPop
-        marker.userData = markerModel
+        marker.userData = placeModel
         marker.position = position
         self.marker = marker
     }

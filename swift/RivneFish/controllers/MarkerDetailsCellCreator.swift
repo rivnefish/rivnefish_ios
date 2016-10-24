@@ -22,7 +22,7 @@ class MarkerDetailsCellCreator {
     }
 
     let contentTable: UITableView
-    var markerDetailsModel: MarkerModel? {
+    var placeDetailsModel: PlaceDetails? {
         didSet {
             updateCellTypes()
         }
@@ -66,7 +66,7 @@ class MarkerDetailsCellCreator {
     fileprivate func updateCellTypes() {
         cellTypes.removeAll()
 
-        let arr = markerDetailsModel?.photoUrls ?? Array()
+        let arr = placeDetailsModel?.photoUrls ?? Array()
         if !arr.isEmpty {
             cellTypes.append(.placeImages)
         }
@@ -74,40 +74,40 @@ class MarkerDetailsCellCreator {
         if !fish.isEmpty {
             cellTypes.append(.fishImages)
         }
-        let name = markerDetailsModel?.name ?? ""
+        let name = placeDetailsModel?.name ?? ""
         if !name.isEmpty {
             cellTypes.append(.caption)
         }
-        let contact = markerDetailsModel?.contact ?? ""
-        let contactName = markerDetailsModel?.contactName ?? ""
+        let contact = placeDetailsModel?.contact ?? ""
+        let contactName = placeDetailsModel?.contactName ?? ""
         if !contact.isEmpty || !contactName.isEmpty {
             cellTypes.append(.contacts)
         }
-        let area = markerDetailsModel?.areaStr ?? ""
-        let averDepth = markerDetailsModel?.averageDepth ?? ""
-        let maxDepth = markerDetailsModel?.maxDepth ?? ""
+        let area = placeDetailsModel?.areaStr ?? ""
+        let averDepth = placeDetailsModel?.averageDepth ?? ""
+        let maxDepth = placeDetailsModel?.maxDepth ?? ""
         if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
             cellTypes.append(.placeDetails)
         }
-        let price = markerDetailsModel?.paidFish ?? ""
-        let boat = markerDetailsModel?.boatUsageReadable ?? ""
-        let time = markerDetailsModel?.timeToFishStr ?? ""
+        let price = placeDetailsModel?.paidFish ?? ""
+        let boat = placeDetailsModel?.boatUsageReadable ?? ""
+        let time = placeDetailsModel?.timeToFishStr ?? ""
         if !price.isEmpty || !boat.isEmpty || !time.isEmpty {
             cellTypes.append(.fishingConditions)
         }
-        let convenieces = markerDetailsModel?.conveniences ?? ""
+        let convenieces = placeDetailsModel?.conveniences ?? ""
         if !convenieces.isEmpty {
             cellTypes.append(.conveniences)
         }
-        let content = markerDetailsModel?.content ?? ""
+        let content = placeDetailsModel?.content ?? ""
         if !content.isEmpty {
             cellTypes.append(.description)
         }
-        let lastUpdate = markerDetailsModel?.modifyDate ?? ""
+        let lastUpdate = placeDetailsModel?.modifyDate ?? ""
         if !lastUpdate.isEmpty {
             cellTypes.append(.lastUpdateCell)
         }
-        let urlStr = markerDetailsModel?.url ?? ""
+        let urlStr = placeDetailsModel?.url ?? ""
         if !urlStr.isEmpty {
             cellTypes.append(.linkCell)
         }
@@ -177,7 +177,7 @@ class MarkerDetailsCellCreator {
 
     func placeImagesCell(forIndexPath indexPath: IndexPath) -> PlaceImagesCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceImagesCell", for: indexPath) as? PlaceImagesCell,
-            let arr = markerDetailsModel?.photoUrls {
+            let arr = placeDetailsModel?.photoUrls {
             cell.setup(withUrlsArray: arr, dataSource: dataSource)
             return cell
         }
@@ -195,7 +195,7 @@ class MarkerDetailsCellCreator {
 
     func contactsCell(forIndexPath indexPath: IndexPath) -> ContactsCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as? ContactsCell {
-            cell.setup(withPhone: markerDetailsModel?.contact, details: markerDetailsModel?.contactName)
+            cell.setup(withPhone: placeDetailsModel?.contact, details: placeDetailsModel?.contactName)
             return cell
         }
         return nil
@@ -203,7 +203,7 @@ class MarkerDetailsCellCreator {
 
     func descriptionCell(forIndexPath indexPath: IndexPath) -> TitleLabelCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "TitleLabelCell", for: indexPath) as? TitleLabelCell {
-            cell.setup(withTitle: "Опис", text: markerDetailsModel?.content)
+            cell.setup(withTitle: "Опис", text: placeDetailsModel?.content)
             return cell
         }
         return nil
@@ -211,7 +211,7 @@ class MarkerDetailsCellCreator {
 
     func captionCell(forIndexPath indexPath: IndexPath) -> AddressCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "AddressCell", for: indexPath) as? AddressCell {
-            cell.setup(withName: nil, address: markerDetailsModel?.address, coordinates: "\(markerDetailsModel?.lat ?? 0), \(markerDetailsModel?.lon ?? 0)")
+            cell.setup(withName: nil, address: placeDetailsModel?.address, coordinates: "\(placeDetailsModel?.lat ?? 0), \(placeDetailsModel?.lon ?? 0)")
             return cell
         }
         return nil
@@ -219,7 +219,7 @@ class MarkerDetailsCellCreator {
 
     func fishingConditionsCell(forIndexPath indexPath: IndexPath) -> FishingConditionsCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "FishingConditionsCell", for: indexPath) as? FishingConditionsCell {
-            cell.setup(withMainInfo: markerDetailsModel?.permitStr, payment: markerDetailsModel?.paidFish, boatUsage: markerDetailsModel?.boatUsageReadable, fishingTime: markerDetailsModel?.timeToFishStr)
+            cell.setup(withMainInfo: placeDetailsModel?.permitStr, payment: placeDetailsModel?.paidFish, boatUsage: placeDetailsModel?.boatUsageReadable, fishingTime: placeDetailsModel?.timeToFishStr)
             return cell
         }
         return nil
@@ -227,7 +227,7 @@ class MarkerDetailsCellCreator {
 
     func conveniencesCell(forIndexPath indexPath: IndexPath) -> ConveniencesCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "ConveniencesCell", for: indexPath) as? ConveniencesCell {
-            cell.setup(withTitle: "Умови відпочинку:", text: markerDetailsModel?.conveniences)
+            cell.setup(withTitle: "Умови відпочинку:", text: placeDetailsModel?.conveniences)
             return cell
         }
         return nil
@@ -235,7 +235,7 @@ class MarkerDetailsCellCreator {
 
     func placeDetailsCell(forIndexPath indexPath: IndexPath) -> PlaceDetailsCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceDetailsCell", for: indexPath) as? PlaceDetailsCell {
-            cell.setup(withSquare: markerDetailsModel?.areaStr, averageDepth: markerDetailsModel?.averageDepthReadable, maxDepth: markerDetailsModel?.maxDepthReadable)
+            cell.setup(withSquare: placeDetailsModel?.areaStr, averageDepth: placeDetailsModel?.averageDepthReadable, maxDepth: placeDetailsModel?.maxDepthReadable)
             return cell
         }
         return nil
@@ -243,7 +243,7 @@ class MarkerDetailsCellCreator {
 
     func linkCell(forIndexPath indexPath: IndexPath) -> LinkCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as? LinkCell {
-            if let urlStr = markerDetailsModel?.url {
+            if let urlStr = placeDetailsModel?.url {
                 cell.setup(withLinkText: "Переглянути на сайті rivnefish", urlString: urlStr)
                 return cell
             }
@@ -253,7 +253,7 @@ class MarkerDetailsCellCreator {
 
     func lastUpdateCell(forIndexPath indexPath: IndexPath) -> ModifiedDateCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "ModifiedDateCell", for: indexPath) as? ModifiedDateCell {
-            if let text = markerDetailsModel?.modifyDateLocalized {
+            if let text = placeDetailsModel?.modifyDateLocalized {
                 cell.setupWithText("Востаннє ця інформація оновлювалась: " + text)
                 return cell
             }

@@ -8,142 +8,215 @@
 
 import UIKit
 
+let placesUrl = DataSource.kHost + "/api/v1/places"
+let fishUrl = DataSource.kHost + "/api/v1/fish"
+
 class DataSource: NSObject {
 
-    func allAvailableMarkers(_ rechability: Reach, completionHandler: @escaping (_ markers: NSArray) -> Void) {
-        let urlStr = "http://api.rivnefish.com/markers/"
+    static let kHost = "http://new.rivnefish.com"
 
+    func places(_ rechability: Reach, completionHandler: @escaping (_ markers: Array<Place>?) -> Void) {
         // If there is online connection
         if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable {
             // Check if marker list is up to date
 
-            ActualityValidator.actualityValidator.checkMarkers({ (outdated: Bool) in
+            ActualityValidator.actualityValidator.checkPlaces({ (outdated: Bool) in
                 // If it is oudated
                 if outdated {
-                    // Remove value from cache, so we will need to request new one
-                    TMCache.shared().removeObject(forKey: urlStr)
+                    // Remove all places from cache, so we will need to request new one
+                    self.removePlacesFromCache()
                 }
 
-                // Request new data, try from cache, if no, try from netowrk
-                TMCache.shared().object(forKey: urlStr) { (cache, key, object) in
-                    if let markers = object as? NSArray {
-                        if markers.count != 0 {
-                            DispatchQueue.main.async(execute: {
-                                completionHandler(markers)
-                            })
-                        }
-
-                    } else {
-                        // If there is no markers in cache - request it
-                        NetworkDataSource.sharedInstace.allAvailableMarkers({ (markers: NSArray) in
-                            if markers.count != 0 {
-                                TMCache.shared().setObject(markers, forKey: urlStr)
-                                self.saveMarkersIdAndModifyDate(markers)
-
-                                // Update last changes num
-                                ActualityValidator.actualityValidator.updateUserLastChangesDate()
-
-                                DispatchQueue.main.async(execute: {
-                                    completionHandler(markers)
-                                })
-                            }
+                // Request places, try from cache, if no, try from netowrk
+                self.placesFromCache() { placesArr in
+                    if let places = placesArr {
+                        DispatchQueue.main.async(execute: {
+                            completionHandler(places)
                         })
+                    } else {
+                        // If there is no places in cache - request it
+                        self.requestPlacesFromNetwork(completionHandler: completionHandler)
                     }
                 }
             })
         } else {
             // if there is no connection - take data from cache
-            TMCache.shared().object(forKey: urlStr) { (cache, key, object) in
-                if let markers = object as? NSArray {
-                    if markers.count != 0 {
-                        DispatchQueue.main.async(execute: {
-                            completionHandler(markers)
-                        })
-                    }
-                }
+            self.placesFromCache() { places in
+                DispatchQueue.main.async(execute: {
+                    completionHandler(places)
+                })
             }
         }
     }
 
-    func saveMarkersIdAndModifyDate(_ markers: NSArray) {
-        let defaults = UserDefaults.standard
-        let markersArr = markers as! Array<MarkerModel>
-        for marker: MarkerModel in markersArr {
-            defaults.set(marker.modifyDate, forKey: String(marker.markerID))
-        }
-    }
-
-    func removeMarkerCachedImages(_ marker: MarkerModel) {
-        let imgUrlsArr = marker.photoUrls
-        if let urls = imgUrlsArr {
-            for imgUrl in urls {
-                TMCache.shared().removeObject(forKey: imgUrl)
+    private func requestPlacesFromNetwork(completionHandler: @escaping (_ markers: Array<Place>?) -> Void) {
+        NetworkDataSource.sharedInstace.places({ (placesArr: Array<Place>?) in
+            if let places = placesArr {
+                self.savePlacesToCache(places: places)
+                ActualityValidator.actualityValidator.updatePlacesLastChangesDate()
             }
+
+            DispatchQueue.main.async(execute: {
+                completionHandler(placesArr)
+            })
+        })
+    }
+
+    func savePlacesToCache(places: Array<Place>) {
+        TMCache.shared().setObject(places as NSArray, forKey: placesUrl)
+    }
+
+    func savePlaceDetailsToCache(placeDetails: PlaceDetails) {
+        let placeKey = "placeDetails:" + String(placeDetails.markerID)
+        TMCache.shared().setObject(placeDetails, forKey: placeKey)
+    }
+
+    func removePlacesFromCache() {
+        TMCache.shared().removeObject(forKey: placesUrl)
+    }
+
+    func placesFromCache(handler: @escaping (Array<Place>?) -> Void) {
+        let placesKey = "places"
+
+        TMCache.shared().object(forKey: placesKey) { (cache, key, object) in
+            if let nsArr = TMCache.shared().object(forKey: placesKey) as? NSArray,
+                let arr = nsArr as? Array<Place> {
+                return handler(arr)
+            }
+            return handler(nil)
         }
     }
 
-    func fishForMarker(_ rechability: Reach, marker: MarkerModel, completionHandler: @escaping (_ fish: NSArray) -> Void) {
-        // if marker is outdated - remove fish from cache
-        var requestFromNetwork = false
-        let markerId = String(marker.markerID)
-        let fishCacheId = "Fish:" + markerId
-        if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable &&
-            false == ActualityValidator.actualityValidator.markerUpToDate(marker)
-        {
-            TMCache.shared().removeObject(forKey: fishCacheId)
-            requestFromNetwork = true
+    func placeDetailsFromCache(id: Int, handler: @escaping (PlaceDetails?) -> Void) {
+        let placeKey = "placeDetails:" + String(id)
+        TMCache.shared().object(forKey: placeKey) { (cache, key, object) in
+            handler(object as? PlaceDetails)
         }
+    }
 
-        if requestFromNetwork {
-            // request directly from network
-            NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
-                // save to cache
-                let sortedFish = self.sortedFishArray(fish)
-                if sortedFish.count > 0 {
-                    TMCache.shared().setObject(sortedFish, forKey: fishCacheId)
+    func placeDetails(rechability: Reach, place: Place, completionHandler: @escaping (_ placeDetails: PlaceDetails?, _ cached: Bool) -> Void) {
+        placeDetailsFromCache(id: place.id) { cachedPlaceDetails in
+
+            var isPlaceUpToDate = false
+            if let details = cachedPlaceDetails {
+                isPlaceUpToDate = ActualityValidator.actualityValidator.isUpToDate(cachedPlaceDetails: details, with: place)
+            }
+
+            if isPlaceUpToDate || rechability.currentReachabilityStatus() == .NotReachable {
+                DispatchQueue.main.async(execute: {
+                    completionHandler(cachedPlaceDetails, isPlaceUpToDate)
+                })
+            } else {
+                self.requestPlaceDetailsFromNetwork(id: place.id, storeToCache: !isPlaceUpToDate, completionHandler: completionHandler)
+            }
+
+        }
+    }
+
+    private func requestPlaceDetailsFromNetwork(id: Int, storeToCache: Bool, completionHandler: @escaping (_ placeDetails: PlaceDetails?, _ cached: Bool) -> Void) {
+        NetworkDataSource.sharedInstace.placeDetails(id: id) { placeDetails in
+            if let details = placeDetails {
+                if storeToCache {
+                    self.savePlaceDetailsToCache(placeDetails: details)
                 }
                 DispatchQueue.main.async(execute: {
-                    completionHandler(sortedFish)
+                    completionHandler(details, !storeToCache)
                 })
-            })
-        } else {
-            // try to request from cache
-            TMCache.shared().object(forKey: fishCacheId) { (cache, key, object) in
-                if let fish = object as? NSArray {
-                    if fish.count != 0 {
-                        // TODO: sort temporary, untill not sorted fish in cache
-                        let sortedFish = self.sortedFishArray(fish)
-                        DispatchQueue.main.async(execute: {
-                            completionHandler(sortedFish)
-                        })
-                    }
-                } else { // if no data in cache - request from network
-                    NetworkDataSource.sharedInstace.fishForMarkerID(markerId, fishReceived: { (fish: NSArray) in
-                        // save to cache
-                        let sortedFish = self.sortedFishArray(fish)
-                        if fish.count > 0 {
-                            TMCache.shared().setObject(sortedFish, forKey: fishCacheId)
-                        }
-                        DispatchQueue.main.async(execute: {
-                            completionHandler(sortedFish)
-                        })
-                    })
-                }
             }
         }
     }
 
-    func sortedFishArray(_ fish: NSArray) -> NSArray {
-        return fish.sortedArray (comparator: {
-            (obj1, obj2) -> ComparisonResult in
-
-            if let f1 = obj1 as? Fish,
-                let f2 = obj2 as? Fish {
-                return f1.compare(f2)
-            }
-            return ComparisonResult.orderedSame
-        }) as NSArray
+    func allFish(rechability: Reach, completionHandler: @escaping (_ fish: Array<Fish>?) -> Void) {
+        if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable {
+            ActualityValidator.actualityValidator.checkFish({ (outdated: Bool) in
+                if outdated {
+                    self.allFishFromNetwork(handler: completionHandler)
+                } else {
+                    self.allFishFromCache() { cachedFish in
+                        if cachedFish != nil {
+                            completionHandler(cachedFish)
+                        } else {
+                            self.allFishFromNetwork(handler: completionHandler)
+                        }
+                    }
+                }
+            })
+        } else {
+            self.allFishFromNetwork(handler: completionHandler)
+        }
     }
+
+    private func allFishFromNetwork(handler: @escaping (_ fish: Array<Fish>?) -> Void) {
+        NetworkDataSource.sharedInstace.fishAll(fishReceived: { (fishArr: Array<Fish>?) in
+            if let fish = fishArr {
+                self.saveAllFishToCache(fish: fish)
+                ActualityValidator.actualityValidator.updateFishLastChangesDate()
+                handler(fish)
+            } else {
+                handler(nil)
+            }
+        })
+    }
+
+    private func allFishFromCache(handler: @escaping (_ fish: Array<Fish>?) -> Void) {
+        TMCache.shared().object(forKey: fishUrl) { (cache, key, object) in
+            handler(object as? Array<Fish>)
+        }
+    }
+
+    private func saveAllFishToCache(fish: Array<Fish>) {
+        TMCache.shared().setObject(fish as NSArray, forKey: fishUrl)
+    }
+
+    /*func fishForMarker(fromCache: Bool, _ rechability: Reach, placeId: Int, completionHandler: @escaping (_ fish: Array<Fish>?) -> Void) {
+        if fromCache {
+            fishFromCache(placeId: placeId) { cachedFish in
+                if cachedFish != nil {
+                    completionHandler(cachedFish)
+                } else {
+                    self.sortedFishFromNetwork(placeId: placeId, saveToCache: true, handler: completionHandler)
+                }
+            }
+        } else {
+            self.sortedFishFromNetwork(placeId: placeId, saveToCache: true, handler: completionHandler)
+        }
+    }
+
+    private func sortedFishFromNetwork(placeId: Int, saveToCache: Bool, handler: @escaping (_ fish: Array<Fish>?) -> Void) {
+        NetworkDataSource.sharedInstace.fishForMarkerID(placeId, fishReceived: { (fishArr: Array<Fish>?) in
+            if let fish = fishArr {
+                let sortedFish = self.sortedFishArray(fish)
+                if saveToCache {
+                    self.saveFishToCache(placeId: placeId, fish: sortedFish)
+                }
+                handler(sortedFish)
+            } else {
+                handler(nil)
+            }
+        })
+    }
+
+    private func saveFishToCache(placeId: Int, fish: Array<Fish>) {
+        let fishCacheId = "Fish:" + String(placeId)
+        TMCache.shared().setObject(fish as NSArray, forKey: fishCacheId)
+    }
+
+    private func fishFromCache(placeId: Int, handler: @escaping (_ fish: Array<Fish>?) -> Void) {
+        let fishCacheId = "Fish:" + String(placeId)
+        TMCache.shared().object(forKey: fishCacheId) { (cache, key, object) in
+            if let arr = object as? Array<Fish> {
+                handler(self.sortedFishArray(arr))
+            } else {
+                handler(nil)
+            }
+        }
+    }
+
+    private func sortedFishArray(_ fish: Array<Fish>) -> Array<Fish> {
+        return fish.sorted {
+            return $0.amount ?? 0 < $1.amount ?? 0
+        }
+    }*/
 
     func loadImages(_ urlsArr: Array<String>?, completionHandler: @escaping ((String, UIImage?) -> Void)) {
         if let urlStringArr = urlsArr {

@@ -19,7 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     var clusterManager: GClusterManager!
     fileprivate var markerDetailsController: MarkerDetailsController?
 
-    fileprivate var currentMarkerModel: MarkerModel?
+    fileprivate var currentPlace: Place?
 
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRect.zero)
 
@@ -30,6 +30,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     var singleMarkerImageWidth: CGFloat = CGFloat(0.0)
 
     var currentLocation: CLLocation? = nil
+
+    var allFish: Array<Fish>?
     
     // will be init in viewDidLoad
     var reach: Reach!
@@ -125,18 +127,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
     
     func updateData() {
-        //dataSource.coutries({ (countries: NSArray) in
-        //    print(countries)
-        //})
+        loadPlaces()
+        loadFish()
+    }
 
-        dataSource.allAvailableMarkers(self.reach, completionHandler: { (markers: NSArray) in
+    func loadPlaces() {
+        dataSource.places(self.reach, completionHandler: { (placesArr: Array<Place>?) in
             // self.addMarkersToAppleMaps(markers)
 
-            if (markers.count == 0) {
+            guard let places = placesArr else { return }
+
+            if  places.count == 0 {
                 self.showConnectionErrorAlert()
             } else {
-                self.addMarkersToGoogleMap(markers)
+                self.addMarkersToGoogleMap(places)
             }
+        })
+    }
+
+    func loadFish() {
+        dataSource.allFish(rechability: self.reach, completionHandler: { (fishArr: Array<Fish>?) in
+            guard let fish = fishArr else { return }
+
+            self.allFish = fish
         })
     }
 
@@ -179,13 +192,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    func addMarkersToGoogleMap(_ markers: NSArray) {
+    func addMarkersToGoogleMap(_ markers: Array<Place>) {
         // remove old
         self.gmMarkers.removeAll()
 
         // add new
-        for markerModel in markers as! [MarkerModel] {
-            let markerAnnotation = GMarker(markerModel: markerModel)
+        for markerModel in markers {
+            let markerAnnotation = GMarker(placeModel: markerModel)
             self.gmMarkers.append(markerAnnotation)
         }
         self.addGMMarkers()
@@ -206,15 +219,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         if let controller = markerDetailsController {
             controller.dataSource = dataSource
             controller.currentLocation = currentLocation
-            /*if let markerModel = currentMarkerModel {
+            /*if let markerModel = currentPlace {
                 controller.marker = markerModel
                 dataSource.fishForMarker(self.reach, marker: markerModel, completionHandler: { (fish: NSArray) in
                     controller.fishArray = fish as? Array<Fish>
                 })
             }*/
 
-            if let markerModel = currentMarkerModel {
-                controller.markerDetailsModel = markerModel
+            if let fish = allFish {
+                controller.allFish = fish
+            }
+            if let place = currentPlace {
+                controller.place = place
             }
         }
     }
@@ -227,7 +243,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
         if isSinglePointMarker(marker) {
-            if let markerModel: MarkerModel = marker.userData as? MarkerModel {
+            if let markerModel: Place = marker.userData as? Place {
                 if let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? MarkerCalloutView {
                     calloutView.nameLabel.text = markerModel.name
                     calloutView.updateWidth()
@@ -250,16 +266,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
 
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        if let markerModel: MarkerModel = marker.userData as? MarkerModel {
-            self.currentMarkerModel = markerModel
+        if let markerModel: Place = marker.userData as? Place {
+            self.currentPlace = markerModel
             self.goToMarkerDetailsView()
         }
     }
 
     // MARK: - APPLE MAPS
-    func addMarkersToAppleMaps(_ markers: NSArray) {
-        for marker in markers as! [MarkerModel] {
-            self.markersAnnotations.append(MarkerAnnotation(marker: marker))
+    func addMarkersToAppleMaps(_ places: NSArray) {
+        for place in places as! [Place] {
+            self.markersAnnotations.append(MarkerAnnotation(place: place))
         }
         
         // TODO: add all annotatios to main map, just for testing, will be removed
@@ -273,8 +289,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         
         DispatchQueue.main.async(execute: {
             
-            for marker in markers as! [MarkerModel] {
-                self.markersAnnotations.append(MarkerAnnotation(marker: marker))
+            for place in places as! [Place] {
+                self.markersAnnotations.append(MarkerAnnotation(place: place))
             }
             
             // TODO: apple way clustering
@@ -395,9 +411,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annotation: MarkerAnnotation? = view.annotation as? MarkerAnnotation
-        if let marker: MarkerModel = annotation?.marker
+        if let place: Place = annotation?.place
         {
-            self.currentMarkerModel = marker
+            self.currentPlace = place
             self.goToMarkerDetailsView()
         }
     }

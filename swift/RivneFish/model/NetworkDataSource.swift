@@ -8,44 +8,23 @@
 
 class NetworkDataSource {
 
+    static let kHost = "http://new.rivnefish.com"
+
     static var sharedInstace = NetworkDataSource()
 
-    func coutries(_ countriesReceived: @escaping (_ countries: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/countries/", responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
-
-            if self.errorInResponse(response) {
-                countriesReceived(NSArray())
-                return;
-            }
-
-            if let json = data {
-                let dataParser = DataParser()
-                let countries = dataParser.parseCountries(json)
-                countriesReceived(countries)
-            }
-            else {
-                if let data = data {
-                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
-                }
-            }
-        } as (Data?, URLResponse?, NSError?) -> Void)
-    }
-
-    func allAvailableMarkers(_ completionHandler: @escaping (_ markers: NSArray) -> Void) {
-        let urlStr = "http://api.rivnefish.com/markers/"
-        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback:
-            // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?permit=paid", responseCallback:
-            // HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers/?distance_lower=15", responseCallback:
-            {(data: Data?, response: URLResponse?, error: NSError?) in
+    func places(_ completionHandler: @escaping (_ markers: Array<Place>?) -> Void) {
+        let urlStr = NetworkDataSource.kHost + "/api/v1/places"
+        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {
+            (data: Data?, response: URLResponse?, error: NSError?) in
 
                 if self.errorInResponse(response) {
-                    completionHandler(NSArray())
+                    completionHandler(nil)
                     return;
                 }
 
                 if let json = data {
                     let dataParser = DataParser()
-                    let markers = dataParser.parseMarkers(json)
+                    let markers = dataParser.parseMarkers(jsonData: json)
                     completionHandler(markers)
                 }
                 else {
@@ -56,8 +35,41 @@ class NetworkDataSource {
         } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func lastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/lastchanges/", responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
+    func placeDetails(id: Int, completionHandler: @escaping (_ placeDetails: PlaceDetails?) -> Void) {
+        let urlStr = NetworkDataSource.kHost + "/api/v1/places/" + String(id)
+        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {
+            (data: Data?, response: URLResponse?, error: NSError?) in
+
+            if self.errorInResponse(response) {
+                completionHandler(nil)
+                return;
+            }
+
+            if let json = data {
+                let dataParser = DataParser()
+                let placeDetails = dataParser.parsePlaceDetails(jsonData: json)
+                completionHandler(placeDetails)
+            }
+            else {
+                if let data = data {
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                }
+            }
+        } as (Data?, URLResponse?, NSError?) -> Void)
+    }
+
+    func placesLastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
+        let urlStr = NetworkDataSource.kHost + "/api/v1/places/lastchanges"
+        lastChanges(urlStr: urlStr, completionHandler: completionHandler)
+    }
+
+    func fishLastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
+        let urlStr = NetworkDataSource.kHost + "/api/v1/fish/lastchanges"
+        lastChanges(urlStr: urlStr, completionHandler: completionHandler)
+    }
+
+    private func lastChanges(urlStr: String, completionHandler: @escaping (_ lastChanges: Int) -> Void) {
+        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
                 completionHandler(0)
@@ -77,11 +89,34 @@ class NetworkDataSource {
         } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func fishForMarkerID(_ id: String, fishReceived: @escaping (_ fish: NSArray) -> Void) {
-        HTTPClient.sharedInstance.request("http://api.rivnefish.com/markers-fishes/?marker=\(id)" as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
+    func fishAll(fishReceived: @escaping (_ fish: Array<Fish>?) -> Void) {
+        let urlStr = NetworkDataSource.kHost + "/api/v1/fish"
+        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
-                fishReceived(NSArray())
+                fishReceived(nil)
+                return;
+            }
+
+            if let json = data {
+                let dataParser = DataParser()
+                let fish = dataParser.parseFish(json)
+                fishReceived(fish)
+            }
+            else {
+                if let data = data {
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                }
+            }
+        } as (Data?, URLResponse?, NSError?) -> Void)
+    }
+
+    func fishForMarkerID(_ id: Int, fishReceived: @escaping (_ fish: Array<Fish>?) -> Void) {
+        let urlStr = NetworkDataSource.kHost + "/api/v1/fish/\(id)"
+        HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
+
+            if self.errorInResponse(response) {
+                fishReceived(nil)
                 return;
             }
 
