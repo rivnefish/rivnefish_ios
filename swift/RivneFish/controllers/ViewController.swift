@@ -13,12 +13,12 @@ import SystemConfiguration
 class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-
     @IBOutlet weak var googleMapView: GMSMapView!
+
     let locationManager = CLLocationManager()
     var clusterManager: GClusterManager!
-    fileprivate var markerDetailsController: MarkerDetailsController?
 
+    fileprivate var markerDetailsController: PlaceDetailsController?
     fileprivate var currentPlace: Place?
 
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRect.zero)
@@ -205,7 +205,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
 
     func goToMarkerDetailsView() {
-        markerDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "MarkerDetailsController") as? MarkerDetailsController
+        markerDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "MarkerDetailsController") as? PlaceDetailsController
         populateMarkerDetailsControllerWithData()
 
         if let controller = markerDetailsController {

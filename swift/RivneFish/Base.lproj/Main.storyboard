@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vCg-mE-lDV">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vCg-mE-lDV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -13,10 +17,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fcl-yY-eAk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.98431372549019602" green="0.52156862745098043" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.98431372549019602" green="0.52156862745098043" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -36,9 +40,9 @@
                         <viewControllerLayoutGuide type="bottom" id="bEH-BN-cff"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6uq-py-UEC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9v-Cd-0N2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -54,15 +58,15 @@
                         <viewControllerLayoutGuide type="bottom" id="sJh-gA-kqe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ei3-CI-Dn7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-ON-y9b" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DBE-ON-y9b" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leadingMargin" constant="-20" id="4m2-pd-ENE"/>
                             <constraint firstItem="DBE-ON-y9b" firstAttribute="top" secondItem="AjA-uY-FQu" secondAttribute="bottom" id="8h1-qh-8e4"/>
@@ -79,28 +83,28 @@
             </objects>
             <point key="canvasLocation" x="586" y="508"/>
         </scene>
-        <!--Marker Details Controller-->
+        <!--Place Details Controller-->
         <scene sceneID="4Cb-3C-4cL">
             <objects>
-                <viewController storyboardIdentifier="MarkerDetailsController" automaticallyAdjustsScrollViewInsets="NO" id="gek-IZ-hcr" customClass="MarkerDetailsController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarkerDetailsController" automaticallyAdjustsScrollViewInsets="NO" id="gek-IZ-hcr" customClass="PlaceDetailsController" customModule="Rivnefish" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bOn-VD-FGU"/>
                         <viewControllerLayoutGuide type="bottom" id="BDH-hY-OQZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UPD-5m-bxZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PpS-ET-jkm">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gek-IZ-hcr" id="JRv-bY-JIt"/>
                                     <outlet property="delegate" destination="gek-IZ-hcr" id="ew6-mw-Fru"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BDH-hY-OQZ" firstAttribute="top" secondItem="PpS-ET-jkm" secondAttribute="bottom" id="c6F-e5-FJY"/>
                             <constraint firstItem="PpS-ET-jkm" firstAttribute="leading" secondItem="UPD-5m-bxZ" secondAttribute="leading" id="oMq-9x-jsh"/>
@@ -110,7 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nar-tZ-BTb">
                         <barButtonItem key="rightBarButtonItem" image="navigate" id="emB-f1-RZ4">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="navigateButtonPressed:" destination="gek-IZ-hcr" id="0ju-gL-089"/>
                             </connections>

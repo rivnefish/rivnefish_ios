@@ -7,20 +7,22 @@
 //
 
 class TitleLabelCell: UITableViewCell {
-
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var label: UILabel!
 
-    func setup(withTitle title: String?, text: String?) {
-        let title = title ?? ""
-        if !title.isEmpty {
+    func setup(withTitle title: String?, text: String?, isAttributedText: Bool = false) {
+        if let title = title, !title.isEmpty {
             self.title.text = title
         } else {
             self.title.isHidden = true
         }
-        let text = text ?? ""
-        if !text.isEmpty {
-            self.label.text = text
+
+        if let text = text, !text.isEmpty {
+            if isAttributedText {
+                self.label.setHtml(text: text, removingTextColor: true)
+            } else {
+                self.label.text = text
+            }
         } else {
             self.label.isHidden = true
         }

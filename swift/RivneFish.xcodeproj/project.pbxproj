@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281566DB1D575753008B1E12 /* MarkerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566DA1D575753008B1E12 /* MarkerDetailsController.swift */; };
+		281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566DA1D575753008B1E12 /* PlaceDetailsController.swift */; };
 		281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */; };
 		281566E51D575AC4008B1E12 /* ModifiedDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */; };
 		282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F951D5CCD3600B18F86 /* AlertUtils.swift */; };
-		282A5F981D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */; };
+		282A5F981D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */; };
 		282C946A1D590D1700161303 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C94691D590D1700161303 /* LinkCell.xib */; };
 		282C946C1D590D2F00161303 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C946B1D590D2F00161303 /* LinkCell.swift */; };
 		282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C946F1D5A25B200161303 /* PlaceImagesCell.xib */; };
@@ -46,6 +46,7 @@
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
+		28CCB55C1DC650FD00A17B5B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */; };
 		28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD671C82F336001DBF29 /* ModifiedDate.swift */; };
 		28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */; };
 		28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD6B1C834661001DBF29 /* ActualityValidator.swift */; };
@@ -210,11 +211,11 @@
 
 /* Begin PBXFileReference section */
 		0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish.debug.xcconfig"; sourceTree = "<group>"; };
-		281566DA1D575753008B1E12 /* MarkerDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsController.swift; path = controllers/MarkerDetailsController.swift; sourceTree = "<group>"; };
+		281566DA1D575753008B1E12 /* PlaceDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsController.swift; path = controllers/PlaceDetailsController.swift; sourceTree = "<group>"; };
 		281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDateCell.swift; path = ui/markerDetails/ModifiedDateCell.swift; sourceTree = "<group>"; };
 		281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifiedDateCell.xib; path = ui/markerDetails/ModifiedDateCell.xib; sourceTree = "<group>"; };
 		282A5F951D5CCD3600B18F86 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = utils/AlertUtils.swift; sourceTree = "<group>"; };
-		282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerDetailsCellCreator.swift; path = controllers/MarkerDetailsCellCreator.swift; sourceTree = "<group>"; };
+		282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCellCreator.swift; path = controllers/PlaceDetailsCellCreator.swift; sourceTree = "<group>"; };
 		282C94691D590D1700161303 /* LinkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkCell.xib; path = ui/markerDetails/LinkCell.xib; sourceTree = "<group>"; };
 		282C946B1D590D2F00161303 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkCell.swift; path = ui/markerDetails/LinkCell.swift; sourceTree = "<group>"; };
 		282C946F1D5A25B200161303 /* PlaceImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceImagesCell.xib; path = ui/markerDetails/PlaceImagesCell.xib; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		28C5A8781C6F761400C86F5E /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMDiskCache.m; path = libs/TMCache/TMDiskCache.m; sourceTree = "<group>"; };
 		28C5A8791C6F761400C86F5E /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMMemoryCache.h; path = libs/TMCache/TMMemoryCache.h; sourceTree = "<group>"; };
 		28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMMemoryCache.m; path = libs/TMCache/TMMemoryCache.m; sourceTree = "<group>"; };
+		28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = ui/UILabelExtension.swift; sourceTree = "<group>"; };
 		28FACD671C82F336001DBF29 /* ModifiedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDate.swift; path = model/ModifiedDate.swift; sourceTree = "<group>"; };
 		28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkDataSource.swift; path = model/NetworkDataSource.swift; sourceTree = "<group>"; };
 		28FACD6B1C834661001DBF29 /* ActualityValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActualityValidator.swift; path = model/ActualityValidator.swift; sourceTree = "<group>"; };
@@ -658,8 +660,8 @@
 			children = (
 				3E8C65A71B35DF5E005BD52C /* FishViewController.swift */,
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
-				281566DA1D575753008B1E12 /* MarkerDetailsController.swift */,
-				282A5F971D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift */,
+				281566DA1D575753008B1E12 /* PlaceDetailsController.swift */,
+				282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -730,6 +732,7 @@
 				3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */,
 				3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */,
 				3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */,
+				28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1211,7 +1214,7 @@
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				2895B9691DBEB3CB00C03313 /* FishViewModel.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
-				281566DB1D575753008B1E12 /* MarkerDetailsController.swift in Sources */,
+				281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
 				282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */,
 				28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */,
@@ -1220,11 +1223,12 @@
 				28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */,
 				3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */,
 				288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */,
-				282A5F981D5CDAF400B18F86 /* MarkerDetailsCellCreator.swift in Sources */,
+				282A5F981D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift in Sources */,
 				3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */,
 				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
 				282C946C1D590D2F00161303 /* LinkCell.swift in Sources */,
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
+				28CCB55C1DC650FD00A17B5B /* UILabelExtension.swift in Sources */,
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,

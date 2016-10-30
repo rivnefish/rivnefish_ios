@@ -29,7 +29,7 @@ class NetworkDataSource {
                 }
                 else {
                     if let data = data {
-                        print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                        print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
                     }
                 }
         } as (Data?, URLResponse?, NSError?) -> Void)
@@ -52,7 +52,7 @@ class NetworkDataSource {
             }
             else {
                 if let data = data {
-                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
                 }
             }
         } as (Data?, URLResponse?, NSError?) -> Void)
@@ -83,7 +83,7 @@ class NetworkDataSource {
             }
             else {
                 if let data = data {
-                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
                 }
             }
         } as (Data?, URLResponse?, NSError?) -> Void)
@@ -105,7 +105,7 @@ class NetworkDataSource {
             }
             else {
                 if let data = data {
-                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
                 }
             }
         } as (Data?, URLResponse?, NSError?) -> Void)
@@ -127,7 +127,7 @@ class NetworkDataSource {
             }
             else {
                 if let data = data {
-                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
+                    print(NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? "")
                 }
             }
         } as (Data?, URLResponse?, NSError?) -> Void)

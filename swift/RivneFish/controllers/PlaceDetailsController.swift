@@ -1,5 +1,5 @@
 //
-//  MarkerDetailsController.swift
+//  PlaceDetailsController.swift
 //  RivneFish
 //
 //  Created by Anatolii Kyryliuk on 07/08/16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class MarkerDetailsController: UIViewController {
-    var cellsCreator: MarkerDetailsCellCreator?
+class PlaceDetailsController: UIViewController {
+    var cellsCreator: PlaceDetailsCellCreator?
 
     var allFish: Array<Fish>?
 
@@ -40,7 +40,6 @@ class MarkerDetailsController: UIViewController {
             }
 
             cellsCreator?.placeDetailsModel = placeDetailsModel
-            loadFishList()
             contentTable?.reloadData()
         }
     }
@@ -59,7 +58,7 @@ class MarkerDetailsController: UIViewController {
 
     @IBOutlet weak var contentTable: UITableView! {
         didSet {
-            cellsCreator = MarkerDetailsCellCreator(table: contentTable)
+            cellsCreator = PlaceDetailsCellCreator(table: contentTable)
             cellsCreator?.placeDetailsModel = placeDetailsModel
             cellsCreator?.dataSource = dataSource
         }
@@ -80,14 +79,6 @@ class MarkerDetailsController: UIViewController {
         }
     }
 
-    fileprivate func loadFishList() {
-        /*guard let model = placeDetailsModel else { return }
-
-        dataSource?.fishForMarker(fromCache: cached, Reach.reachabilityForInternetConnection(), placeId: model.markerID, completionHandler: { (fish: Array<Fish>?) in
-            self.fishArray = fish
-        })*/
-    }
-
     fileprivate func navigate(_ destC: CLLocationCoordinate2D) {
         let location = CLLocationManager().location
         if let clat = location?.coordinate.latitude,
@@ -102,7 +93,7 @@ class MarkerDetailsController: UIViewController {
     }
 }
 
-extension MarkerDetailsController: UITableViewDelegate, UITableViewDataSource {
+extension PlaceDetailsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cellsCreator?.cell(forRowAtIndexPath: indexPath) ?? UITableViewCell()
     }

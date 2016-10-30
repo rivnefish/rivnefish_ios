@@ -6,7 +6,7 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class MarkerDetailsCellCreator {
+class PlaceDetailsCellCreator {
     static let kPictureRatio:CGFloat = 4.0 / 3.0
     enum Cells: Int {
         case placeImages
@@ -89,7 +89,7 @@ class MarkerDetailsCellCreator {
         if !area.isEmpty || !averDepth.isEmpty || !maxDepth.isEmpty {
             cellTypes.append(.placeDetails)
         }
-        let price = placeDetailsModel?.paidFish ?? ""
+        let price = placeDetailsModel?.priceNotes ?? ""
         let boat = placeDetailsModel?.boatUsageReadable ?? ""
         let time = placeDetailsModel?.timeToFishStr ?? ""
         if !price.isEmpty || !boat.isEmpty || !time.isEmpty {
@@ -103,7 +103,7 @@ class MarkerDetailsCellCreator {
         if !content.isEmpty {
             cellTypes.append(.description)
         }
-        let lastUpdate = placeDetailsModel?.modifyDate ?? ""
+        let lastUpdate = placeDetailsModel?.modifiedDate ?? ""
         if !lastUpdate.isEmpty {
             cellTypes.append(.lastUpdateCell)
         }
@@ -167,7 +167,7 @@ class MarkerDetailsCellCreator {
 
     fileprivate func placeImagesCellHeight() -> CGFloat {
         let max = self.contentTable.frame.height - FishImagesCell.kFishCellWidth
-        let h = self.contentTable.frame.width / MarkerDetailsCellCreator.kPictureRatio
+        let h = self.contentTable.frame.width / PlaceDetailsCellCreator.kPictureRatio
         return h < max ? h : max
     }
 
@@ -203,7 +203,7 @@ class MarkerDetailsCellCreator {
 
     func descriptionCell(forIndexPath indexPath: IndexPath) -> TitleLabelCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "TitleLabelCell", for: indexPath) as? TitleLabelCell {
-            cell.setup(withTitle: "Опис", text: placeDetailsModel?.content)
+            cell.setup(withTitle: "Опис", text: placeDetailsModel?.content, isAttributedText: true)
             return cell
         }
         return nil
@@ -219,7 +219,7 @@ class MarkerDetailsCellCreator {
 
     func fishingConditionsCell(forIndexPath indexPath: IndexPath) -> FishingConditionsCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "FishingConditionsCell", for: indexPath) as? FishingConditionsCell {
-            cell.setup(withMainInfo: placeDetailsModel?.permitStr, payment: placeDetailsModel?.paidFish, boatUsage: placeDetailsModel?.boatUsageReadable, fishingTime: placeDetailsModel?.timeToFishStr)
+            cell.setup(withMainInfo: placeDetailsModel?.permitStr, payment: placeDetailsModel?.priceNotes, boatUsage: placeDetailsModel?.boatUsageReadable, fishingTime: placeDetailsModel?.timeToFishStr)
             return cell
         }
         return nil
@@ -254,7 +254,7 @@ class MarkerDetailsCellCreator {
     func lastUpdateCell(forIndexPath indexPath: IndexPath) -> ModifiedDateCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "ModifiedDateCell", for: indexPath) as? ModifiedDateCell {
             if let text = placeDetailsModel?.modifyDateLocalized {
-                cell.setupWithText("Востаннє ця інформація оновлювалась: " + text)
+                cell.setupWithText("Востаннє інформація оновлювалась: " + text)
                 return cell
             }
         }

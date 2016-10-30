@@ -18,7 +18,7 @@ class Place: NSObject, NSCoding {
     var lat: Float
     var lon: Float
     var name: String
-    var date: Date?
+    var date: String?
 
     init(dict: NSDictionary)
     {
@@ -28,9 +28,13 @@ class Place: NSObject, NSCoding {
         let lonStr = dict[kPlaceLonKey] as! String
         lon =  Float(lonStr)!
         name = dict[kPlaceNameKey] as? String ?? ""
-        if let dateStr = dict[kPlaceDateKey] as? String {
-            date = Date()
-        }
+        date = dict[kPlaceDateKey] as? String
+
+        /*if let dateStr = dict[kPlaceDateKey] as? String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-ddHH:mm:ssZ"
+            date = formatter.date(from: dateStr) // Returns "Jul 27, 2015, 12:29 PM" PST
+        }*/
     }
 
     required init(coder decoder: NSCoder) {
@@ -38,7 +42,7 @@ class Place: NSObject, NSCoding {
         lat = decoder.decodeFloat(forKey: kPlaceLatKey)
         lon = decoder.decodeFloat(forKey: kPlaceLonKey)
         name = decoder.decodeObject(forKey: kPlaceNameKey) as? String ?? ""
-        date = decoder.decodeObject(forKey: kPlaceDateKey) as? Date
+        date = decoder.decodeObject(forKey: kPlaceDateKey) as? String
     }
 
     func encode(with aCoder: NSCoder) {

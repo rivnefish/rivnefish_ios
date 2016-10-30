@@ -9,72 +9,72 @@
 import Foundation
 
 let kMarkerIDKey = "id"
-let kNameKey = "name"
-let kAddressKey = "address"
 let kLatKey = "lat"
 let kLonKey = "lng"
+let kNameKey = "name"
+
 let kAreaKey = "area"
-let kContentKey = "content"
-let kConveniencesKey = "conveniences"
-let kContactKey = "contact"
-let kContactNameKey = "contact_name"
-let kMaxDepthKey = "max_depth"
-let kAverageDepthKey = "average_depth"
-// let kDistanceToRivneKey = "distance_to_rivne"
+let kDepthMaxKey = "depth_max"
+let kDepthAvgKey = "depth_avg"
+
 let kPermitKey = "permit"
-let kPrice24hKey = "price_24h"
-let kDayhourPriceKey = "dayhour_price"
-let kBoatUsageKey = "boat_usage"
 let kTimeToFishKey = "time_to_fish"
-let kPaidFishKey = "paid_fish"
-let kNoteKey = "note"
-let kNote2Key = "note2"
-// let kphotoUrlKey = "photo_url"
-let kApprovalKey = "approval"
-let kCreateDateKey = "create_date"
-let kModifyDateKey = "modify_date"
-// let kAuthorIdKey = "author_id"
-// let kPostIdKey = "post_id"
-// let kGalleryIdKey = "gallery_id"
-let kRegionKey = "region"
-let kDistrictKey = "district"
-let kCountryKey = "country"
+let kPrice24hKey = "price_24h"
+let kPriceDayOnlyKey = "price_day_only"
+let kPriceNotesKey = "price_notes"
+let kBoatUsageKey = "boat_usage"
+
+let kAddressKey = "address"
+let kNotesKey = "notes"
+let kConveniencesKey = "conveniences"
+let kContactPhoneKey = "contact_phone"
+let kContactNameKey = "contact_name"
+
+let kRatingsAvgKey = "rating_avg"
+let kRatingsVotesKey = "rating_votes"
+
+let kUpdatedAtKey = "updated_at"
+
+let kPostContent = "post_content"
 let kPhotosKey = "photos"
-let kUrlKey = "url"
 let kFishKey = "place_fishes"
+
+let kUrlKey = "url"
 
 class PlaceDetails: NSObject, NSCoding {
 
     var markerID: Int
     var lat: Float
     var lon: Float
-
     var name: String?
-    var address: String?
+
     var area: Float?
-    var content: String?
+    var maxDepth: String?
+    var averageDepth: String?
+
+    var permit: String?
+    var timeToFish: String?
+    var price24: String?
+    var dayhourPrice: String?
+    var priceNotes: String?
+    var boatUsage: String?
+
+    var address: String?
+    var notes: String?
     var conveniences: String?
     var contact: String?
     var contactName: String?
-    var maxDepth: String?
-    var averageDepth: String?
-    var permit: String?
-    var price24: String?
-    var dayhourPrice: String?
-    var boatUsage: String?
-    var timeToFish: String?
-    var paidFish: String?
-    var note: String?
-    var note2: String?
-    var createDate: String?
-    var modifyDate: String?
-    var region: String?
-    var district: String?
-    var country: String?
+
+    var ratingAvg: String?
+    var ratingVotes: String?
+
+    var modifiedDate: String?
+
     var photoUrls: Array<String>?
-    var url: String?
-    var modifiedDate: Date?
     var fish: Array<PlaceFish>?
+
+    var content: String?
+    var url: String?
 
     var areaStr: String? {
         if let val = area , val != 0.0 {
@@ -125,7 +125,7 @@ class PlaceDetails: NSObject, NSCoding {
     }
 
     var modifyDateLocalized: String? {
-        guard let origDateStr = modifyDate else { return nil }
+        guard let origDateStr = modifiedDate else { return nil }
 
         let kFormat = "yyyy-MM-dd"
         let dayStr = origDateStr.substring(with: origDateStr.startIndex ..< origDateStr.characters.index(origDateStr.startIndex, offsetBy: 10))
@@ -157,64 +157,67 @@ class PlaceDetails: NSObject, NSCoding {
         markerID = decoder.decodeInteger(forKey: kMarkerIDKey)
         lat = decoder.decodeFloat(forKey: kLatKey)
         lon = decoder.decodeFloat(forKey: kLonKey)
-
         name = decoder.decodeObject(forKey: kNameKey) as? String
-        address = decoder.decodeObject(forKey: kAddressKey) as? String
+
         area = decoder.decodeObject(forKey: kAreaKey) as? Float
-        content = decoder.decodeObject(forKey: kContentKey) as? String
-        conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
-        contact = decoder.decodeObject(forKey: kContactKey) as? String
-        contactName = decoder.decodeObject(forKey: kContactNameKey) as? String
-        maxDepth = decoder.decodeObject(forKey: kMaxDepthKey) as? String
-        averageDepth = decoder.decodeObject(forKey: kAverageDepthKey) as? String
+        maxDepth = decoder.decodeObject(forKey: kDepthMaxKey) as? String
+        averageDepth = decoder.decodeObject(forKey: kDepthAvgKey) as? String
+
         permit = decoder.decodeObject(forKey: kPermitKey) as? String
-        price24 = decoder.decodeObject(forKey: kPrice24hKey) as? String
-        dayhourPrice = decoder.decodeObject(forKey: kDayhourPriceKey) as? String
-        boatUsage = decoder.decodeObject(forKey: kBoatUsageKey) as? String
         timeToFish = decoder.decodeObject(forKey: kTimeToFishKey) as? String
-        paidFish = decoder.decodeObject(forKey: kPaidFishKey) as? String
-        note = decoder.decodeObject(forKey: kNoteKey) as? String
-        note2 = decoder.decodeObject(forKey: kNote2Key) as? String
-        createDate = decoder.decodeObject(forKey: kCreateDateKey) as? String
-        modifyDate = decoder.decodeObject(forKey: kModifyDateKey) as? String
-        region = decoder.decodeObject(forKey: kRegionKey) as? String
-        district = decoder.decodeObject(forKey: kDistrictKey) as? String
-        country = decoder.decodeObject(forKey: kCountryKey) as? String
+        price24 = decoder.decodeObject(forKey: kPrice24hKey) as? String
+        dayhourPrice = decoder.decodeObject(forKey: kPriceDayOnlyKey) as? String
+        priceNotes = decoder.decodeObject(forKey: kPriceNotesKey) as? String
+        boatUsage = decoder.decodeObject(forKey: kBoatUsageKey) as? String
+
+        address = decoder.decodeObject(forKey: kAddressKey) as? String
+        notes = decoder.decodeObject(forKey: kNotesKey) as? String
+        conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
+        contact = decoder.decodeObject(forKey: kContactPhoneKey) as? String
+        contactName = decoder.decodeObject(forKey: kContactNameKey) as? String
+
+        modifiedDate = decoder.decodeObject(forKey: kUpdatedAtKey) as? String
+
+        content = decoder.decodeObject(forKey: kPostContent) as? String
         photoUrls = decoder.decodeObject(forKey: kPhotosKey) as? Array
-        url = decoder.decodeObject(forKey: kUrlKey) as? String
         fish = decoder.decodeObject(forKey: kFishKey) as? Array<PlaceFish>
+
+        url = decoder.decodeObject(forKey: kUrlKey) as? String
     }
 
     func encode(with aCoder: NSCoder) {
         aCoder.encode(markerID, forKey: kMarkerIDKey)
         aCoder.encode(lat, forKey: kLatKey)
         aCoder.encode(lon, forKey: kLonKey)
-
         aCoder.encode(name, forKey: kNameKey)
-        aCoder.encode(address, forKey: kAddressKey)
+
         aCoder.encode(area, forKey: kAreaKey)
-        aCoder.encode(content, forKey: kContentKey)
-        aCoder.encode(conveniences, forKey: kConveniencesKey)
-        aCoder.encode(contact, forKey: kContactKey)
-        aCoder.encode(contactName, forKey: kContactNameKey)
-        aCoder.encode(maxDepth, forKey: kMaxDepthKey)
-        aCoder.encode(averageDepth, forKey: kAverageDepthKey)
+        aCoder.encode(maxDepth, forKey: kDepthMaxKey)
+        aCoder.encode(averageDepth, forKey: kDepthAvgKey)
+
         aCoder.encode(permit, forKey: kPermitKey)
-        aCoder.encode(price24, forKey: kPrice24hKey)
-        aCoder.encode(dayhourPrice, forKey: kDayhourPriceKey)
-        aCoder.encode(boatUsage, forKey: kBoatUsageKey)
         aCoder.encode(timeToFish, forKey: kTimeToFishKey)
-        aCoder.encode(paidFish, forKey: kPaidFishKey)
-        aCoder.encode(note, forKey: kNoteKey)
-        aCoder.encode(note2, forKey: kNote2Key)
-        aCoder.encode(createDate, forKey: kCreateDateKey)
-        aCoder.encode(modifyDate, forKey: kModifyDateKey)
-        aCoder.encode(region, forKey: kRegionKey)
-        aCoder.encode(district, forKey: kDistrictKey)
-        aCoder.encode(country, forKey: kCountryKey)
+        aCoder.encode(price24, forKey: kPrice24hKey)
+        aCoder.encode(dayhourPrice, forKey: kPriceDayOnlyKey)
+        aCoder.encode(priceNotes, forKey: kPriceNotesKey)
+        aCoder.encode(boatUsage, forKey: kBoatUsageKey)
+
+        aCoder.encode(address, forKey: kAddressKey)
+        aCoder.encode(notes, forKey: kNotesKey)
+        aCoder.encode(conveniences, forKey: kConveniencesKey)
+        aCoder.encode(contact, forKey: kContactPhoneKey)
+        aCoder.encode(contactName, forKey: kContactNameKey)
+
+        aCoder.encode(ratingAvg, forKey: kRatingsAvgKey)
+        aCoder.encode(ratingVotes, forKey: kRatingsVotesKey)
+
+        aCoder.encode(modifiedDate, forKey: kUpdatedAtKey)
+
+        aCoder.encode(content, forKey: kPostContent)
         aCoder.encode(photoUrls, forKey: kPhotosKey)
-        aCoder.encode(url, forKey: kUrlKey)
         aCoder.encode(fish, forKey: kFishKey)
+
+        aCoder.encode(url, forKey: kUrlKey)
     }
 
     init(dict: NSDictionary)
@@ -222,31 +225,32 @@ class PlaceDetails: NSObject, NSCoding {
         markerID = dict[kMarkerIDKey] as! Int
         lat = Float(dict[kLatKey] as! String)!
         lon = Float(dict[kLonKey] as! String)!
-
         name = dict[kNameKey] as? String
-        address = dict[kAddressKey] as? String
+
         area = dict[kAreaKey] as? Float
-        content = dict[kContentKey] as? String
-        conveniences = dict[kConveniencesKey] as? String
-        contact = dict[kContactKey] as? String
-        contactName = dict[kContactNameKey] as? String
-        maxDepth = dict[kMaxDepthKey] as? String
-        averageDepth = dict[kAverageDepthKey] as? String
+        maxDepth = dict[kDepthMaxKey] as? String
+        averageDepth = dict[kDepthAvgKey] as? String
+
         permit = dict[kPermitKey] as? String
-        price24 = dict[kPrice24hKey] as? String
-        dayhourPrice = dict[kDayhourPriceKey] as? String
-        boatUsage = dict[kBoatUsageKey] as? String
         timeToFish = dict[kTimeToFishKey] as? String
-        paidFish = dict[kPaidFishKey] as? String
-        note = dict[kNoteKey] as? String
-        note2 = dict[kNote2Key] as? String
-        createDate = dict[kCreateDateKey] as? String
-        modifyDate = dict[kModifyDateKey] as? String
-        region = dict[kRegionKey] as? String
-        district = dict[kDistrictKey] as? String
-        country = dict[kCountryKey] as? String
+        price24 = dict[kPrice24hKey] as? String
+        dayhourPrice = dict[kPriceDayOnlyKey] as? String
+        priceNotes = dict[kPriceNotesKey] as? String
+        boatUsage = dict[kBoatUsageKey] as? String
+
+        address = dict[kAddressKey] as? String
+        notes = dict[kNotesKey] as? String
+        conveniences = dict[kConveniencesKey] as? String
+        contact = dict[kContactPhoneKey] as? String
+        contactName = dict[kContactNameKey] as? String
+
+        ratingAvg = dict[kRatingsAvgKey] as? String
+        ratingVotes = dict[kRatingsVotesKey] as? String
+
+        modifiedDate = dict[kUpdatedAtKey] as? String
+
+        content = dict[kPostContent] as? String
         photoUrls = dict[kPhotosKey] as? Array<String>
-        url = dict[kUrlKey] as? String
         if let fishDictArr = dict[kFishKey] as? Array<Dictionary<String, Any>> {
             fish = Array<PlaceFish>()
             for fishDict in fishDictArr {
@@ -255,5 +259,6 @@ class PlaceDetails: NSObject, NSCoding {
                 }
             }
         }
+        url = dict[kUrlKey] as? String
     }
 }
