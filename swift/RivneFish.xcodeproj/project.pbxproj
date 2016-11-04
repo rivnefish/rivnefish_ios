@@ -36,6 +36,7 @@
 		2895B9631DB804F000C03313 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2895B9621DB804F000C03313 /* Place.swift */; };
 		2895B9651DBCA57A00C03313 /* PlaceFish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2895B9641DBCA57A00C03313 /* PlaceFish.swift */; };
 		2895B9691DBEB3CB00C03313 /* FishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2895B9681DBEB3CB00C03313 /* FishViewModel.swift */; };
+		28ABF2281DCCE80C003D3CC7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ABF2271DCCE80C003D3CC7 /* Constants.swift */; };
 		28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */; };
 		28B74BE51D64AD7000AB7FAA /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BDF1D64AD7000AB7FAA /* 18.png */; };
 		28B74BE61D64AD7000AB7FAA /* 18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B74BE01D64AD7000AB7FAA /* 18@2x.png */; };
@@ -240,6 +241,7 @@
 		2895B9621DB804F000C03313 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		2895B9641DBCA57A00C03313 /* PlaceFish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceFish.swift; sourceTree = "<group>"; };
 		2895B9681DBEB3CB00C03313 /* FishViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishViewModel.swift; path = model/FishViewModel.swift; sourceTree = "<group>"; };
+		28ABF2271DCCE80C003D3CC7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = model/Constants.swift; sourceTree = "<group>"; };
 		28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneNumberFormatter.swift; path = utils/PhoneNumberFormatter.swift; sourceTree = "<group>"; };
 		28B74BDF1D64AD7000AB7FAA /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 18.png; path = resources/fish/18.png; sourceTree = "<group>"; };
 		28B74BE01D64AD7000AB7FAA /* 18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "18@2x.png"; path = "resources/fish/18@2x.png"; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 		282A5F941D5CCD0200B18F86 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				28FACD6B1C834661001DBF29 /* ActualityValidator.swift */,
 				282A5F951D5CCD3600B18F86 /* AlertUtils.swift */,
 				28B74BDD1D644C4800AB7FAA /* PhoneNumberFormatter.swift */,
 			);
@@ -703,12 +706,12 @@
 			children = (
 				3EE306CB1B47B399003225FF /* DataParser.swift */,
 				3E8C65AB1B35EAC8005BD52C /* DataSource.swift */,
+				28ABF2271DCCE80C003D3CC7 /* Constants.swift */,
 				3EE306D61B4A73DE003225FF /* Country.swift */,
 				3EA745531BBEFA5600AB470A /* Fish.swift */,
 				3EE306D21B4A65A3003225FF /* PlaceDetails.swift */,
 				28FACD671C82F336001DBF29 /* ModifiedDate.swift */,
 				28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */,
-				28FACD6B1C834661001DBF29 /* ActualityValidator.swift */,
 				2895B9621DB804F000C03313 /* Place.swift */,
 				2895B9641DBCA57A00C03313 /* PlaceFish.swift */,
 				2895B9681DBEB3CB00C03313 /* FishViewModel.swift */,
@@ -1256,6 +1259,7 @@
 				282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */,
 				281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */,
 				3E4BD7841AD7194E0036C8CA /* AppDelegate.swift in Sources */,
+				28ABF2281DCCE80C003D3CC7 /* Constants.swift in Sources */,
 				3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */,
 				3EE306D31B4A65A3003225FF /* PlaceDetails.swift in Sources */,
 			);

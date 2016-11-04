@@ -35,7 +35,8 @@ let kRatingsVotesKey = "rating_votes"
 
 let kUpdatedAtKey = "updated_at"
 
-let kPostContent = "post_content"
+// let kPostContent = "post_content"
+let kPostContent = "description"
 let kPhotosKey = "photos"
 let kFishKey = "place_fishes"
 
@@ -142,9 +143,9 @@ class PlaceDetails: NSObject, NSCoding {
 
     var timeToFishStr: String? {
         if let val = timeToFish {
-            if val == "daylight" {
+            if val == "day_only" {
                 return "лише вдень"
-            } else if val == "24h" {
+            } else if val == "full_day" {
                 return "цілодобово"
             } else if val == "unknown" {
                 return nil

@@ -11,9 +11,11 @@ import Foundation
 class FishViewModel {
     let name: String
     let amount: Int
+    let image: UIImage?
 
-    init(name: String, amount: Int) {
-        self.name = name
-        self.amount = amount
+    init(name: String?, amount: Int?, image: UIImage?) {
+        self.name = name ?? ""
+        self.amount = amount ?? 0
+        self.image = image
     }
 }

@@ -8,12 +8,10 @@
 
 class NetworkDataSource {
 
-    static let kHost = "http://new.rivnefish.com"
-
     static var sharedInstace = NetworkDataSource()
 
     func places(_ completionHandler: @escaping (_ markers: Array<Place>?) -> Void) {
-        let urlStr = NetworkDataSource.kHost + "/api/v1/places"
+        let urlStr = Constants.Network.kPlacesUrl
         HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {
             (data: Data?, response: URLResponse?, error: NSError?) in
 
@@ -36,7 +34,7 @@ class NetworkDataSource {
     }
 
     func placeDetails(id: Int, completionHandler: @escaping (_ placeDetails: PlaceDetails?) -> Void) {
-        let urlStr = NetworkDataSource.kHost + "/api/v1/places/" + String(id)
+        let urlStr = Constants.Network.kPlacesUrl + "/\(id)"
         HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {
             (data: Data?, response: URLResponse?, error: NSError?) in
 
@@ -59,12 +57,12 @@ class NetworkDataSource {
     }
 
     func placesLastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
-        let urlStr = NetworkDataSource.kHost + "/api/v1/places/lastchanges"
+        let urlStr = Constants.Network.kPlacesLastChangesUrl
         lastChanges(urlStr: urlStr, completionHandler: completionHandler)
     }
 
     func fishLastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
-        let urlStr = NetworkDataSource.kHost + "/api/v1/fish/lastchanges"
+        let urlStr = Constants.Network.kFishLastChangesUrl
         lastChanges(urlStr: urlStr, completionHandler: completionHandler)
     }
 
@@ -90,7 +88,7 @@ class NetworkDataSource {
     }
 
     func fishAll(fishReceived: @escaping (_ fish: Array<Fish>?) -> Void) {
-        let urlStr = NetworkDataSource.kHost + "/api/v1/fish"
+        let urlStr = Constants.Network.kFishUrl
         HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
@@ -112,7 +110,7 @@ class NetworkDataSource {
     }
 
     func fishForMarkerID(_ id: Int, fishReceived: @escaping (_ fish: Array<Fish>?) -> Void) {
-        let urlStr = NetworkDataSource.kHost + "/api/v1/fish/\(id)"
+        let urlStr = Constants.Network.kFishUrl + "/\(id)"
         HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {

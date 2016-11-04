@@ -20,10 +20,10 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
         }
     }
 
-    var fishArray: Array<Fish>?
+    var fishArray: Array<FishViewModel>?
     var imagesArray: Array<UIImage?>!
 
-    func setup(withFishArray fishArray: Array<Fish>) {
+    func setup(withFishArray fishArray: Array<FishViewModel>) {
         self.fishArray = fishArray
 
         correctCollectionViewOffset()
@@ -63,7 +63,7 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
             let fish = fishArray?[(indexPath as NSIndexPath).row] {
             cell.image = fish.image
             cell.name = fish.name
-            cell.amount = 0
+            cell.amount = fish.amount
             cell.updateCell()
             return cell
         }

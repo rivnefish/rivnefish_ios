@@ -7,6 +7,7 @@
 //
 
 extension UILabel {
+    // TODO: Do not use it for now, might crash if html too big or contains video
     func setHtml(text: String, removingTextColor: Bool = false) {
         if !text.isEmpty,
             let attrData = text.data(using: String.Encoding.unicode, allowLossyConversion: true),

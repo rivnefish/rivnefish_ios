@@ -8,12 +8,7 @@
 
 import UIKit
 
-let placesUrl = DataSource.kHost + "/api/v1/places"
-let fishUrl = DataSource.kHost + "/api/v1/fish"
-
 class DataSource: NSObject {
-
-    static let kHost = "http://new.rivnefish.com"
 
     func places(_ rechability: Reach, completionHandler: @escaping (_ markers: Array<Place>?) -> Void) {
         // If there is online connection
@@ -63,20 +58,20 @@ class DataSource: NSObject {
     }
 
     func savePlacesToCache(places: Array<Place>) {
-        TMCache.shared().setObject(places as NSArray, forKey: placesUrl)
+        TMCache.shared().setObject(places as NSArray, forKey: Constants.Network.kPlacesUrl)
     }
 
     func savePlaceDetailsToCache(placeDetails: PlaceDetails) {
-        let placeKey = "placeDetails:" + String(placeDetails.markerID)
+        let placeKey = Constants.Cache.kPlaceDetailsKey + String(placeDetails.markerID)
         TMCache.shared().setObject(placeDetails, forKey: placeKey)
     }
 
     func removePlacesFromCache() {
-        TMCache.shared().removeObject(forKey: placesUrl)
+        TMCache.shared().removeObject(forKey: Constants.Network.kPlacesUrl)
     }
 
     func placesFromCache(handler: @escaping (Array<Place>?) -> Void) {
-        let placesKey = "places"
+        let placesKey = Constants.Cache.kPlacesKey
 
         TMCache.shared().object(forKey: placesKey) { (cache, key, object) in
             if let nsArr = TMCache.shared().object(forKey: placesKey) as? NSArray,
@@ -88,7 +83,7 @@ class DataSource: NSObject {
     }
 
     func placeDetailsFromCache(id: Int, handler: @escaping (PlaceDetails?) -> Void) {
-        let placeKey = "placeDetails:" + String(id)
+        let placeKey = Constants.Cache.kPlaceDetailsKey + String(id)
         TMCache.shared().object(forKey: placeKey) { (cache, key, object) in
             handler(object as? PlaceDetails)
         }
@@ -109,7 +104,6 @@ class DataSource: NSObject {
             } else {
                 self.requestPlaceDetailsFromNetwork(id: place.id, storeToCache: !isPlaceUpToDate, completionHandler: completionHandler)
             }
-
         }
     }
 
@@ -159,64 +153,14 @@ class DataSource: NSObject {
     }
 
     private func allFishFromCache(handler: @escaping (_ fish: Array<Fish>?) -> Void) {
-        TMCache.shared().object(forKey: fishUrl) { (cache, key, object) in
+        TMCache.shared().object(forKey: Constants.Network.kFishUrl) { (cache, key, object) in
             handler(object as? Array<Fish>)
         }
     }
 
     private func saveAllFishToCache(fish: Array<Fish>) {
-        TMCache.shared().setObject(fish as NSArray, forKey: fishUrl)
+        TMCache.shared().setObject(fish as NSArray, forKey: Constants.Network.kFishUrl)
     }
-
-    /*func fishForMarker(fromCache: Bool, _ rechability: Reach, placeId: Int, completionHandler: @escaping (_ fish: Array<Fish>?) -> Void) {
-        if fromCache {
-            fishFromCache(placeId: placeId) { cachedFish in
-                if cachedFish != nil {
-                    completionHandler(cachedFish)
-                } else {
-                    self.sortedFishFromNetwork(placeId: placeId, saveToCache: true, handler: completionHandler)
-                }
-            }
-        } else {
-            self.sortedFishFromNetwork(placeId: placeId, saveToCache: true, handler: completionHandler)
-        }
-    }
-
-    private func sortedFishFromNetwork(placeId: Int, saveToCache: Bool, handler: @escaping (_ fish: Array<Fish>?) -> Void) {
-        NetworkDataSource.sharedInstace.fishForMarkerID(placeId, fishReceived: { (fishArr: Array<Fish>?) in
-            if let fish = fishArr {
-                let sortedFish = self.sortedFishArray(fish)
-                if saveToCache {
-                    self.saveFishToCache(placeId: placeId, fish: sortedFish)
-                }
-                handler(sortedFish)
-            } else {
-                handler(nil)
-            }
-        })
-    }
-
-    private func saveFishToCache(placeId: Int, fish: Array<Fish>) {
-        let fishCacheId = "Fish:" + String(placeId)
-        TMCache.shared().setObject(fish as NSArray, forKey: fishCacheId)
-    }
-
-    private func fishFromCache(placeId: Int, handler: @escaping (_ fish: Array<Fish>?) -> Void) {
-        let fishCacheId = "Fish:" + String(placeId)
-        TMCache.shared().object(forKey: fishCacheId) { (cache, key, object) in
-            if let arr = object as? Array<Fish> {
-                handler(self.sortedFishArray(arr))
-            } else {
-                handler(nil)
-            }
-        }
-    }
-
-    private func sortedFishArray(_ fish: Array<Fish>) -> Array<Fish> {
-        return fish.sorted {
-            return $0.amount ?? 0 < $1.amount ?? 0
-        }
-    }*/
 
     func loadImages(_ urlsArr: Array<String>?, completionHandler: @escaping ((String, UIImage?) -> Void)) {
         if let urlStringArr = urlsArr {

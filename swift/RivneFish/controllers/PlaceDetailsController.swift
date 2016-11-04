@@ -9,9 +9,12 @@
 import UIKit
 
 class PlaceDetailsController: UIViewController {
-    var cellsCreator: PlaceDetailsCellCreator?
 
+    var cellsCreator: PlaceDetailsCellCreator?
     var allFish: Array<Fish>?
+    var cached: Bool = false
+    var dataSource: DataSource?
+    var currentLocation: CLLocation?
 
     var place: Place? {
         didSet {
@@ -26,31 +29,42 @@ class PlaceDetailsController: UIViewController {
         }
     }
 
-    var cached: Bool = false
-
     var placeDetailsModel: PlaceDetails? {
         didSet {
             // TODO:
             // validate()
 
-            fishArray = allFish?.filter {
+            guard let placeDetailsFish = placeDetailsModel?.fish else { return }
+
+            var fishViewModelArr = Array<FishViewModel>()
+
+            let _ = allFish?.filter {
                 let detailsId = $0.id
-                let arr = placeDetailsModel?.fish?.filter { $0.fishId == detailsId }
-                return arr?.count ?? 0 > 0 && arr?[0] != nil
+                let arr = placeDetailsFish.filter { $0.fishId == detailsId }
+
+                if arr.count > 0 {
+                    let placeFish = arr[0]
+                    let viewModel = FishViewModel(name: $0.name, amount: placeFish.amount, image: $0.image)
+
+                    fishViewModelArr.append(viewModel)
+                    return true
+                }
+                return false
             }
 
+            fishArray = fishViewModelArr.sorted { return $0.amount > $1.amount }
             cellsCreator?.placeDetailsModel = placeDetailsModel
             contentTable?.reloadData()
         }
     }
-    var dataSource: DataSource?
-    var fishArray: Array<Fish>? {
+
+    var fishArray: Array<FishViewModel>? {
         didSet {
             cellsCreator?.fishArray = fishArray
+            
             contentTable?.reloadData()
         }
     }
-    var currentLocation: CLLocation?
 
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = self.placeDetailsModel?.name;
@@ -62,10 +76,6 @@ class PlaceDetailsController: UIViewController {
             cellsCreator?.placeDetailsModel = placeDetailsModel
             cellsCreator?.dataSource = dataSource
         }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
 
     @IBAction func navigateButtonPressed(_ sender: UIBarButtonItem) {
