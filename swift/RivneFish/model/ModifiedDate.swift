@@ -9,11 +9,10 @@
 let kLastChangesKey = "lastchanges"
 
 class ModifiedDate {
-
-    var number: Int?
+    var hash: String?
 
     init(dict: NSDictionary)
     {
-        number = dict[kLastChangesKey] as? Int
+        hash = dict[kLastChangesKey] as? String
     }
 }

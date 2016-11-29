@@ -14,4 +14,10 @@ class AlertUtils {
         alert.addAction(okAction)
         return alert
     }
+
+    static func connectionErrorAlert() -> UIAlertController {
+        let title = NSLocalizedString("Помилка Підключення", comment: "ConnectionError")
+        let message = NSLocalizedString("Немає підключення або відсутній звя'зок з сервером", comment: "You are offline or there is no connection with server")
+        return AlertUtils.okeyAlertWith(title: title, message: message)
+    }
 }

@@ -10,16 +10,17 @@ import Foundation
 
 class ActualityValidator {
     static var actualityValidator = ActualityValidator()
-    var serverLastChanges = 0
+    var serverMarkersHash: String? = nil
+    var serverFishHash: String? = nil
 
     func checkPlaces(_ completionHandler: @escaping (_ isOutdated: Bool) -> Void) {
-        NetworkDataSource.sharedInstace.placesLastChanges({ (lastChanges: Int) in
+        NetworkDataSource.sharedInstace.placesLastChanges({ (lastChanges: String?) in
             var outdated = true
             let defaults = UserDefaults.standard
-            self.serverLastChanges = lastChanges
+            self.serverMarkersHash = lastChanges
 
-            let lastSavedNum = defaults.integer(forKey: Constants.Cache.kPlacesLastChangesKey)
-            if lastSavedNum == self.serverLastChanges {
+            let lastSavedHash = defaults.string(forKey: Constants.Cache.kPlacesLastChangesKey)
+            if let serverHash = self.serverMarkersHash, serverHash == lastSavedHash {
                 outdated = false
             }
             completionHandler(outdated)
@@ -27,13 +28,13 @@ class ActualityValidator {
     }
 
     func checkFish(_ completionHandler: @escaping (_ isOutdated: Bool) -> Void) {
-        NetworkDataSource.sharedInstace.fishLastChanges({ (lastChanges: Int) in
+        NetworkDataSource.sharedInstace.fishLastChanges({ (lastChanges: String?) in
             var outdated = true
             let defaults = UserDefaults.standard
-            self.serverLastChanges = lastChanges
+            self.serverFishHash = lastChanges
 
-            let lastSavedNum = defaults.integer(forKey: Constants.Cache.kFishLastChangesKey)
-            if lastSavedNum == self.serverLastChanges {
+            let lastSavedHash = defaults.string(forKey: Constants.Cache.kFishLastChangesKey)
+            if let severChanges = self.serverFishHash, severChanges == lastSavedHash {
                 outdated = false
             }
             completionHandler(outdated)
@@ -52,11 +53,15 @@ class ActualityValidator {
 
     func updatePlacesLastChangesDate() {
         let defaults = UserDefaults.standard
-        defaults.set(self.serverLastChanges, forKey: Constants.Cache.kPlacesLastChangesKey)
+        if let hash = serverMarkersHash {
+            defaults.set(hash, forKey: Constants.Cache.kPlacesLastChangesKey)
+        }
     }
 
     func updateFishLastChangesDate() {
         let defaults = UserDefaults.standard
-        defaults.set(self.serverLastChanges, forKey: Constants.Cache.kFishLastChangesKey)
+        if let hash = serverFishHash {
+            defaults.set(hash, forKey: Constants.Cache.kFishLastChangesKey)
+        }
     }
 }

@@ -58,7 +58,7 @@ class DataSource: NSObject {
     }
 
     func savePlacesToCache(places: Array<Place>) {
-        TMCache.shared().setObject(places as NSArray, forKey: Constants.Network.kPlacesUrl)
+        TMCache.shared().setObject(places as NSArray, forKey: Constants.Cache.kPlacesKey)
     }
 
     func savePlaceDetailsToCache(placeDetails: PlaceDetails) {
@@ -67,7 +67,7 @@ class DataSource: NSObject {
     }
 
     func removePlacesFromCache() {
-        TMCache.shared().removeObject(forKey: Constants.Network.kPlacesUrl)
+        TMCache.shared().removeObject(forKey: Constants.Cache.kPlacesKey)
     }
 
     func placesFromCache(handler: @escaping (Array<Place>?) -> Void) {
@@ -153,13 +153,13 @@ class DataSource: NSObject {
     }
 
     private func allFishFromCache(handler: @escaping (_ fish: Array<Fish>?) -> Void) {
-        TMCache.shared().object(forKey: Constants.Network.kFishUrl) { (cache, key, object) in
+        TMCache.shared().object(forKey: Constants.Cache.kFishKey) { (cache, key, object) in
             handler(object as? Array<Fish>)
         }
     }
 
     private func saveAllFishToCache(fish: Array<Fish>) {
-        TMCache.shared().setObject(fish as NSArray, forKey: Constants.Network.kFishUrl)
+        TMCache.shared().setObject(fish as NSArray, forKey: Constants.Cache.kFishKey)
     }
 
     func loadImages(_ urlsArr: Array<String>?, completionHandler: @escaping ((String, UIImage?) -> Void)) {

@@ -50,12 +50,11 @@ class DataParser {
         }
     }
 
-    func parseLastChanges(_ jsonData: Data) -> Int {
+    func parseLastChanges(_ jsonData: Data) -> String? {
         let dateDict = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? NSDictionary
-        var number = 0
-        if let dict = dateDict, let num = ModifiedDate(dict: dict).number {
-            number = num
+        if let dict = dateDict {
+            return ModifiedDate(dict: dict).hash
         }
-        return number
+        return nil
     }
 }

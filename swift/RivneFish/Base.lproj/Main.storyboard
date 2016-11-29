@@ -14,7 +14,7 @@
         <scene sceneID="ITO-DF-wXB">
             <objects>
                 <navigationController id="vCg-mE-lDV" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fcl-yY-eAk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Fcl-yY-eAk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,10 +103,35 @@
                                     <outlet property="delegate" destination="gek-IZ-hcr" id="ew6-mw-Fru"/>
                                 </connections>
                             </tableView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vj7-tS-4tj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fNu-JU-ZMM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-HZ-RBH">
+                                            <rect key="frame" x="177" y="291" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="bU8-ay-CZD"/>
+                                                <constraint firstAttribute="width" constant="20" id="zKI-VI-nnj"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Do2-HZ-RBH" firstAttribute="centerY" secondItem="fNu-JU-ZMM" secondAttribute="centerY" id="ZHS-6L-ypc"/>
+                                        <constraint firstItem="Do2-HZ-RBH" firstAttribute="centerX" secondItem="fNu-JU-ZMM" secondAttribute="centerX" id="jJb-YD-kQY"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Vj7-tS-4tj" firstAttribute="leading" secondItem="UPD-5m-bxZ" secondAttribute="leading" id="357-8O-C1D"/>
+                            <constraint firstItem="Vj7-tS-4tj" firstAttribute="top" secondItem="bOn-VD-FGU" secondAttribute="bottom" id="67d-5a-q5A"/>
+                            <constraint firstAttribute="trailing" secondItem="Vj7-tS-4tj" secondAttribute="trailing" id="CtF-w3-yTD"/>
                             <constraint firstItem="BDH-hY-OQZ" firstAttribute="top" secondItem="PpS-ET-jkm" secondAttribute="bottom" id="c6F-e5-FJY"/>
+                            <constraint firstItem="BDH-hY-OQZ" firstAttribute="top" secondItem="Vj7-tS-4tj" secondAttribute="bottom" id="nXq-Sl-Q19"/>
                             <constraint firstItem="PpS-ET-jkm" firstAttribute="leading" secondItem="UPD-5m-bxZ" secondAttribute="leading" id="oMq-9x-jsh"/>
                             <constraint firstAttribute="trailing" secondItem="PpS-ET-jkm" secondAttribute="trailing" id="pNp-EM-XYQ"/>
                             <constraint firstItem="PpS-ET-jkm" firstAttribute="top" secondItem="bOn-VD-FGU" secondAttribute="bottom" id="ryM-Dm-HEJ"/>
@@ -123,11 +148,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="contentTable" destination="PpS-ET-jkm" id="G88-4n-KTc"/>
+                        <outlet property="loadingBlur" destination="Vj7-tS-4tj" id="PPT-Hk-IcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2c-7T-uZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1223" y="508"/>
+            <point key="canvasLocation" x="1221.5999999999999" y="507.79610194902551"/>
         </scene>
     </scenes>
     <resources>

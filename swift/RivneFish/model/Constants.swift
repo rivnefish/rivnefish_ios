@@ -21,5 +21,6 @@ class Constants {
 
         static let kPlacesKey = "Places"
         static let kPlaceDetailsKey = "PlaceDetails:"
+        static let kFishKey = "Fish"
     }
 }

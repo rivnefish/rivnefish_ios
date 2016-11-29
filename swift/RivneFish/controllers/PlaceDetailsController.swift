@@ -10,6 +10,8 @@ import UIKit
 
 class PlaceDetailsController: UIViewController {
 
+    @IBOutlet weak var loadingBlur: UIVisualEffectView!
+
     var cellsCreator: PlaceDetailsCellCreator?
     var allFish: Array<Fish>?
     var cached: Bool = false
@@ -34,6 +36,7 @@ class PlaceDetailsController: UIViewController {
             // TODO:
             // validate()
 
+            loadingBlur.isHidden = true
             guard let placeDetailsFish = placeDetailsModel?.fish else { return }
 
             var fishViewModelArr = Array<FishViewModel>()

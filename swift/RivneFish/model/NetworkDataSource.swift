@@ -56,21 +56,21 @@ class NetworkDataSource {
         } as (Data?, URLResponse?, NSError?) -> Void)
     }
 
-    func placesLastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
+    func placesLastChanges(_ completionHandler: @escaping (_ lastChanges: String?) -> Void) {
         let urlStr = Constants.Network.kPlacesLastChangesUrl
         lastChanges(urlStr: urlStr, completionHandler: completionHandler)
     }
 
-    func fishLastChanges(_ completionHandler: @escaping (_ lastChanges: Int) -> Void) {
+    func fishLastChanges(_ completionHandler: @escaping (_ lastChanges: String?) -> Void) {
         let urlStr = Constants.Network.kFishLastChangesUrl
         lastChanges(urlStr: urlStr, completionHandler: completionHandler)
     }
 
-    private func lastChanges(urlStr: String, completionHandler: @escaping (_ lastChanges: Int) -> Void) {
+    private func lastChanges(urlStr: String, completionHandler: @escaping (_ lastChanges: String?) -> Void) {
         HTTPClient.sharedInstance.request(urlStr as NSString, responseCallback: {(data: Data?, response: URLResponse?, error: NSError?) in
 
             if self.errorInResponse(response) {
-                completionHandler(0)
+                completionHandler(nil)
                 return;
             }
 

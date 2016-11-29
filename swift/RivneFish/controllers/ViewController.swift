@@ -36,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     // will be init in viewDidLoad
     var reach: Reach!
     
-    var defaultLocation: CLLocation!
+    var defaultLocation: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +56,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
         
         // TODO: Save it not here
-        defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
+        //defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
     }
+
+    // MARK: Reachability
 
     func initRechability() {
         self.reach = Reach.reachabilityForInternetConnection()
@@ -101,8 +103,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
         else
         {
-            googleMapView.animate(to: GMSCameraPosition(target: defaultLocation.coordinate, zoom: 10, bearing: 0, viewingAngle: 0))
-            locationManager.stopUpdatingLocation()
+            if let location = defaultLocation {
+                googleMapView.animate(to: GMSCameraPosition(target: location.coordinate, zoom: 10, bearing: 0, viewingAngle: 0))
+                locationManager.stopUpdatingLocation()
+            }
         }
     }
 
@@ -133,8 +137,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func loadPlaces() {
         dataSource.places(self.reach, completionHandler: { (placesArr: Array<Place>?) in
-            // self.addMarkersToAppleMaps(markers)
-
             guard let places = placesArr else { return }
 
             if  places.count == 0 {
@@ -153,11 +155,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         })
     }
 
-    // TODO: move to some ui utils class
     func showConnectionErrorAlert() {
-        let title = NSLocalizedString("Помилка Підключення", comment: "ConnectionError")
-        let message = NSLocalizedString("Немає підключення або відсутній звя'зок з сервером", comment: "You are offline or there is no connection with server")
-        let alert = AlertUtils.okeyAlertWith(title: title, message: message)
+        let alert = AlertUtils.connectionErrorAlert()
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -219,12 +218,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         if let controller = markerDetailsController {
             controller.dataSource = dataSource
             controller.currentLocation = currentLocation
-            /*if let markerModel = currentPlace {
-                controller.marker = markerModel
-                dataSource.fishForMarker(self.reach, marker: markerModel, completionHandler: { (fish: NSArray) in
-                    controller.fishArray = fish as? Array<Fish>
-                })
-            }*/
 
             if let fish = allFish {
                 controller.allFish = fish
@@ -268,152 +261,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         if let markerModel: Place = marker.userData as? Place {
             self.currentPlace = markerModel
-            self.goToMarkerDetailsView()
-        }
-    }
-
-    // MARK: - APPLE MAPS
-    func addMarkersToAppleMaps(_ places: NSArray) {
-        for place in places as! [Place] {
-            self.markersAnnotations.append(MarkerAnnotation(place: place))
-        }
-        
-        // TODO: add all annotatios to main map, just for testing, will be removed
-        // self.mapView.addAnnotations(self.markersAnnotations)
-        
-        // TODO: my clustering
-        // self.showAnnotations();
-        
-        // TODO: apple way clustering
-        self.allAnnotationsMapView.addAnnotations(self.markersAnnotations)
-        
-        DispatchQueue.main.async(execute: {
-            
-            for place in places as! [Place] {
-                self.markersAnnotations.append(MarkerAnnotation(place: place))
-            }
-            
-            // TODO: apple way clustering
-            // self.updateAll()
-        })
-    }
-    
-    func showAnnotations() {
-        // remove all annotations
-        for annotation in self.markersAnnotations {
-            self.mapView.removeAnnotation(annotation)
-        }
-
-        // add new
-        var proceededAnnotations: Array<MarkerAnnotation> = Array()
-
-        for i in 0 ..< self.markersAnnotations.count {
-            // Take marker if it is not proceeded yet
-            let annotation: MarkerAnnotation = self.markersAnnotations[i]
-            if !proceededAnnotations.contains(annotation) {
-                proceededAnnotations.append(annotation)
-                // clear child annotations
-                annotation.containedAnnotations = Array()
-
-                // Loop all annotations and find closest to took annotation
-                for j in i + 1 ..< self.markersAnnotations.count {
-                    // Check if annotation is not proceeded
-                    let childAnnotation = self.markersAnnotations[j]
-                    if !proceededAnnotations.contains(childAnnotation) {
-
-                        // Check how childAnnotation is close it to annotation
-                        // And add it as child or skip
-
-                        let p1 = self.mapView.convert(annotation.coordinate, toPointTo: self.mapView)
-                        let p2 = self.mapView.convert(childAnnotation.coordinate, toPointTo: self.mapView)
-                        let xDist = (p2.x - p1.x);
-                        let yDist = (p2.y - p1.y);
-                        let distance = sqrt((xDist * xDist) + (yDist * yDist));
-
-                        if distance < 40 {
-                            annotation.containedAnnotations!.append(childAnnotation)
-                            proceededAnnotations.append(childAnnotation)
-                        }
-                    }
-                }
-                self.mapView.addAnnotation(annotation)
-            }
-        }
-    }
-
-
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        // apple way clustering
-        updateAll()
-        
-        // TODO: my way
-        // self.showAnnotations();
-    }
-
-    // MARK: MKMapViewDelegate
-
-    private func mapView(_ mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
-
-        for annotationView: MKAnnotationView in views {
-            if let annotation: MarkerAnnotation = annotationView.annotation as? MarkerAnnotation {
-                if annotation.clusterAnnotation != nil {
-                    // animate the annotation from it's old container's coordinate, to its actual coordinate
-                    let actualCoordinate: CLLocationCoordinate2D = annotation.coordinate
-                    let containerCoordinate: CLLocationCoordinate2D = annotation.clusterAnnotation!.coordinate
-                    // since it's displayed on the map, it is no longer contained by another annotation,
-                    // (We couldn't reset this in -updateVisibleAnnotations because we needed the reference to it here
-                    // to get the containerCoordinate)
-                    annotation.clusterAnnotation = nil
-                    annotation.coordinate = containerCoordinate
-
-                    UIView.animate(withDuration: 0.3, animations: {
-                        annotation.coordinate = actualCoordinate
-                    })
-                }
-            }
-        }
-    }
-
-    private func mapView(_ mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        var view: MKAnnotationView? = nil
-        if (annotation is MarkerAnnotation) {
-            let reuseId = "MarkerAnnotationViewId"
-            view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-            let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
-            if view == nil {
-                let markerAnnotation: MarkerAnnotation = annotation as! MarkerAnnotation
-                view = MarkerAnnotationView.instanceFromNib(markerAnnotation.containedItemsCount)
-            } else {
-                let markerAnnotationView: MarkerAnnotationView = view as! MarkerAnnotationView
-                markerAnnotationView.annotation = markerAnnotation
-                markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
-                markerAnnotationView.updateImageAndText()
-            }
-            view?.canShowCallout = (markerAnnotation.containedItemsCount == 0)
-        }
-        return view
-    }
-
-    func updateAll() {
-        for markerAnnotation: MarkerAnnotation in markersAnnotations as [MarkerAnnotation] {
-            let annotView = mapView.view(for: markerAnnotation);
-
-            if annotView != nil {
-                let markerAnnotationView: MarkerAnnotationView = annotView as! MarkerAnnotationView
-
-                markerAnnotationView.annotation = markerAnnotation
-                markerAnnotationView.itemsCount = markerAnnotation.containedItemsCount
-                markerAnnotationView.updateImageAndText()
-                markerAnnotationView.canShowCallout = (markerAnnotation.containedItemsCount == 0)
-            }
-        }
-    }
-
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let annotation: MarkerAnnotation? = view.annotation as? MarkerAnnotation
-        if let place: Place = annotation?.place
-        {
-            self.currentPlace = place
             self.goToMarkerDetailsView()
         }
     }
