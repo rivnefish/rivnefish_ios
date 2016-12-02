@@ -146,12 +146,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/ui/UILabelExtension.swift"
-                  timestampString = "502130370.796221"
+                  timestampString = "502358713.194403"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "86">
+                  offsetFromSymbolStart = "80">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -161,60 +161,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/ui/UILabelExtension.swift"
-                  timestampString = "502130370.797491"
+                  timestampString = "502358713.195677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "145">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "499969177.102936"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "places(_:completionHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rivnefish.DataSource.(places (__ObjC.Reach, completionHandler : (Swift.Optional&lt;Swift.Array&lt;Rivnefish.Place&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Rivnefish"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130370.800744"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "339">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rivnefish.DataSource.(places (__ObjC.Reach, completionHandler : (Swift.Optional&lt;Swift.Array&lt;Rivnefish.Place&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1).(closure #1)"
-                  moduleName = "Rivnefish"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130370.802034"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "67">
+                  offsetFromSymbolStart = "132">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -232,22 +184,6 @@
             startingLineNumber = "250"
             endingLineNumber = "250"
             landmarkName = "mapView(_:markerInfoContents:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/controllers/ViewController.swift"
-            timestampString = "501028137.423777"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -322,54 +258,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502129365.800382"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "places(_:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502129383.695634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "places(_:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502129401.950242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "places(_:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
             timestampString = "502129513.186421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -386,12 +274,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130370.826815"
+                  timestampString = "502358713.207496"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "84">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -401,12 +289,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130370.828015"
+                  timestampString = "502358713.208727"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "1015">
+                  offsetFromSymbolStart = "792">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -434,12 +322,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130370.831377"
+                  timestampString = "502358713.211255"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
                   endingLineNumber = "93"
-                  offsetFromSymbolStart = "38">
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -449,12 +337,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130370.832737"
+                  timestampString = "502358713.212473"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
                   endingLineNumber = "95"
-                  offsetFromSymbolStart = "35">
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -546,12 +434,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130653.703917"
+                  timestampString = "502358713.223916"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "111"
                   endingLineNumber = "111"
-                  offsetFromSymbolStart = "38">
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -561,12 +449,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130653.705643"
+                  timestampString = "502358713.225087"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "41">
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -594,12 +482,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130654.489322"
+                  timestampString = "502358713.227716"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "41">
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -609,12 +497,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502130654.491562"
+                  timestampString = "502358713.228924"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "98">
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>

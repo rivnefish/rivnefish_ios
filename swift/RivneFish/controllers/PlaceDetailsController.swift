@@ -82,8 +82,11 @@ class PlaceDetailsController: UIViewController {
     }
 
     @IBAction func navigateButtonPressed(_ sender: UIBarButtonItem) {
-        if let currentCoordinate = currentLocation?.coordinate {
-            navigate(currentCoordinate)
+        if let dep = CLLocationManager().location,
+            let destLat = placeDetailsModel?.lat,
+            let ddestLon = placeDetailsModel?.lon {
+            let dest = CLLocation(latitude: Double(destLat), longitude: Double(ddestLon))
+            navigate(dep: dep, dest: dest)
         } else {
             let title = NSLocalizedString("Ідентифікацію місцезнаходження вимкнено", comment: "Location turn off")
             let message = NSLocalizedString("Увімкніть доступ до геолокації в системних налаштуваннях цього пристрою щоб мати можливість використовувати навігацію до водойми:\n1. Системні налаштування\n2. rivnefish\n3. Місце", comment: "Please allow use location in system settings")
@@ -92,17 +95,8 @@ class PlaceDetailsController: UIViewController {
         }
     }
 
-    fileprivate func navigate(_ destC: CLLocationCoordinate2D) {
-        let location = CLLocationManager().location
-        if let clat = location?.coordinate.latitude,
-            let clon = location?.coordinate.longitude,
-            let dlat = placeDetailsModel?.lat,
-            let dlon = placeDetailsModel?.lon {
-            let urlStr = "https://maps.apple.com?saddr=\(clat),\(clon)&daddr=\(dlat),\(dlon)"
-            if let url = URL(string: urlStr) {
-                UIApplication.shared.openURL(url)
-            }
-        }
+    fileprivate func navigate(dep: CLLocation, dest: CLLocation) {
+        NavigationCoordinator().navigate(departure: dep.coordinate, destC: dest.coordinate)
     }
 }
 
