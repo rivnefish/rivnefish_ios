@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28094AAE1DF7178E004AA8C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28094AAD1DF7178E004AA8C3 /* LaunchScreen.storyboard */; };
 		281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566DA1D575753008B1E12 /* PlaceDetailsController.swift */; };
 		281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */; };
 		281566E51D575AC4008B1E12 /* ModifiedDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */; };
@@ -63,7 +64,6 @@
 		3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7851AD7194E0036C8CA /* ViewController.swift */; };
 		3E4BD7891AD7194E0036C8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD7871AD7194E0036C8CA /* Main.storyboard */; };
 		3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD78A1AD7194E0036C8CA /* Images.xcassets */; };
-		3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */; };
 		3E4BD79A1AD7194E0036C8CA /* RivneFishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */; };
 		3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E6F44FC1BF4876900D2C4F9 /* app_icon.png */; };
 		3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C65A51B35DD5A005BD52C /* MapKit.framework */; };
@@ -213,6 +213,7 @@
 
 /* Begin PBXFileReference section */
 		0CEA8297A0E53D99B5A1B4DD /* Pods-RivneFish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivneFish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish.debug.xcconfig"; sourceTree = "<group>"; };
+		28094AAD1DF7178E004AA8C3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ui/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		281566DA1D575753008B1E12 /* PlaceDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsController.swift; path = controllers/PlaceDetailsController.swift; sourceTree = "<group>"; };
 		281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDateCell.swift; path = ui/markerDetails/ModifiedDateCell.swift; sourceTree = "<group>"; };
 		281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifiedDateCell.xib; path = ui/markerDetails/ModifiedDateCell.xib; sourceTree = "<group>"; };
@@ -274,7 +275,6 @@
 		3E4BD7851AD7194E0036C8CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = controllers/ViewController.swift; sourceTree = "<group>"; };
 		3E4BD7881AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E4BD78A1AD7194E0036C8CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3E4BD78D1AD7194E0036C8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3E4BD7931AD7194E0036C8CA /* Rivnefish.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rivnefish.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4BD7981AD7194E0036C8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4BD7991AD7194E0036C8CA /* RivneFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivneFishTests.swift; sourceTree = "<group>"; };
@@ -730,7 +730,6 @@
 				3EA745411BBD1BF500AB470A /* FishCollectionViewCell.xib */,
 				3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */,
 				3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */,
-				3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */,
 				3E4BD7871AD7194E0036C8CA /* Main.storyboard */,
 				3EE306DB1B4FAD98003225FF /* MarkerAnnotation.swift */,
 				3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */,
@@ -739,6 +738,7 @@
 				3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */,
 				3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */,
 				28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */,
+				28094AAD1DF7178E004AA8C3 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1004,6 +1004,7 @@
 				3EF7725F1C15949900A83A3A /* 31@3x.png in Resources */,
 				3EF772681C15949900A83A3A /* 35@3x.png in Resources */,
 				3EF772351C15949900A83A3A /* 16@3x.png in Resources */,
+				28094AAE1DF7178E004AA8C3 /* LaunchScreen.storyboard in Resources */,
 				3E2A735C1BD8CDFD00629D8B /* arrowDOWN.png in Resources */,
 				3EB21C211B6617FB00517ECE /* m10-99.png in Resources */,
 				3EF7723B1C15949900A83A3A /* 19@3x.png in Resources */,
@@ -1062,7 +1063,6 @@
 				3E9070B41BECBACC00268C7F /* m1@3x.png in Resources */,
 				28B74BEA1D64AD7000AB7FAA /* 32@3x.png in Resources */,
 				3EF7720F1C15949900A83A3A /* 4.png in Resources */,
-				3E4BD78E1AD7194E0036C8CA /* LaunchScreen.xib in Resources */,
 				3EF7724C1C15949900A83A3A /* 25@2x.png in Resources */,
 				3E2201701BF4FEE90056FE7A /* arrowRight@2x.png in Resources */,
 				3EF772411C15949900A83A3A /* 21@3x.png in Resources */,
@@ -1294,14 +1294,6 @@
 				3E4BD7881AD7194E0036C8CA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3E4BD78C1AD7194E0036C8CA /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3E4BD78D1AD7194E0036C8CA /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
