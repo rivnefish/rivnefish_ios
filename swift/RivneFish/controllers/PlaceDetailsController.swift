@@ -12,9 +12,10 @@ class PlaceDetailsController: UIViewController {
 
     @IBOutlet weak var loadingBlur: UIVisualEffectView!
 
-    var cellsCreator: PlaceDetailsCellCreator?
+    private var placeDetailsModel: PlaceDetails?
+    fileprivate var cellsCreator: PlaceDetailsCellCreator?
+
     var allFish: Array<Fish>?
-    var cached: Bool = false
     var dataSource: DataSource?
     var currentLocation: CLLocation?
 
@@ -22,50 +23,7 @@ class PlaceDetailsController: UIViewController {
         didSet {
             guard let place = place else { return }
 
-            dataSource?.placeDetails(rechability: Reach.reachabilityForInternetConnection(), place: place) { placeDetails, cached in
-                self.cached = cached
-                if let details = placeDetails {
-                    self.placeDetailsModel = details
-                }
-            }
-        }
-    }
-
-    var placeDetailsModel: PlaceDetails? {
-        didSet {
-            // TODO:
-            // validate()
-
-            loadingBlur.isHidden = true
-            guard let placeDetailsFish = placeDetailsModel?.fish else { return }
-
-            var fishViewModelArr = Array<FishViewModel>()
-
-            let _ = allFish?.filter {
-                let detailsId = $0.id
-                let arr = placeDetailsFish.filter { $0.fishId == detailsId }
-
-                if arr.count > 0 {
-                    let placeFish = arr[0]
-                    let viewModel = FishViewModel(name: $0.name, amount: placeFish.amount, image: $0.image)
-
-                    fishViewModelArr.append(viewModel)
-                    return true
-                }
-                return false
-            }
-
-            fishArray = fishViewModelArr.sorted { return $0.amount > $1.amount }
-            cellsCreator?.placeDetailsModel = placeDetailsModel
-            contentTable?.reloadData()
-        }
-    }
-
-    var fishArray: Array<FishViewModel>? {
-        didSet {
-            cellsCreator?.fishArray = fishArray
-            
-            contentTable?.reloadData()
+            dataSource?.placeDetails(rechability: Reach.reachabilityForInternetConnection(), place: place, completionHandler: placeDetailsLoaded)
         }
     }
 
@@ -97,6 +55,37 @@ class PlaceDetailsController: UIViewController {
 
     fileprivate func navigate(dep: CLLocation, dest: CLLocation) {
         NavigationCoordinator().navigate(departure: dep.coordinate, destC: dest.coordinate)
+    }
+
+    private func placeDetailsLoaded(placeDetails: PlaceDetails?, cached: Bool) {
+        loadingBlur.isHidden = true
+
+        guard let details = placeDetails else { return }
+        self.placeDetailsModel = details
+
+        cellsCreator?.placeDetailsModel = placeDetailsModel
+        cellsCreator?.fishArray = sortedPlaceFish()
+        contentTable?.reloadData()
+    }
+
+    private func sortedPlaceFish() -> Array<FishViewModel> {
+        var fishViewModelArr = Array<FishViewModel>()
+        guard let placeDetailsFish = placeDetailsModel?.fish else { return fishViewModelArr }
+
+        let _ = allFish?.filter {
+            let detailsId = $0.id
+            let arr = placeDetailsFish.filter { $0.fishId == detailsId }
+
+            if arr.count > 0 {
+                let placeFish = arr[0]
+                let viewModel = FishViewModel(name: $0.name, amount: placeFish.amount, image: $0.image)
+
+                fishViewModelArr.append(viewModel)
+                return true
+            }
+            return false
+        }
+        return fishViewModelArr.sorted { return $0.amount > $1.amount }
     }
 }
 
