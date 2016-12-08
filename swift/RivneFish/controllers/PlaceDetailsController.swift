@@ -28,7 +28,7 @@ class PlaceDetailsController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = self.placeDetailsModel?.name;
+        self.navigationController?.navigationBar.topItem?.title = self.place?.name;
     }
 
     @IBOutlet weak var contentTable: UITableView! {

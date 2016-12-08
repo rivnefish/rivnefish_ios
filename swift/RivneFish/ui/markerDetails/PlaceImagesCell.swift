@@ -38,7 +38,7 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
 
     fileprivate func correctCollectionViewOffset() {
-        let offset = CGFloat(currentImageIndex) * imagesCollectionView.frame.size.width
+        let offset = CGFloat(currentImageIndex) * frame.size.width
         imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
     }
 

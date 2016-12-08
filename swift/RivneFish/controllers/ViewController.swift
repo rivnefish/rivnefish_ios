@@ -74,7 +74,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             DispatchQueue.main.async {
                 // Simply update data when connection appear
                 self.updateData()
-                self.populateMarkerDetailsControllerWithData()
+                self.populateDetailsControllerWithData()
             }
         }
 
@@ -152,6 +152,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             guard let fish = fishArr else { return }
 
             self.allFish = fish
+            self.populateDetailsControllerWithFish()
         })
     }
 
@@ -205,7 +206,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     func goToMarkerDetailsView() {
         markerDetailsController = self.storyboard!.instantiateViewController(withIdentifier: "MarkerDetailsController") as? PlaceDetailsController
-        populateMarkerDetailsControllerWithData()
+        populateDetailsControllerWithData()
 
         if let controller = markerDetailsController {
             self.navigationController?.pushViewController(controller, animated: true)
@@ -214,14 +215,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    fileprivate func populateMarkerDetailsControllerWithData() {
+    fileprivate func populateDetailsControllerWithData() {
         if let controller = markerDetailsController {
             controller.dataSource = dataSource
             controller.currentLocation = currentLocation
 
+            populateDetailsControllerWithFish()
+            populateDetailsControllerWithPlace()
+        }
+    }
+
+    fileprivate func populateDetailsControllerWithFish() {
+        if let controller = markerDetailsController {
             if let fish = allFish {
                 controller.allFish = fish
             }
+        }
+    }
+
+    fileprivate func populateDetailsControllerWithPlace() {
+        if let controller = markerDetailsController {
             if let place = currentPlace {
                 controller.place = place
             }
