@@ -146,12 +146,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/ui/UILabelExtension.swift"
-                  timestampString = "502358713.194403"
+                  timestampString = "502988792.409508"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "86">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -161,12 +161,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/ui/UILabelExtension.swift"
-                  timestampString = "502358713.195677"
+                  timestampString = "502988792.410918"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "132">
+                  offsetFromSymbolStart = "145">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -184,22 +184,6 @@
             startingLineNumber = "250"
             endingLineNumber = "250"
             landmarkName = "mapView(_:markerInfoContents:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/ActualityValidator.swift"
-            timestampString = "502129028.014266"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "checkPlaces(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -258,166 +242,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502129513.186421"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "placesFromCache(handler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rivnefish.DataSource.(placesFromCache (handler : (Swift.Optional&lt;Swift.Array&lt;Rivnefish.Place&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Rivnefish"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.207496"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rivnefish.DataSource.(placesFromCache (handler : (Swift.Optional&lt;Swift.Array&lt;Rivnefish.Place&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Rivnefish"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.208727"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "792">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502130313.033951"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "placeDetails(rechability:place:completionHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rivnefish.DataSource.placeDetails (rechability : __ObjC.Reach, place : Rivnefish.Place, completionHandler : (Swift.Optional&lt;Rivnefish.PlaceDetails&gt;, Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "Rivnefish"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.211255"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "40">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Rivnefish.DataSource.(placeDetails (rechability : __ObjC.Reach, place : Rivnefish.Place, completionHandler : (Swift.Optional&lt;Rivnefish.PlaceDetails&gt;, Swift.Bool) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Rivnefish"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.212473"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502130314.377705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "placeDetailsFromCache(id:handler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502130421.805337"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "placeDetails(rechability:place:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
-            timestampString = "502130460.578974"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "placeDetailsFromCache(id:handler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/ActualityValidator.swift"
-            timestampString = "502130539.256545"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "isUpToDate(cachedPlaceDetails:with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RivneFish/model/DataSource.swift"
             timestampString = "502130653.700077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -434,12 +258,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.223916"
+                  timestampString = "502988792.421929"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "111"
                   endingLineNumber = "111"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "38">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -449,12 +273,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.225087"
+                  timestampString = "502988792.423392"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "41">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -482,12 +306,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.227716"
+                  timestampString = "502988792.426324"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "41">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -497,12 +321,12 @@
                   moduleName = "Rivnefish"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/anatoliikyryliuk/Builds2/rivnefish_ios/swift/RivneFish/model/DataSource.swift"
-                  timestampString = "502358713.228924"
+                  timestampString = "502988792.428019"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
                   endingLineNumber = "112"
-                  offsetFromSymbolStart = "88">
+                  offsetFromSymbolStart = "98">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -520,6 +344,22 @@
             startingLineNumber = "114"
             endingLineNumber = "114"
             landmarkName = "requestPlaceDetailsFromNetwork(id:storeToCache:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RivneFish/ui/markerDetails/PlaceImagesCell.swift"
+            timestampString = "502904922.537938"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "correctCollectionViewOffset()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

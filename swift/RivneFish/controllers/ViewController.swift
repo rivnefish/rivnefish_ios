@@ -252,7 +252,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             if let markerModel: Place = marker.userData as? Place {
                 if let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? MarkerCalloutView {
                     calloutView.nameLabel.text = markerModel.name
-                    calloutView.updateWidth()
+                    calloutView.setup()
                     return calloutView
                 }
             }

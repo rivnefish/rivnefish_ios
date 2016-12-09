@@ -9,8 +9,16 @@
 class LinkCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var cellImage: UIImageView! {
+        didSet {
+            if let image = cellImage.image?.withRenderingMode(.alwaysTemplate) {
+                cellImage.tintColor = Constants.Colors.kMainContrast
+                cellImage.image = image
+            }
+        }
+    }
     var urlString: String?
-    
+
     @IBAction func buttonCliccked(_ sender: AnyObject) {
         if let urlStr = urlString,
             let url = URL(string: urlStr) {

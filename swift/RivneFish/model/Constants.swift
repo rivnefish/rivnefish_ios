@@ -23,4 +23,9 @@ class Constants {
         static let kPlaceDetailsKey = "PlaceDetails:"
         static let kFishKey = "Fish"
     }
+
+    class Colors {
+        static let kMain = UIColor(colorLiteralRed: 28.0 / 255.0, green: 52.0 / 255.0, blue: 79.0 / 255.0, alpha: 1.0) // #30344f
+        static let kMainContrast = UIColor(colorLiteralRed: 255 / 255, green: 180.0 / 255.0, blue: 0, alpha: 1.0) // #ffb400
+    }
 }

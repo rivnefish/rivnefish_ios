@@ -11,14 +11,24 @@ import UIKit
 class MarkerCalloutView : UIView {
 
     @IBOutlet weak var nameLabel: UILabel!
-
     @IBOutlet weak var nameLabelHeightConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var arrowIcon: UIImageView!
     @IBOutlet weak var arrowIconRightMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak var arrowIconLeftMarginConstraint: NSLayoutConstraint!
 
-    func updateWidth() {
+    @IBOutlet weak var arrowIcon: UIImageView! {
+        didSet {
+            if let image = arrowIcon.image?.withRenderingMode(.alwaysTemplate) {
+                arrowIcon.tintColor = Constants.Colors.kMainContrast
+                arrowIcon.image = image
+            }
+        }
+    }
+
+    func setup() {
+        updateWith()
+    }
+
+    private func updateWith() {
         let nameWidth = self.nameLabel.intrinsicContentSize.width
         let margin = CGFloat(20.0)
         var width = nameWidth + (arrowIcon.frame.width + arrowIconRightMarginConstraint.constant + arrowIconLeftMarginConstraint.constant)
@@ -33,7 +43,7 @@ class MarkerCalloutView : UIView {
         // Do not update height for now
         // frame.size.height = height
         self.frame = frame
-        
+
         self.layoutIfNeeded()
     }
 }
