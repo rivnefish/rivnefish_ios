@@ -20,4 +20,10 @@ class AlertUtils {
         let message = NSLocalizedString("Немає підключення або відсутній звя'зок з сервером", comment: "You are offline or there is no connection with server")
         return AlertUtils.okeyAlertWith(title: title, message: message)
     }
+
+    static func locationTurnedOffAlert() -> UIAlertController {
+        let title = NSLocalizedString("Ідентифікацію місцезнаходження вимкнено", comment: "Location turn off")
+        let message = NSLocalizedString("Увімкніть доступ до геолокації в системних налаштуваннях цього пристрою щоб мати можливість використовувати навігацію до водойми:\n1. Системні налаштування\n2. rivnefish\n3. Місце", comment: "Please allow use location in system settings")
+        return AlertUtils.okeyAlertWith(title: title, message: message)
+    }
 }

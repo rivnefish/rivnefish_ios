@@ -10,7 +10,22 @@ import UIKit
 
 class PlaceDetailsController: UIViewController {
 
+    @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var loadingBlur: UIVisualEffectView!
+    @IBOutlet weak var noDataLabel: UILabel! {
+        didSet {
+            noDataLabel.textColor = Constants.Colors.kMain
+            noDataLabel.text = "Помилка з'єднання. Перевірте мережу або спробуйте пізніше."
+        }
+    }
+
+    @IBOutlet weak var contentTable: UITableView! {
+        didSet {
+            cellsCreator = PlaceDetailsCellCreator(table: contentTable)
+            cellsCreator?.placeDetailsModel = placeDetailsModel
+            cellsCreator?.dataSource = dataSource
+        }
+    }
 
     private var placeDetailsModel: PlaceDetails?
     fileprivate var cellsCreator: PlaceDetailsCellCreator?
@@ -31,14 +46,6 @@ class PlaceDetailsController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = self.place?.name;
     }
 
-    @IBOutlet weak var contentTable: UITableView! {
-        didSet {
-            cellsCreator = PlaceDetailsCellCreator(table: contentTable)
-            cellsCreator?.placeDetailsModel = placeDetailsModel
-            cellsCreator?.dataSource = dataSource
-        }
-    }
-
     @IBAction func navigateButtonPressed(_ sender: UIBarButtonItem) {
         if let dep = CLLocationManager().location,
             let destLat = placeDetailsModel?.lat,
@@ -46,21 +53,22 @@ class PlaceDetailsController: UIViewController {
             let dest = CLLocation(latitude: Double(destLat), longitude: Double(ddestLon))
             navigate(dep: dep, dest: dest)
         } else {
-            let title = NSLocalizedString("Ідентифікацію місцезнаходження вимкнено", comment: "Location turn off")
-            let message = NSLocalizedString("Увімкніть доступ до геолокації в системних налаштуваннях цього пристрою щоб мати можливість використовувати навігацію до водойми:\n1. Системні налаштування\n2. rivnefish\n3. Місце", comment: "Please allow use location in system settings")
-            let alert = AlertUtils.okeyAlertWith(title: title, message: message)
+            let alert = AlertUtils.locationTurnedOffAlert()
             self.present(alert, animated: true, completion: nil)
         }
     }
 
-    fileprivate func navigate(dep: CLLocation, dest: CLLocation) {
+    private func navigate(dep: CLLocation, dest: CLLocation) {
         NavigationCoordinator().navigate(departure: dep.coordinate, destC: dest.coordinate)
     }
 
     private func placeDetailsLoaded(placeDetails: PlaceDetails?, cached: Bool) {
         loadingBlur.isHidden = true
 
-        guard let details = placeDetails else { return }
+        guard let details = placeDetails else {
+            noDataView.isHidden = false
+            return
+        }
         self.placeDetailsModel = details
 
         cellsCreator?.placeDetailsModel = placeDetailsModel

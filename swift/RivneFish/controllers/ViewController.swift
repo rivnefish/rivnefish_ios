@@ -14,12 +14,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var googleMapView: GMSMapView!
+    @IBOutlet weak var mapTypeButton: UIButton!
 
     let locationManager = CLLocationManager()
     var clusterManager: GClusterManager!
 
     fileprivate var markerDetailsController: PlaceDetailsController?
     fileprivate var currentPlace: Place?
+
+    var currentMapType: GMSMapViewType = kGMSTypeNormal
 
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRect.zero)
 
@@ -40,7 +43,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
         self.initRechability()
 
@@ -54,6 +56,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         if let width = UIImage(named: "m1")?.size.width {
             singleMarkerImageWidth = width
         }
+
+        currentMapType = kGMSTypeNormal
+        googleMapView.mapType = currentMapType
+        updateMapTypeButtonIcon()
         
         // TODO: Save it not here
         //defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
@@ -116,20 +122,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         print(countries)
     }
     
-    @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
-        
-        /*switch sender.selectedSegmentIndex {
-        case 0:
-        self.mapView.mapType = MKMapType.Standard
-        case 1:
-        self.mapView.mapType = MKMapType.Hybrid
-        case 2:
-        self.mapView.mapType = MKMapType.Satellite
+    @IBAction func mapTypeChanged() {
+        var newMapType = kGMSTypeNormal
+        switch currentMapType {
+        case kGMSTypeNormal:
+            newMapType = kGMSTypeHybrid
+        case kGMSTypeHybrid:
+            newMapType = kGMSTypeNormal
         default:
-        self.mapView.mapType = MKMapType.Standard
-        }*/
+            break
+        }
+        currentMapType = newMapType
+        googleMapView.mapType = currentMapType
+        updateMapTypeButtonIcon()
     }
-    
+
+    private func updateMapTypeButtonIcon() {
+        let imageName: String
+        switch currentMapType {
+        case kGMSTypeNormal:
+            imageName = "satellite"
+        default:
+            imageName = "earth"
+            break
+        }
+        mapTypeButton.setImage(UIImage(named: imageName), for: .normal)
+    }
+
     func updateData() {
         loadPlaces()
         loadFish()

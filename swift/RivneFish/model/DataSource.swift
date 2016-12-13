@@ -25,10 +25,12 @@ class DataSource: NSObject {
                 // Request places, try from cache, if no, try from netowrk
                 self.placesFromCache() { placesArr in
                     if let places = placesArr {
+                        print("-- All places from cache")
                         DispatchQueue.main.async(execute: {
                             completionHandler(places)
                         })
                     } else {
+                        print("-- All places from network")
                         // If there is no places in cache - request it
                         self.requestPlacesFromNetwork(completionHandler: completionHandler)
                     }
@@ -37,6 +39,7 @@ class DataSource: NSObject {
         } else {
             // if there is no connection - take data from cache
             self.placesFromCache() { places in
+                print("-- Place from cache")
                 DispatchQueue.main.async(execute: {
                     completionHandler(places)
                 })
@@ -98,10 +101,12 @@ class DataSource: NSObject {
             }
 
             if isPlaceUpToDate || rechability.currentReachabilityStatus() == .NotReachable {
+                print("-- Place from cache")
                 DispatchQueue.main.async(execute: {
                     completionHandler(cachedPlaceDetails, isPlaceUpToDate)
                 })
             } else {
+                print("-- Places from network")
                 self.requestPlaceDetailsFromNetwork(id: place.id, storeToCache: !isPlaceUpToDate, completionHandler: completionHandler)
             }
         }
@@ -124,19 +129,27 @@ class DataSource: NSObject {
         if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable {
             ActualityValidator.actualityValidator.checkFish({ (outdated: Bool) in
                 if outdated {
+                    print("-- All fish from network")
                     self.allFishFromNetwork(handler: completionHandler)
                 } else {
                     self.allFishFromCache() { cachedFish in
                         if cachedFish != nil {
+                            print("-- All fish from cache")
                             completionHandler(cachedFish)
                         } else {
+                            print("-- All fish from network")
                             self.allFishFromNetwork(handler: completionHandler)
                         }
                     }
                 }
             })
         } else {
-            self.allFishFromNetwork(handler: completionHandler)
+            self.allFishFromCache() { cachedFish in
+                if cachedFish != nil {
+                    print("-- All fish from cache")
+                    completionHandler(cachedFish)
+                }
+            }
         }
     }
 
