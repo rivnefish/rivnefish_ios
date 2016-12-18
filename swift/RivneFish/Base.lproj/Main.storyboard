@@ -141,7 +141,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-HZ-RBH">
-                                            <rect key="frame" x="177" y="291.5" width="20" height="20"/>
+                                            <rect key="frame" x="177" y="292" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="bU8-ay-CZD"/>
                                                 <constraint firstAttribute="width" constant="20" id="zKI-VI-nnj"/>
