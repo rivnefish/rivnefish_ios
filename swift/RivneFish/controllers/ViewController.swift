@@ -22,7 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     fileprivate var markerDetailsController: PlaceDetailsController?
     fileprivate var currentPlace: Place?
 
-    var currentMapType: GMSMapViewType = kGMSTypeNormal
+    let settings = Settings(defaults: UserDefaults.standard)
 
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRect.zero)
 
@@ -57,12 +57,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             singleMarkerImageWidth = width
         }
 
-        currentMapType = kGMSTypeNormal
-        googleMapView.mapType = currentMapType
+        googleMapView.mapType = settings.currentMapType.gmType
         updateMapTypeButtonIcon()
-        
-        // TODO: Save it not here
-        //defaultLocation = CLLocation(latitude: 50.619780, longitude: 26.251471)
     }
 
     // MARK: Reachability
@@ -123,24 +119,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
     
     @IBAction func mapTypeChanged() {
-        var newMapType = kGMSTypeNormal
-        switch currentMapType {
-        case kGMSTypeNormal:
-            newMapType = kGMSTypeHybrid
-        case kGMSTypeHybrid:
-            newMapType = kGMSTypeNormal
+        var newMapType: MapType
+        switch settings.currentMapType {
+        case .normal:
+            newMapType = .hyblid
         default:
+            newMapType = .normal
             break
         }
-        currentMapType = newMapType
-        googleMapView.mapType = currentMapType
+        settings.currentMapType = newMapType
+        googleMapView.mapType = newMapType.gmType
         updateMapTypeButtonIcon()
     }
 
     private func updateMapTypeButtonIcon() {
         let imageName: String
-        switch currentMapType {
-        case kGMSTypeNormal:
+        switch settings.currentMapType {
+        case .normal:
             imageName = "satellite"
         default:
             imageName = "earth"

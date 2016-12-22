@@ -9,13 +9,13 @@
 import UIKit
 
 class PlaceDetailsController: UIViewController {
-
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var loadingBlur: UIVisualEffectView!
+    @IBOutlet weak var navigationButton: UIBarButtonItem!
     @IBOutlet weak var noDataLabel: UILabel! {
         didSet {
             noDataLabel.textColor = Constants.Colors.kMain
-            noDataLabel.text = "Помилка з'єднання. Перевірте мережу або спробуйте пізніше."
+            noDataLabel.text = "Помилка з'єднання. Перевірте налаштування мережі або спробуйте пізніше."
         }
     }
 
@@ -63,13 +63,14 @@ class PlaceDetailsController: UIViewController {
     }
 
     private func placeDetailsLoaded(placeDetails: PlaceDetails?, cached: Bool) {
-        loadingBlur.isHidden = true
+        loadingBlur?.isHidden = true
 
         guard let details = placeDetails else {
-            noDataView.isHidden = false
+            noDataView?.isHidden = false
             return
         }
         self.placeDetailsModel = details
+        navigationButton?.isEnabled = true
 
         cellsCreator?.placeDetailsModel = placeDetailsModel
         cellsCreator?.fishArray = sortedPlaceFish()

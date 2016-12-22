@@ -50,6 +50,7 @@
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
 		28CCB55C1DC650FD00A17B5B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */; };
+		28F960071E09CF6B00C4607A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F960061E09CF6B00C4607A /* Settings.swift */; };
 		28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD671C82F336001DBF29 /* ModifiedDate.swift */; };
 		28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */; };
 		28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD6B1C834661001DBF29 /* ActualityValidator.swift */; };
@@ -260,6 +261,7 @@
 		28C5A8791C6F761400C86F5E /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMMemoryCache.h; path = libs/TMCache/TMMemoryCache.h; sourceTree = "<group>"; };
 		28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMMemoryCache.m; path = libs/TMCache/TMMemoryCache.m; sourceTree = "<group>"; };
 		28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = ui/UILabelExtension.swift; sourceTree = "<group>"; };
+		28F960061E09CF6B00C4607A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = model/Settings.swift; sourceTree = "<group>"; };
 		28FACD671C82F336001DBF29 /* ModifiedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDate.swift; path = model/ModifiedDate.swift; sourceTree = "<group>"; };
 		28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkDataSource.swift; path = model/NetworkDataSource.swift; sourceTree = "<group>"; };
 		28FACD6B1C834661001DBF29 /* ActualityValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActualityValidator.swift; path = model/ActualityValidator.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				2895B9621DB804F000C03313 /* Place.swift */,
 				2895B9641DBCA57A00C03313 /* PlaceFish.swift */,
 				2895B9681DBEB3CB00C03313 /* FishViewModel.swift */,
+				28F960061E09CF6B00C4607A /* Settings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				28FACD6C1C834661001DBF29 /* ActualityValidator.swift in Sources */,
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				2895B9691DBEB3CB00C03313 /* FishViewModel.swift in Sources */,
+				28F960071E09CF6B00C4607A /* Settings.swift in Sources */,
 				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
 				281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,

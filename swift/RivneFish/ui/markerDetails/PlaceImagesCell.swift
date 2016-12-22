@@ -14,7 +14,7 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
     var imagesArray: Array<UIImage?>?
     var dataSource: DataSource?
 
-    var currentImageIndex = 0
+    static var currentImageIndex: Int = 0
 
     @IBOutlet weak var viewPageControl: UIPageControl!
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
@@ -38,8 +38,11 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
 
     fileprivate func correctCollectionViewOffset() {
-        let offset = CGFloat(currentImageIndex) * frame.size.width
+        let offset = CGFloat(PlaceImagesCell.currentImageIndex) * frame.size.width
         imagesCollectionView.contentOffset = CGPoint(x: offset, y: 0)
+        //imagesCollectionView.reloadData()
+        //let indexPath = IndexPath(row: PlaceImagesCell.currentImageIndex, section: 0)
+        //imagesCollectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
     }
 
     fileprivate func loadImagesIfNeeded() {
@@ -96,7 +99,7 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
 
     internal func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentImageIndex = Int(imagesCollectionView.contentOffset.x / imagesCollectionView.frame.size.width)
+        PlaceImagesCell.currentImageIndex = Int(imagesCollectionView.contentOffset.x / imagesCollectionView.frame.size.width)
         updatePageCountrol()
     }
 
@@ -105,10 +108,10 @@ class PlaceImagesCell: UITableViewCell, UICollectionViewDataSource, UICollection
 
         var currentIndex: Int
         if imagesCount <= kMaxPageCount {
-            currentIndex = currentImageIndex
+            currentIndex = PlaceImagesCell.currentImageIndex
         } else {
             let index = imagesCount / kMaxPageCount
-            currentIndex = currentImageIndex / index
+            currentIndex = PlaceImagesCell.currentImageIndex / index
         }
         viewPageControl?.currentPage = currentIndex
     }

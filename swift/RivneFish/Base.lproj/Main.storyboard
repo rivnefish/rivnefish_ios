@@ -173,7 +173,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Nar-tZ-BTb">
-                        <barButtonItem key="rightBarButtonItem" image="navigate" id="emB-f1-RZ4">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="navigate" id="emB-f1-RZ4">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="navigateButtonPressed:" destination="gek-IZ-hcr" id="0ju-gL-089"/>
@@ -184,6 +184,7 @@
                     <connections>
                         <outlet property="contentTable" destination="PpS-ET-jkm" id="G88-4n-KTc"/>
                         <outlet property="loadingBlur" destination="Vj7-tS-4tj" id="PPT-Hk-IcY"/>
+                        <outlet property="navigationButton" destination="emB-f1-RZ4" id="chP-9z-365"/>
                         <outlet property="noDataLabel" destination="LyL-Ra-p75" id="ARj-Ul-gu3"/>
                         <outlet property="noDataView" destination="3K1-Vl-7MD" id="v1G-Yz-KKX"/>
                     </connections>
