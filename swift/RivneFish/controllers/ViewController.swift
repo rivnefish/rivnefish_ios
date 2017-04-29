@@ -12,6 +12,8 @@ import SystemConfiguration
 
 class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
+    // With apple maps it is possible to use FBAnnotationClustering
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var mapTypeButton: UIButton!

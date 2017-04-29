@@ -8,7 +8,7 @@
 
 class Constants {
     class Network {
-        static let kHostUrl = "http://new.rivnefish.com"
+        static let kHostUrl = "https://rivnefish.com"
         static let kPlacesUrl = Network.kHostUrl + "/api/v1/places"
         static let kPlacesLastChangesUrl = Network.kPlacesUrl + "/lastchanges"
         static let kFishUrl = Network.kHostUrl + "/api/v1/fish"
