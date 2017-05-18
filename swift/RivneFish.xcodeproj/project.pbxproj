@@ -17,8 +17,6 @@
 		282A5F981D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */; };
 		282C946A1D590D1700161303 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C94691D590D1700161303 /* LinkCell.xib */; };
 		282C946C1D590D2F00161303 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C946B1D590D2F00161303 /* LinkCell.swift */; };
-		282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C946F1D5A25B200161303 /* PlaceImagesCell.xib */; };
-		282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C94711D5A2C8500161303 /* PlaceImagesCell.swift */; };
 		282D90081D578ED000DE8550 /* TitleLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282D90071D578ED000DE8550 /* TitleLabelCell.xib */; };
 		282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D90091D578FD500DE8550 /* TitleLabelCell.swift */; };
 		282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */; };
@@ -229,8 +227,6 @@
 		282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCellCreator.swift; path = controllers/PlaceDetailsCellCreator.swift; sourceTree = "<group>"; };
 		282C94691D590D1700161303 /* LinkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkCell.xib; path = ui/markerDetails/LinkCell.xib; sourceTree = "<group>"; };
 		282C946B1D590D2F00161303 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkCell.swift; path = ui/markerDetails/LinkCell.swift; sourceTree = "<group>"; };
-		282C946F1D5A25B200161303 /* PlaceImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceImagesCell.xib; path = ui/markerDetails/PlaceImagesCell.xib; sourceTree = "<group>"; };
-		282C94711D5A2C8500161303 /* PlaceImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceImagesCell.swift; path = ui/markerDetails/PlaceImagesCell.swift; sourceTree = "<group>"; };
 		282D90071D578ED000DE8550 /* TitleLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TitleLabelCell.xib; path = ui/markerDetails/TitleLabelCell.xib; sourceTree = "<group>"; };
 		282D90091D578FD500DE8550 /* TitleLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleLabelCell.swift; path = ui/markerDetails/TitleLabelCell.swift; sourceTree = "<group>"; };
 		282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCell.swift; path = ui/markerDetails/PlaceDetailsCell.swift; sourceTree = "<group>"; };
@@ -488,8 +484,6 @@
 				282C94691D590D1700161303 /* LinkCell.xib */,
 				282D900B1D57969E00DE8550 /* PlaceDetailsCell.swift */,
 				282D900D1D5796C500DE8550 /* PlaceDetailsCell.xib */,
-				282C94711D5A2C8500161303 /* PlaceImagesCell.swift */,
-				282C946F1D5A25B200161303 /* PlaceImagesCell.xib */,
 				282D90091D578FD500DE8550 /* TitleLabelCell.swift */,
 				282D90071D578ED000DE8550 /* TitleLabelCell.xib */,
 				286E94D21EB7BDAC00FF0CF5 /* ImageViewCell.swift */,
@@ -1087,7 +1081,6 @@
 				3EF772411C15949900A83A3A /* 21@3x.png in Resources */,
 				3EF772401C15949900A83A3A /* 21@2x.png in Resources */,
 				28B74BE71D64AD7000AB7FAA /* 18@3x.png in Resources */,
-				282C94701D5A25B200161303 /* PlaceImagesCell.xib in Resources */,
 				3EF7725C1C15949900A83A3A /* 30@3x.png in Resources */,
 				3E6F44FD1BF4876900D2C4F9 /* app_icon.png in Resources */,
 				3EF772221C15949900A83A3A /* 10@2x.png in Resources */,
@@ -1262,7 +1255,6 @@
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
 				28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */,
 				2895B9651DBCA57A00C03313 /* PlaceFish.swift in Sources */,
-				282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */,
 				281EFD8B1ECD927300BDD48D /* PlaceImageCell.swift in Sources */,
 				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,

@@ -194,15 +194,6 @@ class PlaceDetailsCellCreator {
         return cell
     }
 
-    /*func placeImagesCell(forIndexPath indexPath: IndexPath) -> PlaceImagesCell? {
-        if let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceImagesCell", for: indexPath) as? PlaceImagesCell,
-            let arr = placeDetailsModel?.photoUrls {
-            cell.setup(withUrlsArray: arr, dataSource: dataSource)
-            return cell
-        }
-        return nil
-    }*/
-
     func fishImagesCell(forIndexPath indexPath: IndexPath) -> FishImagesCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "FishImagesCell", for: indexPath) as? FishImagesCell,
             let fishArr = fishArray {
