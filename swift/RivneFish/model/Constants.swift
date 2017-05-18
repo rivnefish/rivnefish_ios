@@ -6,6 +6,8 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
+typealias EmptyClosure = () -> Void
+
 class Constants {
     class Network {
         static let kHostUrl = "https://rivnefish.com"

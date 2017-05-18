@@ -34,6 +34,7 @@ class ImagesCollectionViewCell : UICollectionViewCell {
             bluredImage.image = nil
             imageView.image = nil
             loadingIndicator.isHidden = false
+            loadingIndicator.startAnimating()
         }
     }
 }

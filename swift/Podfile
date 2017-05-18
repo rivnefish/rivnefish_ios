@@ -12,4 +12,5 @@ target 'RivneFishTests' do
 end
 
 pod 'GoogleMaps', '~> 1.10.5'
+pod 'SKPhotoBrowser', '~> 4.0'
 # pod 'Google-Maps-iOS-Utils-QuadTree'

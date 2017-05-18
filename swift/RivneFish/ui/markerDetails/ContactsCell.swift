@@ -22,7 +22,7 @@ class ContactsCell: UITableViewCell {
 
     @IBAction func phonePressed(_ sender: UIButton) {
         if let phone = phoneNumber,
-            let url = URL(string: "tel://\(phone)") {
+            let url = URL(string: "tel://+\(phone)") {
 
             let application:UIApplication = UIApplication.shared
             if application.canOpenURL(url) {

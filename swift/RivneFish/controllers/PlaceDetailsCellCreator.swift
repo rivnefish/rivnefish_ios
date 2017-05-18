@@ -7,9 +7,9 @@
 //
 
 class PlaceDetailsCellCreator {
-    static let kPictureRatio:CGFloat = 4.0 / 3.0
+    static let kDefaultPictureRatio:CGFloat = 4.0 / 3.0
     enum Cells: Int {
-        case placeImages
+        case placeImage
         case fishImages
         case caption
         case contacts
@@ -34,9 +34,12 @@ class PlaceDetailsCellCreator {
         }
     }
     var dataSource: DataSource?
+    var placeImage: UIImage?
+    private var selectPlaceImageHandler: EmptyClosure?
 
-    init(table: UITableView) {
+    init(table: UITableView, selectPlaceImageHandler: EmptyClosure? = nil) {
         self.contentTable = table
+        self.selectPlaceImageHandler = selectPlaceImageHandler
         self.registerCells()
     }
 
@@ -61,6 +64,8 @@ class PlaceDetailsCellCreator {
         contentTable.register(nibName, forCellReuseIdentifier: "LinkCell")
         nibName = UINib(nibName: "ModifiedDateCell", bundle:nil)
         contentTable.register(nibName, forCellReuseIdentifier: "ModifiedDateCell")
+        nibName = UINib(nibName: "PlaceImageCell", bundle:nil)
+        contentTable.register(nibName, forCellReuseIdentifier: "PlaceImageCell")
     }
 
     fileprivate func updateCellTypes() {
@@ -68,7 +73,7 @@ class PlaceDetailsCellCreator {
 
         let arr = placeDetailsModel?.photoUrls ?? Array()
         if !arr.isEmpty {
-            cellTypes.append(.placeImages)
+            cellTypes.append(.placeImage)
         }
         let fish = fishArray ?? Array()
         if !fish.isEmpty {
@@ -117,8 +122,8 @@ class PlaceDetailsCellCreator {
         let cell: UITableViewCell?
         let cellType = cellTypes[(indexPath as NSIndexPath).row]
         switch cellType {
-        case .placeImages:
-            cell = placeImagesCell(forIndexPath: indexPath)
+        case .placeImage:
+            cell = placeImageCell(forIndexPath: indexPath)
         case .fishImages:
             cell = fishImagesCell(forIndexPath: indexPath)
         case .caption:
@@ -144,8 +149,8 @@ class PlaceDetailsCellCreator {
     func cellEstimatedHeight(forRowAtIndexPath indexPath: IndexPath) -> CGFloat {
         let cellType = cellTypes[(indexPath as NSIndexPath).row]
         switch cellType {
-        case .placeImages:
-            return placeImagesCellHeight()
+        case .placeImage:
+            return placeImageCellHeight()
         case .fishImages:
             return FishImagesCell.kFishCellWidth
         default:
@@ -156,8 +161,8 @@ class PlaceDetailsCellCreator {
     func cellHeight(forRowAtIndexPath indexPath: IndexPath) -> CGFloat {
         let cellType = cellTypes[(indexPath as NSIndexPath).row]
         switch cellType {
-        case .placeImages:
-            return placeImagesCellHeight()
+        case .placeImage:
+            return placeImageCellHeight()
         case .fishImages:
             return FishImagesCell.kFishCellWidth
         default:
@@ -165,9 +170,15 @@ class PlaceDetailsCellCreator {
         }
     }
 
-    fileprivate func placeImagesCellHeight() -> CGFloat {
+    fileprivate func placeImageCellHeight() -> CGFloat {
         let max = self.contentTable.frame.height - FishImagesCell.kFishCellWidth
-        let h = self.contentTable.frame.width / PlaceDetailsCellCreator.kPictureRatio
+
+        var pictureRatio = PlaceDetailsCellCreator.kDefaultPictureRatio
+        if let img = placeImage {
+            pictureRatio = img.size.width / img.size.height
+        }
+
+        let h = self.contentTable.frame.width / pictureRatio
         return h < max ? h : max
     }
 
@@ -175,14 +186,22 @@ class PlaceDetailsCellCreator {
         return cellTypes.count
     }
 
-    func placeImagesCell(forIndexPath indexPath: IndexPath) -> PlaceImagesCell? {
+    func placeImageCell(forIndexPath indexPath: IndexPath) -> PlaceImageCell? {
+        guard let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceImageCell", for: indexPath) as? PlaceImageCell else {
+            return nil
+        }
+        cell.setup(withImage: placeImage, selectCellAction: selectPlaceImageHandler)
+        return cell
+    }
+
+    /*func placeImagesCell(forIndexPath indexPath: IndexPath) -> PlaceImagesCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceImagesCell", for: indexPath) as? PlaceImagesCell,
             let arr = placeDetailsModel?.photoUrls {
             cell.setup(withUrlsArray: arr, dataSource: dataSource)
             return cell
         }
         return nil
-    }
+    }*/
 
     func fishImagesCell(forIndexPath indexPath: IndexPath) -> FishImagesCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "FishImagesCell", for: indexPath) as? FishImagesCell,

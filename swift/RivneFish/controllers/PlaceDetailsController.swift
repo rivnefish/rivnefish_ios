@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SKPhotoBrowser
 
 class PlaceDetailsController: UIViewController {
     @IBOutlet weak var noDataView: UIView!
@@ -21,13 +22,13 @@ class PlaceDetailsController: UIViewController {
 
     @IBOutlet weak var contentTable: UITableView! {
         didSet {
-            cellsCreator = PlaceDetailsCellCreator(table: contentTable)
+            cellsCreator = PlaceDetailsCellCreator(table: contentTable, selectPlaceImageHandler: goToPlacePhotosView)
             cellsCreator?.placeDetailsModel = placeDetailsModel
             cellsCreator?.dataSource = dataSource
         }
     }
 
-    private var placeDetailsModel: PlaceDetails?
+    fileprivate var placeDetailsModel: PlaceDetails?
     fileprivate var cellsCreator: PlaceDetailsCellCreator?
 
     var allFish: Array<Fish>?
@@ -75,6 +76,30 @@ class PlaceDetailsController: UIViewController {
         cellsCreator?.placeDetailsModel = placeDetailsModel
         cellsCreator?.fishArray = sortedPlaceFish()
         contentTable?.reloadData()
+        loadPlaceImage()
+    }
+
+    private func loadPlaceImage() {
+        if let urls = placeDetailsModel?.photoUrls, urls.count > 0 {
+            let url = urls[0]
+            dataSource?.loadImages([url], completionHandler: { (url: String, image: UIImage?) in
+                self.cellsCreator?.placeImage = image
+                self.contentTable?.reloadRows(at: [IndexPath(item: PlaceDetailsCellCreator.Cells.placeImage.rawValue, section: 0)], with: .none)
+            })
+        }
+    }
+
+    private func goToPlacePhotosView() {
+        let placePhotosController = self.storyboard!.instantiateViewController(withIdentifier: "PlaceImagesController") as? PlaceImagesController
+
+        guard let photoUrls = placeDetailsModel?.photoUrls else { return }
+
+        if let controller = placePhotosController {
+            controller.setup(withUrlsArray: photoUrls, dataSource: dataSource)
+            self.navigationController?.pushViewController(controller, animated: true)
+            let backButton: UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.done, target: nil, action: nil)
+            self.navigationItem.backBarButtonItem = backButton
+        }
     }
 
     private func sortedPlaceFish() -> Array<FishViewModel> {

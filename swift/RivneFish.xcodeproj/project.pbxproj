@@ -11,6 +11,8 @@
 		281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566DA1D575753008B1E12 /* PlaceDetailsController.swift */; };
 		281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */; };
 		281566E51D575AC4008B1E12 /* ModifiedDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */; };
+		281EFD8B1ECD927300BDD48D /* PlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281EFD8A1ECD927300BDD48D /* PlaceImageCell.swift */; };
+		281EFD8D1ECD928400BDD48D /* PlaceImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281EFD8C1ECD928400BDD48D /* PlaceImageCell.xib */; };
 		282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F951D5CCD3600B18F86 /* AlertUtils.swift */; };
 		282A5F981D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */; };
 		282C946A1D590D1700161303 /* LinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282C94691D590D1700161303 /* LinkCell.xib */; };
@@ -32,6 +34,9 @@
 		284F3DF81C92FE6600B4AF62 /* no_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 284F3DF51C92FE6600B4AF62 /* no_image@3x.png */; };
 		28515FF91D5B06C0009804F5 /* FishImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28515FF81D5B06C0009804F5 /* FishImagesCell.xib */; };
 		28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */; };
+		286E94CF1EB4A92A00FF0CF5 /* PlaceImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E94CE1EB4A92A00FF0CF5 /* PlaceImagesController.swift */; };
+		286E94D31EB7BDAC00FF0CF5 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E94D21EB7BDAC00FF0CF5 /* ImageViewCell.swift */; };
+		286E94D51EB7BDD000FF0CF5 /* ImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286E94D41EB7BDD000FF0CF5 /* ImageViewCell.xib */; };
 		288D18841D5E1D0900604D0E /* ConveniencesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288D18831D5E1D0900604D0E /* ConveniencesCell.xib */; };
 		288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */; };
 		2894B6D91DEDF55B00C7CC3C /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894B6D81DEDF55B00C7CC3C /* NavigationCoordinator.swift */; };
@@ -218,6 +223,8 @@
 		281566DA1D575753008B1E12 /* PlaceDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsController.swift; path = controllers/PlaceDetailsController.swift; sourceTree = "<group>"; };
 		281566E01D5759DC008B1E12 /* ModifiedDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDateCell.swift; path = ui/markerDetails/ModifiedDateCell.swift; sourceTree = "<group>"; };
 		281566E41D575AC4008B1E12 /* ModifiedDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModifiedDateCell.xib; path = ui/markerDetails/ModifiedDateCell.xib; sourceTree = "<group>"; };
+		281EFD8A1ECD927300BDD48D /* PlaceImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceImageCell.swift; path = ui/markerDetails/PlaceImageCell.swift; sourceTree = "<group>"; };
+		281EFD8C1ECD928400BDD48D /* PlaceImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceImageCell.xib; path = ui/markerDetails/PlaceImageCell.xib; sourceTree = "<group>"; };
 		282A5F951D5CCD3600B18F86 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = utils/AlertUtils.swift; sourceTree = "<group>"; };
 		282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceDetailsCellCreator.swift; path = controllers/PlaceDetailsCellCreator.swift; sourceTree = "<group>"; };
 		282C94691D590D1700161303 /* LinkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkCell.xib; path = ui/markerDetails/LinkCell.xib; sourceTree = "<group>"; };
@@ -239,6 +246,9 @@
 		284F3DF51C92FE6600B4AF62 /* no_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no_image@3x.png"; path = "resources/no_image@3x.png"; sourceTree = "<group>"; };
 		28515FF81D5B06C0009804F5 /* FishImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FishImagesCell.xib; path = ui/markerDetails/FishImagesCell.xib; sourceTree = "<group>"; };
 		28515FFA1D5B06DC009804F5 /* FishImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishImagesCell.swift; path = ui/markerDetails/FishImagesCell.swift; sourceTree = "<group>"; };
+		286E94CE1EB4A92A00FF0CF5 /* PlaceImagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceImagesController.swift; path = controllers/PlaceImagesController.swift; sourceTree = "<group>"; };
+		286E94D21EB7BDAC00FF0CF5 /* ImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewCell.swift; path = ui/markerDetails/ImageViewCell.swift; sourceTree = "<group>"; };
+		286E94D41EB7BDD000FF0CF5 /* ImageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageViewCell.xib; path = ui/markerDetails/ImageViewCell.xib; sourceTree = "<group>"; };
 		288D18831D5E1D0900604D0E /* ConveniencesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ConveniencesCell.xib; path = ui/markerDetails/ConveniencesCell.xib; sourceTree = "<group>"; };
 		288D18851D5E1E0D00604D0E /* ConveniencesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConveniencesCell.swift; path = ui/markerDetails/ConveniencesCell.swift; sourceTree = "<group>"; };
 		2894B6D81DEDF55B00C7CC3C /* NavigationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationCoordinator.swift; path = utils/NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -482,6 +492,10 @@
 				282C946F1D5A25B200161303 /* PlaceImagesCell.xib */,
 				282D90091D578FD500DE8550 /* TitleLabelCell.swift */,
 				282D90071D578ED000DE8550 /* TitleLabelCell.xib */,
+				286E94D21EB7BDAC00FF0CF5 /* ImageViewCell.swift */,
+				286E94D41EB7BDD000FF0CF5 /* ImageViewCell.xib */,
+				281EFD8A1ECD927300BDD48D /* PlaceImageCell.swift */,
+				281EFD8C1ECD928400BDD48D /* PlaceImageCell.xib */,
 			);
 			name = MarkerDetails;
 			sourceTree = "<group>";
@@ -670,6 +684,7 @@
 				3E4BD7851AD7194E0036C8CA /* ViewController.swift */,
 				281566DA1D575753008B1E12 /* PlaceDetailsController.swift */,
 				282A5F971D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift */,
+				286E94CE1EB4A92A00FF0CF5 /* PlaceImagesController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -990,6 +1005,7 @@
 				3EA745421BBD1BF500AB470A /* FishCollectionViewCell.xib in Resources */,
 				3EF772081C15949900A83A3A /* 1@3x.png in Resources */,
 				3EF772281C15949900A83A3A /* 12@2x.png in Resources */,
+				281EFD8D1ECD928400BDD48D /* PlaceImageCell.xib in Resources */,
 				284F3DF71C92FE6600B4AF62 /* no_image@2x.png in Resources */,
 				3EB21C1F1B6617FB00517ECE /* m1.png in Resources */,
 				284F3DF81C92FE6600B4AF62 /* no_image@3x.png in Resources */,
@@ -1094,6 +1110,7 @@
 				3EF772551C15949900A83A3A /* 28@2x.png in Resources */,
 				3EF772641C15949900A83A3A /* 34@2x.png in Resources */,
 				3E2A735E1BD8CDFD00629D8B /* arrowDOWN@3x.png in Resources */,
+				286E94D51EB7BDD000FF0CF5 /* ImageViewCell.xib in Resources */,
 				3EF7724F1C15949900A83A3A /* 26@2x.png in Resources */,
 				3EF7725E1C15949900A83A3A /* 31@2x.png in Resources */,
 				3EF772671C15949900A83A3A /* 35@2x.png in Resources */,
@@ -1194,7 +1211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BC0939A7DD6B79C1765A5270 /* [CP] Check Pods Manifest.lock */ = {
@@ -1209,7 +1226,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1227,6 +1244,7 @@
 				281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */,
 				3EB21C191B66105E00517ECE /* MarkerAnnotationView.swift in Sources */,
 				282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */,
+				286E94CF1EB4A92A00FF0CF5 /* PlaceImagesController.swift in Sources */,
 				28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */,
 				3E9070BE1BF330F900268C7F /* Reachability.m in Sources */,
 				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
@@ -1245,6 +1263,7 @@
 				28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */,
 				2895B9651DBCA57A00C03313 /* PlaceFish.swift in Sources */,
 				282C94721D5A2C8500161303 /* PlaceImagesCell.swift in Sources */,
+				281EFD8B1ECD927300BDD48D /* PlaceImageCell.swift in Sources */,
 				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
 				2895B9631DB804F000C03313 /* Place.swift in Sources */,
@@ -1262,6 +1281,7 @@
 				3EA745441BBD1C1B00AB470A /* FishCollectionViewCell.swift in Sources */,
 				3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */,
 				282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */,
+				286E94D31EB7BDAC00FF0CF5 /* ImageViewCell.swift in Sources */,
 				3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */,
 				28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */,
 				282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */,
