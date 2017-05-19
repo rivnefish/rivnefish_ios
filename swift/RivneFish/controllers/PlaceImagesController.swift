@@ -10,6 +10,9 @@ import SKPhotoBrowser
 
 class PlaceImagesController: UIViewController {
     let kCellIdentifier = "ImageViewCell"
+    let kColumnsInLandscape: CGFloat = 3.0
+    let kColumnsInPortrait: CGFloat = 2.0
+    let kImagesSpacing: CGFloat = 10.0
 
     var imgUrlsArr: Array<String>?
     fileprivate var imagesArray: Array<UIImage?>?
@@ -33,6 +36,10 @@ class PlaceImagesController: UIViewController {
             loadImagesIfNeeded()
         }
         imagesCollectionView?.reloadData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Фотогалерея";
     }
 
     fileprivate func loadImagesIfNeeded() {
@@ -59,8 +66,8 @@ class PlaceImagesController: UIViewController {
 
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
-        flowLayout.minimumInteritemSpacing = 20.0
-        flowLayout.minimumLineSpacing = 20.0
+        flowLayout.minimumInteritemSpacing = kImagesSpacing
+        flowLayout.minimumLineSpacing = kImagesSpacing
     }
 }
 
@@ -98,11 +105,23 @@ extension PlaceImagesController: UICollectionViewDataSource, UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return CGSize(width: UIScreen.main.bounds.size.width / 2 - 5, height: 300)
-        } else {
-            return CGSize(width: UIScreen.main.bounds.size.width / 2 - 5, height: 200)
+        let columns = columnsCount
+        let separatorsCount = columns - 1
+        let size = (UIScreen.main.bounds.size.width - (kImagesSpacing * separatorsCount)) / columns
+        return CGSize(width: size, height: size)
+    }
+
+    var columnsCount: CGFloat {
+        var columns: CGFloat = kColumnsInPortrait
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft ||
+            UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            columns = kColumnsInLandscape
         }
+        return columns
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        imagesCollectionView.reloadData()
     }
 
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
