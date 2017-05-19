@@ -148,6 +148,7 @@
                                             </constraints>
                                         </activityIndicatorView>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="Do2-HZ-RBH" firstAttribute="centerY" secondItem="fNu-JU-ZMM" secondAttribute="centerY" id="ZHS-6L-ypc"/>
                                         <constraint firstItem="Do2-HZ-RBH" firstAttribute="centerX" secondItem="fNu-JU-ZMM" secondAttribute="centerX" id="jJb-YD-kQY"/>

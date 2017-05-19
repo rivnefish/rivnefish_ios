@@ -84,7 +84,7 @@ class PlaceDetailsController: UIViewController {
             let url = urls[0]
             dataSource?.loadImages([url], completionHandler: { (url: String, image: UIImage?) in
                 self.cellsCreator?.placeImage = image
-                self.contentTable?.reloadRows(at: [IndexPath(item: PlaceDetailsCellCreator.Cells.placeImage.rawValue, section: 0)], with: .none)
+                self.contentTable?.reloadRows(at: [IndexPath(item: PlaceDetailsCellCreator.Cells.placeImage.rawValue, section: 0)], with: .fade)
             })
         }
     }

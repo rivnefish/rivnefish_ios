@@ -132,9 +132,8 @@ extension PlaceImagesController: UICollectionViewDataSource, UICollectionViewDel
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifier, for: indexPath) as? ImageViewCell else {
             return UICollectionViewCell()
         }
-        if let image = imagesArray?[indexPath.row] {
-            cell.updateCell(withImage: image)
-        }
+        let image = imagesArray?[indexPath.row]
+        cell.updateCell(withImage: image)
         return cell
     }
 }
