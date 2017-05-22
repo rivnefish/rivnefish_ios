@@ -7,7 +7,7 @@
 //
 
 class PlaceDetailsCellCreator {
-    static let kDefaultPictureRatio:CGFloat = 4.0 / 3.0
+    static let kDefaultPictureRatio:CGFloat = 16.0 / 9.0
     enum Cells: Int {
         case placeImage
         case fishImages
@@ -173,10 +173,11 @@ class PlaceDetailsCellCreator {
     fileprivate func placeImageCellHeight() -> CGFloat {
         let max = self.contentTable.frame.height - FishImagesCell.kFishCellWidth
 
-        var pictureRatio = PlaceDetailsCellCreator.kDefaultPictureRatio
-        if let img = placeImage {
+        let pictureRatio = PlaceDetailsCellCreator.kDefaultPictureRatio
+        // ignore image size, use default ratio 16:9
+        /*if let img = placeImage {
             pictureRatio = img.size.width / img.size.height
-        }
+        }*/
 
         let h = self.contentTable.frame.width / pictureRatio
         return h < max ? h : max
