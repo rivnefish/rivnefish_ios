@@ -14,6 +14,7 @@ class FishCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var nameLabelView: UILabel!
 
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     var image: UIImage?
     var name: String?
     var amount: Int = 0
@@ -30,5 +31,8 @@ class FishCollectionViewCell : UICollectionViewCell {
         imageView.image = image
         nameLabelView.text = name
         progressView.progress = Float(amount) / 10.0
+
+        loadingIndicator.startAnimating()
+        loadingIndicator.isHidden = image != nil
     }
 }

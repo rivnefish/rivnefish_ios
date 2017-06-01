@@ -21,7 +21,10 @@ class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionV
     }
 
     var fishArray: Array<FishViewModel>?
-    var imagesArray: Array<UIImage?>!
+
+    func reloadCell(at index: Int) {
+        imagesCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+    }
 
     func setup(withFishArray fishArray: Array<FishViewModel>) {
         self.fishArray = fishArray

@@ -74,9 +74,13 @@ class PlaceDetailsController: UIViewController {
         navigationButton?.isEnabled = true
 
         cellsCreator?.placeDetailsModel = placeDetailsModel
-        cellsCreator?.fishArray = sortedPlaceFish()
-        contentTable?.reloadData()
+        let cellFishModelArr = sortedCellFishModelArr()
+        cellsCreator?.fishArray = cellFishModelArr
+
+        loadPlaceFishImages(for: cellFishModelArr)
         loadPlaceImage()
+
+        contentTable?.reloadData()
     }
 
     private func loadPlaceImage() {
@@ -102,24 +106,35 @@ class PlaceDetailsController: UIViewController {
         }
     }
 
-    private func sortedPlaceFish() -> Array<FishViewModel> {
-        var fishViewModelArr = Array<FishViewModel>()
-        guard let placeDetailsFish = placeDetailsModel?.fish else { return fishViewModelArr }
+    // Creates FishViewModel array based on information from allFish array and placeDetailsFish
+    private func sortedCellFishModelArr() -> Array<FishViewModel> {
+        var fishModelArr = Array<FishViewModel>()
+        guard let placeDetailsFish = placeDetailsModel?.fish else { return fishModelArr }
 
-        let _ = allFish?.filter {
+        let _ = allFish?.forEach {
             let detailsId = $0.id
             let arr = placeDetailsFish.filter { $0.fishId == detailsId }
 
             if arr.count > 0 {
                 let placeFish = arr[0]
-                let viewModel = FishViewModel(name: $0.name, amount: placeFish.amount, image: $0.image)
-
-                fishViewModelArr.append(viewModel)
-                return true
+                if let fishModel = FishViewModel(name: $0.name, amount: placeFish.amount, url: $0.iconUrl, image: nil) {
+                    fishModelArr.append(fishModel)
+                }
             }
-            return false
         }
-        return fishViewModelArr.sorted { return $0.amount > $1.amount }
+        return fishModelArr.sorted { return $0.amount > $1.amount }
+    }
+
+    private func loadPlaceFishImages(for fishViewModelArr: Array<FishViewModel>) {
+        let iconUrlArr = fishViewModelArr.flatMap { $0.url }
+
+        dataSource?.loadImages(iconUrlArr) { (url: String, image:UIImage?) in
+            if let index = iconUrlArr.index(of: url),
+                let fishModel = self.cellsCreator?.fishViewModel(at: index),
+                let newModel = FishViewModel(name: fishModel.name, amount: fishModel.amount, url: url, image: image) {
+                self.cellsCreator?.updateFishViewModel(at: index, with: newModel)
+            }
+        }
     }
 }
 

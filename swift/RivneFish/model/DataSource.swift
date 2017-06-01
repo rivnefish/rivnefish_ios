@@ -196,7 +196,7 @@ class DataSource: NSObject {
                                     })
                                 } else {
                                     DispatchQueue.main.async(execute: {
-                                        completionHandler(urlString, UIImage(named: "no_image"))
+                                        completionHandler(urlString, UIImage(named: "noImage"))
                                     })
                                 }
                             }

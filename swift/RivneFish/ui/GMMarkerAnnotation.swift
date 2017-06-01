@@ -19,7 +19,7 @@ class GMarker: NSObject, GClusterItem {
         position = CLLocationCoordinate2D(latitude: CLLocationDegrees(placeModel.lat), longitude: CLLocationDegrees(placeModel.lon))
 
         let marker: GMSMarker = GMSMarker()
-        marker.icon = UIImage(named: "m1")
+        marker.icon = UIImage(named: "marker")
         marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.userData = placeModel

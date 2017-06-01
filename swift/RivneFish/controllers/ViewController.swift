@@ -55,7 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         self.googleMapView.delegate = self
         self.updateData()
         
-        if let width = UIImage(named: "m1")?.size.width {
+        if let width = UIImage(named: "marker")?.size.width {
             singleMarkerImageWidth = width
         }
 

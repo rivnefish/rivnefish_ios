@@ -187,6 +187,22 @@ class PlaceDetailsCellCreator {
         return cellTypes.count
     }
 
+    func fishViewModel(at index: Int) -> FishViewModel? {
+        guard let fishCell = self.contentTable.cellForRow(at: IndexPath(item: 1, section: 0)) as? FishImagesCell else {
+            return nil
+        }
+
+        return fishCell.fishArray?[index]
+    }
+
+    func updateFishViewModel(at index: Int, with model: FishViewModel) {
+        if let fishCell = self.contentTable.cellForRow(at: IndexPath(item: 1, section: 0)) as? FishImagesCell {
+            fishCell.fishArray?[index] = model
+            fishArray?[index] = model
+            fishCell.reloadCell(at: index)
+        }
+    }
+
     func placeImageCell(forIndexPath indexPath: IndexPath) -> PlaceImageCell? {
         guard let cell = contentTable.dequeueReusableCell(withIdentifier: "PlaceImageCell", for: indexPath) as? PlaceImageCell else {
             return nil
