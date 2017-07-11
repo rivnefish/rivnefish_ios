@@ -12,7 +12,6 @@ class PlaceImageCell: UITableViewCell {
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var galeryButton: UIButton!
-    @IBOutlet weak var fishButton: UIButton!
 
     private var selectCellAction: EmptyClosure?
 
@@ -20,7 +19,6 @@ class PlaceImageCell: UITableViewCell {
         super.awakeFromNib()
         placeImageView.image = nil
         galeryButton.isHidden = true
-        fishButton.isHidden = true
     }
 
     func setup(withImage image: UIImage?, selectCellAction: EmptyClosure?) {

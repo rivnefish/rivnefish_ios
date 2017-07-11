@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,40 +25,26 @@
                         <rect key="frame" x="177" y="100" width="20" height="20"/>
                     </activityIndicatorView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQQ-he-75a">
-                        <rect key="frame" x="315" y="159.5" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="32l-Q6-nd3"/>
-                            <constraint firstAttribute="width" constant="40" id="5bM-wJ-lVU"/>
-                        </constraints>
-                        <state key="normal" image="galeryBtn"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                         <connections>
                             <action selector="actionButtonPressed" destination="t0k-ej-ZWw" eventType="touchUpInside" id="ovY-0D-jYg"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqX-gI-rNF">
-                        <rect key="frame" x="255" y="159.5" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="EXB-EV-cqU"/>
-                            <constraint firstAttribute="width" constant="40" id="Nrx-iY-gDA"/>
-                        </constraints>
-                        <state key="normal" image="fishBtn"/>
-                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cqX-gI-rNF" firstAttribute="centerY" secondItem="UQQ-he-75a" secondAttribute="centerY" id="1Ok-7J-RM4"/>
-                    <constraint firstAttribute="trailing" secondItem="UQQ-he-75a" secondAttribute="trailing" constant="20" id="7ZE-R9-IwY"/>
-                    <constraint firstAttribute="bottom" secondItem="UQQ-he-75a" secondAttribute="bottom" constant="20" id="CFL-S5-bPt"/>
+                    <constraint firstAttribute="trailing" secondItem="UQQ-he-75a" secondAttribute="trailing" id="B5C-b5-TmS"/>
+                    <constraint firstItem="UQQ-he-75a" firstAttribute="top" secondItem="JFq-2Q-Qo2" secondAttribute="top" id="BCP-Qj-8TH"/>
                     <constraint firstItem="jfj-V8-K7l" firstAttribute="centerY" secondItem="JFq-2Q-Qo2" secondAttribute="centerY" id="EbA-OA-4Ti"/>
                     <constraint firstAttribute="bottom" secondItem="SVS-NS-YcS" secondAttribute="bottom" id="HbF-gX-1ZO"/>
-                    <constraint firstItem="UQQ-he-75a" firstAttribute="leading" secondItem="cqX-gI-rNF" secondAttribute="trailing" constant="20" id="ITm-IC-NTn"/>
                     <constraint firstItem="SVS-NS-YcS" firstAttribute="leading" secondItem="JFq-2Q-Qo2" secondAttribute="leading" id="LOQ-Rq-1Un"/>
+                    <constraint firstItem="UQQ-he-75a" firstAttribute="leading" secondItem="JFq-2Q-Qo2" secondAttribute="leading" id="Rf0-FC-HWa"/>
                     <constraint firstItem="jfj-V8-K7l" firstAttribute="centerX" secondItem="JFq-2Q-Qo2" secondAttribute="centerX" id="XYe-VM-AlZ"/>
+                    <constraint firstAttribute="bottom" secondItem="UQQ-he-75a" secondAttribute="bottom" id="atY-hp-oun"/>
                     <constraint firstAttribute="trailing" secondItem="SVS-NS-YcS" secondAttribute="trailing" id="bXT-jb-b3x"/>
                     <constraint firstItem="SVS-NS-YcS" firstAttribute="top" secondItem="JFq-2Q-Qo2" secondAttribute="top" id="kop-3R-o7U"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="fishButton" destination="cqX-gI-rNF" id="gdi-aj-md1"/>
                 <outlet property="galeryButton" destination="UQQ-he-75a" id="FMH-j0-UPh"/>
                 <outlet property="loadingIndicator" destination="jfj-V8-K7l" id="BKw-43-KJD"/>
                 <outlet property="placeImageView" destination="SVS-NS-YcS" id="cid-ih-AhY"/>
@@ -66,8 +52,4 @@
             <point key="canvasLocation" x="-86.5" y="-8"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="fishBtn" width="40" height="40"/>
-        <image name="galeryBtn" width="40" height="40"/>
-    </resources>
 </document>

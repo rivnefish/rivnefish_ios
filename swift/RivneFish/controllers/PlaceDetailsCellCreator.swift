@@ -71,10 +71,7 @@ class PlaceDetailsCellCreator {
     fileprivate func updateCellTypes() {
         cellTypes.removeAll()
 
-        let arr = placeDetailsModel?.photoUrls ?? Array()
-        if !arr.isEmpty {
-            cellTypes.append(.placeImage)
-        }
+        cellTypes.append(.placeImage)
         let fish = fishArray ?? Array()
         if !fish.isEmpty {
             cellTypes.append(.fishImages)

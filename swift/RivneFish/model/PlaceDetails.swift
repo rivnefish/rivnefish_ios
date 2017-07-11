@@ -41,6 +41,7 @@ let kPhotosKey = "photos"
 let kFishKey = "place_fishes"
 
 let kUrlKey = "url"
+let kFeaturedImageKey = "featured_image"
 
 class PlaceDetails: NSObject, NSCoding {
 
@@ -76,6 +77,12 @@ class PlaceDetails: NSObject, NSCoding {
 
     var content: String?
     var url: String?
+    private let featuredImageUrl: String?
+    var mainImgUrlStr: String? {
+        get {
+            return featuredImageUrl ?? photoUrls?.first
+        }
+    }
 
     var areaStr: String? {
         if let val = area , val != 0.0 {
@@ -184,6 +191,7 @@ class PlaceDetails: NSObject, NSCoding {
         fish = decoder.decodeObject(forKey: kFishKey) as? Array<PlaceFish>
 
         url = decoder.decodeObject(forKey: kUrlKey) as? String
+        featuredImageUrl = decoder.decodeObject(forKey: kFeaturedImageKey) as? String
     }
 
     func encode(with aCoder: NSCoder) {
@@ -219,6 +227,7 @@ class PlaceDetails: NSObject, NSCoding {
         aCoder.encode(fish, forKey: kFishKey)
 
         aCoder.encode(url, forKey: kUrlKey)
+        aCoder.encode(featuredImageUrl, forKey: kFeaturedImageKey)
     }
 
     init(dict: NSDictionary)
@@ -261,5 +270,6 @@ class PlaceDetails: NSObject, NSCoding {
             }
         }
         url = dict[kUrlKey] as? String
+        featuredImageUrl = dict[kFeaturedImageKey] as? String
     }
 }

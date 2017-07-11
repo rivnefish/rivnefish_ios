@@ -84,19 +84,20 @@ class PlaceDetailsController: UIViewController {
     }
 
     private func loadPlaceImage() {
-        if let urls = placeDetailsModel?.photoUrls, urls.count > 0 {
-            let url = urls[0]
+        if let url = placeDetailsModel?.mainImgUrlStr {
             dataSource?.loadImages([url], completionHandler: { (url: String, image: UIImage?) in
-                self.cellsCreator?.placeImage = image
+                self.cellsCreator?.placeImage = image ?? UIImage(named: "defaultPlaceImage")
                 self.contentTable?.reloadRows(at: [IndexPath(item: PlaceDetailsCellCreator.Cells.placeImage.rawValue, section: 0)], with: .fade)
             })
+        } else {
+            self.cellsCreator?.placeImage = UIImage(named: "defaultPlaceImage")
         }
     }
 
     private func goToPlacePhotosView() {
         let placePhotosController = self.storyboard!.instantiateViewController(withIdentifier: "PlaceImagesController") as? PlaceImagesController
 
-        guard let photoUrls = placeDetailsModel?.photoUrls else { return }
+        guard let photoUrls = placeDetailsModel?.photoUrls, photoUrls.count > 0 else { return }
 
         if let controller = placePhotosController {
             controller.setup(withUrlsArray: photoUrls, dataSource: dataSource)
