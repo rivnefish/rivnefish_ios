@@ -15,9 +15,9 @@ enum MapType: Int {
     var gmType: GMSMapViewType {
         switch self {
         case .normal:
-            return kGMSTypeNormal
+            return .normal
         case .hyblid:
-            return kGMSTypeHybrid
+            return .hybrid
         }
     }
 }

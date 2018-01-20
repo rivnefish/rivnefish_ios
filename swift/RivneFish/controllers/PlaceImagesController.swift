@@ -18,8 +18,6 @@ class PlaceImagesController: UIViewController {
     fileprivate var imagesArray: Array<UIImage?>?
     var dataSource: DataSource?
 
-    var skBrowser = SKPhotoBrowser(photos: [])
-
     static var currentImageIndex: Int = 0
 
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
@@ -88,6 +86,7 @@ extension PlaceImagesController: UICollectionViewDataSource, UICollectionViewDel
 
         let skImages: Array<SKPhotoProtocol> = images.map({ SKPhoto.photoWithImage($0) })
         let browser = SKPhotoBrowser(photos: skImages)
+        browser.currentPageIndex = 0
         browser.initializePageIndex(idx)
         present(browser, animated: true, completion: {})
     }

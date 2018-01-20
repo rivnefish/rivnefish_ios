@@ -20,6 +20,20 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>2017071201</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>035ddedfa2a9ad829aa78bb1e6187102abd090c1</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>comgooglemaps</string>

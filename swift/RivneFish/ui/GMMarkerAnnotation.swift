@@ -21,7 +21,7 @@ class GMarker: NSObject, GClusterItem {
         let marker: GMSMarker = GMSMarker()
         marker.icon = UIImage(named: "marker")
         marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
-        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.appearAnimation = .pop
         marker.userData = placeModel
         marker.position = position
         self.marker = marker
