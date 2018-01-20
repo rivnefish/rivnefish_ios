@@ -525,6 +525,7 @@
 				3E4BD77C1AD7194E0036C8CA /* Resources */,
 				9F4D1B6FEE850FCA6492BA0F /* [CP] Embed Pods Frameworks */,
 				019EBE6C17E5E5491A4ABD9C /* [CP] Copy Pods Resources */,
+				28F0CFFC20133F790034C121 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -649,6 +650,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		28F0CFFC20133F790034C121 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 035ddedfa2a9ad829aa78bb1e6187102abd090c1 7f3ebff84eeecac3da94a1995869cb0030cc6604295f26366944204acbd0e8a6";
 		};
 		6EC14D9C34EC15541E7CE277 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let googleMapsApiKey = "AIzaSyDBwbEKKEutqV4H2RQZnvDAnlqbb2GYUAU"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        Fabric.with([Crashlytics.self])
         
         UIApplication.shared.statusBarStyle = .lightContent
         GMSServices.provideAPIKey(googleMapsApiKey)

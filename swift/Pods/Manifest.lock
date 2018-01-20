@@ -1,15 +1,22 @@
 PODS:
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - Fabric (1.7.2)
   - GoogleMaps (1.10.5)
   - SKPhotoBrowser (4.0.1)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - GoogleMaps (~> 1.10.5)
   - SKPhotoBrowser (~> 4.0)
 
 SPEC CHECKSUMS:
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   SKPhotoBrowser: 3a7c6fc02aa1620ab17253a47a49fafda46536e8
 
-PODFILE CHECKSUM: d510dfbe613359223d3e098efa1fe1a13c56e10d
+PODFILE CHECKSUM: c8a92c351516a1e0aea22142effe71f245b74f58
 
 COCOAPODS: 1.2.1

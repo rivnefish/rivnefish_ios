@@ -4,7 +4,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'RivneFish' do
-
+pod 'Fabric'
+pod 'Crashlytics'
 end
 
 target 'RivneFishTests' do
