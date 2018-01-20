@@ -43,7 +43,6 @@
 		28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8751C6F761400C86F5E /* TMCache.m */; };
 		28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A8781C6F761400C86F5E /* TMDiskCache.m */; };
 		28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */; };
-		28CCB55C1DC650FD00A17B5B /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */; };
 		28F960071E09CF6B00C4607A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F960061E09CF6B00C4607A /* Settings.swift */; };
 		28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD671C82F336001DBF29 /* ModifiedDate.swift */; };
 		28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */; };
@@ -135,7 +134,6 @@
 		28C5A8781C6F761400C86F5E /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMDiskCache.m; path = libs/TMCache/TMDiskCache.m; sourceTree = "<group>"; };
 		28C5A8791C6F761400C86F5E /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMMemoryCache.h; path = libs/TMCache/TMMemoryCache.h; sourceTree = "<group>"; };
 		28C5A87A1C6F761400C86F5E /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMMemoryCache.m; path = libs/TMCache/TMMemoryCache.m; sourceTree = "<group>"; };
-		28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UILabelExtension.swift; path = ui/UILabelExtension.swift; sourceTree = "<group>"; };
 		28F960061E09CF6B00C4607A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = model/Settings.swift; sourceTree = "<group>"; };
 		28FACD671C82F336001DBF29 /* ModifiedDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModifiedDate.swift; path = model/ModifiedDate.swift; sourceTree = "<group>"; };
 		28FACD691C831A7C001DBF29 /* NetworkDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkDataSource.swift; path = model/NetworkDataSource.swift; sourceTree = "<group>"; };
@@ -487,7 +485,6 @@
 				3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */,
 				3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */,
 				3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */,
-				28CCB55B1DC650FD00A17B5B /* UILabelExtension.swift */,
 				28094AAD1DF7178E004AA8C3 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -567,17 +564,18 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = rivnefish;
 				TargetAttributes = {
 					3E4BD77D1AD7194E0036C8CA = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 55ZA4X9878;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Manual;
 					};
 					3E4BD7921AD7194E0036C8CA = {
 						CreatedOnToolsVersion = 6.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0920;
 						TestTargetID = 3E4BD77D1AD7194E0036C8CA;
 					};
 				};
@@ -753,7 +751,6 @@
 				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
 				282C946C1D590D2F00161303 /* LinkCell.swift in Sources */,
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
-				28CCB55C1DC650FD00A17B5B /* UILabelExtension.swift in Sources */,
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
 				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
@@ -827,14 +824,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -874,14 +877,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -913,6 +922,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 55ZA4X9878;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
@@ -920,9 +930,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;
+				PROVISIONING_PROFILE = "56435cf2-4851-4848-aef8-42c30717087b";
+				PROVISIONING_PROFILE_SPECIFIER = RivneFish.Development;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -934,6 +947,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 55ZA4X9878;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
@@ -941,8 +956,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;
+				PROVISIONING_PROFILE = "a9007030-a8df-4616-95f5-122353c80f95";
+				PROVISIONING_PROFILE_SPECIFIER = RivneFish.Appstore;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -964,7 +982,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Rivnefish;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rivnefish.app/Rivnefish";
 			};
 			name = Debug;
@@ -982,7 +1001,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "rivnefish.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Rivnefish;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rivnefish.app/Rivnefish";
 			};
 			name = Release;

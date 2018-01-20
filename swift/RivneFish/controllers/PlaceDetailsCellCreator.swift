@@ -227,7 +227,7 @@ class PlaceDetailsCellCreator {
 
     func descriptionCell(forIndexPath indexPath: IndexPath) -> TitleLabelCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "TitleLabelCell", for: indexPath) as? TitleLabelCell {
-            cell.setup(withTitle: "Опис", text: placeDetailsModel?.content, isAttributedText: false)
+            cell.setup(withTitle: "Опис", text: placeDetailsModel?.content)
             return cell
         }
         return nil

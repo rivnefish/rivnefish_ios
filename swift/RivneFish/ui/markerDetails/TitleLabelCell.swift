@@ -10,7 +10,7 @@ class TitleLabelCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var label: UILabel!
 
-    func setup(withTitle title: String?, text: String?, isAttributedText: Bool = false) {
+    func setup(withTitle title: String?, text: String?) {
         if let title = title, !title.isEmpty {
             self.title.text = title
         } else {
@@ -18,11 +18,7 @@ class TitleLabelCell: UITableViewCell {
         }
 
         if let text = text, !text.isEmpty {
-            if isAttributedText {
-                self.label.setHtml(text: text, removingTextColor: true)
-            } else {
-                self.label.text = text
-            }
+            self.label.text = text
         } else {
             self.label.isHidden = true
         }
