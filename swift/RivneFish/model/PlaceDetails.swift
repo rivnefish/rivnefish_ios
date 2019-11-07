@@ -29,6 +29,7 @@ let kNotesKey = "notes"
 let kConveniencesKey = "conveniences"
 let kContactPhoneKey = "contact_phone"
 let kContactNameKey = "contact_name"
+let kPlaceContactsKey = "place_contacts"
 
 let kRatingsAvgKey = "rating_avg"
 let kRatingsVotesKey = "rating_votes"
@@ -43,8 +44,36 @@ let kFishKey = "place_fishes"
 let kUrlKey = "url"
 let kFeaturedImageKey = "featured_image"
 
-class PlaceDetails: NSObject, NSCoding {
+class PlaceContact: NSObject, NSCoding {
+    static let kIdKey = "id"
+    static let kNameKey = "name"
+    static let kPhoneKey = "phone"
 
+    var id: String
+    var name: String
+    var phone: String
+
+    init?(dict: Dictionary<String, Any>)
+    {
+        id = dict[PlaceContact.kIdKey] as? String ?? ""
+        name = dict[PlaceContact.kNameKey] as? String ?? ""
+        phone = dict[PlaceContact.kPhoneKey] as? String ?? ""
+    }
+
+    required init(coder decoder: NSCoder) {
+        id = decoder.decodeObject(forKey: PlaceContact.kIdKey) as? String ?? ""
+        name = decoder.decodeObject(forKey: PlaceContact.kNameKey) as? String ?? ""
+        phone = decoder.decodeObject(forKey: PlaceContact.kPhoneKey) as? String ?? ""
+    }
+
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: PlaceContact.kIdKey)
+        aCoder.encode(name, forKey: PlaceContact.kNameKey)
+        aCoder.encode(phone, forKey: PlaceContact.kPhoneKey)
+    }
+}
+
+class PlaceDetails: NSObject, NSCoding {
     var markerID: Int
     var lat: Float
     var lon: Float
@@ -66,6 +95,7 @@ class PlaceDetails: NSObject, NSCoding {
     var conveniences: String?
     var contact: String?
     var contactName: String?
+    var placeContacts: [PlaceContact]?
 
     var ratingAvg: String?
     var ratingVotes: String?
@@ -183,6 +213,7 @@ class PlaceDetails: NSObject, NSCoding {
         conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
         contact = decoder.decodeObject(forKey: kContactPhoneKey) as? String
         contactName = decoder.decodeObject(forKey: kContactNameKey) as? String
+        placeContacts = decoder.decodeObject(forKey: kPlaceContactsKey) as? Array<PlaceContact>
 
         modifiedDate = decoder.decodeObject(forKey: kUpdatedAtKey) as? String
 
@@ -216,6 +247,7 @@ class PlaceDetails: NSObject, NSCoding {
         aCoder.encode(conveniences, forKey: kConveniencesKey)
         aCoder.encode(contact, forKey: kContactPhoneKey)
         aCoder.encode(contactName, forKey: kContactNameKey)
+        aCoder.encode(placeContacts, forKey: kPlaceContactsKey)
 
         aCoder.encode(ratingAvg, forKey: kRatingsAvgKey)
         aCoder.encode(ratingVotes, forKey: kRatingsVotesKey)
