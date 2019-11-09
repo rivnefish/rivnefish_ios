@@ -1,26 +1,25 @@
 PODS:
-  - Crashlytics (3.9.3):
-    - Fabric (~> 1.7.2)
-  - Fabric (1.7.2)
-  - GoogleMaps (2.5.0):
-    - GoogleMaps/Maps (= 2.5.0)
-  - GoogleMaps/Base (2.5.0)
-  - GoogleMaps/Maps (2.5.0):
-    - GoogleMaps/Base
-  - SKPhotoBrowser (5.0.3)
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - SKPhotoBrowser (6.1.0)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
-  - GoogleMaps
   - SKPhotoBrowser
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Fabric
+    - SKPhotoBrowser
+
 SPEC CHECKSUMS:
-  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
-  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
-  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
-  SKPhotoBrowser: 6de77f7004442e79059f19d86e2e7e6a03b43a13
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  SKPhotoBrowser: 343de95d89dc7913763c5dda243cc6e606e4a168
 
-PODFILE CHECKSUM: b44cb89e3fa1398886ca79f1bb33a6538a6297a1
+PODFILE CHECKSUM: 627f4e6e2c5baec2d964430b00e13443d301ed12
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.6.1

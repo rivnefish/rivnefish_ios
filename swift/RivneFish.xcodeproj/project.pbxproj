@@ -524,7 +524,6 @@
 				3E4BD77B1AD7194E0036C8CA /* Frameworks */,
 				3E4BD77C1AD7194E0036C8CA /* Resources */,
 				9F4D1B6FEE850FCA6492BA0F /* [CP] Embed Pods Frameworks */,
-				019EBE6C17E5E5491A4ABD9C /* [CP] Copy Pods Resources */,
 				28F0CFFC20133F790034C121 /* Fabric */,
 			);
 			buildRules = (
@@ -544,8 +543,6 @@
 				3E4BD78F1AD7194E0036C8CA /* Sources */,
 				3E4BD7901AD7194E0036C8CA /* Frameworks */,
 				3E4BD7911AD7194E0036C8CA /* Resources */,
-				6EC14D9C34EC15541E7CE277 /* [CP] Embed Pods Frameworks */,
-				B2106CDCB96FA80AE8078875 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -586,6 +583,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -636,21 +634,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		019EBE6C17E5E5491A4ABD9C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		28F0CFFC20133F790034C121 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -663,22 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 035ddedfa2a9ad829aa78bb1e6187102abd090c1 7f3ebff84eeecac3da94a1995869cb0030cc6604295f26366944204acbd0e8a6";
-		};
-		6EC14D9C34EC15541E7CE277 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 035ddedfa2a9ad829aa78bb1e6187102abd090c1 7f3ebff84eeecac3da94a1995869cb0030cc6604295f26366944204acbd0e8a6\n";
 		};
 		9F4D1B6FEE850FCA6492BA0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -686,28 +654,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RivneFish/Pods-RivneFish-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFish/Pods-RivneFish-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2106CDCB96FA80AE8078875 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivneFishTests/Pods-RivneFishTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RivneFish/Pods-RivneFish-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BBA5974B7A2BE18AC85A2F5B /* [CP] Check Pods Manifest.lock */ = {
@@ -716,13 +672,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RivneFishTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BC0939A7DD6B79C1765A5270 /* [CP] Check Pods Manifest.lock */ = {
@@ -731,13 +690,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RivneFish-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -936,17 +898,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 55ZA4X9878;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;
 				PROVISIONING_PROFILE = "56435cf2-4851-4848-aef8-42c30717087b";
-				PROVISIONING_PROFILE_SPECIFIER = RivneFish.Development;
+				PROVISIONING_PROFILE_SPECIFIER = RivneFish.Appstore;
 				SWIFT_OBJC_BRIDGING_HEADER = "RivneFish/RivneFish-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -967,7 +929,7 @@
 				DEVELOPMENT_TEAM = 55ZA4X9878;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RivneFish/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rivnefish.rivnefish;
 				PRODUCT_NAME = Rivnefish;

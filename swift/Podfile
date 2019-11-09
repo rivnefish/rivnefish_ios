@@ -6,7 +6,6 @@ use_frameworks!
 target 'RivneFish' do
 pod 'Fabric'
 pod 'Crashlytics'
-pod 'GoogleMaps'
 pod 'SKPhotoBrowser'
 end
 
