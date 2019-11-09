@@ -6,6 +6,8 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
+import UIKit
+
 typealias EmptyClosure = () -> Void
 
 class Constants {

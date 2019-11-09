@@ -6,6 +6,8 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
+import UIKit
+
 class FishImagesCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
 

@@ -6,6 +6,8 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
+import UIKit
+
 class AlertUtils {
     static func okeyAlertWith(title: String, message: String?) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

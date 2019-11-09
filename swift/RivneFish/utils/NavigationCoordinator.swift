@@ -6,10 +6,10 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
+import UIKit
 
 class NavigationCoordinator {
-
     func navigate(departure: CLLocationCoordinate2D, destC: CLLocationCoordinate2D) {
         let googleUrl = googleMapsURL(withDeparture: departure, destination: destC)
         if let url = googleUrl, canOpenURL(url) {

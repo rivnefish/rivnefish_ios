@@ -6,8 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class FishingConditionsCell: UITableViewCell {
+import UIKit
 
+class FishingConditionsCell: UITableViewCell {
     @IBOutlet weak var mainInfoLabel: UILabel!
     @IBOutlet weak var mainInfoVConstraint: NSLayoutConstraint!
 

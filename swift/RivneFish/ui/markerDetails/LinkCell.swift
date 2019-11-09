@@ -6,8 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class LinkCell: UITableViewCell {
+import UIKit
 
+class LinkCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var cellImage: UIImageView! {
         didSet {

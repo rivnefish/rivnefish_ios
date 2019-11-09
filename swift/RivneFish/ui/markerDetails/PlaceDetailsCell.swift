@@ -6,10 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PlaceDetailsCell: UITableViewCell {
-
     @IBOutlet weak var squareLabel: UILabel!
     @IBOutlet weak var averageDepthLabel: UILabel!
     @IBOutlet weak var maxDepthLabel: UILabel!

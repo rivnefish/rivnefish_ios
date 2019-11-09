@@ -8,6 +8,7 @@
 
 import UIKit
 import SKPhotoBrowser
+import CoreLocation
 
 class PlaceDetailsController: UIViewController {
     @IBOutlet weak var noDataView: UIView!

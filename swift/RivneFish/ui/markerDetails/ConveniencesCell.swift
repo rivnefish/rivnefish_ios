@@ -6,8 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class ConveniencesCell: UITableViewCell {
+import UIKit
 
+class ConveniencesCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
 

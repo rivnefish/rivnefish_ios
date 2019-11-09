@@ -6,8 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class AddressCell: UITableViewCell {
-    
+import UIKit
+
+class AddressCell: UITableViewCell {    
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressVConstraint: NSLayoutConstraint!

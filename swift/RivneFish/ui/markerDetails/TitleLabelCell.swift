@@ -6,6 +6,8 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
+import UIKit
+
 class TitleLabelCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var label: UILabel!

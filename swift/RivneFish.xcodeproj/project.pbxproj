@@ -56,18 +56,8 @@
 		3E8C65A61B35DD5A005BD52C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8C65A51B35DD5A005BD52C /* MapKit.framework */; };
 		3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65A71B35DF5E005BD52C /* FishViewController.swift */; };
 		3E8C65AC1B35EAC8005BD52C /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C65AB1B35EAC8005BD52C /* DataSource.swift */; };
-		3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */; };
-		3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */; };
 		3E9070BE1BF330F900268C7F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9070BD1BF330F900268C7F /* Reachability.m */; };
 		3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */; };
-		3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175E71BDB846C00671A27 /* GQuadItem.m */; };
-		3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175E91BDB846C00671A27 /* GStaticCluster.m */; };
-		3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175EB1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m */; };
-		3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175F11BDB847B00671A27 /* GDefaultClusterRenderer.m */; };
-		3E9175F71BDB848900671A27 /* GClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175F61BDB848900671A27 /* GClusterManager.m */; };
-		3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175F91BDB84CA00671A27 /* SphericalMercatorProjection.m */; };
-		3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9175FE1BDB84D500671A27 /* GQTPointQuadTree.m */; };
-		3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */; };
 		3E9707F61BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */; };
 		3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */; };
 		3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */; };
@@ -150,34 +140,9 @@
 		3E8C65A51B35DD5A005BD52C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3E8C65A71B35DF5E005BD52C /* FishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FishViewController.swift; path = controllers/FishViewController.swift; sourceTree = "<group>"; };
 		3E8C65AB1B35EAC8005BD52C /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = model/DataSource.swift; sourceTree = "<group>"; };
-		3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkerCalloutView.xib; path = ui/MarkerCalloutView.xib; sourceTree = "<group>"; };
-		3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkerCalloutView.swift; path = ui/MarkerCalloutView.swift; sourceTree = "<group>"; };
 		3E9070BC1BF330F900268C7F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = libs/Reachability/Reachability.h; sourceTree = "<group>"; };
 		3E9070BD1BF330F900268C7F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = libs/Reachability/Reachability.m; sourceTree = "<group>"; };
 		3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GMMarkerAnnotation.swift; path = ui/GMMarkerAnnotation.swift; sourceTree = "<group>"; };
-		3E9175E51BDB846C00671A27 /* GClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GClusterAlgorithm.h; path = libs/GClustering/Clustering/Algorithms/GClusterAlgorithm.h; sourceTree = "<group>"; };
-		3E9175E61BDB846C00671A27 /* GQuadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQuadItem.h; path = libs/GClustering/Clustering/Algorithms/GQuadItem.h; sourceTree = "<group>"; };
-		3E9175E71BDB846C00671A27 /* GQuadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GQuadItem.m; path = libs/GClustering/Clustering/Algorithms/GQuadItem.m; sourceTree = "<group>"; };
-		3E9175E81BDB846C00671A27 /* GStaticCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GStaticCluster.h; path = libs/GClustering/Clustering/Algorithms/GStaticCluster.h; sourceTree = "<group>"; };
-		3E9175E91BDB846C00671A27 /* GStaticCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GStaticCluster.m; path = libs/GClustering/Clustering/Algorithms/GStaticCluster.m; sourceTree = "<group>"; };
-		3E9175EA1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NonHierarchicalDistanceBasedAlgorithm.h; path = libs/GClustering/Clustering/Algorithms/NonHierarchicalDistanceBasedAlgorithm.h; sourceTree = "<group>"; };
-		3E9175EB1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NonHierarchicalDistanceBasedAlgorithm.m; path = libs/GClustering/Clustering/Algorithms/NonHierarchicalDistanceBasedAlgorithm.m; sourceTree = "<group>"; };
-		3E9175EF1BDB847B00671A27 /* GClusterRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GClusterRenderer.h; path = libs/GClustering/Clustering/View/GClusterRenderer.h; sourceTree = "<group>"; };
-		3E9175F01BDB847B00671A27 /* GDefaultClusterRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDefaultClusterRenderer.h; path = libs/GClustering/Clustering/View/GDefaultClusterRenderer.h; sourceTree = "<group>"; };
-		3E9175F11BDB847B00671A27 /* GDefaultClusterRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDefaultClusterRenderer.m; path = libs/GClustering/Clustering/View/GDefaultClusterRenderer.m; sourceTree = "<group>"; };
-		3E9175F31BDB848900671A27 /* GCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCluster.h; path = libs/GClustering/Clustering/GCluster.h; sourceTree = "<group>"; };
-		3E9175F41BDB848900671A27 /* GClusterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GClusterItem.h; path = libs/GClustering/Clustering/GClusterItem.h; sourceTree = "<group>"; };
-		3E9175F51BDB848900671A27 /* GClusterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GClusterManager.h; path = libs/GClustering/Clustering/GClusterManager.h; sourceTree = "<group>"; };
-		3E9175F61BDB848900671A27 /* GClusterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GClusterManager.m; path = libs/GClustering/Clustering/GClusterManager.m; sourceTree = "<group>"; };
-		3E9175F81BDB84CA00671A27 /* SphericalMercatorProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SphericalMercatorProjection.h; path = libs/GClustering/Projection/SphericalMercatorProjection.h; sourceTree = "<group>"; };
-		3E9175F91BDB84CA00671A27 /* SphericalMercatorProjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SphericalMercatorProjection.m; path = libs/GClustering/Projection/SphericalMercatorProjection.m; sourceTree = "<group>"; };
-		3E9175FB1BDB84D500671A27 /* GQTBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTBounds.h; path = libs/GClustering/QuadTree/GQTBounds.h; sourceTree = "<group>"; };
-		3E9175FC1BDB84D500671A27 /* GQTPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPoint.h; path = libs/GClustering/QuadTree/GQTPoint.h; sourceTree = "<group>"; };
-		3E9175FD1BDB84D500671A27 /* GQTPointQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTree.h; path = libs/GClustering/QuadTree/GQTPointQuadTree.h; sourceTree = "<group>"; };
-		3E9175FE1BDB84D500671A27 /* GQTPointQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GQTPointQuadTree.m; path = libs/GClustering/QuadTree/GQTPointQuadTree.m; sourceTree = "<group>"; };
-		3E9175FF1BDB84D500671A27 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeChild.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
-		3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GQTPointQuadTreeChild.m; path = libs/GClustering/QuadTree/GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
-		3E9176011BDB84D500671A27 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GQTPointQuadTreeItem.h; path = libs/GClustering/QuadTree/GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
 		3E9707F51BA00A1700B0CCC3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagesCollectionViewCell.swift; path = ui/ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E9707F71BA0104700B0CCC3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImagesCollectionViewCell.xib; path = ui/ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		3EA7453F1BBD1A7A00AB470A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = network/HTTPClient.swift; sourceTree = "<group>"; };
@@ -348,80 +313,9 @@
 			isa = PBXGroup;
 			children = (
 				28C5A8731C6F75FE00C86F5E /* TMCache */,
-				3E9175DF1BDB83E600671A27 /* GClustering */,
 				3E9070BB1BF330D500268C7F /* Reachability */,
 			);
 			name = Libs;
-			sourceTree = "<group>";
-		};
-		3E9175DF1BDB83E600671A27 /* GClustering */ = {
-			isa = PBXGroup;
-			children = (
-				3E9175E01BDB83F300671A27 /* Clustering */,
-				3E9175E11BDB83FD00671A27 /* Projection */,
-				3E9175E21BDB840800671A27 /* QuadTree */,
-			);
-			name = GClustering;
-			sourceTree = "<group>";
-		};
-		3E9175E01BDB83F300671A27 /* Clustering */ = {
-			isa = PBXGroup;
-			children = (
-				3E9175E31BDB843E00671A27 /* Algorithms */,
-				3E9175E41BDB844C00671A27 /* View */,
-				3E9175F31BDB848900671A27 /* GCluster.h */,
-				3E9175F41BDB848900671A27 /* GClusterItem.h */,
-				3E9175F51BDB848900671A27 /* GClusterManager.h */,
-				3E9175F61BDB848900671A27 /* GClusterManager.m */,
-			);
-			name = Clustering;
-			sourceTree = "<group>";
-		};
-		3E9175E11BDB83FD00671A27 /* Projection */ = {
-			isa = PBXGroup;
-			children = (
-				3E9175F81BDB84CA00671A27 /* SphericalMercatorProjection.h */,
-				3E9175F91BDB84CA00671A27 /* SphericalMercatorProjection.m */,
-			);
-			name = Projection;
-			sourceTree = "<group>";
-		};
-		3E9175E21BDB840800671A27 /* QuadTree */ = {
-			isa = PBXGroup;
-			children = (
-				3E9175FB1BDB84D500671A27 /* GQTBounds.h */,
-				3E9175FC1BDB84D500671A27 /* GQTPoint.h */,
-				3E9175FD1BDB84D500671A27 /* GQTPointQuadTree.h */,
-				3E9175FE1BDB84D500671A27 /* GQTPointQuadTree.m */,
-				3E9175FF1BDB84D500671A27 /* GQTPointQuadTreeChild.h */,
-				3E9176001BDB84D500671A27 /* GQTPointQuadTreeChild.m */,
-				3E9176011BDB84D500671A27 /* GQTPointQuadTreeItem.h */,
-			);
-			name = QuadTree;
-			sourceTree = "<group>";
-		};
-		3E9175E31BDB843E00671A27 /* Algorithms */ = {
-			isa = PBXGroup;
-			children = (
-				3E9175E51BDB846C00671A27 /* GClusterAlgorithm.h */,
-				3E9175E61BDB846C00671A27 /* GQuadItem.h */,
-				3E9175E71BDB846C00671A27 /* GQuadItem.m */,
-				3E9175E81BDB846C00671A27 /* GStaticCluster.h */,
-				3E9175E91BDB846C00671A27 /* GStaticCluster.m */,
-				3E9175EA1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.h */,
-				3E9175EB1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m */,
-			);
-			name = Algorithms;
-			sourceTree = "<group>";
-		};
-		3E9175E41BDB844C00671A27 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3E9175EF1BDB847B00671A27 /* GClusterRenderer.h */,
-				3E9175F01BDB847B00671A27 /* GDefaultClusterRenderer.h */,
-				3E9175F11BDB847B00671A27 /* GDefaultClusterRenderer.m */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		3EA7453D1BBD192300AB470A /* Controllers */ = {
@@ -483,8 +377,6 @@
 				3EE306DB1B4FAD98003225FF /* MarkerAnnotation.swift */,
 				3EB21C161B660F6F00517ECE /* MarkerAnnotationView.xib */,
 				3E9175D91BDB76A100671A27 /* GMMarkerAnnotation.swift */,
-				3E9070AB1BEAB27D00268C7F /* MarkerCalloutView.xib */,
-				3E9070AD1BEB3D8A00268C7F /* MarkerCalloutView.swift */,
 				28094AAD1DF7178E004AA8C3 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
@@ -617,7 +509,6 @@
 				3E9707F81BA0104700B0CCC3 /* ImagesCollectionViewCell.xib in Resources */,
 				282D90121D57A00A00DE8550 /* FishingConditionsCell.xib in Resources */,
 				286E94D51EB7BDD000FF0CF5 /* ImageViewCell.xib in Resources */,
-				3E9070AC1BEAB27D00268C7F /* MarkerCalloutView.xib in Resources */,
 				3EB21C171B660F6F00517ECE /* MarkerAnnotationView.xib in Resources */,
 				28515FF91D5B06C0009804F5 /* FishImagesCell.xib in Resources */,
 				3E4BD78B1AD7194E0036C8CA /* Images.xcassets in Resources */,
@@ -713,35 +604,28 @@
 				3E9175DA1BDB76A100671A27 /* GMMarkerAnnotation.swift in Sources */,
 				2895B9691DBEB3CB00C03313 /* FishViewModel.swift in Sources */,
 				28F960071E09CF6B00C4607A /* Settings.swift in Sources */,
-				3E9176021BDB84D500671A27 /* GQTPointQuadTree.m in Sources */,
 				281566DB1D575753008B1E12 /* PlaceDetailsController.swift in Sources */,
 				282D900C1D57969E00DE8550 /* PlaceDetailsCell.swift in Sources */,
 				286E94CF1EB4A92A00FF0CF5 /* PlaceImagesController.swift in Sources */,
 				28C5A87D1C6F761400C86F5E /* TMMemoryCache.m in Sources */,
 				3E9070BE1BF330F900268C7F /* Reachability.m in Sources */,
-				3E9175EE1BDB846C00671A27 /* NonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				28FACD6A1C831A7C001DBF29 /* NetworkDataSource.swift in Sources */,
-				3E9175FA1BDB84CA00671A27 /* SphericalMercatorProjection.m in Sources */,
 				288D18861D5E1E0D00604D0E /* ConveniencesCell.swift in Sources */,
 				282A5F981D5CDAF400B18F86 /* PlaceDetailsCellCreator.swift in Sources */,
-				3E9175F21BDB847B00671A27 /* GDefaultClusterRenderer.m in Sources */,
 				3EA745401BBD1A7A00AB470A /* HTTPClient.swift in Sources */,
 				282C946C1D590D2F00161303 /* LinkCell.swift in Sources */,
 				3E8C65A81B35DF5E005BD52C /* FishViewController.swift in Sources */,
 				3EE306CC1B47B399003225FF /* DataParser.swift in Sources */,
 				3E4BD7861AD7194E0036C8CA /* ViewController.swift in Sources */,
-				3E9070AE1BEB3D8A00268C7F /* MarkerCalloutView.swift in Sources */,
 				28B74BDE1D644C4800AB7FAA /* PhoneNumberFormatter.swift in Sources */,
 				2895B9651DBCA57A00C03313 /* PlaceFish.swift in Sources */,
 				281EFD8B1ECD927300BDD48D /* PlaceImageCell.swift in Sources */,
-				3E9175EC1BDB846C00671A27 /* GQuadItem.m in Sources */,
 				3EE306D71B4A73DE003225FF /* Country.swift in Sources */,
 				2895B9631DB804F000C03313 /* Place.swift in Sources */,
 				2894B6D91DEDF55B00C7CC3C /* NavigationCoordinator.swift in Sources */,
 				28C5A87B1C6F761400C86F5E /* TMCache.m in Sources */,
 				28FACD681C82F336001DBF29 /* ModifiedDate.swift in Sources */,
 				3EA745541BBEFA5600AB470A /* Fish.swift in Sources */,
-				3E9175F71BDB848900671A27 /* GClusterManager.m in Sources */,
 				282D90101D579FBE00DE8550 /* FishingConditionsCell.swift in Sources */,
 				282D90141D57AA0A00DE8550 /* ContactsCell.swift in Sources */,
 				282D90181D57B6B100DE8550 /* AddressCell.swift in Sources */,
@@ -749,10 +633,8 @@
 				3EE306DC1B4FAD98003225FF /* MarkerAnnotation.swift in Sources */,
 				28C5A87C1C6F761400C86F5E /* TMDiskCache.m in Sources */,
 				3EA745441BBD1C1B00AB470A /* FishCollectionViewCell.swift in Sources */,
-				3E9175ED1BDB846C00671A27 /* GStaticCluster.m in Sources */,
 				282A5F961D5CCD3600B18F86 /* AlertUtils.swift in Sources */,
 				286E94D31EB7BDAC00FF0CF5 /* ImageViewCell.swift in Sources */,
-				3E9176031BDB84D500671A27 /* GQTPointQuadTreeChild.m in Sources */,
 				28515FFB1D5B06DC009804F5 /* FishImagesCell.swift in Sources */,
 				282D900A1D578FD500DE8550 /* TitleLabelCell.swift in Sources */,
 				281566E11D5759DC008B1E12 /* ModifiedDateCell.swift in Sources */,

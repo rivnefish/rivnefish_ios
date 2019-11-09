@@ -8,6 +8,8 @@
 
 import Foundation
 
+import UIKit
+
 class FishViewModel {
     let name: String
     let amount: Int

@@ -6,8 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class ModifiedDateCell: UITableViewCell {
+import UIKit
 
+class ModifiedDateCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
 
     func setupWithText(_ text: String?) {

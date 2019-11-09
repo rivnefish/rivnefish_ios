@@ -6,6 +6,8 @@
 //  Copyright © 2017 rivnefish. All rights reserved.
 //
 
+import UIKit
+
 class ImageViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!

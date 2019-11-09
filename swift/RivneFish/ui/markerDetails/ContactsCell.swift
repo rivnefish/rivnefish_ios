@@ -6,8 +6,9 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
-class ContactsCell: UITableViewCell {
+import UIKit
 
+class ContactsCell: UITableViewCell {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var phoneCaptionLabel: UILabel!
     @IBOutlet weak var phoneCaptionVConstraint: UILabel!

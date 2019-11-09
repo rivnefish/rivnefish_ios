@@ -6,6 +6,8 @@
 //  Copyright © 2016 rivnefish. All rights reserved.
 //
 
+import UIKit
+
 class PlaceDetailsCellCreator {
     static let kDefaultPictureRatio:CGFloat = 16.0 / 9.0
     enum Cells: Int {
