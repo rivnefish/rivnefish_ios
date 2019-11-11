@@ -11,6 +11,8 @@ import MapKit
 import SystemConfiguration
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    fileprivate static let kPlusZoomFactor = 0.5
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapTypeButton: UIButton!
 
@@ -213,6 +215,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return nil
     }
 
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let _ = view.annotation as? MKClusterAnnotation else { return }
+
+        mapView.changeZoomByFactor(ViewController.kPlusZoomFactor)
+    }
+
     func annotationViewForClusterMarker(annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "cluster"
         var view: ClusterAnnotationView
@@ -274,5 +282,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         for subview in view.subviews {
             subview.removeFromSuperview()
         }
+    }
+}
+
+extension MKMapView {
+    var zoomLevel: Int {
+        let zero = self.convert(CGPoint.zero, toCoordinateFrom: self)
+        let oneOne = self.convert(CGPoint(x: 1.0, y: 1.0), toCoordinateFrom: self)
+        let diff = zero.latitude > oneOne.latitude ? zero.latitude - oneOne.latitude : oneOne.latitude - zero.latitude
+        let delta = round(-1 * log2(diff) - 0.5)
+
+        return Int(delta)
+    }
+
+    func changeZoomByFactor(_ zoomFactor: Double) {
+        changeZoomByFactor(zoomFactor, centerCoordinate: region.center)
+    }
+
+    func changeZoomByFactor(_ zoomFactor: Double, centerCoordinate: CLLocationCoordinate2D) {
+        let latSpan = region.span.latitudeDelta * zoomFactor
+        let lonSpan = region.span.longitudeDelta * zoomFactor
+        let newRegion = MKCoordinateRegion(center: centerCoordinate, span: MKCoordinateSpan(latitudeDelta: latSpan, longitudeDelta: lonSpan))
+        if newRegion.isValid() {
+            setRegion(newRegion, animated: true)
+        }
+    }
+}
+
+extension MKCoordinateRegion {
+    func isValid() -> Bool {
+        return span.latitudeDelta > 0.0 && span.latitudeDelta < 180.0 &&
+        span.longitudeDelta > 0.0 && span.longitudeDelta < 180.0
     }
 }

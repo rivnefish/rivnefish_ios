@@ -65,8 +65,7 @@ class ClusterAnnotationView: MKAnnotationView {
         ctx.setLineWidth(inset)
 
         // make circle rect 5 px from border
-        let circleRect = CGRect(x: 0, y: 0, width: diameter, height: diameter)
-        circleRect.insetBy(dx: inset, dy: inset)
+        let circleRect = CGRect(x: 0, y: 0, width: diameter, height: diameter).insetBy(dx: inset, dy: inset)
 
         // draw circle
         ctx.fillEllipse(in: circleRect)
