@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vCg-mE-lDV">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vCg-mE-lDV">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -60,10 +58,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBE-ON-y9b" customClass="GMSMapView">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="724"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wc7-39-9Vh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hfb-Pu-uww" id="Jnp-my-Mmg"/>
+                                </connections>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-Dj-hqa">
                                 <rect key="frame" x="6" y="10" width="40" height="40"/>
                                 <constraints>
@@ -78,18 +78,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DBE-ON-y9b" firstAttribute="top" secondItem="QAQ-Dj-hqa" secondAttribute="bottom" constant="-50" id="1cr-dC-Urg"/>
-                            <constraint firstItem="DBE-ON-y9b" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leadingMargin" constant="-20" id="4m2-pd-ENE"/>
-                            <constraint firstItem="DBE-ON-y9b" firstAttribute="top" secondItem="AjA-uY-FQu" secondAttribute="bottom" id="8h1-qh-8e4"/>
-                            <constraint firstItem="DBE-ON-y9b" firstAttribute="leading" secondItem="QAQ-Dj-hqa" secondAttribute="trailing" constant="-50" id="HQV-mf-eew"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DBE-ON-y9b" secondAttribute="trailing" constant="-20" id="nIY-V3-kuo"/>
-                            <constraint firstAttribute="bottom" secondItem="DBE-ON-y9b" secondAttribute="bottom" id="roz-Dg-d4P"/>
+                            <constraint firstItem="Wc7-39-9Vh" firstAttribute="top" secondItem="AjA-uY-FQu" secondAttribute="bottom" id="8Ya-yF-Owe"/>
+                            <constraint firstItem="QAQ-Dj-hqa" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leading" constant="6" id="Bki-Xw-1Kj"/>
+                            <constraint firstAttribute="trailing" secondItem="Wc7-39-9Vh" secondAttribute="trailing" id="EAX-rk-bdw"/>
+                            <constraint firstAttribute="bottom" secondItem="Wc7-39-9Vh" secondAttribute="bottom" id="XCq-YP-hUM"/>
+                            <constraint firstItem="Wc7-39-9Vh" firstAttribute="leading" secondItem="Ei3-CI-Dn7" secondAttribute="leading" id="doF-1p-Ftq"/>
+                            <constraint firstItem="QAQ-Dj-hqa" firstAttribute="top" secondItem="AjA-uY-FQu" secondAttribute="bottom" constant="10" id="hIN-ye-nXM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rivnefish" id="caj-OL-Hs9"/>
                     <connections>
-                        <outlet property="googleMapView" destination="DBE-ON-y9b" id="229-IC-mTF"/>
                         <outlet property="mapTypeButton" destination="QAQ-Dj-hqa" id="V3y-sb-3rb"/>
+                        <outlet property="mapView" destination="Wc7-39-9Vh" id="WCg-Np-315"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ap-DAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +110,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PpS-ET-jkm">
                                 <rect key="frame" x="0.0" y="88" width="375" height="724"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="gek-IZ-hcr" id="JRv-bY-JIt"/>
                                     <outlet property="delegate" destination="gek-IZ-hcr" id="ew6-mw-Fru"/>
@@ -147,7 +147,6 @@
                                             </constraints>
                                         </activityIndicatorView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="Do2-HZ-RBH" firstAttribute="centerY" secondItem="fNu-JU-ZMM" secondAttribute="centerY" id="ZHS-6L-ypc"/>
                                         <constraint firstItem="Do2-HZ-RBH" firstAttribute="centerX" secondItem="fNu-JU-ZMM" secondAttribute="centerX" id="jJb-YD-kQY"/>
@@ -157,7 +156,6 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Vj7-tS-4tj" firstAttribute="leading" secondItem="UPD-5m-bxZ" secondAttribute="leading" id="357-8O-C1D"/>
                             <constraint firstItem="Vj7-tS-4tj" firstAttribute="top" secondItem="bOn-VD-FGU" secondAttribute="bottom" id="67d-5a-q5A"/>

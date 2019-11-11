@@ -10,16 +10,13 @@ import UIKit
 import MapKit
 import SystemConfiguration
 
-class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
-
-    // With apple maps it is possible to use FBAnnotationClustering
-
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var mapTypeButton: UIButton!
 
+    var annotations: [PlaceMarker] = []
+
     let locationManager = CLLocationManager()
-    var clusterManager: GClusterManager!
 
     fileprivate var markerDetailsController: PlaceDetailsController?
     fileprivate var currentPlace: Place?
@@ -29,9 +26,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     var allAnnotationsMapView: MKMapView! = MKMapView(frame: CGRect.zero)
 
     var dataSource = DataSource()
-    var markersAnnotations = [MarkerAnnotation]()
-    
-    var gmMarkers = [GMarker]()
     var singleMarkerImageWidth: CGFloat = CGFloat(0.0)
 
     var currentLocation: CLLocation? = nil
@@ -51,15 +45,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
 
-        initClusterManager()
-        self.googleMapView.delegate = self
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+
         self.updateData()
         
         if let width = UIImage(named: "marker")?.size.width {
             singleMarkerImageWidth = width
         }
 
-        googleMapView.mapType = settings.currentMapType.gmType
+        mapView.mapType = settings.currentMapType
         updateMapTypeButtonIcon()
     }
 
@@ -92,28 +89,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         self.reach!.startNotifier()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - CLLocationManagerDelegate
-
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
-            googleMapView.isMyLocationEnabled = true
-            googleMapView.settings.myLocationButton = true
-        }
-        else
-        {
-            if let location = defaultLocation {
-                googleMapView.animate(to: GMSCameraPosition(target: location.coordinate, zoom: 10, bearing: 0, viewingAngle: 0))
-                locationManager.stopUpdatingLocation()
-            }
-        }
-    }
-
     // MARK: Common methods
     
     func countriesReceived(_ countries: NSArray) {
@@ -121,23 +96,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
     }
     
     @IBAction func mapTypeChanged() {
-        var newMapType: MapType
+        var newMapType: MKMapType
         switch settings.currentMapType {
-        case .normal:
-            newMapType = .hyblid
+        case .standard:
+            newMapType = .hybrid
         default:
-            newMapType = .normal
+            newMapType = .standard
             break
         }
         settings.currentMapType = newMapType
-        googleMapView.mapType = newMapType.gmType
+        mapView.mapType = newMapType
         updateMapTypeButtonIcon()
     }
 
     private func updateMapTypeButtonIcon() {
         let imageName: String
         switch settings.currentMapType {
-        case .normal:
+        case .standard:
             imageName = "satellite"
         default:
             imageName = "earth"
@@ -158,7 +133,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
             if  places.count == 0 {
                 self.showConnectionErrorAlert()
             } else {
-                self.addMarkersToGoogleMap(places)
+                self.addMarkersToAppleMap(places)
             }
         })
     }
@@ -177,47 +152,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         self.present(alert, animated: true, completion: nil)
     }
 
-    // MARK: GOOGLE MAPS
-
-    func initClusterManager() {
-        let renderer = GDefaultClusterRenderer(mapView: self.googleMapView)
-        self.clusterManager = GClusterManager(mapView: self.googleMapView, algorithm: NonHierarchicalDistanceBasedAlgorithm(), renderer: renderer)
-        
-        // Do not do this as GClustering expects.
-        // self.googleMapView.delegate = clusterManager
-        // We needs this controller to be google maps delegate, so just needed method of cluster manager will be called
-        // it is func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!)
-    }
-
-    func addGMMarkers() {
-        self.googleMapView.clear()
-        clusterManager.removeItems()
-
-        for markerAnnotation: GMarker in self.gmMarkers {
-            // markerAnnotation.map = self.googleMapView - do not do that, clusterManager will do everhthing
-            clusterManager.addItem(markerAnnotation)
-        }
-        clusterManager.cluster()
-    }
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location: CLLocation = locations.first {
             currentLocation = location
-            googleMapView.animate(to: GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0))
+
+            // let location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let span = MKCoordinateSpanMake(0.5, 0.5)
+            let region = MKCoordinateRegion (center: location.coordinate, span: span)
+
+            mapView.setRegion(region, animated: true)
+
+            // googleMapView.animate(to: GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0))
             locationManager.stopUpdatingLocation()
         }
-    }
-
-    func addMarkersToGoogleMap(_ markers: Array<Place>) {
-        // remove old
-        self.gmMarkers.removeAll()
-
-        // add new
-        for markerModel in markers {
-            let markerAnnotation = GMarker(placeModel: markerModel)
-            self.gmMarkers.append(markerAnnotation)
-        }
-        self.addGMMarkers()
     }
 
     func goToMarkerDetailsView() {
@@ -231,7 +178,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    fileprivate func populateDetailsControllerWithData() {
+    func populateDetailsControllerWithData() {
         if let controller = markerDetailsController {
             controller.dataSource = dataSource
             controller.currentLocation = currentLocation
@@ -241,7 +188,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    fileprivate func populateDetailsControllerWithFish() {
+    func populateDetailsControllerWithFish() {
         if let controller = markerDetailsController {
             if let fish = allFish {
                 controller.allFish = fish
@@ -249,7 +196,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    fileprivate func populateDetailsControllerWithPlace() {
+    func populateDetailsControllerWithPlace() {
         if let controller = markerDetailsController {
             if let place = currentPlace {
                 controller.place = place
@@ -257,40 +204,75 @@ class ViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDel
         }
     }
 
-    // MARK: Google Maps delegate methods
-    
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        self.clusterManager.mapView(self.googleMapView, idleAt: position)
-    }
-    
-    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-        if isSinglePointMarker(marker) {
-            if let markerModel: Place = marker.userData as? Place {
-                if let calloutView: MarkerCalloutView = UINib(nibName: "MarkerCalloutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? MarkerCalloutView {
-                    calloutView.nameLabel.text = markerModel.name
-                    calloutView.setup()
-                    return calloutView
-                }
-            }
-        } else {
-            googleMapView.animate(to: GMSCameraPosition(target: marker.position, zoom: googleMapView.camera.zoom + 1, bearing: 0, viewingAngle: 0))
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let _ = annotation as? MKClusterAnnotation {
+            return annotationViewForClusterMarker(annotation: annotation)
+        } else if let annotation = annotation as? PlaceMarker {
+            return annotationViewSingleMarker(annotation: annotation)
         }
         return nil
     }
 
-    // TODO: to not touching GClustering library, there is temporary solution to check if it is single marker
-    func isSinglePointMarker(_ marker: GMSMarker) -> Bool {
-        var returnVal = false
-        if marker.icon?.size.width == singleMarkerImageWidth {
-            returnVal = true
+    func annotationViewForClusterMarker(annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "cluster"
+        var view: ClusterAnnotationView
+
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? ClusterAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = ClusterAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
-        return returnVal
+        return view
     }
 
-    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        if let markerModel: Place = marker.userData as? Place {
-            self.currentPlace = markerModel
-            self.goToMarkerDetailsView()
+    func annotationViewSingleMarker(annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "marker"
+        var view: PlaceMarkerAnnotationView
+
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            as? PlaceMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = PlaceMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            if let img = UIImage.init(named: "marker") {
+                view.centerOffset = CGPoint(x: 0, y: -img.size.height / 2)
+            }
+
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
+    }
+
+    func addMarkersToAppleMap(_ markers: Array<Place>) {
+        mapView.removeAnnotations(annotations)
+
+        annotations.removeAll()
+        for markerModel in markers {
+            let markerAnnotation = PlaceMarker(place: markerModel)
+            annotations.append(markerAnnotation)
+        }
+        mapView.addAnnotations(annotations)
+    }
+
+    func mapView(
+        _ mapView: MKMapView,
+        annotationView view: MKAnnotationView,
+        calloutAccessoryControlTapped control: UIControl) {
+        guard let marker = view.annotation as? PlaceMarker else { return }
+
+        self.currentPlace = marker.place
+        self.goToMarkerDetailsView()
+    }
+
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard view.isKind(of: PlaceMarkerAnnotationView.self) else { return }
+
+        for subview in view.subviews {
+            subview.removeFromSuperview()
         }
     }
 }

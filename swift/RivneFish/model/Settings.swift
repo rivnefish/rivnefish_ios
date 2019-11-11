@@ -7,20 +7,7 @@
 //
 
 import Foundation
-
-enum MapType: Int {
-    case normal = 0
-    case hyblid
-
-    var gmType: GMSMapViewType {
-        switch self {
-        case .normal:
-            return .normal
-        case .hyblid:
-            return .hybrid
-        }
-    }
-}
+import MapKit
 
 class Settings {
     static let kMapTypeKey = "MapType"
@@ -30,14 +17,10 @@ class Settings {
         self.defaults = defaults
     }
 
-    var currentMapType: MapType {
+    var currentMapType: MKMapType {
         get {
             let raw = defaults.integer(forKey: Settings.kMapTypeKey)
-            if let type = MapType(rawValue: raw) {
-                return type
-            } else {
-                return .normal
-            }
+            return MKMapType(rawValue: UInt(raw)) ?? MKMapType.standard
         }
         set {
             defaults.set(newValue.rawValue, forKey: Settings.kMapTypeKey)
