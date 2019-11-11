@@ -285,6 +285,15 @@ class PlaceDetails: NSObject, NSCoding {
         conveniences = dict[kConveniencesKey] as? String
         contact = dict[kContactPhoneKey] as? String
         contactName = dict[kContactNameKey] as? String
+        if let contactsDictArr = dict[kPlaceContactsKey] as? Array<Dictionary<String, Any>> {
+            var arr: [PlaceContact] = []
+            for contactsDict in contactsDictArr {
+                if let contact = PlaceContact(dict: contactsDict) {
+                    arr.append(contact)
+                }
+            }
+            placeContacts = arr
+        }
 
         ratingAvg = dict[kRatingsAvgKey] as? String
         ratingVotes = dict[kRatingsVotesKey] as? String

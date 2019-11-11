@@ -221,7 +221,8 @@ class PlaceDetailsCellCreator {
 
     func contactsCell(forIndexPath indexPath: IndexPath) -> ContactsCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as? ContactsCell {
-            cell.setup(withPhone: placeDetailsModel?.contact, details: placeDetailsModel?.contactName)
+            placeDetailsModel?.placeContacts
+            cell.setup(contacts: placeDetailsModel?.placeContacts, details: placeDetailsModel?.contactName)
             return cell
         }
         return nil

@@ -14,24 +14,34 @@ class ContactsCell: UITableViewCell {
     @IBOutlet weak var phoneCaptionVConstraint: UILabel!
 
     @IBOutlet weak var detailsConstraint: NSLayoutConstraint!
+    @IBOutlet weak var phonesConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailsLabel: UILabel!
 
     var phoneNumber: String?
 
-    func setup(withPhone phone: String?, details: String?) {
+    func setup(contacts: [PlaceContact]?, details: String?) {
         textView.isUserInteractionEnabled = true
         textView.isEditable = false
         textView.isSelectable = true
         textView.dataDetectorTypes = [.all]
         textView.isScrollEnabled = false
-        textView.text = "\(PhoneNumberFormatter.format(phone!)), \(PhoneNumberFormatter.format(phone!))"
+        var phoneArr: [String] = []
+        contacts?.forEach {
+            let phone = PhoneNumberFormatter.format($0.phone)
+            if $0.name.isEmpty {
+                phoneArr.append(phone)
+            } else {
+                phoneArr.append("\($0.name) \(phone)")
+            }
+        }
+        let contactStr = phoneArr.joined(separator: ", ")
 
-        let phone = phone ?? ""
-        if  !phone.isEmpty {
-            phoneNumber = phone
+        if  !contactStr.isEmpty {
+            textView.text = contactStr
         } else {
             phoneCaptionLabel.text = ""
         }
+
         let details = details ?? ""
         if !details.isEmpty {
             detailsLabel.text = details
@@ -39,6 +49,7 @@ class ContactsCell: UITableViewCell {
             detailsLabel.text = ""
             detailsConstraint.constant = 0
         }
+        textView.sizeToFit()
     }
 
     var privacyAndTermsAttrStr: NSAttributedString {
