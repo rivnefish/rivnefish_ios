@@ -27,8 +27,6 @@ let kBoatUsageKey = "boat_usage"
 let kAddressKey = "address"
 let kNotesKey = "notes"
 let kConveniencesKey = "conveniences"
-let kContactPhoneKey = "contact_phone"
-let kContactNameKey = "contact_name"
 let kPlaceContactsKey = "place_contacts"
 
 let kRatingsAvgKey = "rating_avg"
@@ -93,8 +91,6 @@ class PlaceDetails: NSObject, NSCoding {
     var address: String?
     var notes: String?
     var conveniences: String?
-    var contact: String?
-    var contactName: String?
     var placeContacts: [PlaceContact]?
 
     var ratingAvg: String?
@@ -211,8 +207,6 @@ class PlaceDetails: NSObject, NSCoding {
         address = decoder.decodeObject(forKey: kAddressKey) as? String
         notes = decoder.decodeObject(forKey: kNotesKey) as? String
         conveniences = decoder.decodeObject(forKey: kConveniencesKey) as? String
-        contact = decoder.decodeObject(forKey: kContactPhoneKey) as? String
-        contactName = decoder.decodeObject(forKey: kContactNameKey) as? String
         placeContacts = decoder.decodeObject(forKey: kPlaceContactsKey) as? Array<PlaceContact>
 
         modifiedDate = decoder.decodeObject(forKey: kUpdatedAtKey) as? String
@@ -245,8 +239,6 @@ class PlaceDetails: NSObject, NSCoding {
         aCoder.encode(address, forKey: kAddressKey)
         aCoder.encode(notes, forKey: kNotesKey)
         aCoder.encode(conveniences, forKey: kConveniencesKey)
-        aCoder.encode(contact, forKey: kContactPhoneKey)
-        aCoder.encode(contactName, forKey: kContactNameKey)
         aCoder.encode(placeContacts, forKey: kPlaceContactsKey)
 
         aCoder.encode(ratingAvg, forKey: kRatingsAvgKey)
@@ -283,8 +275,6 @@ class PlaceDetails: NSObject, NSCoding {
         address = dict[kAddressKey] as? String
         notes = dict[kNotesKey] as? String
         conveniences = dict[kConveniencesKey] as? String
-        contact = dict[kContactPhoneKey] as? String
-        contactName = dict[kContactNameKey] as? String
         if let contactsDictArr = dict[kPlaceContactsKey] as? Array<Dictionary<String, Any>> {
             var arr: [PlaceContact] = []
             for contactsDict in contactsDictArr {

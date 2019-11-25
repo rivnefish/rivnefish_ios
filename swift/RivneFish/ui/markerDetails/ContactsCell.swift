@@ -13,25 +13,16 @@ class ContactsCell: UITableViewCell {
     @IBOutlet weak var phoneCaptionLabel: UILabel!
     @IBOutlet weak var phoneCaptionVConstraint: UILabel!
 
-    @IBOutlet weak var detailsConstraint: NSLayoutConstraint!
     @IBOutlet weak var phonesConstraint: NSLayoutConstraint!
-    // @IBOutlet weak var detailsLabel: UILabel!
-    @IBOutlet weak var detailsTextField: UITextView!
 
     var phoneNumber: String?
 
-    func setup(contacts: [PlaceContact]?, details: String?) {
+    func setup(contacts: [PlaceContact]?) {
         contactsTextView.isUserInteractionEnabled = true
         contactsTextView.isEditable = false
         contactsTextView.isSelectable = true
         contactsTextView.dataDetectorTypes = [.all]
         contactsTextView.isScrollEnabled = false
-
-        detailsTextField.isUserInteractionEnabled = true
-        detailsTextField.isEditable = false
-        detailsTextField.isSelectable = true
-        detailsTextField.dataDetectorTypes = [.all]
-        detailsTextField.isScrollEnabled = false
 
         var phoneArr: [String] = []
         contacts?.forEach {
@@ -52,14 +43,6 @@ class ContactsCell: UITableViewCell {
             phonesConstraint.isActive = true
         }
 
-        let details = details ?? ""
-        if !details.isEmpty {
-            detailsTextField.text = details
-            detailsConstraint.isActive = false
-        } else {
-            detailsTextField.text = ""
-            detailsConstraint.isActive = true
-        }
         contactsTextView.sizeToFit()
     }
 

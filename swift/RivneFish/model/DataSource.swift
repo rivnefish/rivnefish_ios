@@ -10,6 +10,18 @@ import UIKit
 
 class DataSource: NSObject {
 
+    let resetNotNeededVersionKey = "1.5.0"
+
+    override init() {
+        super.init()
+
+        UserDefaults.standard.register(defaults: [resetNotNeededVersionKey : true])
+        if UserDefaults.standard.bool(forKey: resetNotNeededVersionKey) {
+            TMCache.shared()?.removeAllObjects()
+            UserDefaults.standard.set(false, forKey: resetNotNeededVersionKey)
+        }
+    }
+
     func places(_ rechability: Reach, completionHandler: @escaping (_ markers: Array<Place>?) -> Void) {
         // If there is online connection
         if rechability.currentReachabilityStatus() != NetworkStatus.NotReachable {

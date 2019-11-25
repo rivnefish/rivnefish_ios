@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsCell" rowHeight="168" id="eZG-3J-U1d" customClass="ContactsCell" customModule="Rivnefish" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsCell" rowHeight="131" id="eZG-3J-U1d" customClass="ContactsCell" customModule="Rivnefish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZG-3J-U1d" id="LgP-xc-SU0">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Контактна інформація:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLH-nr-x1C">
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="297" placeholderIntrinsicHeight="0.0" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tcE-jK-JXc">
-                        <rect key="frame" x="15" y="56.5" width="297" height="44"/>
+                        <rect key="frame" x="15" y="56.5" width="297" height="16.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" id="rZe-3x-fCg"/>
@@ -43,48 +43,28 @@
                             </mask>
                         </variation>
                     </textView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="289" placeholderIntrinsicHeight="0.0" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XGi-vF-vX1">
-                        <rect key="frame" x="15" y="103" width="289" height="0.0"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" id="se1-f7-CPz"/>
-                        </constraints>
-                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="se1-f7-CPz"/>
-                            </mask>
-                        </variation>
-                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tcE-jK-JXc" firstAttribute="top" secondItem="nBJ-Nw-BVQ" secondAttribute="bottom" id="Dfs-im-q3l"/>
-                    <constraint firstItem="XGi-vF-vX1" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="FiN-Fo-wpr"/>
                     <constraint firstItem="tcE-jK-JXc" firstAttribute="leading" secondItem="yLH-nr-x1C" secondAttribute="leading" id="Jhk-hm-zyv"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nBJ-Nw-BVQ" secondAttribute="trailing" id="O1c-T8-grG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yLH-nr-x1C" secondAttribute="trailing" id="ORN-nh-hfa"/>
                     <constraint firstItem="yLH-nr-x1C" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="WEc-bJ-fGu"/>
                     <constraint firstItem="nBJ-Nw-BVQ" firstAttribute="top" secondItem="yLH-nr-x1C" secondAttribute="bottom" constant="8" id="YEw-LE-F6e"/>
                     <constraint firstAttribute="trailing" secondItem="tcE-jK-JXc" secondAttribute="trailing" constant="8" id="e46-Ri-Vk9"/>
-                    <constraint firstItem="XGi-vF-vX1" firstAttribute="top" secondItem="tcE-jK-JXc" secondAttribute="bottom" constant="2.5" id="iMT-1p-Utx"/>
                     <constraint firstItem="nBJ-Nw-BVQ" firstAttribute="leading" secondItem="LgP-xc-SU0" secondAttribute="leadingMargin" id="ifb-gX-d9Q"/>
-                    <constraint firstAttribute="trailing" secondItem="XGi-vF-vX1" secondAttribute="trailing" constant="16" id="l7j-ZX-9be"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="XGi-vF-vX1" secondAttribute="bottom" constant="4" id="nbj-nu-cJE"/>
                     <constraint firstItem="yLH-nr-x1C" firstAttribute="top" secondItem="LgP-xc-SU0" secondAttribute="topMargin" id="njl-3W-wCZ"/>
+                    <constraint firstAttribute="bottom" secondItem="tcE-jK-JXc" secondAttribute="bottom" constant="8" id="y04-c2-geP"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
             <connections>
                 <outlet property="contactsTextView" destination="tcE-jK-JXc" id="QCe-3f-2x6"/>
-                <outlet property="detailsConstraint" destination="se1-f7-CPz" id="YaT-ME-IIW"/>
-                <outlet property="detailsTextField" destination="XGi-vF-vX1" id="us0-lu-1Mg"/>
                 <outlet property="phoneCaptionLabel" destination="nBJ-Nw-BVQ" id="jAg-V3-b8H"/>
                 <outlet property="phoneCaptionVConstraint" destination="nBJ-Nw-BVQ" id="ujV-Tf-Ban"/>
                 <outlet property="phonesConstraint" destination="rZe-3x-fCg" id="YZE-qc-xbo"/>
             </connections>
-            <point key="canvasLocation" x="280" y="241.97901049475263"/>
+            <point key="canvasLocation" x="280" y="225.33733133433284"/>
         </tableViewCell>
     </objects>
 </document>

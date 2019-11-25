@@ -82,9 +82,7 @@ class PlaceDetailsCellCreator {
         if !name.isEmpty {
             cellTypes.append(.caption)
         }
-        let contact = placeDetailsModel?.contact ?? ""
-        let contactName = placeDetailsModel?.contactName ?? ""
-        if !contact.isEmpty || !contactName.isEmpty {
+        if placeDetailsModel?.placeContacts != nil {
             cellTypes.append(.contacts)
         }
         let area = placeDetailsModel?.areaStr ?? ""
@@ -221,8 +219,7 @@ class PlaceDetailsCellCreator {
 
     func contactsCell(forIndexPath indexPath: IndexPath) -> ContactsCell? {
         if let cell = contentTable.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath) as? ContactsCell {
-            placeDetailsModel?.placeContacts
-            cell.setup(contacts: placeDetailsModel?.placeContacts, details: placeDetailsModel?.contactName)
+            cell.setup(contacts: placeDetailsModel?.placeContacts)
             return cell
         }
         return nil
