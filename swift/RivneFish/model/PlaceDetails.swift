@@ -193,7 +193,7 @@ class PlaceDetails: NSObject, NSCoding {
         lon = decoder.decodeFloat(forKey: kLonKey)
         name = decoder.decodeObject(forKey: kNameKey) as? String
 
-        area = decoder.decodeObject(forKey: kAreaKey) as? Float
+        area = decoder.decodeFloat(forKey: kAreaKey) as? Float
         maxDepth = decoder.decodeObject(forKey: kDepthMaxKey) as? String
         averageDepth = decoder.decodeObject(forKey: kDepthAvgKey) as? String
 
@@ -261,7 +261,10 @@ class PlaceDetails: NSObject, NSCoding {
         lon = Float(dict[kLonKey] as! String)!
         name = dict[kNameKey] as? String
 
-        area = dict[kAreaKey] as? Float
+        if let areaStr = dict[kAreaKey] as? String {
+            area = Float(areaStr)
+        }
+        
         maxDepth = dict[kDepthMaxKey] as? String
         averageDepth = dict[kDepthAvgKey] as? String
 
